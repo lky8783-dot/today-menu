@@ -46,9 +46,12 @@ def render_restaurant_card(item: dict) -> str:
 
     if status == 'ready':
         menu_items = ''.join(f'<li>{escape(menu)}</li>' for menu in item.get('menu', []))
-        body = f'<ul>{menu_items}</ul>'
+        note_html = ''
+        if item['name'] == '퍼블릭가산 구내식당':
+            note_html = '<div class="info-note">현재는 메인메뉴만 공개됐습니다.</div>'
+        body = f'{note_html}<ul>{menu_items}</ul>'
     else:
-        body = f'<div class="pending-box">{escape(item.get("message", "메뉴 이미지를 다시 수집하는 중입니다."))}</div>'
+        body = '<div class="pending-box">수집예정입니다.</div>'
 
     return f'''
       <article class="restaurant-card">
@@ -161,6 +164,7 @@ def render_page(data: dict) -> str:
     ul {{ margin: 0; padding-left: 19px; line-height: 1.78; font-size: 16px; }}
     li + li {{ margin-top: 2px; }}
     .pending-box {{ margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }}
+    .info-note {{ margin: 2px 0 12px; color: var(--muted); font-size: 14px; line-height: 1.6; }}
     .footer-note {{ margin-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: center; }}
     .hidden-card {{ display: none; }}
     @media (max-width: 960px) {{ .meta-bar, .grid {{ grid-template-columns: 1fr; }} }}
