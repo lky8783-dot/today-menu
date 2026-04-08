@@ -25,11 +25,19 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: python -m pip install requests
+      - name: Install Python dependencies
+        run: python -m pip install requests pillow pytesseract
+
+      - name: Install Tesseract OCR
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-kor
 
       - name: Fetch Kakao profile menu images
         run: python scripts/fetch_kakao_profile_images.py
+
+      - name: Update menu json from OCR
+        run: python scripts/update_menu_from_ocr.py
 
       - name: Rebuild menu page
         run: python scripts/build_menu_page.py

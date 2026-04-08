@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 8일 수요일",
-  "updated_at": "2026-04-08 14:13:57",
+  "updated_at": "2026-04-08 14:45:47",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -41,7 +41,7 @@
         "온두부",
         "순살치킨까스 * 콘마요S",
         "햄감자채야채볶음",
-        "잡잡이깻잎장아찌",
+        "짭짤이깻잎장아찌",
         "얼갈이겉절이",
         "깍두기",
         "양배추샐러드 / 삼색경단"
@@ -70,7 +70,7 @@
     {
       "name": "마이푸드",
       "building": "벽산디지털밸리5차",
-      "address": "서울 금천구 벚꽃로 244 벽산디지털밸리5차 지하 1층",
+      "address": "서울 금천구 벚꽃로 244 벽산 디지털 밸리 5차 지하 1층",
       "status": "ready",
       "preview_image": "./images/myfood.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=17.77,0,0,0,dh",
@@ -86,14 +86,12 @@
         "그린샐러드 & 드레싱",
         "얼큰순두부김치찌개",
         "백미밥",
-        "쌈채소 & 풋고추",
-        "한강라면 & 달콤한 잼 토스트",
-        "구수한 숭늉 & 시원한 탄산음료"
+        "쌈채소 & 풋고추 / 한강라면 / 달콤한 잼 토스트 / 구수한 숭늉 / 시원한 탄산음료"
       ]
     },
     {
       "name": "퍼블릭가산 구내식당",
-      "building": "퍼블릭가산 C동",
+      "building": "퍼블릭가산C동",
       "address": "서울 금천구 디지털로 178",
       "status": "ready",
       "preview_image": "./images/public-gasan.png",
@@ -130,6 +128,38 @@
       "map_url": "https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [],
       "message": "수집예정입니다."
+    }
+  ],
+  "ocr_log": [
+    {
+      "name": "아이밀",
+      "items": 13,
+      "updated": false,
+      "used_existing_fallback": true
+    },
+    {
+      "name": "밥(온) 구내식당",
+      "items": 10,
+      "updated": false,
+      "used_existing_fallback": true
+    },
+    {
+      "name": "구내식당라온푸드",
+      "items": 10,
+      "updated": false,
+      "used_existing_fallback": true
+    },
+    {
+      "name": "마이푸드",
+      "items": 12,
+      "updated": false,
+      "used_existing_fallback": true
+    },
+    {
+      "name": "퍼블릭가산 구내식당",
+      "items": 3,
+      "updated": false,
+      "used_existing_fallback": true
     }
   ]
 }

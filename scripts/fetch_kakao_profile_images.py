@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import json
 import re
@@ -17,31 +17,11 @@ HEADERS = {
 }
 
 PROFILE_SOURCES = [
-    {
-        "name": "아이밀",
-        "page_url": "https://pf.kakao.com/_vygYn",
-        "output": ROOT / "menu-today" / "images" / "imeal.png",
-    },
-    {
-        "name": "밥(온) 구내식당",
-        "page_url": "https://pf.kakao.com/_mYxfen",
-        "output": ROOT / "menu-today" / "images" / "babon.png",
-    },
-    {
-        "name": "구내식당라온푸드",
-        "page_url": "https://pf.kakao.com/_Rxkrxfn",
-        "output": ROOT / "menu-today" / "images" / "raonfood.png",
-    },
-    {
-        "name": "마이푸드",
-        "page_url": "https://pf.kakao.com/_xaAvxlG",
-        "output": ROOT / "menu-today" / "images" / "myfood.png",
-    },
-    {
-        "name": "퍼블릭가산 구내식당",
-        "page_url": "https://pf.kakao.com/_ECNfn",
-        "output": ROOT / "menu-today" / "images" / "public-gasan.png",
-    },
+    {"name": "아이밀", "page_url": "https://pf.kakao.com/_vygYn", "output": ROOT / "menu-today" / "images" / "imeal.png"},
+    {"name": "밥(온) 구내식당", "page_url": "https://pf.kakao.com/_mYxfen", "output": ROOT / "menu-today" / "images" / "babon.png"},
+    {"name": "구내식당라온푸드", "page_url": "https://pf.kakao.com/_Rxkrxfn", "output": ROOT / "menu-today" / "images" / "raonfood.png"},
+    {"name": "마이푸드", "page_url": "https://pf.kakao.com/_xaAvxlG", "output": ROOT / "menu-today" / "images" / "myfood.png"},
+    {"name": "퍼블릭가산 구내식당", "page_url": "https://pf.kakao.com/_ECNfn", "output": ROOT / "menu-today" / "images" / "public-gasan.png"},
 ]
 
 
@@ -74,7 +54,6 @@ def download_file(url: str, output_path: Path) -> None:
 
 def sync_preview_images() -> None:
     results: list[dict] = []
-
     for source in PROFILE_SOURCES:
         page_response = requests.get(source["page_url"], headers=HEADERS, timeout=30)
         page_response.raise_for_status()
@@ -92,9 +71,8 @@ def sync_preview_images() -> None:
             }
         )
 
-    log_payload = {"sources": results}
     (ROOT / "menu-today" / "collection_log.json").write_text(
-        json.dumps(log_payload, ensure_ascii=False, indent=2),
+        json.dumps({"sources": results}, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
 
