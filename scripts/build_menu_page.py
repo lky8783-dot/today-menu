@@ -1,0 +1,188 @@
+﻿from __future__ import annotations
+
+import json
+from datetime import datetime
+from html import escape
+from pathlib import Path
+from zoneinfo import ZoneInfo
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA_PATH = ROOT / 'menu-today' / 'menu_today.json'
+HTML_PATH = ROOT / 'menu-today' / 'index.html'
+SEOUL = ZoneInfo('Asia/Seoul')
+PRIORITY = ['아이밀', '밥(온) 구내식당']
+
+
+def load_data() -> dict:
+    return json.loads(DATA_PATH.read_text(encoding='utf-8-sig'))
+
+
+def sort_restaurants(restaurants: list[dict]) -> list[dict]:
+    priority_map = {name: index for index, name in enumerate(PRIORITY)}
+
+    def sort_key(item: dict) -> tuple[int, str]:
+        if item['name'] in priority_map:
+            return (priority_map[item['name']], item['name'])
+        return (len(priority_map) + 1, item['name'])
+
+    leading = sorted([item for item in restaurants if item['name'] in priority_map], key=sort_key)
+    trailing = [item for item in restaurants if item['name'] not in priority_map]
+    return leading + trailing
+
+
+def count_by_status(restaurants: list[dict], status: str) -> int:
+    return sum(1 for item in restaurants if item.get('status') == status)
+
+
+def render_restaurant_card(item: dict) -> str:
+    name = escape(item['name'])
+    building = escape(item.get('building', ''))
+    address = escape(item.get('address', ''))
+    source_type = escape(item.get('source_type', ''))
+    status = item.get('status', 'ready')
+    badge_text = '확인 완료' if status == 'ready' else '준비중'
+    badge_class = 'ready' if status == 'ready' else 'preparing'
+    sub = ' · '.join(part for part in [building, address] if part)
+    sub_html = f'<div class="sub">{sub}</div>' if sub else ''
+    tags = [f'<span class="tag">{source_type}</span>'] if source_type else []
+    if item['name'] == '퍼블릭가산 구내식당':
+        tags.append('<span class="tag">주간 메인 메뉴</span>')
+    tags_html = f"<div class=\"tags\">{''.join(tags)}</div>" if tags else ''
+
+    if status == 'ready':
+        menu_items = ''.join(f'<li>{escape(menu)}</li>' for menu in item.get('menu', []))
+        body = f'<ul>{menu_items}</ul>'
+    else:
+        body = f'<div class="pending-box">{escape(item.get("message", "메뉴 이미지를 다시 수집하는 중입니다."))}</div>'
+
+    return f'''
+      <article class="restaurant-card">
+        <div class="card-head">
+          <div>
+            <h2 class="name">{name}</h2>
+            {sub_html}
+          </div>
+          <div class="badge {badge_class}">{badge_text}</div>
+        </div>
+        {tags_html}
+        {body}
+      </article>'''
+
+
+def render_page(data: dict) -> str:
+    restaurants = data['restaurants']
+    ready_count = count_by_status(restaurants, 'ready')
+    preparing_count = count_by_status(restaurants, 'preparing')
+    cards = '\n'.join(render_restaurant_card(item) for item in restaurants)
+    return f'''<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{escape(data['title'])}</title>
+  <meta name="description" content="가산디지털단지 구내식당 오늘 메뉴를 식당별로 한눈에 확인할 수 있는 화면입니다.">
+  <style>
+    :root {{
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #607089;
+      --line: #dfe7f3;
+      --accent: #2f67ff;
+      --accent-soft: #eef4ff;
+      --ok: #1f9d5c;
+      --ok-soft: #ebfbf3;
+      --wait: #bf7b00;
+      --wait-soft: #fff7e6;
+      --shadow: 0 18px 44px rgba(25, 44, 87, 0.08);
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      background: radial-gradient(circle at top, rgba(47, 103, 255, 0.08), transparent 28%), var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+    }}
+    .wrap {{ max-width: 1160px; margin: 0 auto; padding: 24px 18px 40px; }}
+    .hero {{
+      background: linear-gradient(135deg, #153a9c 0%, #2f67ff 55%, #6fa3ff 100%);
+      color: #fff;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }}
+    .eyebrow {{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }}
+    h1 {{ margin: 0 0 10px; font-size: clamp(28px, 4.8vw, 46px); line-height: 1.2; color: #fff; }}
+    .hero p {{ margin: 0; font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.92); max-width: 900px; }}
+    .meta-bar {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 18px 0 22px; }}
+    .meta-card, .notice, .restaurant-card {{ background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }}
+    .meta-card {{ border-radius: 20px; padding: 18px 20px; }}
+    .meta-label {{ font-size: 12px; font-weight: 800; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }}
+    .meta-value {{ font-size: 21px; font-weight: 800; line-height: 1.35; }}
+    .notice {{ border-radius: 22px; padding: 18px 20px; color: var(--muted); line-height: 1.7; margin-bottom: 22px; }}
+    .grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }}
+    .restaurant-card {{ border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; }}
+    .card-head {{ display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 14px; }}
+    .name {{ margin: 0; font-size: 24px; line-height: 1.25; }}
+    .sub {{ color: var(--muted); font-size: 14px; line-height: 1.6; margin-top: 6px; }}
+    .badge {{ flex-shrink: 0; border-radius: 999px; padding: 9px 12px; font-size: 12px; font-weight: 800; white-space: nowrap; }}
+    .badge.ready {{ background: var(--ok-soft); color: var(--ok); border: 1px solid rgba(31,157,92,0.18); }}
+    .badge.preparing {{ background: var(--wait-soft); color: var(--wait); border: 1px solid rgba(191,123,0,0.18); }}
+    .tags {{ display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 14px; }}
+    .tag {{ font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 7px 10px; }}
+    ul {{ margin: 0; padding-left: 19px; line-height: 1.78; font-size: 16px; }}
+    li + li {{ margin-top: 2px; }}
+    .pending-box {{ margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }}
+    .footer-note {{ margin-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: center; }}
+    @media (max-width: 960px) {{ .meta-bar, .grid {{ grid-template-columns: 1fr; }} }}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">무료 정보 화면 · 가산디지털단지 식당 모음</div>
+      <h1>{escape(data['title'])}</h1>
+      <p>{escape(data['notice'])}</p>
+    </section>
+
+    <section class="meta-bar">
+      <div class="meta-card"><div class="meta-label">기준 날짜</div><div class="meta-value">{escape(data['date_label'])}</div></div>
+      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">{escape(data['updated_at'])}</div></div>
+      <div class="meta-card"><div class="meta-label">확인 완료</div><div class="meta-value">{ready_count}개 식당</div></div>
+      <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">{preparing_count}개 채널</div></div>
+    </section>
+
+    <section class="grid">
+{cards}
+    </section>
+
+    <div class="footer-note">메뉴 이미지는 공개 채널 기준으로 자동 수집한 뒤 정리한 결과입니다. 실제 운영 사정에 따라 식당 현장 메뉴와 일부 차이가 있을 수 있습니다.</div>
+  </div>
+</body>
+</html>
+'''
+
+
+def main() -> None:
+    data = load_data()
+    data['updated_at'] = datetime.now(SEOUL).strftime('%Y-%m-%d %H:%M:%S')
+    data['restaurants'] = sort_restaurants(data['restaurants'])
+    DATA_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
+    HTML_PATH.write_text(render_page(data), encoding='utf-8')
+    print(f"updated: {data['updated_at']}")
+
+
+if __name__ == '__main__':
+    main()

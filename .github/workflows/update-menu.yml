@@ -1,0 +1,32 @@
+﻿name: Update Menu Board
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1-5'
+    - cron: '0 1 * * 1-5'
+    - cron: '0 2 * * 1-5'
+
+permissions:
+  contents: write
+
+jobs:
+  update-menu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Rebuild menu page
+        run: python scripts/build_menu_page.py
+
+      - name: Commit updated page
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Update menu board timestamp'
+          file_pattern: menu-today/index.html menu-today/menu_today.json
