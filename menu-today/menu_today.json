@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 8일 수요일",
-  "updated_at": "2026-04-08 15:09:24",
+  "updated_at": "2026-04-08 15:17:59",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -33,7 +33,16 @@
       "address": "서울 금천구 가산디지털2로 135 2층",
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
-      "menu": [],
+      "menu": [
+        "시금치된장국",
+        "대파숯불치킨바베큐",
+        "해물까스",
+        "철판고기산적",
+        "샐러드",
+        "깍두기",
+        "잔치국수",
+        "셀프라면"
+      ],
       "preview_image": "./images/dasibom.png"
     },
     {
@@ -136,6 +145,12 @@
       "items": 13,
       "updated": false,
       "used_existing_fallback": true
+    },
+    {
+      "name": "다시 봄",
+      "items": 8,
+      "updated": true,
+      "used_existing_fallback": false
     },
     {
       "name": "밥(온) 구내식당",
