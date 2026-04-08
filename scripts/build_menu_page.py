@@ -45,8 +45,8 @@ def render_restaurant_card(item: dict) -> str:
     if not map_url:
         map_query = item.get('map_query', '').strip() or ' '.join(part for part in [item.get('name', ''), item.get('building', '')] if part)
         map_url = f'https://map.naver.com/p/search/{quote(map_query)}'
-    badge_text = '확인 완료' if status == 'ready' else '준비중'
-    badge_class = 'ready' if status == 'ready' else 'preparing'
+    badge_text = '준비중'
+    badge_class = 'preparing'
     sub = ' · '.join(part for part in [building, address] if part)
     sub_html = f'<div class="sub">{sub}</div>' if sub else ''
     title_html = (
@@ -59,31 +59,33 @@ def render_restaurant_card(item: dict) -> str:
             <div class="menu-preview">
               <img src="{escape(preview_image)}" alt="{name} 식단 이미지 미리보기">
             </div>'''
-    card_style = ''
-    if status == 'ready' and preview_image:
-        card_style = (
-            " style=\"--card-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.96)), "
-            f"url('{escape(preview_image)}');\""
-        )
-
     if status == 'ready':
         menu_items = ''.join(f'<li>{escape(menu)}</li>' for menu in item.get('menu', []))
         note_html = ''
         if item['name'] == '퍼블릭가산 구내식당':
             note_html = '<div class="info-note">현재는 메인메뉴만 공개됐습니다.</div>'
         body = f'{note_html}<ul>{menu_items}</ul>'
+        action_html = ''
+        if preview_image:
+            action_html = (
+                f'<a class="badge image-button" href="{escape(preview_image)}" '
+                f'target="_blank" rel="noopener">메뉴 이미지 확인</a>'
+            )
+        else:
+            action_html = '<div class="badge ready">확인 완료</div>'
     else:
         body = '<div class="pending-box">수집예정입니다.</div>'
+        action_html = f'<div class="badge {badge_class}">{badge_text}</div>'
 
     return f'''
-      <article class="restaurant-card"{card_style}>
+      <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
             <h2 class="name">{title_html}</h2>
             {sub_html}
             {preview_html}
           </div>
-          <div class="badge {badge_class}">{badge_text}</div>
+          {action_html}
         </div>
         {body}
       </article>'''
@@ -156,7 +158,7 @@ def render_page(data: dict) -> str:
     .meta-value {{ font-size: 21px; font-weight: 800; line-height: 1.35; }}
     .usage-note {{ margin: 0 0 22px; padding: 16px 18px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--muted); line-height: 1.7; font-size: 15px; }}
     .grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }}
-    .restaurant-card {{ border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; background-image: none; background-size: cover; background-position: center; background-repeat: no-repeat; }}
+    .restaurant-card {{ border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; }}
     .card-head {{ display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 14px; }}
     .title-wrap {{ position: relative; }}
     .name {{ margin: 0; font-size: 24px; line-height: 1.25; }}
@@ -167,6 +169,8 @@ def render_page(data: dict) -> str:
     .badge {{ flex-shrink: 0; border-radius: 999px; padding: 9px 12px; font-size: 12px; font-weight: 800; white-space: nowrap; }}
     .badge.ready {{ background: var(--ok-soft); color: var(--ok); border: 1px solid rgba(31,157,92,0.18); }}
     .badge.preparing {{ background: var(--wait-soft); color: var(--wait); border: 1px solid rgba(191,123,0,0.18); }}
+    .image-button {{ background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(47,103,255,0.16); text-decoration: none; }}
+    .image-button:hover {{ background: #e2edff; }}
     ul {{ margin: 0; padding-left: 19px; line-height: 1.78; font-size: 16px; }}
     li + li {{ margin-top: 2px; }}
     .pending-box {{ margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }}
@@ -179,7 +183,6 @@ def render_page(data: dict) -> str:
     @media (max-width: 960px) {{
       .meta-bar, .grid {{ grid-template-columns: 1fr; }}
       .menu-preview {{ display: none; }}
-      .restaurant-card[style*="--card-image"] {{ background-image: var(--card-image); }}
     }}
   </style>
 </head>

@@ -60,7 +60,7 @@
     .meta-value { font-size: 21px; font-weight: 800; line-height: 1.35; }
     .usage-note { margin: 0 0 22px; padding: 16px 18px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--muted); line-height: 1.7; font-size: 15px; }
     .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-    .restaurant-card { border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; background-image: none; background-size: cover; background-position: center; background-repeat: no-repeat; }
+    .restaurant-card { border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; }
     .card-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
     .title-wrap { position: relative; }
     .name { margin: 0; font-size: 24px; line-height: 1.25; }
@@ -71,6 +71,8 @@
     .badge { flex-shrink: 0; border-radius: 999px; padding: 9px 12px; font-size: 12px; font-weight: 800; white-space: nowrap; }
     .badge.ready { background: var(--ok-soft); color: var(--ok); border: 1px solid rgba(31,157,92,0.18); }
     .badge.preparing { background: var(--wait-soft); color: var(--wait); border: 1px solid rgba(191,123,0,0.18); }
+    .image-button { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(47,103,255,0.16); text-decoration: none; }
+    .image-button:hover { background: #e2edff; }
     ul { margin: 0; padding-left: 19px; line-height: 1.78; font-size: 16px; }
     li + li { margin-top: 2px; }
     .pending-box { margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }
@@ -83,7 +85,6 @@
     @media (max-width: 960px) {
       .meta-bar, .grid { grid-template-columns: 1fr; }
       .menu-preview { display: none; }
-      .restaurant-card[style*="--card-image"] { background-image: var(--card-image); }
     }
   </style>
 </head>
@@ -100,7 +101,7 @@
 
     <section class="meta-bar">
       <div class="meta-card"><div class="meta-label">기준 날짜</div><div class="meta-value">2026년 4월 8일 수요일</div></div>
-      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-04-08 14:07:57</div></div>
+      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-04-08 14:11:03</div></div>
       <div class="meta-card"><div class="meta-label">확인 완료</div><div class="meta-value">5개 식당</div></div>
       <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">3개 채널</div></div>
     </section>
@@ -109,7 +110,7 @@
 
     <section class="grid" id="restaurant-grid">
 
-      <article class="restaurant-card" style="--card-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.96)), url('./images/imeal.png');">
+      <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
             <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=18.44,0,0,0,dh" target="_blank" rel="noopener">아이밀<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
@@ -119,12 +120,12 @@
               <img src="./images/imeal.png" alt="아이밀 식단 이미지 미리보기">
             </div>
           </div>
-          <div class="badge ready">확인 완료</div>
+          <a class="badge image-button" href="./images/imeal.png" target="_blank" rel="noopener">메뉴 이미지 확인</a>
         </div>
         <ul><li>특식 육회비빔밥</li><li>불고기비빔밥</li><li>팽이미역장국</li><li>꿔바로우탕수육</li><li>불어묵볶음</li><li>알감자버터오븐구이</li><li>숙주무침</li><li>양념고추지</li><li>가든샐러드 &amp; 오렌지D</li><li>국내산 배추겉절이</li><li>헛개차 / 탄산음료</li><li>셀프비빔밥 / 한강라면</li><li>간편식: 치킨텐더샐러드</li></ul>
       </article>
 
-      <article class="restaurant-card" style="--card-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.96)), url('./images/babon.png');">
+      <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
             <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdsu0,2AIrKV,%EB%B0%A5%EC%98%A8%20%EA%B5%AC%EB%82%B4%EC%8B%9D%EB%8B%B9,2085424978,PLACE_POI/-/walk?c=15.00,0,0,0,dh" target="_blank" rel="noopener">밥(온) 구내식당<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
@@ -134,12 +135,12 @@
               <img src="./images/babon.png" alt="밥(온) 구내식당 식단 이미지 미리보기">
             </div>
           </div>
-          <div class="badge ready">확인 완료</div>
+          <a class="badge image-button" href="./images/babon.png" target="_blank" rel="noopener">메뉴 이미지 확인</a>
         </div>
         <ul><li>흰쌀밥 / 검은쌀잡곡밥</li><li>돼지고기순대국밥</li><li>김치제육두루치기</li><li>온두부</li><li>순살치킨까스 * 콘마요S</li><li>햄감자채야채볶음</li><li>잡잡이깻잎장아찌</li><li>얼갈이겉절이</li><li>깍두기</li><li>양배추샐러드 / 삼색경단</li></ul>
       </article>
 
-      <article class="restaurant-card" style="--card-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.96)), url('./images/raonfood.png');">
+      <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
             <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=16.86,0,0,0,dh" target="_blank" rel="noopener">구내식당라온푸드<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
@@ -149,12 +150,12 @@
               <img src="./images/raonfood.png" alt="구내식당라온푸드 식단 이미지 미리보기">
             </div>
           </div>
-          <div class="badge ready">확인 완료</div>
+          <a class="badge image-button" href="./images/raonfood.png" target="_blank" rel="noopener">메뉴 이미지 확인</a>
         </div>
         <ul><li>맑은콩나물국</li><li>훈제오리포크구이</li><li>고구마닭볶음탕</li><li>생선까스 / 타르타르</li><li>꽈리고추멸치볶음</li><li>청경채겉절이</li><li>알마늘쫑지무침</li><li>셀프라면 &amp; 배추김치</li><li>샐러드 &amp; 드레싱</li><li>숭늉 &amp; 음료</li></ul>
       </article>
 
-      <article class="restaurant-card" style="--card-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.96)), url('./images/myfood.png');">
+      <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
             <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=17.77,0,0,0,dh" target="_blank" rel="noopener">마이푸드<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
@@ -164,12 +165,12 @@
               <img src="./images/myfood.png" alt="마이푸드 식단 이미지 미리보기">
             </div>
           </div>
-          <div class="badge ready">확인 완료</div>
+          <a class="badge image-button" href="./images/myfood.png" target="_blank" rel="noopener">메뉴 이미지 확인</a>
         </div>
         <ul><li>참치마요밥 &amp; 조미김</li><li>안동찜닭</li><li>함박폭찹</li><li>죠스떡볶이</li><li>김말이 * 만두튀김 &amp; 양념장</li><li>햄감자채볶음</li><li>매콤콩나물무침</li><li>간장마늘쫑알마늘지 / 깍두기</li><li>그린샐러드 &amp; 드레싱</li><li>얼큰순두부김치찌개</li><li>백미밥</li><li>쌈채소 &amp; 풋고추</li><li>한강라면 &amp; 달콤한 잼 토스트</li><li>구수한 숭늉 &amp; 시원한 탄산음료</li></ul>
       </article>
 
-      <article class="restaurant-card" style="--card-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.96)), url('./images/public-gasan.png');">
+      <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
             <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=17.44,0,0,0,dh" target="_blank" rel="noopener">퍼블릭가산 구내식당<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
@@ -179,7 +180,7 @@
               <img src="./images/public-gasan.png" alt="퍼블릭가산 구내식당 식단 이미지 미리보기">
             </div>
           </div>
-          <div class="badge ready">확인 완료</div>
+          <a class="badge image-button" href="./images/public-gasan.png" target="_blank" rel="noopener">메뉴 이미지 확인</a>
         </div>
         <div class="info-note">현재는 메인메뉴만 공개됐습니다.</div><ul><li>훈제오리주물럭</li><li>감자카레라이스</li><li>분홍소세지전</li></ul>
       </article>
