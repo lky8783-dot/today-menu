@@ -252,7 +252,8 @@ def render_page(data: dict) -> str:
       background: #fff;
     }}
     @media (max-width: 960px) {{
-      .meta-bar, .grid {{ grid-template-columns: 1fr; }}
+      .meta-bar {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+      .grid {{ grid-template-columns: 1fr; }}
       .menu-preview {{ display: none; }}
       .meta-card {{
         padding: 14px 16px;
@@ -265,6 +266,18 @@ def render_page(data: dict) -> str:
       .meta-value {{
         font-size: 16px;
         line-height: 1.4;
+      }}
+    }}
+    @media (max-width: 560px) {{
+      .meta-bar {{
+        gap: 10px;
+      }}
+      .meta-card {{
+        padding: 12px 14px;
+        border-radius: 16px;
+      }}
+      .meta-value {{
+        font-size: 15px;
       }}
     }}
   </style>
