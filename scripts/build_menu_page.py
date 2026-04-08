@@ -59,6 +59,12 @@ def render_restaurant_card(item: dict) -> str:
             <div class="menu-preview">
               <img src="{escape(preview_image)}" alt="{name} 식단 이미지 미리보기">
             </div>'''
+    card_style = ''
+    if status == 'ready' and preview_image:
+        card_style = (
+            " style=\"--card-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.96)), "
+            f"url('{escape(preview_image)}');\""
+        )
 
     if status == 'ready':
         menu_items = ''.join(f'<li>{escape(menu)}</li>' for menu in item.get('menu', []))
@@ -70,7 +76,7 @@ def render_restaurant_card(item: dict) -> str:
         body = '<div class="pending-box">수집예정입니다.</div>'
 
     return f'''
-      <article class="restaurant-card">
+      <article class="restaurant-card"{card_style}>
         <div class="card-head">
           <div class="title-wrap">
             <h2 class="name">{title_html}</h2>
@@ -150,7 +156,7 @@ def render_page(data: dict) -> str:
     .meta-value {{ font-size: 21px; font-weight: 800; line-height: 1.35; }}
     .usage-note {{ margin: 0 0 22px; padding: 16px 18px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--muted); line-height: 1.7; font-size: 15px; }}
     .grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }}
-    .restaurant-card {{ border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; }}
+    .restaurant-card {{ border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; background-image: none; background-size: cover; background-position: center; background-repeat: no-repeat; }}
     .card-head {{ display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 14px; }}
     .title-wrap {{ position: relative; }}
     .name {{ margin: 0; font-size: 24px; line-height: 1.25; }}
@@ -170,7 +176,11 @@ def render_page(data: dict) -> str:
     .title-wrap:hover .menu-preview {{ opacity: 1; visibility: visible; transform: translateY(0); }}
     .footer-note {{ margin-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: center; }}
     .hidden-card {{ display: none; }}
-    @media (max-width: 960px) {{ .meta-bar, .grid {{ grid-template-columns: 1fr; }} .menu-preview {{ display: none; }} }}
+    @media (max-width: 960px) {{
+      .meta-bar, .grid {{ grid-template-columns: 1fr; }}
+      .menu-preview {{ display: none; }}
+      .restaurant-card[style*="--card-image"] {{ background-image: var(--card-image); }}
+    }}
   </style>
 </head>
 <body>
