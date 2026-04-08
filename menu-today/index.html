@@ -71,7 +71,7 @@
     .badge { flex-shrink: 0; border-radius: 999px; padding: 9px 12px; font-size: 12px; font-weight: 800; white-space: nowrap; }
     .badge.ready { background: var(--ok-soft); color: var(--ok); border: 1px solid rgba(31,157,92,0.18); }
     .badge.preparing { background: var(--wait-soft); color: var(--wait); border: 1px solid rgba(191,123,0,0.18); }
-    .image-button { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(47,103,255,0.16); text-decoration: none; }
+    .image-button { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(47,103,255,0.16); text-decoration: none; cursor: pointer; }
     .image-button:hover { background: #e2edff; }
     ul { margin: 0; padding-left: 19px; line-height: 1.78; font-size: 16px; }
     li + li { margin-top: 2px; }
@@ -82,6 +82,51 @@
     .title-wrap:hover .menu-preview { opacity: 1; visibility: visible; transform: translateY(0); }
     .footer-note { margin-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: center; }
     .hidden-card { display: none; }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 18, 40, 0.68);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 1000;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-dialog {
+      width: min(92vw, 720px);
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 28px 60px rgba(9, 20, 45, 0.32);
+      overflow: hidden;
+    }
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .modal-title { font-size: 18px; font-weight: 800; color: var(--text); }
+    .modal-close {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 999px;
+      background: #eef3fb;
+      color: var(--text);
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .modal-body { padding: 14px; background: #f8fbff; }
+    .modal-body img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      background: #fff;
+    }
     @media (max-width: 960px) {
       .meta-bar, .grid { grid-template-columns: 1fr; }
       .menu-preview { display: none; }
@@ -101,7 +146,7 @@
 
     <section class="meta-bar">
       <div class="meta-card"><div class="meta-label">기준 날짜</div><div class="meta-value">2026년 4월 8일 수요일</div></div>
-      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-04-08 14:12:05</div></div>
+      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-04-08 14:13:57</div></div>
       <div class="meta-card"><div class="meta-label">확인 완료</div><div class="meta-value">5개 식당</div></div>
       <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">3개 채널</div></div>
     </section>
@@ -120,7 +165,7 @@
               <img src="./images/imeal.png" alt="아이밀 식단 이미지 미리보기">
             </div>
           </div>
-          <a class="badge image-button" href="./images/imeal.png" target="_blank" rel="noopener">메뉴 이미지 확인</a>
+          <button class="badge image-button" type="button" data-image="./images/imeal.png" data-title="아이밀">메뉴 이미지 확인</button>
         </div>
         <ul><li>특식 육회비빔밥</li><li>불고기비빔밥</li><li>팽이미역장국</li><li>꿔바로우탕수육</li><li>불어묵볶음</li><li>알감자버터오븐구이</li><li>숙주무침</li><li>양념고추지</li><li>가든샐러드 &amp; 오렌지D</li><li>국내산 배추겉절이</li><li>헛개차 / 탄산음료</li><li>셀프비빔밥 / 한강라면</li><li>간편식: 치킨텐더샐러드</li></ul>
       </article>
@@ -135,7 +180,7 @@
               <img src="./images/babon.png" alt="밥(온) 구내식당 식단 이미지 미리보기">
             </div>
           </div>
-          <a class="badge image-button" href="./images/babon.png" target="_blank" rel="noopener">메뉴 이미지 확인</a>
+          <button class="badge image-button" type="button" data-image="./images/babon.png" data-title="밥(온) 구내식당">메뉴 이미지 확인</button>
         </div>
         <ul><li>흰쌀밥 / 검은쌀잡곡밥</li><li>돼지고기순대국밥</li><li>김치제육두루치기</li><li>온두부</li><li>순살치킨까스 * 콘마요S</li><li>햄감자채야채볶음</li><li>잡잡이깻잎장아찌</li><li>얼갈이겉절이</li><li>깍두기</li><li>양배추샐러드 / 삼색경단</li></ul>
       </article>
@@ -150,7 +195,7 @@
               <img src="./images/raonfood.png" alt="구내식당라온푸드 식단 이미지 미리보기">
             </div>
           </div>
-          <a class="badge image-button" href="./images/raonfood.png" target="_blank" rel="noopener">메뉴 이미지 확인</a>
+          <button class="badge image-button" type="button" data-image="./images/raonfood.png" data-title="구내식당라온푸드">메뉴 이미지 확인</button>
         </div>
         <ul><li>맑은콩나물국</li><li>훈제오리포크구이</li><li>고구마닭볶음탕</li><li>생선까스 / 타르타르</li><li>꽈리고추멸치볶음</li><li>청경채겉절이</li><li>알마늘쫑지무침</li><li>셀프라면 &amp; 배추김치</li><li>샐러드 &amp; 드레싱</li><li>숭늉 &amp; 음료</li></ul>
       </article>
@@ -165,7 +210,7 @@
               <img src="./images/myfood.png" alt="마이푸드 식단 이미지 미리보기">
             </div>
           </div>
-          <a class="badge image-button" href="./images/myfood.png" target="_blank" rel="noopener">메뉴 이미지 확인</a>
+          <button class="badge image-button" type="button" data-image="./images/myfood.png" data-title="마이푸드">메뉴 이미지 확인</button>
         </div>
         <ul><li>참치마요밥 &amp; 조미김</li><li>안동찜닭</li><li>함박폭찹</li><li>죠스떡볶이</li><li>김말이 * 만두튀김 &amp; 양념장</li><li>햄감자채볶음</li><li>매콤콩나물무침</li><li>간장마늘쫑알마늘지 / 깍두기</li><li>그린샐러드 &amp; 드레싱</li><li>얼큰순두부김치찌개</li><li>백미밥</li><li>쌈채소 &amp; 풋고추</li><li>한강라면 &amp; 달콤한 잼 토스트</li><li>구수한 숭늉 &amp; 시원한 탄산음료</li></ul>
       </article>
@@ -180,7 +225,7 @@
               <img src="./images/public-gasan.png" alt="퍼블릭가산 구내식당 식단 이미지 미리보기">
             </div>
           </div>
-          <a class="badge image-button" href="./images/public-gasan.png" target="_blank" rel="noopener">메뉴 이미지 확인</a>
+          <button class="badge image-button" type="button" data-image="./images/public-gasan.png" data-title="퍼블릭가산 구내식당">메뉴 이미지 확인</button>
         </div>
         <div class="info-note">현재는 메인메뉴만 공개됐습니다.</div><ul><li>훈제오리주물럭</li><li>감자카레라이스</li><li>분홍소세지전</li></ul>
       </article>
@@ -224,9 +269,25 @@
 
     <div class="footer-note">메뉴 이미지는 공개 채널 기준으로 자동 수집한 뒤 정리한 결과입니다. 실제 운영 사정에 따라 식당 현장 메뉴와 일부 차이가 있을 수 있습니다.</div>
   </div>
+  <div class="modal-overlay" id="image-modal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-head">
+        <div class="modal-title" id="modal-title">메뉴 이미지</div>
+        <button class="modal-close" type="button" id="modal-close" aria-label="닫기">×</button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-image" src="" alt="메뉴 이미지 크게 보기">
+      </div>
+    </div>
+  </div>
   <script>
     const searchInput = document.getElementById('menu-search');
     const cards = Array.from(document.querySelectorAll('.restaurant-card'));
+    const imageButtons = Array.from(document.querySelectorAll('.image-button[data-image]'));
+    const modal = document.getElementById('image-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalClose = document.getElementById('modal-close');
 
     searchInput.addEventListener('input', () => {
       const keyword = searchInput.value.trim().toLowerCase();
@@ -234,6 +295,29 @@
         const text = card.textContent.toLowerCase();
         card.classList.toggle('hidden-card', keyword !== '' && !text.includes(keyword));
       });
+    });
+
+    imageButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        modalImage.src = button.dataset.image || '';
+        modalTitle.textContent = `${button.dataset.title || '메뉴 이미지'}`;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    const closeModal = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImage.src = '';
+    };
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('open')) closeModal();
     });
   </script>
 </body>

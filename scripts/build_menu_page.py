@@ -68,8 +68,8 @@ def render_restaurant_card(item: dict) -> str:
         action_html = ''
         if preview_image:
             action_html = (
-                f'<a class="badge image-button" href="{escape(preview_image)}" '
-                f'target="_blank" rel="noopener">메뉴 이미지 확인</a>'
+                f'<button class="badge image-button" type="button" '
+                f'data-image="{escape(preview_image)}" data-title="{name}">메뉴 이미지 확인</button>'
             )
         else:
             action_html = '<div class="badge ready">확인 완료</div>'
@@ -169,7 +169,7 @@ def render_page(data: dict) -> str:
     .badge {{ flex-shrink: 0; border-radius: 999px; padding: 9px 12px; font-size: 12px; font-weight: 800; white-space: nowrap; }}
     .badge.ready {{ background: var(--ok-soft); color: var(--ok); border: 1px solid rgba(31,157,92,0.18); }}
     .badge.preparing {{ background: var(--wait-soft); color: var(--wait); border: 1px solid rgba(191,123,0,0.18); }}
-    .image-button {{ background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(47,103,255,0.16); text-decoration: none; }}
+    .image-button {{ background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(47,103,255,0.16); text-decoration: none; cursor: pointer; }}
     .image-button:hover {{ background: #e2edff; }}
     ul {{ margin: 0; padding-left: 19px; line-height: 1.78; font-size: 16px; }}
     li + li {{ margin-top: 2px; }}
@@ -180,6 +180,51 @@ def render_page(data: dict) -> str:
     .title-wrap:hover .menu-preview {{ opacity: 1; visibility: visible; transform: translateY(0); }}
     .footer-note {{ margin-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: center; }}
     .hidden-card {{ display: none; }}
+    .modal-overlay {{
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 18, 40, 0.68);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 1000;
+    }}
+    .modal-overlay.open {{ display: flex; }}
+    .modal-dialog {{
+      width: min(92vw, 720px);
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 28px 60px rgba(9, 20, 45, 0.32);
+      overflow: hidden;
+    }}
+    .modal-head {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+    }}
+    .modal-title {{ font-size: 18px; font-weight: 800; color: var(--text); }}
+    .modal-close {{
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 999px;
+      background: #eef3fb;
+      color: var(--text);
+      font-size: 20px;
+      cursor: pointer;
+    }}
+    .modal-body {{ padding: 14px; background: #f8fbff; }}
+    .modal-body img {{
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      background: #fff;
+    }}
     @media (max-width: 960px) {{
       .meta-bar, .grid {{ grid-template-columns: 1fr; }}
       .menu-preview {{ display: none; }}
@@ -212,9 +257,25 @@ def render_page(data: dict) -> str:
 
     <div class="footer-note">메뉴 이미지는 공개 채널 기준으로 자동 수집한 뒤 정리한 결과입니다. 실제 운영 사정에 따라 식당 현장 메뉴와 일부 차이가 있을 수 있습니다.</div>
   </div>
+  <div class="modal-overlay" id="image-modal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-head">
+        <div class="modal-title" id="modal-title">메뉴 이미지</div>
+        <button class="modal-close" type="button" id="modal-close" aria-label="닫기">×</button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-image" src="" alt="메뉴 이미지 크게 보기">
+      </div>
+    </div>
+  </div>
   <script>
     const searchInput = document.getElementById('menu-search');
     const cards = Array.from(document.querySelectorAll('.restaurant-card'));
+    const imageButtons = Array.from(document.querySelectorAll('.image-button[data-image]'));
+    const modal = document.getElementById('image-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalClose = document.getElementById('modal-close');
 
     searchInput.addEventListener('input', () => {{
       const keyword = searchInput.value.trim().toLowerCase();
@@ -222,6 +283,29 @@ def render_page(data: dict) -> str:
         const text = card.textContent.toLowerCase();
         card.classList.toggle('hidden-card', keyword !== '' && !text.includes(keyword));
       }});
+    }});
+
+    imageButtons.forEach((button) => {{
+      button.addEventListener('click', () => {{
+        modalImage.src = button.dataset.image || '';
+        modalTitle.textContent = `${{button.dataset.title || '메뉴 이미지'}}`;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      }});
+    }});
+
+    const closeModal = () => {{
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImage.src = '';
+    }};
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {{
+      if (event.target === modal) closeModal();
+    }});
+    document.addEventListener('keydown', (event) => {{
+      if (event.key === 'Escape' && modal.classList.contains('open')) closeModal();
     }});
   </script>
 </body>
