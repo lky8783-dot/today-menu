@@ -209,16 +209,15 @@ def render_page(data: dict) -> str:
     .modal-overlay {{
       position: fixed;
       inset: 0;
-      background: rgba(8, 18, 40, 0.68);
+      background: rgba(8, 18, 40, 0.42);
       display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
       z-index: 1000;
     }}
-    .modal-overlay.open {{ display: flex; }}
+    .modal-overlay.open {{ display: block; }}
     .modal-dialog {{
-      width: min(92vw, 720px);
+      position: fixed;
+      width: min(92vw, 640px);
+      max-height: min(82vh, 920px);
       background: #fff;
       border-radius: 24px;
       box-shadow: 0 28px 60px rgba(9, 20, 45, 0.32);
@@ -248,6 +247,7 @@ def render_page(data: dict) -> str:
       display: block;
       width: 100%;
       height: auto;
+      max-height: calc(82vh - 92px);
       border-radius: 16px;
       background: #fff;
     }}
@@ -327,6 +327,7 @@ def render_page(data: dict) -> str:
     const modalImage = document.getElementById('modal-image');
     const modalTitle = document.getElementById('modal-title');
     const modalClose = document.getElementById('modal-close');
+    const modalDialog = modal.querySelector('.modal-dialog');
 
     const textSelectors = ['.name-link', '.sub', '.info-note', '.pending-box', 'li'];
     const textNodes = cards.map((card) => {{
@@ -373,10 +374,30 @@ def render_page(data: dict) -> str:
       }});
     }});
 
+    const positionModalNearButton = (button) => {{
+      const rect = button.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const desiredWidth = Math.min(viewportWidth - 24, 640);
+      const left = Math.min(
+        Math.max(12, rect.left + rect.width - desiredWidth),
+        Math.max(12, viewportWidth - desiredWidth - 12)
+      );
+      const estimatedHeight = Math.min(viewportHeight - 24, 620);
+      let top = rect.bottom + 12;
+      if (top + estimatedHeight > viewportHeight - 12) {{
+        top = Math.max(12, rect.top - estimatedHeight - 12);
+      }}
+      modalDialog.style.width = `${{desiredWidth}}px`;
+      modalDialog.style.left = `${{left}}px`;
+      modalDialog.style.top = `${{top}}px`;
+    }};
+
     imageButtons.forEach((button) => {{
       button.addEventListener('click', () => {{
         modalImage.src = button.dataset.image || '';
         modalTitle.textContent = `${{button.dataset.title || '메뉴 이미지'}}`;
+        positionModalNearButton(button);
         modal.classList.add('open');
         modal.setAttribute('aria-hidden', 'false');
       }});
@@ -386,6 +407,9 @@ def render_page(data: dict) -> str:
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
       modalImage.src = '';
+      modalDialog.style.left = '';
+      modalDialog.style.top = '';
+      modalDialog.style.width = '';
     }};
 
     modalClose.addEventListener('click', closeModal);
