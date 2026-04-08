@@ -259,7 +259,7 @@ def render_page(data: dict) -> str:
       <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">{preparing_count}개 채널</div></div>
     </section>
 
-    <div class="usage-note">식당명에 마우스를 올리면 메뉴 이미지를 미리 볼 수 있고, 식당명을 클릭하면 네이버 길찾기로 이동합니다.</div>
+    <div class="usage-note">식당명에 마우스를 올리면 메뉴 이미지를 미리 볼 수 있고, 식당명을 클릭하면 네이버 길찾기로 이동합니다. 자동 갱신 시간은 평일 09:10, 09:40, 10:10, 10:40, 11:10, 11:40입니다.</div>
 
     <section class="grid" id="restaurant-grid">
 {cards}
