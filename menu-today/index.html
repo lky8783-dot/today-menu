@@ -73,6 +73,14 @@
     .badge.preparing { background: var(--wait-soft); color: var(--wait); border: 1px solid rgba(191,123,0,0.18); }
     .image-button { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(47,103,255,0.16); text-decoration: none; cursor: pointer; }
     .image-button:hover { background: #e2edff; }
+    mark.search-hit {
+      background: #fff2a8;
+      color: #172033;
+      padding: 0 2px;
+      border-radius: 4px;
+      font-weight: 800;
+      box-shadow: inset 0 -1px 0 rgba(255, 196, 0, 0.35);
+    }
     ul { margin: 0; padding-left: 19px; line-height: 1.78; font-size: 16px; }
     li + li { margin-top: 2px; }
     .pending-box { margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }
@@ -146,9 +154,9 @@
 
     <section class="meta-bar">
       <div class="meta-card"><div class="meta-label">기준 날짜</div><div class="meta-value">2026년 4월 8일 수요일</div></div>
-      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-04-08 14:45:47</div></div>
-      <div class="meta-card"><div class="meta-label">확인 완료</div><div class="meta-value">5개 식당</div></div>
-      <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">3개 채널</div></div>
+      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-04-08 15:05:21</div></div>
+      <div class="meta-card"><div class="meta-label">확인 완료</div><div class="meta-value">6개 식당</div></div>
+      <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">2개 채널</div></div>
     </section>
 
     <div class="usage-note">식당명에 마우스를 올리면 메뉴 이미지를 미리 볼 수 있고, 식당명을 클릭하면 네이버 길찾기로 이동합니다.</div>
@@ -168,6 +176,21 @@
           <button class="badge image-button" type="button" data-image="./images/imeal.png" data-title="아이밀">메뉴 이미지 확인</button>
         </div>
         <ul><li>특식 육회비빔밥</li><li>불고기비빔밥</li><li>팽이미역장국</li><li>꿔바로우탕수육</li><li>불어묵볶음</li><li>알감자버터오븐구이</li><li>숙주무침</li><li>양념고추지</li><li>가든샐러드 &amp; 오렌지D</li><li>국내산 배추겉절이</li><li>헛개차 / 탄산음료</li><li>셀프비빔밥 / 한강라면</li><li>간편식: 치킨텐더샐러드</li></ul>
+      </article>
+
+      <article class="restaurant-card">
+        <div class="card-head">
+          <div class="title-wrap">
+            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh" target="_blank" rel="noopener">다시 봄<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
+            <div class="sub">가산 어반워크 · 서울 금천구 가산디지털2로 135 2층</div>
+            
+            <div class="menu-preview">
+              <img src="./images/dasibom.png" alt="다시 봄 식단 이미지 미리보기">
+            </div>
+          </div>
+          <button class="badge image-button" type="button" data-image="./images/dasibom.png" data-title="다시 봄">메뉴 이미지 확인</button>
+        </div>
+        <div class="info-note">메뉴 텍스트는 정리 중입니다. 메뉴 이미지 확인 버튼으로 식단을 확인해 주세요.</div><ul></ul>
       </article>
 
       <article class="restaurant-card">
@@ -253,18 +276,6 @@
         </div>
         <div class="pending-box">수집예정입니다.</div>
       </article>
-
-      <article class="restaurant-card">
-        <div class="card-head">
-          <div class="title-wrap">
-            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh" target="_blank" rel="noopener">다시 봄<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
-            <div class="sub">가산 어반워크 · 서울 금천구 가산디지털2로 135 2층</div>
-            
-          </div>
-          <div class="badge preparing">준비중</div>
-        </div>
-        <div class="pending-box">수집예정입니다.</div>
-      </article>
     </section>
 
     <div class="footer-note">메뉴 이미지는 공개 채널 기준으로 자동 수집한 뒤 정리한 결과입니다. 실제 운영 사정에 따라 식당 현장 메뉴와 일부 차이가 있을 수 있습니다.</div>
@@ -289,11 +300,48 @@
     const modalTitle = document.getElementById('modal-title');
     const modalClose = document.getElementById('modal-close');
 
+    const textSelectors = ['.name-link', '.sub', '.info-note', '.pending-box', 'li'];
+    const textNodes = cards.map((card) => {
+      const nodes = Array.from(card.querySelectorAll(textSelectors.join(',')));
+      nodes.forEach((node) => {
+        if (!node.dataset.originalHtml) {
+          node.dataset.originalHtml = node.innerHTML;
+        }
+      });
+      return nodes;
+    });
+
+    const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    const highlightNode = (node, keyword) => {
+      const originalHtml = node.dataset.originalHtml || node.innerHTML;
+      node.innerHTML = originalHtml;
+      if (!keyword) return;
+      const text = node.textContent || '';
+      if (!text.toLowerCase().includes(keyword.toLowerCase())) return;
+      const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+      const textNodeList = [];
+      while (walker.nextNode()) {
+        textNodeList.push(walker.currentNode);
+      }
+      const regex = new RegExp(`(${
+        escapeRegExp(keyword)
+      })`, 'gi');
+      textNodeList.forEach((textNode) => {
+        const value = textNode.nodeValue || '';
+        if (!value.toLowerCase().includes(keyword.toLowerCase())) return;
+        const wrapper = document.createElement('span');
+        wrapper.innerHTML = value.replace(regex, '<mark class="search-hit">$1</mark>');
+        textNode.replaceWith(...Array.from(wrapper.childNodes));
+      });
+    };
+
     searchInput.addEventListener('input', () => {
       const keyword = searchInput.value.trim().toLowerCase();
-      cards.forEach((card) => {
+      cards.forEach((card, index) => {
         const text = card.textContent.toLowerCase();
         card.classList.toggle('hidden-card', keyword !== '' && !text.includes(keyword));
+        textNodes[index].forEach((node) => highlightNode(node, keyword));
       });
     });
 

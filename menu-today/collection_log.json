@@ -1,0 +1,40 @@
+{
+  "sources": [
+    {
+      "name": "아이밀",
+      "page_url": "https://pf.kakao.com/_vygYn",
+      "image_url": "http://k.kakaocdn.net/dn/rRiLs/dJMcacCG5oF/KSSxxkKtvxmv1dSWxNazi0/img.jpg",
+      "output": "menu-today/images/imeal.png"
+    },
+    {
+      "name": "다시 봄",
+      "page_url": "https://pf.kakao.com/_xhNExmn",
+      "image_url": "http://k.kakaocdn.net/dn/d4vadD/dJMb990hCfL/905Nv6KK1mTKf3Zgj4bK20/img.jpg",
+      "output": "menu-today/images/dasibom.png"
+    },
+    {
+      "name": "밥(온) 구내식당",
+      "page_url": "https://pf.kakao.com/_mYxfen",
+      "image_url": "http://k.kakaocdn.net/dn/beflXw/dJMcaiQohdG/FJgMu4YHCRKVL3cyPbgxW1/img.jpg",
+      "output": "menu-today/images/babon.png"
+    },
+    {
+      "name": "구내식당라온푸드",
+      "page_url": "https://pf.kakao.com/_Rxkrxfn",
+      "image_url": "http://k.kakaocdn.net/dn/SuIBH/dJMcaiW9EUD/E9DYKN1kLr3GwwF41vHqI1/img.jpg",
+      "output": "menu-today/images/raonfood.png"
+    },
+    {
+      "name": "마이푸드",
+      "page_url": "https://pf.kakao.com/_xaAvxlG",
+      "image_url": "http://k.kakaocdn.net/dn/bgnov5/dJMcagyh8Rd/QWt12T2IOkHW6QgpzEY220/img.jpg",
+      "output": "menu-today/images/myfood.png"
+    },
+    {
+      "name": "퍼블릭가산 구내식당",
+      "page_url": "https://pf.kakao.com/_ECNfn",
+      "image_url": "http://k.kakaocdn.net/dn/wo9ip/dJMcaibOECO/H174j3lUgsfhkKv9N00sV0/img.jpg",
+      "output": "menu-today/images/public-gasan.png"
+    }
+  ]
+}

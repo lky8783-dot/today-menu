@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 8일 수요일",
-  "updated_at": "2026-04-08 14:45:47",
+  "updated_at": "2026-04-08 15:05:21",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -26,6 +26,15 @@
         "셀프비빔밥 / 한강라면",
         "간편식: 치킨텐더샐러드"
       ]
+    },
+    {
+      "name": "다시 봄",
+      "building": "가산 어반워크",
+      "address": "서울 금천구 가산디지털2로 135 2층",
+      "status": "ready",
+      "map_url": "https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
+      "menu": [],
+      "preview_image": "./images/dasibom.png"
     },
     {
       "name": "밥(온) 구내식당",
@@ -117,15 +126,6 @@
       "address": "서울 금천구 디지털로9길 65 지하1층",
       "status": "preparing",
       "map_url": "https://map.naver.com/p/directions/-/3zdLQC,2AIqLX,%EB%B0%B1%EC%83%81%EC%8A%A4%ED%83%80%ED%83%80%EC%9B%8C1%EC%B0%A8,18981217,PLACE_POI/-/walk?c=16.71,0,0,0,dh",
-      "menu": [],
-      "message": "수집예정입니다."
-    },
-    {
-      "name": "다시 봄",
-      "building": "가산 어반워크",
-      "address": "서울 금천구 가산디지털2로 135 2층",
-      "status": "preparing",
-      "map_url": "https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [],
       "message": "수집예정입니다."
     }

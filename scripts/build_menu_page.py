@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / 'menu-today' / 'menu_today.json'
 HTML_PATH = ROOT / 'menu-today' / 'index.html'
 SEOUL = ZoneInfo('Asia/Seoul')
-PRIORITY = ['아이밀', '밥(온) 구내식당']
+PRIORITY = ['아이밀', '다시 봄', '밥(온) 구내식당']
 
 
 def load_data() -> dict:
@@ -64,6 +64,8 @@ def render_restaurant_card(item: dict) -> str:
         note_html = ''
         if item['name'] == '퍼블릭가산 구내식당':
             note_html = '<div class="info-note">현재는 메인메뉴만 공개됐습니다.</div>'
+        elif not item.get('menu') and preview_image:
+            note_html = '<div class="info-note">메뉴 텍스트는 정리 중입니다. 메뉴 이미지 확인 버튼으로 식단을 확인해 주세요.</div>'
         body = f'{note_html}<ul>{menu_items}</ul>'
         action_html = ''
         if preview_image:
@@ -171,6 +173,14 @@ def render_page(data: dict) -> str:
     .badge.preparing {{ background: var(--wait-soft); color: var(--wait); border: 1px solid rgba(191,123,0,0.18); }}
     .image-button {{ background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(47,103,255,0.16); text-decoration: none; cursor: pointer; }}
     .image-button:hover {{ background: #e2edff; }}
+    mark.search-hit {{
+      background: #fff2a8;
+      color: #172033;
+      padding: 0 2px;
+      border-radius: 4px;
+      font-weight: 800;
+      box-shadow: inset 0 -1px 0 rgba(255, 196, 0, 0.35);
+    }}
     ul {{ margin: 0; padding-left: 19px; line-height: 1.78; font-size: 16px; }}
     li + li {{ margin-top: 2px; }}
     .pending-box {{ margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }}
@@ -277,11 +287,48 @@ def render_page(data: dict) -> str:
     const modalTitle = document.getElementById('modal-title');
     const modalClose = document.getElementById('modal-close');
 
+    const textSelectors = ['.name-link', '.sub', '.info-note', '.pending-box', 'li'];
+    const textNodes = cards.map((card) => {{
+      const nodes = Array.from(card.querySelectorAll(textSelectors.join(',')));
+      nodes.forEach((node) => {{
+        if (!node.dataset.originalHtml) {{
+          node.dataset.originalHtml = node.innerHTML;
+        }}
+      }});
+      return nodes;
+    }});
+
+    const escapeRegExp = (value) => value.replace(/[.*+?^${{}}()|[\\]\\\\]/g, '\\\\$&');
+
+    const highlightNode = (node, keyword) => {{
+      const originalHtml = node.dataset.originalHtml || node.innerHTML;
+      node.innerHTML = originalHtml;
+      if (!keyword) return;
+      const text = node.textContent || '';
+      if (!text.toLowerCase().includes(keyword.toLowerCase())) return;
+      const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+      const textNodeList = [];
+      while (walker.nextNode()) {{
+        textNodeList.push(walker.currentNode);
+      }}
+      const regex = new RegExp(`(${{
+        escapeRegExp(keyword)
+      }})`, 'gi');
+      textNodeList.forEach((textNode) => {{
+        const value = textNode.nodeValue || '';
+        if (!value.toLowerCase().includes(keyword.toLowerCase())) return;
+        const wrapper = document.createElement('span');
+        wrapper.innerHTML = value.replace(regex, '<mark class=\"search-hit\">$1</mark>');
+        textNode.replaceWith(...Array.from(wrapper.childNodes));
+      }});
+    }};
+
     searchInput.addEventListener('input', () => {{
       const keyword = searchInput.value.trim().toLowerCase();
-      cards.forEach((card) => {{
+      cards.forEach((card, index) => {{
         const text = card.textContent.toLowerCase();
         card.classList.toggle('hidden-card', keyword !== '' && !text.includes(keyword));
+        textNodes[index].forEach((node) => highlightNode(node, keyword));
       }});
     }});
 

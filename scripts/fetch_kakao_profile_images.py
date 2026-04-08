@@ -18,6 +18,7 @@ HEADERS = {
 
 PROFILE_SOURCES = [
     {"name": "아이밀", "page_url": "https://pf.kakao.com/_vygYn", "output": ROOT / "menu-today" / "images" / "imeal.png"},
+    {"name": "다시 봄", "page_url": "https://pf.kakao.com/_xhNExmn", "output": ROOT / "menu-today" / "images" / "dasibom.png"},
     {"name": "밥(온) 구내식당", "page_url": "https://pf.kakao.com/_mYxfen", "output": ROOT / "menu-today" / "images" / "babon.png"},
     {"name": "구내식당라온푸드", "page_url": "https://pf.kakao.com/_Rxkrxfn", "output": ROOT / "menu-today" / "images" / "raonfood.png"},
     {"name": "마이푸드", "page_url": "https://pf.kakao.com/_xaAvxlG", "output": ROOT / "menu-today" / "images" / "myfood.png"},
