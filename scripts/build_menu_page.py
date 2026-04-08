@@ -125,13 +125,37 @@ def render_page(data: dict) -> str:
       margin-bottom: 16px;
     }}
     h1 {{ margin: 0 0 10px; font-size: clamp(28px, 4.8vw, 46px); line-height: 1.2; color: #fff; }}
-    .hero p {{ margin: 0; font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.92); max-width: 900px; }}
+    .search-wrap {{
+      margin-top: 18px;
+      max-width: 560px;
+    }}
+    .search-label {{
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.84);
+      margin-bottom: 8px;
+    }}
+    .search-input {{
+      width: 100%;
+      height: 52px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      padding: 0 16px;
+      font-size: 16px;
+      outline: none;
+      backdrop-filter: blur(10px);
+    }}
+    .search-input::placeholder {{
+      color: rgba(255,255,255,0.68);
+    }}
     .meta-bar {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 18px 0 22px; }}
-    .meta-card, .notice, .restaurant-card {{ background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }}
+    .meta-card, .restaurant-card {{ background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }}
     .meta-card {{ border-radius: 20px; padding: 18px 20px; }}
     .meta-label {{ font-size: 12px; font-weight: 800; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }}
     .meta-value {{ font-size: 21px; font-weight: 800; line-height: 1.35; }}
-    .notice {{ border-radius: 22px; padding: 18px 20px; color: var(--muted); line-height: 1.7; margin-bottom: 22px; }}
     .grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }}
     .restaurant-card {{ border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; }}
     .card-head {{ display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 14px; }}
@@ -146,6 +170,7 @@ def render_page(data: dict) -> str:
     li + li {{ margin-top: 2px; }}
     .pending-box {{ margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }}
     .footer-note {{ margin-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: center; }}
+    .hidden-card {{ display: none; }}
     @media (max-width: 960px) {{ .meta-bar, .grid {{ grid-template-columns: 1fr; }} }}
   </style>
 </head>
@@ -154,7 +179,10 @@ def render_page(data: dict) -> str:
     <section class="hero">
       <div class="eyebrow">무료 정보 화면 · 가산디지털단지 식당 모음</div>
       <h1>{escape(data['title'])}</h1>
-      <p>{escape(data['notice'])}</p>
+      <div class="search-wrap">
+        <label class="search-label" for="menu-search">메뉴검색</label>
+        <input id="menu-search" class="search-input" type="text" placeholder="식당명, 건물명, 메뉴명으로 검색">
+      </div>
     </section>
 
     <section class="meta-bar">
@@ -164,12 +192,24 @@ def render_page(data: dict) -> str:
       <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">{preparing_count}개 채널</div></div>
     </section>
 
-    <section class="grid">
+    <section class="grid" id="restaurant-grid">
 {cards}
     </section>
 
     <div class="footer-note">메뉴 이미지는 공개 채널 기준으로 자동 수집한 뒤 정리한 결과입니다. 실제 운영 사정에 따라 식당 현장 메뉴와 일부 차이가 있을 수 있습니다.</div>
   </div>
+  <script>
+    const searchInput = document.getElementById('menu-search');
+    const cards = Array.from(document.querySelectorAll('.restaurant-card'));
+
+    searchInput.addEventListener('input', () => {{
+      const keyword = searchInput.value.trim().toLowerCase();
+      cards.forEach((card) => {{
+        const text = card.textContent.toLowerCase();
+        card.classList.toggle('hidden-card', keyword !== '' && !text.includes(keyword));
+      }});
+    }});
+  </script>
 </body>
 </html>
 '''
