@@ -38,16 +38,11 @@ def render_restaurant_card(item: dict) -> str:
     name = escape(item['name'])
     building = escape(item.get('building', ''))
     address = escape(item.get('address', ''))
-    source_type = escape(item.get('source_type', ''))
     status = item.get('status', 'ready')
     badge_text = '확인 완료' if status == 'ready' else '준비중'
     badge_class = 'ready' if status == 'ready' else 'preparing'
     sub = ' · '.join(part for part in [building, address] if part)
     sub_html = f'<div class="sub">{sub}</div>' if sub else ''
-    tags = [f'<span class="tag">{source_type}</span>'] if source_type else []
-    if item['name'] == '퍼블릭가산 구내식당':
-        tags.append('<span class="tag">주간 메인 메뉴</span>')
-    tags_html = f"<div class=\"tags\">{''.join(tags)}</div>" if tags else ''
 
     if status == 'ready':
         menu_items = ''.join(f'<li>{escape(menu)}</li>' for menu in item.get('menu', []))
@@ -64,7 +59,6 @@ def render_restaurant_card(item: dict) -> str:
           </div>
           <div class="badge {badge_class}">{badge_text}</div>
         </div>
-        {tags_html}
         {body}
       </article>'''
 
@@ -164,8 +158,6 @@ def render_page(data: dict) -> str:
     .badge {{ flex-shrink: 0; border-radius: 999px; padding: 9px 12px; font-size: 12px; font-weight: 800; white-space: nowrap; }}
     .badge.ready {{ background: var(--ok-soft); color: var(--ok); border: 1px solid rgba(31,157,92,0.18); }}
     .badge.preparing {{ background: var(--wait-soft); color: var(--wait); border: 1px solid rgba(191,123,0,0.18); }}
-    .tags {{ display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 14px; }}
-    .tag {{ font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 7px 10px; }}
     ul {{ margin: 0; padding-left: 19px; line-height: 1.78; font-size: 16px; }}
     li + li {{ margin-top: 2px; }}
     .pending-box {{ margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }}
