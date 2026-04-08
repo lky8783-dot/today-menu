@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 from html import escape
 from pathlib import Path
+from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,10 +40,20 @@ def render_restaurant_card(item: dict) -> str:
     building = escape(item.get('building', ''))
     address = escape(item.get('address', ''))
     status = item.get('status', 'ready')
+    preview_image = item.get('preview_image', '').strip()
+    map_query = item.get('map_query', '').strip() or ' '.join(part for part in [item.get('name', ''), item.get('building', '')] if part)
+    map_url = f'https://map.naver.com/p/search/{quote(map_query)}'
     badge_text = '확인 완료' if status == 'ready' else '준비중'
     badge_class = 'ready' if status == 'ready' else 'preparing'
     sub = ' · '.join(part for part in [building, address] if part)
     sub_html = f'<div class="sub">{sub}</div>' if sub else ''
+    title_html = f'<a class="name-link" href="{escape(map_url)}" target="_blank" rel="noopener">{name}</a>'
+    preview_html = ''
+    if status == 'ready' and preview_image:
+        preview_html = f'''
+            <div class="menu-preview">
+              <img src="{escape(preview_image)}" alt="{name} 식단 이미지 미리보기">
+            </div>'''
 
     if status == 'ready':
         menu_items = ''.join(f'<li>{escape(menu)}</li>' for menu in item.get('menu', []))
@@ -56,9 +67,10 @@ def render_restaurant_card(item: dict) -> str:
     return f'''
       <article class="restaurant-card">
         <div class="card-head">
-          <div>
-            <h2 class="name">{name}</h2>
+          <div class="title-wrap">
+            <h2 class="name">{title_html}</h2>
             {sub_html}
+            {preview_html}
           </div>
           <div class="badge {badge_class}">{badge_text}</div>
         </div>
@@ -156,7 +168,10 @@ def render_page(data: dict) -> str:
     .grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }}
     .restaurant-card {{ border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; }}
     .card-head {{ display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 14px; }}
+    .title-wrap {{ position: relative; }}
     .name {{ margin: 0; font-size: 24px; line-height: 1.25; }}
+    .name-link {{ color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.18s ease, color 0.18s ease; }}
+    .name-link:hover {{ color: var(--accent); border-color: rgba(47, 103, 255, 0.4); }}
     .sub {{ color: var(--muted); font-size: 14px; line-height: 1.6; margin-top: 6px; }}
     .badge {{ flex-shrink: 0; border-radius: 999px; padding: 9px 12px; font-size: 12px; font-weight: 800; white-space: nowrap; }}
     .badge.ready {{ background: var(--ok-soft); color: var(--ok); border: 1px solid rgba(31,157,92,0.18); }}
@@ -165,9 +180,41 @@ def render_page(data: dict) -> str:
     li + li {{ margin-top: 2px; }}
     .pending-box {{ margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }}
     .info-note {{ margin: 2px 0 12px; color: var(--muted); font-size: 14px; line-height: 1.6; }}
+    .menu-preview {{
+      position: absolute;
+      left: 0;
+      top: calc(100% + 12px);
+      width: 260px;
+      padding: 10px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.98);
+      border: 1px solid var(--line);
+      box-shadow: 0 22px 48px rgba(16, 31, 69, 0.18);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+      z-index: 20;
+      pointer-events: none;
+    }}
+    .menu-preview img {{
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+    }}
+    .title-wrap:hover .menu-preview {{
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }}
     .footer-note {{ margin-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: center; }}
     .hidden-card {{ display: none; }}
-    @media (max-width: 960px) {{ .meta-bar, .grid {{ grid-template-columns: 1fr; }} }}
+    @media (max-width: 960px) {{
+      .meta-bar, .grid {{ grid-template-columns: 1fr; }}
+      .menu-preview {{ display: none; }}
+    }}
   </style>
 </head>
 <body>

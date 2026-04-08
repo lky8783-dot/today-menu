@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 8일 수요일",
-  "updated_at": "2026-04-08 13:35:53",
+  "updated_at": "2026-04-08 13:49:14",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -9,6 +9,8 @@
       "building": "현대테라타워 가산DK",
       "address": "서울 금천구 가산디지털2로 144 현대테라타워 가산DK B133~134호",
       "status": "ready",
+      "preview_image": "./images/imeal.png",
+      "map_query": "아이밀 현대테라타워 가산DK",
       "source_type": "프로필사진",
       "menu": [
         "특식 육회비빔밥",
@@ -31,6 +33,8 @@
       "building": "가산 어반워크2",
       "address": "서울 금천구 가산디지털2로 143 가산어반워크2 2층 211~214호",
       "status": "ready",
+      "preview_image": "./images/babon.png",
+      "map_query": "밥온 구내식당 가산 어반워크2",
       "source_type": "프로필사진",
       "menu": [
         "흰쌀밥 / 검은쌀잡곡밥",
@@ -50,6 +54,8 @@
       "building": "가산비즈니스센터",
       "address": "서울 금천구 가산디지털1로 165",
       "status": "ready",
+      "preview_image": "./images/raonfood.png",
+      "map_query": "구내식당라온푸드 가산비즈니스센터",
       "source_type": "프로필사진",
       "menu": [
         "맑은콩나물국",
@@ -69,6 +75,8 @@
       "building": "벽산디지털밸리5차",
       "address": "서울 금천구 벚꽃로 244 벽산디지털밸리5차 지하 1층",
       "status": "ready",
+      "preview_image": "./images/myfood.png",
+      "map_query": "마이푸드 벽산디지털밸리5차",
       "source_type": "프로필사진",
       "menu": [
         "참치마요밥 & 조미김",
@@ -92,6 +100,8 @@
       "building": "퍼블릭가산 C동",
       "address": "서울 금천구 디지털로 178",
       "status": "ready",
+      "preview_image": "./images/public-gasan.png",
+      "map_query": "퍼블릭가산 구내식당",
       "source_type": "프로필사진",
       "menu": [
         "훈제오리주물럭",
@@ -104,6 +114,7 @@
       "building": "백상스타타워1차",
       "address": "서울 금천구 디지털로9길 65 지하1층",
       "status": "preparing",
+      "map_query": "쉐프의 런치타임 백상스타타워1차",
       "source_type": "소식",
       "menu": [],
       "message": "목록 썸네일은 확인됐지만 큰 이미지 캡처를 다시 잡는 중입니다."
@@ -113,6 +124,7 @@
       "building": "백상스타타워1차",
       "address": "서울 금천구 디지털로9길 65 지하1층",
       "status": "preparing",
+      "map_query": "백상1차구내식당 백상스타타워1차",
       "source_type": "소식",
       "menu": [],
       "message": "채널 목록 화면만 잡혀서 메뉴 원문 이미지를 다시 수집하는 중입니다."
@@ -122,6 +134,7 @@
       "building": "가산 어반워크",
       "address": "",
       "status": "preparing",
+      "map_query": "가산 어반워크",
       "source_type": "인스타그램",
       "menu": [],
       "message": "로그인 팝업이 메뉴 이미지를 가려서 자동 캡처 방식을 보정 중입니다."
