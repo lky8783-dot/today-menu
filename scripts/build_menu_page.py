@@ -47,7 +47,7 @@ def render_restaurant_card(item: dict) -> str:
         map_url = f'https://map.naver.com/p/search/{quote(map_query)}'
     badge_text = '준비중'
     badge_class = 'preparing'
-    sub = ' · '.join(part for part in [building, address] if part)
+    sub = building
     sub_html = f'<div class="sub">{sub}</div>' if sub else ''
     title_html = (
         f'<a class="name-link" href="{escape(map_url)}" target="_blank" rel="noopener">'
@@ -163,8 +163,8 @@ def render_page(data: dict) -> str:
     .restaurant-card {{ border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; }}
     .card-head {{ display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 14px; }}
     .title-wrap {{ position: relative; }}
-    .name {{ margin: 0; font-size: 24px; line-height: 1.25; }}
-    .name-link {{ color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.18s ease, color 0.18s ease; display: inline-flex; align-items: center; gap: 8px; }}
+    .name {{ margin: 0; font-size: 24px; line-height: 1.25; word-break: keep-all; overflow-wrap: normal; }}
+    .name-link {{ color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.18s ease, color 0.18s ease; display: inline-flex; align-items: center; gap: 8px; flex-wrap: nowrap; }}
     .name-link:hover {{ color: var(--accent); border-color: rgba(47, 103, 255, 0.4); }}
     .direction-icon {{
       display: inline-flex;
@@ -255,6 +255,17 @@ def render_page(data: dict) -> str:
       .meta-bar {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
       .grid {{ grid-template-columns: 1fr; }}
       .menu-preview {{ display: none; }}
+      .card-head {{
+        flex-direction: column;
+        align-items: flex-start;
+      }}
+      .image-button,
+      .badge.preparing {{
+        align-self: flex-start;
+      }}
+      .name {{
+        font-size: 22px;
+      }}
       .meta-card {{
         padding: 14px 16px;
         border-radius: 18px;
@@ -286,7 +297,7 @@ def render_page(data: dict) -> str:
   <div class="wrap">
     <section class="hero">
       <div class="eyebrow">가산디지털단지 구내식당 메뉴모음</div>
-      <h1>{escape(data['title'])}</h1>
+      <h1>가산디지털단지 구내식당 🍞 메뉴정보</h1>
       <div class="search-wrap">
         <label class="search-label" for="menu-search">메뉴검색</label>
         <input id="menu-search" class="search-input" type="text" placeholder="식당명, 건물명, 메뉴명으로 검색">
