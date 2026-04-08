@@ -139,6 +139,21 @@ def ocr_texts(image_path: Path) -> list[str]:
     return outputs
 
 
+def ocr_dasibom_crops(image_path: Path) -> list[str]:
+    base = Image.open(image_path).convert("RGB")
+    regions = [
+        (0, int(base.height * 0.12), base.width, int(base.height * 0.66), "--psm 11"),
+        (0, int(base.height * 0.15), base.width, int(base.height * 0.62), "--psm 6"),
+    ]
+    outputs: list[str] = []
+    for left, top, right, bottom, config in regions:
+        crop = base.crop((left, top, right, bottom))
+        gray = ImageOps.autocontrast(crop.convert("L")).resize((crop.width * 3, crop.height * 3)).filter(ImageFilter.SHARPEN)
+        text = pytesseract.image_to_string(gray, lang="kor+eng", config=config)
+        outputs.append(text)
+    return outputs
+
+
 def clean_line(line: str) -> str:
     line = line.strip()
     line = line.replace("|", "").replace("•", " ").replace("·", " ").replace("●", " ")
@@ -222,12 +237,12 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             (r"대파.*치킨바베큐|대파숫불치킨바베큐", "대파숯불치킨바베큐"),
             (r"해물까스", "해물까스"),
             (r"철판고기산적|판고기 사전|판고기산적", "철판고기산적"),
-            (r"양반단팥찐빵|단팥찐빵|팥찐빵", "양반단팥찐빵"),
-            (r"꽈리고추양념찜|고추양념찜", "꽈리고추양념찜"),
+            (r"양반단팥찐빵|단팥찐빵|팥찐빵|한입단팔핀빵|단팔핀빵|단팥핀빵", "양반단팥찐빵"),
+            (r"꽈리고추양념찜|고추양념찜|파리고추양념찜", "꽈리고추양념찜"),
             (r"샐러드|샐러", "샐러드"),
             (r"깍두기|까드", "깍두기"),
             (r"잔치국수", "잔치국수"),
-            (r"탄산음료|산음료", "탄산음료"),
+            (r"탄산음료|산음료|탄\s*산음\s*\w*음료", "탄산음료"),
             (r"셀프라면|프라면", "셀프라면"),
         ]
         for pattern, label in patterns:
@@ -282,6 +297,8 @@ def update_json_with_ocr() -> None:
             continue
         previous_menu = list(restaurant.get("menu", []))
         texts = ocr_texts(image_path)
+        if name == "다시 봄":
+            texts.extend(ocr_dasibom_crops(image_path))
         extracted_menu, used_fallback = parse_restaurant_menu(name, texts, previous_menu)
         restaurant["menu"] = extracted_menu
         logs.append(

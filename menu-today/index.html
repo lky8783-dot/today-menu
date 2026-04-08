@@ -66,7 +66,23 @@
     .name { margin: 0; font-size: 24px; line-height: 1.25; }
     .name-link { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.18s ease, color 0.18s ease; display: inline-flex; align-items: center; gap: 8px; }
     .name-link:hover { color: var(--accent); border-color: rgba(47, 103, 255, 0.4); }
-    .direction-icon { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 13px; font-weight: 900; }
+    .direction-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(47, 103, 255, 0.18);
+      flex-shrink: 0;
+    }
+    .direction-icon img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     .sub { color: var(--muted); font-size: 14px; line-height: 1.6; margin-top: 6px; }
     .badge { flex-shrink: 0; border-radius: 999px; padding: 9px 12px; font-size: 12px; font-weight: 800; white-space: nowrap; }
     .badge.ready { background: var(--ok-soft); color: var(--ok); border: 1px solid rgba(31,157,92,0.18); }
@@ -154,7 +170,7 @@
 
     <section class="meta-bar">
       <div class="meta-card"><div class="meta-label">기준 날짜</div><div class="meta-value">2026년 4월 8일 수요일</div></div>
-      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-04-08 15:17:59</div></div>
+      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-04-08 15:31:34</div></div>
       <div class="meta-card"><div class="meta-label">확인 완료</div><div class="meta-value">6개 식당</div></div>
       <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">2개 채널</div></div>
     </section>
@@ -166,7 +182,7 @@
       <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
-            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=18.44,0,0,0,dh" target="_blank" rel="noopener">아이밀<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
+            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=18.44,0,0,0,dh" target="_blank" rel="noopener">아이밀<span class="direction-icon" aria-hidden="true"><img src="./images/naver-map.jpg" alt=""></span></a></h2>
             <div class="sub">현대테라타워 가산DK · 서울 금천구 가산디지털2로 144 현대테라타워 가산DK B133~134호</div>
             
             <div class="menu-preview">
@@ -181,7 +197,7 @@
       <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
-            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh" target="_blank" rel="noopener">다시 봄<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
+            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh" target="_blank" rel="noopener">다시 봄<span class="direction-icon" aria-hidden="true"><img src="./images/naver-map.jpg" alt=""></span></a></h2>
             <div class="sub">가산 어반워크 · 서울 금천구 가산디지털2로 135 2층</div>
             
             <div class="menu-preview">
@@ -190,13 +206,13 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/dasibom.png" data-title="다시 봄">메뉴 이미지 확인</button>
         </div>
-        <ul><li>시금치된장국</li><li>대파숯불치킨바베큐</li><li>해물까스</li><li>철판고기산적</li><li>샐러드</li><li>깍두기</li><li>잔치국수</li><li>셀프라면</li></ul>
+        <ul><li>시금치된장국</li><li>대파숯불치킨바베큐</li><li>해물까스</li><li>철판고기산적</li><li>양반단팥찐빵</li><li>꽈리고추양념찜</li><li>샐러드</li><li>깍두기</li><li>잔치국수</li><li>셀프라면</li></ul>
       </article>
 
       <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
-            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdsu0,2AIrKV,%EB%B0%A5%EC%98%A8%20%EA%B5%AC%EB%82%B4%EC%8B%9D%EB%8B%B9,2085424978,PLACE_POI/-/walk?c=15.00,0,0,0,dh" target="_blank" rel="noopener">밥(온) 구내식당<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
+            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdsu0,2AIrKV,%EB%B0%A5%EC%98%A8%20%EA%B5%AC%EB%82%B4%EC%8B%9D%EB%8B%B9,2085424978,PLACE_POI/-/walk?c=15.00,0,0,0,dh" target="_blank" rel="noopener">밥(온) 구내식당<span class="direction-icon" aria-hidden="true"><img src="./images/naver-map.jpg" alt=""></span></a></h2>
             <div class="sub">가산 어반워크2 · 서울 금천구 가산디지털2로 143 가산어반워크2 2층 211~214호</div>
             
             <div class="menu-preview">
@@ -211,7 +227,7 @@
       <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
-            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=16.86,0,0,0,dh" target="_blank" rel="noopener">구내식당라온푸드<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
+            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=16.86,0,0,0,dh" target="_blank" rel="noopener">구내식당라온푸드<span class="direction-icon" aria-hidden="true"><img src="./images/naver-map.jpg" alt=""></span></a></h2>
             <div class="sub">가산비즈니스센터 · 서울 금천구 가산디지털1로 165</div>
             
             <div class="menu-preview">
@@ -226,7 +242,7 @@
       <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
-            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=17.77,0,0,0,dh" target="_blank" rel="noopener">마이푸드<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
+            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=17.77,0,0,0,dh" target="_blank" rel="noopener">마이푸드<span class="direction-icon" aria-hidden="true"><img src="./images/naver-map.jpg" alt=""></span></a></h2>
             <div class="sub">벽산디지털밸리5차 · 서울 금천구 벚꽃로 244 벽산 디지털 밸리 5차 지하 1층</div>
             
             <div class="menu-preview">
@@ -241,7 +257,7 @@
       <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
-            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=17.44,0,0,0,dh" target="_blank" rel="noopener">퍼블릭가산 구내식당<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
+            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=17.44,0,0,0,dh" target="_blank" rel="noopener">퍼블릭가산 구내식당<span class="direction-icon" aria-hidden="true"><img src="./images/naver-map.jpg" alt=""></span></a></h2>
             <div class="sub">퍼블릭가산C동 · 서울 금천구 디지털로 178</div>
             
             <div class="menu-preview">
@@ -256,7 +272,7 @@
       <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
-            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=16.71,0,0,0,dh" target="_blank" rel="noopener">쉐프의 런치타임<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
+            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=16.71,0,0,0,dh" target="_blank" rel="noopener">쉐프의 런치타임<span class="direction-icon" aria-hidden="true"><img src="./images/naver-map.jpg" alt=""></span></a></h2>
             <div class="sub">백상스타타워1차 · 서울 금천구 디지털로9길 65 지하1층</div>
             
           </div>
@@ -268,7 +284,7 @@
       <article class="restaurant-card">
         <div class="card-head">
           <div class="title-wrap">
-            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdLQC,2AIqLX,%EB%B0%B1%EC%83%81%EC%8A%A4%ED%83%80%ED%83%80%EC%9B%8C1%EC%B0%A8,18981217,PLACE_POI/-/walk?c=16.71,0,0,0,dh" target="_blank" rel="noopener">백상1차구내식당<span class="direction-icon" aria-hidden="true">↗</span></a></h2>
+            <h2 class="name"><a class="name-link" href="https://map.naver.com/p/directions/-/3zdLQC,2AIqLX,%EB%B0%B1%EC%83%81%EC%8A%A4%ED%83%80%ED%83%80%EC%9B%8C1%EC%B0%A8,18981217,PLACE_POI/-/walk?c=16.71,0,0,0,dh" target="_blank" rel="noopener">백상1차구내식당<span class="direction-icon" aria-hidden="true"><img src="./images/naver-map.jpg" alt=""></span></a></h2>
             <div class="sub">백상스타타워1차 · 서울 금천구 디지털로9길 65 지하1층</div>
             
           </div>

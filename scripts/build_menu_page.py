@@ -51,7 +51,7 @@ def render_restaurant_card(item: dict) -> str:
     sub_html = f'<div class="sub">{sub}</div>' if sub else ''
     title_html = (
         f'<a class="name-link" href="{escape(map_url)}" target="_blank" rel="noopener">'
-        f'{name}<span class="direction-icon" aria-hidden="true">↗</span></a>'
+        f'{name}<span class="direction-icon" aria-hidden="true"><img src="./images/naver-map.jpg" alt=""></span></a>'
     )
     preview_html = ''
     if status == 'ready' and preview_image:
@@ -166,7 +166,23 @@ def render_page(data: dict) -> str:
     .name {{ margin: 0; font-size: 24px; line-height: 1.25; }}
     .name-link {{ color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.18s ease, color 0.18s ease; display: inline-flex; align-items: center; gap: 8px; }}
     .name-link:hover {{ color: var(--accent); border-color: rgba(47, 103, 255, 0.4); }}
-    .direction-icon {{ display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 13px; font-weight: 900; }}
+    .direction-icon {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(47, 103, 255, 0.18);
+      flex-shrink: 0;
+    }}
+    .direction-icon img {{
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }}
     .sub {{ color: var(--muted); font-size: 14px; line-height: 1.6; margin-top: 6px; }}
     .badge {{ flex-shrink: 0; border-radius: 999px; padding: 9px 12px; font-size: 12px; font-weight: 800; white-space: nowrap; }}
     .badge.ready {{ background: var(--ok-soft); color: var(--ok); border: 1px solid rgba(31,157,92,0.18); }}
