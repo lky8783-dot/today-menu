@@ -148,6 +148,7 @@ def render_page(data: dict) -> str:
     .meta-card {{ border-radius: 20px; padding: 18px 20px; }}
     .meta-label {{ font-size: 12px; font-weight: 800; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }}
     .meta-value {{ font-size: 21px; font-weight: 800; line-height: 1.35; }}
+    .usage-note {{ margin: 0 0 22px; padding: 16px 18px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--muted); line-height: 1.7; font-size: 15px; }}
     .grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }}
     .restaurant-card {{ border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; }}
     .card-head {{ display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 14px; }}
@@ -189,6 +190,8 @@ def render_page(data: dict) -> str:
       <div class="meta-card"><div class="meta-label">확인 완료</div><div class="meta-value">{ready_count}개 식당</div></div>
       <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">{preparing_count}개 채널</div></div>
     </section>
+
+    <div class="usage-note">식당명에 마우스를 올리면 메뉴 이미지를 미리 볼 수 있고, 식당명을 클릭하면 네이버 길찾기로 이동합니다.</div>
 
     <section class="grid" id="restaurant-grid">
 {cards}
