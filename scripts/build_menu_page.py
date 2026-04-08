@@ -271,12 +271,17 @@ def render_page(data: dict) -> str:
       .grid {{ grid-template-columns: 1fr; }}
       .menu-preview {{ display: none; }}
       .card-head {{
-        flex-direction: column;
-        align-items: flex-start;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+      }}
+      .title-wrap {{
+        min-width: 0;
       }}
       .image-button,
       .badge.preparing {{
-        align-self: flex-start;
+        align-self: start;
+        justify-self: end;
       }}
       .name {{
         font-size: 22px;
