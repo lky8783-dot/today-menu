@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가산디지털단지 구내식당 메뉴정보</title>
+  <meta name="description" content="가산디지털단지 구내식당 오늘 메뉴를 식당별로 한눈에 확인할 수 있는 화면입니다.">
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #607089;
+      --line: #dfe7f3;
+      --accent: #2f67ff;
+      --accent-soft: #eef4ff;
+      --ok: #1f9d5c;
+      --ok-soft: #ebfbf3;
+      --wait: #bf7b00;
+      --wait-soft: #fff7e6;
+      --shadow: 0 18px 44px rgba(25, 44, 87, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, rgba(47, 103, 255, 0.08), transparent 28%), var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+    }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 24px 18px 40px; }
+    .hero {
+      background: linear-gradient(135deg, #153a9c 0%, #2f67ff 55%, #6fa3ff 100%);
+      color: #fff;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    h1 { margin: 0 0 10px; font-size: clamp(28px, 4.8vw, 46px); line-height: 1.2; color: #fff; }
+    .hero p { margin: 0; font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.92); max-width: 900px; }
+    .meta-bar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0 22px; }
+    .meta-card, .notice, .restaurant-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .meta-card { border-radius: 20px; padding: 18px 20px; }
+    .meta-label { font-size: 12px; font-weight: 800; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+    .meta-value { font-size: 21px; font-weight: 800; line-height: 1.35; }
+    .notice { border-radius: 22px; padding: 18px 20px; color: var(--muted); line-height: 1.7; margin-bottom: 22px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .restaurant-card { border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; }
+    .card-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .name { margin: 0; font-size: 24px; line-height: 1.25; }
+    .sub { color: var(--muted); font-size: 14px; line-height: 1.6; margin-top: 6px; }
+    .badge { flex-shrink: 0; border-radius: 999px; padding: 9px 12px; font-size: 12px; font-weight: 800; white-space: nowrap; }
+    .badge.ready { background: var(--ok-soft); color: var(--ok); border: 1px solid rgba(31,157,92,0.18); }
+    .badge.preparing { background: var(--wait-soft); color: var(--wait); border: 1px solid rgba(191,123,0,0.18); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 14px; }
+    .tag { font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 7px 10px; }
+    ul { margin: 0; padding-left: 19px; line-height: 1.78; font-size: 16px; }
+    li + li { margin-top: 2px; }
+    .pending-box {
+      margin-top: 8px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: #fffaf0;
+      border: 1px dashed rgba(191,123,0,0.35);
+      color: #6f5607;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    .footer-note { margin-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: center; }
+    @media (max-width: 960px) {
+      .meta-bar, .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">무료 정보 화면 · 가산디지털단지 식당 모음</div>
+      <h1>가산디지털단지 구내식당 메뉴정보</h1>
+      <p>2026년 4월 8일 수요일 기준으로 자동 수집한 식당별 메뉴를 한곳에 정리했습니다. 현재 읽히는 식당은 바로 보여주고, 큰 이미지 캡처 보정이 필요한 채널은 준비중으로 안내합니다.</p>
+    </section>
+
+    <section class="meta-bar">
+      <div class="meta-card"><div class="meta-label">기준 날짜</div><div class="meta-value">2026년 4월 8일 수요일</div></div>
+      <div class="meta-card"><div class="meta-label">확인 완료</div><div class="meta-value">5개 식당</div></div>
+      <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">3개 채널</div></div>
+    </section>
+
+    <section class="notice">
+      OCR로 자동 수집한 결과를 사람이 읽기 좋게 한 번 정리한 화면입니다. 프로필사진형 채널은 비교적 잘 읽히고, 소식 목록형 채널이나 인스타그램은 큰 이미지 캡처를 다시 잡는 중이라 준비중으로 표시됩니다.
+    </section>
+
+    <section class="grid">
+      <article class="restaurant-card">
+        <div class="card-head"><div><h2 class="name">구내식당라온푸드</h2><div class="sub">가산비즈니스센터 · 서울 금천구 가산디지털1로 165</div></div><div class="badge ready">확인 완료</div></div>
+        <div class="tags"><span class="tag">프로필사진</span></div>
+        <ul><li>맑은콩나물국</li><li>훈제오리포크구이</li><li>고구마닭볶음탕</li><li>생선까스 / 타르타르</li><li>꽈리고추멸치볶음</li><li>청경채겉절이</li><li>알마늘쫑지무침</li><li>셀프라면 &amp; 배추김치</li><li>샐러드 &amp; 드레싱</li><li>숭늉 &amp; 음료</li></ul>
+      </article>
+      <article class="restaurant-card">
+        <div class="card-head"><div><h2 class="name">밥(온) 구내식당</h2><div class="sub">가산 어반워크2 · 서울 금천구 가산디지털2로 143 가산어반워크2 2층 211~214호</div></div><div class="badge ready">확인 완료</div></div>
+        <div class="tags"><span class="tag">프로필사진</span></div>
+        <ul><li>흰쌀밥 / 검은쌀잡곡밥</li><li>돼지고기순대국밥</li><li>김치제육두루치기</li><li>온두부</li><li>순살치킨까스 * 콘마요S</li><li>햄감자채야채볶음</li><li>잡잡이깻잎장아찌</li><li>얼갈이겉절이</li><li>깍두기</li><li>양배추샐러드 / 삼색경단</li></ul>
+      </article>
+      <article class="restaurant-card">
+        <div class="card-head"><div><h2 class="name">마이푸드</h2><div class="sub">벽산디지털밸리5차 · 서울 금천구 벚꽃로 244 벽산디지털밸리5차 지하 1층</div></div><div class="badge ready">확인 완료</div></div>
+        <div class="tags"><span class="tag">프로필사진</span></div>
+        <ul><li>참치마요밥 &amp; 조미김</li><li>안동찜닭</li><li>함박폭찹</li><li>죠스떡볶이</li><li>김말이 * 만두튀김 &amp; 양념장</li><li>햄감자채볶음</li><li>매콤콩나물무침</li><li>간장마늘쫑알마늘지 / 깍두기</li><li>그린샐러드 &amp; 드레싱</li><li>얼큰순두부김치찌개</li><li>백미밥</li><li>쌈채소 &amp; 풋고추</li><li>한강라면 &amp; 달콤한 잼 토스트</li><li>구수한 숭늉 &amp; 시원한 탄산음료</li></ul>
+      </article>
+      <article class="restaurant-card">
+        <div class="card-head"><div><h2 class="name">퍼블릭가산 구내식당</h2><div class="sub">퍼블릭가산 C동 · 서울 금천구 디지털로 178</div></div><div class="badge ready">확인 완료</div></div>
+        <div class="tags"><span class="tag">프로필사진</span><span class="tag">주간 메인 메뉴</span></div>
+        <ul><li>훈제오리주물럭</li><li>감자카레라이스</li><li>분홍소세지전</li></ul>
+      </article>
+      <article class="restaurant-card">
+        <div class="card-head"><div><h2 class="name">아이밀</h2><div class="sub">현대테라타워 가산DK · 서울 금천구 가산디지털2로 144 현대테라타워 가산DK B133~134호</div></div><div class="badge ready">확인 완료</div></div>
+        <div class="tags"><span class="tag">프로필사진</span></div>
+        <ul><li>특식 육회비빔밥</li><li>불고기비빔밥</li><li>팽이미역장국</li><li>꿔바로우탕수육</li><li>불어묵볶음</li><li>알감자버터오븐구이</li><li>숙주무침</li><li>양념고추지</li><li>가든샐러드 &amp; 오렌지D</li><li>국내산 배추겉절이</li><li>헛개차 / 탄산음료</li><li>셀프비빔밥 / 한강라면</li><li>간편식: 치킨텐더샐러드</li></ul>
+      </article>
+      <article class="restaurant-card">
+        <div class="card-head"><div><h2 class="name">쉐프의 런치타임</h2><div class="sub">백상스타타워1차 · 서울 금천구 디지털로9길 65 지하1층</div></div><div class="badge preparing">준비중</div></div>
+        <div class="tags"><span class="tag">소식</span></div>
+        <div class="pending-box">소식 목록 썸네일은 확인됐지만 큰 이미지 캡처를 다시 잡는 중입니다. 상세 메뉴는 다음 수집 결과에 반영됩니다.</div>
+      </article>
+      <article class="restaurant-card">
+        <div class="card-head"><div><h2 class="name">백상1차구내식당</h2><div class="sub">백상스타타워1차 · 서울 금천구 디지털로9길 65 지하1층</div></div><div class="badge preparing">준비중</div></div>
+        <div class="tags"><span class="tag">소식</span></div>
+        <div class="pending-box">채널 목록 화면만 잡혀서 메뉴 원문 이미지를 다시 수집하는 중입니다. 큰 이미지가 확보되면 메뉴 카드로 교체됩니다.</div>
+      </article>
+      <article class="restaurant-card">
+        <div class="card-head"><div><h2 class="name">urbanworkdasibom 인스타</h2><div class="sub">가산 어반워크 · 인스타그램 메뉴 공지</div></div><div class="badge preparing">준비중</div></div>
+        <div class="tags"><span class="tag">인스타그램</span></div>
+        <div class="pending-box">로그인 팝업이 메뉴 이미지를 가려서 자동 캡처 방식을 보정 중입니다. 이미지 직접 추출 방식으로 바꿔서 다시 연결할 예정입니다.</div>
+      </article>
+    </section>
+
+    <div class="footer-note">메뉴 이미지는 공개 채널 기준으로 자동 수집한 뒤 정리한 결과입니다. 실제 운영 사정에 따라 식당 현장 메뉴와 일부 차이가 있을 수 있습니다.</div>
+  </div>
+</body>
+</html>
