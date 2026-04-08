@@ -149,7 +149,7 @@ def render_page(data: dict) -> str:
       margin-bottom: 16px;
     }}
     h1 {{ margin: 0 0 10px; font-size: clamp(28px, 4.8vw, 46px); line-height: 1.2; color: #fff; }}
-    .search-wrap {{ margin-top: 18px; max-width: 560px; }}
+    .search-wrap {{ margin-top: 18px; width: 100%; max-width: none; }}
     .search-label {{ display: block; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.84); margin-bottom: 8px; }}
     .search-input {{ width: 100%; height: 52px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.24); background: rgba(255,255,255,0.14); color: #fff; padding: 0 16px; font-size: 16px; outline: none; backdrop-filter: blur(10px); }}
     .search-input::placeholder {{ color: rgba(255,255,255,0.68); }}
