@@ -25,11 +25,17 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install dependencies
+        run: python -m pip install requests
+
+      - name: Fetch Kakao profile menu images
+        run: python scripts/fetch_kakao_profile_images.py
+
       - name: Rebuild menu page
         run: python scripts/build_menu_page.py
 
       - name: Commit updated page
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'Update menu board timestamp'
-          file_pattern: menu-today/index.html menu-today/menu_today.json
+          commit_message: 'Update menu board assets'
+          file_pattern: menu-today/index.html menu-today/menu_today.json menu-today/images/*.png menu-today/collection_log.json
