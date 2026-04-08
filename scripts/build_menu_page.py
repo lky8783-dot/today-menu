@@ -189,7 +189,7 @@ def render_page(data: dict) -> str:
 <body>
   <div class="wrap">
     <section class="hero">
-      <div class="eyebrow">무료 정보 화면 · 가산디지털단지 식당 모음</div>
+      <div class="eyebrow">가산디지털단지 구내식당 메뉴모음</div>
       <h1>{escape(data['title'])}</h1>
       <div class="search-wrap">
         <label class="search-label" for="menu-search">메뉴검색</label>
