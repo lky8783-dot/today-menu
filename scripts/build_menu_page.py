@@ -126,6 +126,7 @@ def render_page(data: dict) -> str:
       background: radial-gradient(circle at top, rgba(47, 103, 255, 0.08), transparent 28%), var(--bg);
       color: var(--text);
       font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ctext x='4' y='27' font-size='24'%3E%F0%9F%8D%9E%3C/text%3E%3C/svg%3E") 8 8, auto;
     }}
     .wrap {{ max-width: 1160px; margin: 0 auto; padding: 24px 18px 40px; }}
     .hero {{
@@ -155,10 +156,6 @@ def render_page(data: dict) -> str:
       justify-content: center;
       vertical-align: middle;
       margin: 0 0.12em;
-    }}
-    .title-inline-icon.bread {{
-      font-size: 0.82em;
-      transform: translateY(-0.02em);
     }}
     .title-inline-icon.meal {{
       font-size: 0.8em;
@@ -317,7 +314,7 @@ def render_page(data: dict) -> str:
   <div class="wrap">
     <section class="hero">
       <div class="eyebrow">가산디지털단지 구내식당 메뉴모음</div>
-      <h1>가산디지털단지 <span class="title-inline-icon bread" aria-hidden="true">🍞</span> 구내식당 <span class="title-inline-icon meal" aria-hidden="true">🍽️</span> 메뉴정보</h1>
+      <h1>가산디지털단지 구내식당 <span class="title-inline-icon meal" aria-hidden="true">🍽️</span> 메뉴정보</h1>
       <div class="search-wrap">
         <label class="search-label" for="menu-search">메뉴검색</label>
         <input id="menu-search" class="search-input" type="text" placeholder="식당명, 건물명, 메뉴명으로 검색">
