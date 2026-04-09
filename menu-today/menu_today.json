@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 9일 목요일",
-  "updated_at": "2026-04-09 09:47:12",
+  "updated_at": "2026-04-09 10:12:53",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -199,8 +199,8 @@
     {
       "name": "다시 봄",
       "items": 9,
-      "updated": true,
-      "used_existing_fallback": false
+      "updated": false,
+      "used_existing_fallback": true
     },
     {
       "name": "밥(온) 구내식당",
@@ -210,9 +210,9 @@
     },
     {
       "name": "구내식당라온푸드",
-      "items": 12,
-      "updated": true,
-      "used_existing_fallback": false
+      "items": 10,
+      "updated": false,
+      "used_existing_fallback": true
     },
     {
       "name": "마이푸드",
@@ -223,6 +223,12 @@
     {
       "name": "퍼블릭가산 구내식당",
       "items": 3,
+      "updated": false,
+      "used_existing_fallback": true
+    },
+    {
+      "name": "더푸드스케치",
+      "items": 11,
       "updated": false,
       "used_existing_fallback": true
     }
