@@ -64,18 +64,31 @@ def render_restaurant_card(item: dict) -> str:
     menu_fresh = item.get('menu_fresh_today', True)
     if status == 'ready':
         menu_items = ''.join(f'<li>{escape(menu)}</li>' for menu in item.get('menu', []))
+        menu_sections = item.get('menu_sections', [])
+        section_html = ''
+        if menu_sections:
+            parts = []
+            for section in menu_sections:
+                title = escape(section.get('title', ''))
+                items = ''.join(f'<li>{escape(menu)}</li>' for menu in section.get('items', []))
+                if items:
+                    parts.append(
+                        f'<div class="menu-section"><div class="menu-section-title">{title}</div><ul>{items}</ul></div>'
+                    )
+            section_html = ''.join(parts)
         note_html = ''
         if item['name'] == '퍼블릭가산 구내식당':
             note_html = '<div class="info-note">현재는 메인메뉴만 공개됐습니다.</div>'
         elif not menu_fresh:
-            if item.get('menu'):
+            if item.get('menu') or menu_sections:
                 note_html = '<div class="info-note">수집대기중입니다. 현재는 마지막으로 확인한 메뉴를 보여줍니다.</div>'
             else:
                 note_html = '<div class="info-note">수집대기중입니다.</div>'
         elif not item.get('menu') and preview_image:
             note_html = '<div class="info-note">메뉴 텍스트는 정리 중입니다. 메뉴 이미지 확인 버튼으로 식단을 확인해 주세요.</div>'
-        show_menu_items = bool(item.get('menu'))
-        body = f'{note_html}<ul>{menu_items}</ul>' if show_menu_items else note_html
+        show_menu_items = bool(item.get('menu')) or bool(menu_sections)
+        menu_html = section_html if menu_sections else f'<ul>{menu_items}</ul>'
+        body = f'{note_html}{menu_html}' if show_menu_items else note_html
         action_html = ''
         if preview_image:
             action_html = (
@@ -228,6 +241,14 @@ def render_page(data: dict) -> str:
     li + li {{ margin-top: 2px; }}
     .pending-box {{ margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }}
     .info-note {{ margin: 2px 0 12px; color: var(--muted); font-size: 14px; line-height: 1.6; }}
+    .menu-section + .menu-section {{ margin-top: 14px; }}
+    .menu-section-title {{
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }}
     .menu-preview {{ position: absolute; left: 0; top: calc(100% + 12px); width: 260px; padding: 10px; border-radius: 18px; background: rgba(255,255,255,0.98); border: 1px solid var(--line); box-shadow: 0 22px 48px rgba(16, 31, 69, 0.18); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease; z-index: 20; pointer-events: none; }}
     .menu-preview img {{ display: block; width: 100%; height: auto; border-radius: 12px; object-fit: cover; }}
     .title-wrap:hover .menu-preview {{ opacity: 1; visibility: visible; transform: translateY(0); }}

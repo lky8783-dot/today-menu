@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 9일 목요일",
-  "updated_at": "2026-04-09 14:03:26",
+  "updated_at": "2026-04-09 14:28:19",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -153,16 +153,16 @@
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdKQV,2AIuaL,%EC%8A%A4%ED%83%80%EB%B0%B8%EB%A6%AC,18976994,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [
-        "흑미밥 / 백미밥",
-        "매콤소불고기볶음",
-        "쑥갓어묵탕",
-        "카레돈까스",
-        "골뱅이비빔라면",
-        "물만두 * 초간장",
-        "베이컨감자볶음",
-        "유부오이매실무침",
-        "가든샐러드 & 흑임자D",
-        "포기김치"
+        "??? / ???",
+        "????????",
+        "?????",
+        "?????",
+        "???????",
+        "??? * ???",
+        "???????",
+        "????????",
+        "????? & ???D",
+        "????"
       ],
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png"
@@ -174,6 +174,14 @@
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdKjD,2AIpAQ,SJ%ED%85%8C%ED%81%AC%EB%85%B8%EB%B9%8C,19472604,PLACE_POI/-/walk?c=18.00,0,0,0,dh",
       "menu": [
+        "시래기된장국",
+        "닭볶음탕",
+        "돈가스",
+        "치즈계란말이",
+        "모듬채소잡채",
+        "계절나물",
+        "백미밥 / 잡곡밥 / 김치",
+        "그린셀러드 & 드레싱",
         "얼큰닭개장",
         "들깨백불고기",
         "매콤맛살링튀김",
@@ -182,16 +190,52 @@
         "도토리묵무침",
         "브로컬리숙회",
         "백미밥 / 잡곡밥 / 김치",
-        "그린샐러드 & 드레싱",
         "셀프계란후라이",
         "한강라면",
         "토스트 & 딸기잼",
         "탄산음료",
-        "숭뉖",
         "매실차"
       ],
       "message": "",
-      "preview_image": "./images/sj-food-menu.png"
+      "preview_image": "./images/sj-food-menu.png",
+      "menu_sections": [
+        {
+          "title": "석식",
+          "items": [
+            "시래기된장국",
+            "닭볶음탕",
+            "돈가스",
+            "치즈계란말이",
+            "모듬채소잡채",
+            "계절나물",
+            "백미밥 / 잡곡밥 / 김치",
+            "그린셀러드 & 드레싱"
+          ]
+        },
+        {
+          "title": "중식",
+          "items": [
+            "얼큰닭개장",
+            "들깨백불고기",
+            "매콤맛살링튀김",
+            "불닭완자구이",
+            "어묵메추리알조림",
+            "도토리묵무침",
+            "브로컬리숙회",
+            "백미밥 / 잡곡밥 / 김치"
+          ]
+        },
+        {
+          "title": "플러스메뉴",
+          "items": [
+            "셀프계란후라이",
+            "한강라면",
+            "토스트 & 딸기잼",
+            "탄산음료",
+            "매실차"
+          ]
+        }
+      ]
     },
     {
       "name": "돈토",
@@ -225,8 +269,8 @@
     {
       "name": "아이밀",
       "items": 14,
-      "updated": true,
-      "used_existing_fallback": false
+      "updated": false,
+      "used_existing_fallback": true
     },
     {
       "name": "다시 봄",
@@ -261,18 +305,18 @@
     {
       "name": "더푸드스케치",
       "items": 11,
-      "updated": true,
-      "used_existing_fallback": false
+      "updated": false,
+      "used_existing_fallback": true
     },
     {
-      "name": "???? ????",
-      "items": 15,
-      "updated": true,
-      "used_existing_fallback": false
-    },
-    {
-      "name": "????????",
+      "name": "스타밸리푸드포유",
       "items": 10,
+      "updated": false,
+      "used_existing_fallback": true
+    },
+    {
+      "name": "에스제이 구내식당",
+      "items": 21,
       "updated": true,
       "used_existing_fallback": false
     }

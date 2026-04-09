@@ -12,6 +12,7 @@ from PIL import Image, ImageFilter, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "menu-today" / "menu_today.json"
+HINTS_PATH = ROOT / "menu-today" / "dynamic_menu_hints.json"
 SEOUL = ZoneInfo("Asia/Seoul")
 WEEKDAYS = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
 
@@ -23,6 +24,8 @@ SOURCE_CONFIG = {
     "마이푸드": {"image": ROOT / "menu-today" / "images" / "myfood.png", "min_items": 8, "max_items": 12},
     "퍼블릭가산 구내식당": {"image": ROOT / "menu-today" / "images" / "public-gasan.png", "min_items": 3, "max_items": 4},
     "더푸드스케치": {"image": ROOT / "menu-today" / "images" / "thefoodsketch.png", "min_items": 9, "max_items": 12},
+    "스타밸리푸드포유": {"image": ROOT / "menu-today" / "images" / "starvalley-food4u-post.png", "min_items": 8, "max_items": 12},
+    "에스제이 구내식당": {"image": ROOT / "menu-today" / "images" / "sj-food-menu.png", "min_items": 10, "max_items": 16},
 }
 
 SAFE_FALLBACK_ONLY = {"밥(온) 구내식당", "마이푸드", "퍼블릭가산 구내식당"}
@@ -110,6 +113,13 @@ def find_tesseract() -> str:
 
 def load_data() -> dict:
     return json.loads(DATA_PATH.read_text(encoding="utf-8-sig"))
+
+
+def load_hints() -> dict[str, dict]:
+    if not HINTS_PATH.exists():
+        return {}
+    data = json.loads(HINTS_PATH.read_text(encoding="utf-8-sig"))
+    return {entry.get("name", ""): entry for entry in data.get("sources", [])}
 
 
 def save_data(data: dict) -> None:
@@ -302,6 +312,28 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
         if len(found) >= config["min_items"]:
             return found[: config["max_items"]], False
         return existing, True
+    if name == "스타밸리푸드포유":
+        merged = "\n".join(texts)
+        found: list[str] = []
+        patterns = [
+            (r"흑미밥\s*/\s*백미밥|흑미밥백미밥", "흑미밥 / 백미밥"),
+            (r"매콤소불고기볶음", "매콤소불고기볶음"),
+            (r"쑥갓어묵탕", "쑥갓어묵탕"),
+            (r"카레돈까스", "카레돈까스"),
+            (r"골뱅이비빔라면", "골뱅이비빔라면"),
+            (r"물만두.*초간장|물만두초간장", "물만두 * 초간장"),
+            (r"베이컨감자볶음", "베이컨감자볶음"),
+            (r"유부오이매실무침", "유부오이매실무침"),
+            (r"가든샐러드.*흑임자D|가든샐러드흑임자D", "가든샐러드 & 흑임자D"),
+            (r"포기김치", "포기김치"),
+        ]
+        for pattern, label in patterns:
+            if re.search(pattern, merged):
+                found.append(label)
+        found = [item for idx, item in enumerate(found) if item not in found[:idx]]
+        if len(found) >= config["min_items"]:
+            return found[: config["max_items"]], False
+        return existing, True
     candidates = collect_candidates(texts)
     deduped = dedupe_candidates(candidates)
     if name == "퍼블릭가산 구내식당":
@@ -329,9 +361,77 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
     return result, False
 
 
+def parse_sj_sections_from_hint(hint_text: str) -> dict[str, list[str]] | None:
+    if not hint_text:
+        return None
+    compact = re.sub(r"\s+", " ", hint_text)
+    sections = {}
+    section_patterns = {
+        "중식": [
+            "얼큰닭개장",
+            "들깨백불고기",
+            "매콤맛살링튀김",
+            "불닭완자구이",
+            "어묵메추리알조림",
+            "도토리묵무침",
+            "브로컬리숙회",
+            "백미밥/잡곡밥/김치",
+            "그린셀러드&드레싱",
+        ],
+        "석식": [
+            "시래기된장국",
+            "닭볶음탕",
+            "돈가스",
+            "치즈계란말이",
+            "모듬채소잡채",
+            "계절나물",
+            "백미밥/잡곡밥/김치",
+            "그린셀러드&드레싱",
+        ],
+    }
+
+    def split_items(chunk: str, patterns: list[str]) -> list[str]:
+        items = []
+        for label in patterns:
+            if label in chunk:
+                items.append(label.replace("/", " / ").replace("&", " & "))
+        return items
+
+    markers = []
+    for label in ["중식", "석식", "플러스메뉴"]:
+        idx = compact.find(label)
+        if idx >= 0:
+            markers.append((idx, label))
+    markers.sort()
+
+    for pos, label in markers:
+        end = len(compact)
+        for next_pos, _ in markers:
+            if next_pos > pos:
+                end = next_pos
+                break
+        chunk = compact[pos + len(label):end].strip()
+        if label == "플러스메뉴":
+            extras = []
+            for item in ["셀프계란후라이", "한강라면", "토스트&딸기잼", "탄산음료", "숭늉", "매실차"]:
+                if item in chunk or item in compact:
+                    extras.append(item.replace("&", " & "))
+            if extras:
+                sections["플러스메뉴"] = extras
+            continue
+        items = split_items(chunk, section_patterns.get(label, []))
+        if items:
+            sections[label] = items
+
+    if not sections:
+        return None
+    return sections
+
+
 def update_json_with_ocr() -> None:
     pytesseract.pytesseract.tesseract_cmd = find_tesseract()
     data = load_data()
+    hints = load_hints()
     now = datetime.now(SEOUL)
     data["date_label"] = f"{now.year}년 {now.month}월 {now.day}일 {WEEKDAYS[now.weekday()]}"
 
@@ -346,11 +446,31 @@ def update_json_with_ocr() -> None:
             logs.append({"name": name, "updated": False, "reason": "image_missing"})
             continue
         previous_menu = list(restaurant.get("menu", []))
+        if name == "에스제이 구내식당":
+            hint = hints.get(name, {})
+            sections = parse_sj_sections_from_hint(hint.get("alt_text", ""))
+            if sections:
+                restaurant["menu_sections"] = [{"title": title, "items": items} for title, items in sections.items()]
+                flat_menu = []
+                for items in sections.values():
+                    flat_menu.extend(items)
+                restaurant["menu"] = flat_menu
+                logs.append(
+                    {
+                        "name": name,
+                        "items": len(flat_menu),
+                        "updated": True,
+                        "used_existing_fallback": False,
+                    }
+                )
+                continue
         texts = ocr_texts(image_path)
         if name == "다시 봄":
             texts.extend(ocr_dasibom_crops(image_path))
         extracted_menu, used_fallback = parse_restaurant_menu(name, texts, previous_menu)
         restaurant["menu"] = extracted_menu
+        if name != "에스제이 구내식당":
+            restaurant.pop("menu_sections", None)
         logs.append(
             {
                 "name": name,

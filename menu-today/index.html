@@ -113,6 +113,14 @@
     li + li { margin-top: 2px; }
     .pending-box { margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }
     .info-note { margin: 2px 0 12px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .menu-section + .menu-section { margin-top: 14px; }
+    .menu-section-title {
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
     .menu-preview { position: absolute; left: 0; top: calc(100% + 12px); width: 260px; padding: 10px; border-radius: 18px; background: rgba(255,255,255,0.98); border: 1px solid var(--line); box-shadow: 0 22px 48px rgba(16, 31, 69, 0.18); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease; z-index: 20; pointer-events: none; }
     .menu-preview img { display: block; width: 100%; height: auto; border-radius: 12px; object-fit: cover; }
     .title-wrap:hover .menu-preview { opacity: 1; visibility: visible; transform: translateY(0); }
@@ -223,7 +231,7 @@
 
     <section class="meta-bar">
       <div class="meta-card"><div class="meta-label">기준 날짜</div><div class="meta-value">2026년 4월 9일 목요일</div></div>
-      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-04-09 14:03:26</div></div>
+      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-04-09 14:28:19</div></div>
       <div class="meta-card"><div class="meta-label">확인 완료</div><div class="meta-value">9개 식당</div></div>
       <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">3개 채널</div></div>
     </section>
@@ -244,7 +252,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/imeal.png" data-title="아이밀">메뉴 이미지 확인</button>
         </div>
-        <ul><li>맘스터치순살치킨 강정(계육:브라질산</li><li>어묵잡채</li><li>무생채</li><li>호박고추장찌개</li><li>콩나물무침</li><li>백미밥 / 흑미밥</li><li>가든샐러드드드 &amp; 키위ㅁ</li><li>타산을료</li><li>롱나물무침</li><li>호박고주장찌개</li><li>백미밤 / 흑미밥</li><li>셀프비빔밥 / 한강라면</li><li>간편식: 쉬림프샐러드드드</li><li>SIAL / 탄산음료</li></ul>
+        <div class="info-note">수집대기중입니다. 현재는 마지막으로 확인한 메뉴를 보여줍니다.</div><ul><li>맘스터치순살치킨 강정(계육:브라질산</li><li>어묵잡채</li><li>무생채</li><li>호박고추장찌개</li><li>콩나물무침</li><li>백미밥 / 흑미밥</li><li>가든샐러드드드 &amp; 키위ㅁ</li><li>타산을료</li><li>롱나물무침</li><li>호박고주장찌개</li><li>백미밤 / 흑미밥</li><li>셀프비빔밥 / 한강라면</li><li>간편식: 쉬림프샐러드드드</li><li>SIAL / 탄산음료</li></ul>
       </article>
 
       <article class="restaurant-card">
@@ -334,7 +342,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/thefoodsketch.png" data-title="더푸드스케치">메뉴 이미지 확인</button>
         </div>
-        <ul><li>혼합잡곡밥</li><li>들깨수제비</li><li>매운갈비찜</li><li>순살닭다리살치킨너겟</li><li>소세지스크램블에그</li><li>비빔만두</li><li>청양어묵볶음</li><li>유자연근무침</li><li>생깻잎지</li><li>가든샐러드 / 드레싱</li><li>배추겉절이 / 음료</li></ul>
+        <div class="info-note">수집대기중입니다. 현재는 마지막으로 확인한 메뉴를 보여줍니다.</div><ul><li>혼합잡곡밥</li><li>들깨수제비</li><li>매운갈비찜</li><li>순살닭다리살치킨너겟</li><li>소세지스크램블에그</li><li>비빔만두</li><li>청양어묵볶음</li><li>유자연근무침</li><li>생깻잎지</li><li>가든샐러드 / 드레싱</li><li>배추겉절이 / 음료</li></ul>
       </article>
 
       <article class="restaurant-card">
@@ -349,7 +357,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/starvalley-food4u-post.png" data-title="스타밸리푸드포유">메뉴 이미지 확인</button>
         </div>
-        <div class="info-note">수집대기중입니다. 현재는 마지막으로 확인한 메뉴를 보여줍니다.</div><ul><li>흑미밥 / 백미밥</li><li>매콤소불고기볶음</li><li>쑥갓어묵탕</li><li>카레돈까스</li><li>골뱅이비빔라면</li><li>물만두 * 초간장</li><li>베이컨감자볶음</li><li>유부오이매실무침</li><li>가든샐러드 &amp; 흑임자D</li><li>포기김치</li></ul>
+        <div class="info-note">수집대기중입니다. 현재는 마지막으로 확인한 메뉴를 보여줍니다.</div><ul><li>??? / ???</li><li>????????</li><li>?????</li><li>?????</li><li>???????</li><li>??? * ???</li><li>???????</li><li>????????</li><li>????? &amp; ???D</li><li>????</li></ul>
       </article>
 
       <article class="restaurant-card">
@@ -364,7 +372,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/sj-food-menu.png" data-title="에스제이 구내식당">메뉴 이미지 확인</button>
         </div>
-        <div class="info-note">수집대기중입니다. 현재는 마지막으로 확인한 메뉴를 보여줍니다.</div><ul><li>얼큰닭개장</li><li>들깨백불고기</li><li>매콤맛살링튀김</li><li>불닭완자구이</li><li>어묵메추리알조림</li><li>도토리묵무침</li><li>브로컬리숙회</li><li>백미밥 / 잡곡밥 / 김치</li><li>그린샐러드 &amp; 드레싱</li><li>셀프계란후라이</li><li>한강라면</li><li>토스트 &amp; 딸기잼</li><li>탄산음료</li><li>숭뉖</li><li>매실차</li></ul>
+        <div class="menu-section"><div class="menu-section-title">석식</div><ul><li>백미밥 / 잡곡밥 / 김치</li><li>그린셀러드 &amp; 드레싱</li><li>시래기된장국</li><li>닭볶음탕</li><li>돈가스</li><li>치즈계란말이</li><li>모듬채소잡채</li><li>계절나물</li></ul></div><div class="menu-section"><div class="menu-section-title">중식</div><ul><li>얼큰닭개장</li><li>들깨백불고기</li><li>매콤맛살링튀김</li><li>불닭완자구이</li><li>어묵메추리알조림</li><li>도토리묵무침</li><li>브로컬리숙회</li><li>백미밥 / 잡곡밥 / 김치</li></ul></div><div class="menu-section"><div class="menu-section-title">플러스메뉴</div><ul><li>셀프계란후라이</li><li>한강라면</li><li>토스트 &amp; 딸기잼</li><li>탄산음료</li><li>매실차</li></ul></div>
       </article>
 
       <article class="restaurant-card">
