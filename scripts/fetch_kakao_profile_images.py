@@ -60,21 +60,40 @@ def download_file(url: str, output_path: Path) -> None:
 def sync_preview_images() -> None:
     results: list[dict] = []
     for source in PROFILE_SOURCES:
-        page_response = requests.get(source["page_url"], headers=HEADERS, timeout=30)
-        page_response.raise_for_status()
-        image_url = extract_meta_image(source["page_url"], page_response.text)
-        if not image_url:
-            raise RuntimeError(f"{source['name']} 페이지에서 대표 이미지를 찾지 못했습니다.")
-        image_url = normalize_kakao_image_url(image_url)
-        download_file(image_url, source["output"])
-        results.append(
-            {
-                "name": source["name"],
-                "page_url": source["page_url"],
-                "image_url": image_url,
-                "output": str(source["output"].relative_to(ROOT)).replace("\\", "/"),
-            }
-        )
+        try:
+            page_response = requests.get(source["page_url"], headers=HEADERS, timeout=30)
+            page_response.raise_for_status()
+            image_url = extract_meta_image(source["page_url"], page_response.text)
+            if not image_url:
+                results.append(
+                    {
+                        "name": source["name"],
+                        "page_url": source["page_url"],
+                        "status": "skipped",
+                        "reason": "image_not_found",
+                    }
+                )
+                continue
+            image_url = normalize_kakao_image_url(image_url)
+            download_file(image_url, source["output"])
+            results.append(
+                {
+                    "name": source["name"],
+                    "page_url": source["page_url"],
+                    "image_url": image_url,
+                    "output": str(source["output"].relative_to(ROOT)).replace("\\", "/"),
+                    "status": "updated",
+                }
+            )
+        except Exception as exc:
+            results.append(
+                {
+                    "name": source["name"],
+                    "page_url": source["page_url"],
+                    "status": "skipped",
+                    "reason": str(exc),
+                }
+            )
 
     (ROOT / "menu-today" / "collection_log.json").write_text(
         json.dumps({"sources": results}, ensure_ascii=False, indent=2),
