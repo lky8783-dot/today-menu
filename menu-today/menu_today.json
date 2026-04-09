@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 9일 목요일",
-  "updated_at": "2026-04-09 10:25:06",
+  "updated_at": "2026-04-09 10:29:35",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -12,17 +12,18 @@
       "preview_image": "./images/imeal.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=18.44,0,0,0,dh",
       "menu": [
-        "맘스터치순살치킨 강정(계육:브라질산)",
+        "호박고추장찌개",
+        "맘스터치순살치킨강정",
         "마파두부덮밥소스",
         "어묵잡채",
         "무생채",
-        "호박고추장찌개",
         "콩나물무침",
+        "가든샐러드 & 키위D",
+        "국내산 포기김치",
         "백미밥 / 흑미밥",
-        "가든샐러드드드 & 키위D",
+        "헛개차 / 탄산음료",
         "셀프비빔밥 / 한강라면",
-        "간편식: 쉬림프샐러드드드",
-        "SIAL / 탄산음료"
+        "간편식: 쉬림프샐러드"
       ]
     },
     {
@@ -56,13 +57,13 @@
         "흰쌀밥 / 검은쌀잡곡밥",
         "얼큰두부콩나물국",
         "돼지고기보쌈",
-        "고구마고르케튀김",
+        "고구마고로케튀김",
         "열무비빔칼국수",
         "바지락애호박채전",
         "마약계란장조림",
         "청경채겉절이",
-        "배추겉절이김",
-        "양배추샐러드 / 삼색경단"
+        "배추겉절이김치",
+        "양배추샐러드 / 모듬상추쌈"
       ]
     },
     {
@@ -94,16 +95,16 @@
       "map_url": "https://map.naver.com/p/directions/-/3zdNjq,2AIh9q,%EB%B2%BD%EC%82%B0%EB%94%94%EC%A7%80%ED%84%B8%EB%B0%B8%EB%A6%AC5%EC%B0%A8,18981320,PLACE_POI/-/walk?c=17.77,0,0,0,dh",
       "menu": [
         "오징어돼지불고기",
-        "한입불닭카츠&콘마요S",
+        "한입불닭까스 & 콘마요S",
         "오색한식잡채",
         "부추스크램블에그",
         "고추장멸치볶음",
         "취나물무침",
-        "양념고추지/김치겉절이",
+        "양념고추지 / 김치겉절이",
         "그린샐러드 & 드레싱",
         "소고기탕국",
-        "춘권튀김&칠리소스",
-        "백미밥",
+        "춘권튀김 & 칠리소스",
+        "잡곡밥 / 백미밥",
         "쌈채소 & 풋고추 / 한강라면 / 달콤한 잼 토스트 / 구수한 숭늉 / 시원한 탄산음료"
       ]
     },
@@ -115,9 +116,10 @@
       "preview_image": "./images/public-gasan.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdOF3,2AIcZ4,%ED%8D%BC%EB%B8%94%EB%A6%AD%EA%B0%80%EC%82%B0C%EB%8F%99,1713072974,PLACE_POI/-/walk?c=17.44,0,0,0,dh",
       "menu": [
-        "훈제오리주물럭",
-        "감자카레라이스",
-        "분홍소세지전"
+        "매콤닭곰탕",
+        "양념치킨",
+        "간장코다리조림",
+        "새우쪽파전"
       ]
     },
     {
@@ -190,7 +192,7 @@
   "ocr_log": [
     {
       "name": "아이밀",
-      "items": 14,
+      "items": 11,
       "updated": true,
       "used_existing_fallback": false
     },
@@ -203,32 +205,32 @@
     {
       "name": "밥(온) 구내식당",
       "items": 10,
-      "updated": false,
-      "used_existing_fallback": true
+      "updated": true,
+      "used_existing_fallback": false
     },
     {
       "name": "구내식당라온푸드",
       "items": 10,
-      "updated": false,
-      "used_existing_fallback": true
+      "updated": true,
+      "used_existing_fallback": false
     },
     {
       "name": "마이푸드",
-      "items": 12,
-      "updated": false,
-      "used_existing_fallback": true
+      "items": 11,
+      "updated": true,
+      "used_existing_fallback": false
     },
     {
       "name": "퍼블릭가산 구내식당",
-      "items": 3,
-      "updated": false,
-      "used_existing_fallback": true
+      "items": 4,
+      "updated": true,
+      "used_existing_fallback": false
     },
     {
       "name": "더푸드스케치",
       "items": 11,
-      "updated": false,
-      "used_existing_fallback": true
+      "updated": true,
+      "used_existing_fallback": false
     }
   ]
 }
