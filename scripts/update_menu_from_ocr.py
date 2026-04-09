@@ -22,6 +22,7 @@ SOURCE_CONFIG = {
     "구내식당라온푸드": {"image": ROOT / "menu-today" / "images" / "raonfood.png", "min_items": 8, "max_items": 12},
     "마이푸드": {"image": ROOT / "menu-today" / "images" / "myfood.png", "min_items": 8, "max_items": 12},
     "퍼블릭가산 구내식당": {"image": ROOT / "menu-today" / "images" / "public-gasan.png", "min_items": 3, "max_items": 4},
+    "더푸드스케치": {"image": ROOT / "menu-today" / "images" / "thefoodsketch.png", "min_items": 9, "max_items": 12},
 }
 
 SAFE_FALLBACK_ONLY = {"밥(온) 구내식당", "마이푸드", "퍼블릭가산 구내식당"}
@@ -266,6 +267,29 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             (r"셀프라면\s*&\s*배추김치|셀프라면.*배추김치", "셀프라면 & 배추김치"),
             (r"샐러드\s*&\s*드레싱|샐러드.*드레싱", "샐러드 & 드레싱"),
             (r"숭늉\s*&\s*음료|숭늉.*음료", "숭늉 & 음료"),
+        ]
+        for pattern, label in patterns:
+            if re.search(pattern, merged):
+                found.append(label)
+        found = [item for idx, item in enumerate(found) if item not in found[:idx]]
+        if len(found) >= config["min_items"]:
+            return found[: config["max_items"]], False
+        return existing, True
+    if name == "더푸드스케치":
+        merged = "\n".join(texts)
+        found: list[str] = []
+        patterns = [
+            (r"혼합잡곡밥|호합잡곡밥|혼합잠곡밥", "혼합잡곡밥"),
+            (r"들깨수제비|들깨수재비", "들깨수제비"),
+            (r"매운갈비찜", "매운갈비찜"),
+            (r"순살닭다리살치킨너겟|순살닭다리살치킨너것|순살닭다리살치킨너켓", "순살닭다리살치킨너겟"),
+            (r"소세지스크램블에그|소시지스크램블에그", "소세지스크램블에그"),
+            (r"비빔만두", "비빔만두"),
+            (r"청양어묵볶음|청앙어묵볶음", "청양어묵볶음"),
+            (r"유자연근무침|유자연근묻침", "유자연근무침"),
+            (r"생깻잎지|생깻입지", "생깻잎지"),
+            (r"가든샐러드\s*/\s*드레싱|가든샐러드.*드레싱", "가든샐러드 / 드레싱"),
+            (r"배추겉절이\s*/\s*음료|배추겉절이.*음료", "배추겉절이 / 음료"),
         ]
         for pattern, label in patterns:
             if re.search(pattern, merged):

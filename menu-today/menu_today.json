@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 9일 목요일",
-  "updated_at": "2026-04-09 09:29:56",
+  "updated_at": "2026-04-09 09:36:18",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -129,25 +129,37 @@
       "status": "ready",
       "preview_image": "./images/thefoodsketch.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdBv9,2AIxGX,%EB%8D%94%ED%91%B8%EB%93%9C%EC%8A%A4%EC%BC%80%EC%B9%98,37648388,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
-      "menu": []
+      "menu": [
+        "혼합잡곡밥",
+        "들깨수제비",
+        "매운갈비찜",
+        "순살닭다리살치킨너겟",
+        "소세지스크램블에그",
+        "비빔만두",
+        "청양어묵볶음",
+        "유자연근무침",
+        "생깻잎지",
+        "가든샐러드 / 드레싱",
+        "배추겉절이 / 음료"
+      ]
     },
     {
       "name": "스타밸리푸드포유",
       "building": "스타밸리",
       "address": "서울 금천구 디지털로9길 99",
-      "status": "ready",
-      "preview_image": "./images/starvalley-food4u.png",
+      "status": "preparing",
       "map_url": "https://map.naver.com/p/directions/-/3zdKQV,2AIuaL,%EC%8A%A4%ED%83%80%EB%B0%B8%EB%A6%AC,18976994,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
-      "menu": []
+      "menu": [],
+      "message": "수집예정입니다."
     },
     {
       "name": "돈토",
       "building": "에이스하이엔드타워3차",
       "address": "서울 금천구 가산디지털1로 145",
-      "status": "ready",
-      "preview_image": "./images/donto.png",
+      "status": "preparing",
       "map_url": "https://map.naver.com/p/directions/-/3zdCnJ,2AIlgj,%EB%8F%88%ED%86%A0,13344767,PLACE_POI/-/walk?c=15.18,0,0,0,dh",
-      "menu": []
+      "menu": [],
+      "message": "수집예정입니다."
     },
     {
       "name": "쉐프의 런치타임",

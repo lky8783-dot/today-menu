@@ -26,6 +26,7 @@ PROFILE_SOURCES = [
     {"name": "더푸드스케치", "page_url": "https://pf.kakao.com/_nFfwj", "output": ROOT / "menu-today" / "images" / "thefoodsketch.png"},
     {"name": "스타밸리푸드포유", "page_url": "https://pf.kakao.com/_axkixdn", "output": ROOT / "menu-today" / "images" / "starvalley-food4u.png"},
     {"name": "돈토", "page_url": "https://pf.kakao.com/_Gxjxcbxj", "output": ROOT / "menu-today" / "images" / "donto.png"},
+    {"name": "에스제이 구내식당", "page_url": "https://www.instagram.com/s_j_food_278/", "output": ROOT / "menu-today" / "images" / "sj-food.png"},
 ]
 
 

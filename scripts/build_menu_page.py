@@ -28,7 +28,9 @@ def sort_restaurants(restaurants: list[dict]) -> list[dict]:
 
     leading = sorted([item for item in restaurants if item['name'] in priority_map], key=sort_key)
     trailing = [item for item in restaurants if item['name'] not in priority_map]
-    return leading + trailing
+    trailing_ready = [item for item in trailing if item.get('status') == 'ready']
+    trailing_preparing = [item for item in trailing if item.get('status') != 'ready']
+    return leading + trailing_ready + trailing_preparing
 
 
 def count_by_status(restaurants: list[dict], status: str) -> int:
@@ -59,14 +61,17 @@ def render_restaurant_card(item: dict) -> str:
             <div class="menu-preview">
               <img src="{escape(preview_image)}" alt="{name} 식단 이미지 미리보기">
             </div>'''
+    menu_fresh = item.get('menu_fresh_today', True)
     if status == 'ready':
         menu_items = ''.join(f'<li>{escape(menu)}</li>' for menu in item.get('menu', []))
         note_html = ''
         if item['name'] == '퍼블릭가산 구내식당':
             note_html = '<div class="info-note">현재는 메인메뉴만 공개됐습니다.</div>'
+        elif not menu_fresh:
+            note_html = '<div class="info-note">수집대기중입니다.</div>'
         elif not item.get('menu') and preview_image:
             note_html = '<div class="info-note">메뉴 텍스트는 정리 중입니다. 메뉴 이미지 확인 버튼으로 식단을 확인해 주세요.</div>'
-        body = f'{note_html}<ul>{menu_items}</ul>'
+        body = f'{note_html}<ul>{menu_items}</ul>' if menu_fresh and item.get('menu') else note_html
         action_html = ''
         if preview_image:
             action_html = (
@@ -94,7 +99,13 @@ def render_restaurant_card(item: dict) -> str:
 
 
 def render_page(data: dict) -> str:
-    restaurants = data['restaurants']
+    ocr_log = {entry.get('name'): entry for entry in data.get('ocr_log', [])}
+    restaurants = []
+    for item in data['restaurants']:
+        row = dict(item)
+        log = ocr_log.get(row.get('name'))
+        row['menu_fresh_today'] = bool(log and log.get('updated'))
+        restaurants.append(row)
     ready_count = count_by_status(restaurants, 'ready')
     preparing_count = count_by_status(restaurants, 'preparing')
     cards = '\n'.join(render_restaurant_card(item) for item in restaurants)
