@@ -52,7 +52,7 @@
       "name": "더푸드스케치",
       "page_url": "https://pf.kakao.com/_nFfwj",
       "detail_url": "https://pf.kakao.com/_nFfwj",
-      "image_url": "http://k.kakaocdn.net/dn/VJv03/dJMcagLSykl/JNv7WV0J6WXqK2m8kXXK01/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/cfxhY4/dJMcab4QC8Q/HFbES6j1jsQhSg4xd2ekq0/img.jpg",
       "output": "menu-today/images/thefoodsketch.png",
       "status": "updated"
     },
@@ -74,7 +74,7 @@
       "name": "에스제이 구내식당",
       "page_url": "https://www.instagram.com/s_j_food_278/",
       "status": "skipped",
-      "reason": "image_not_found"
+      "reason": "429 Client Error: Too Many Requests for url: https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fs_j_food_278%2F&is_from_rle"
     }
   ]
 }
