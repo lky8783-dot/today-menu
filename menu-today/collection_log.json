@@ -35,6 +35,24 @@
       "page_url": "https://pf.kakao.com/_ECNfn",
       "image_url": "http://k.kakaocdn.net/dn/wo9ip/dJMcaibOECO/H174j3lUgsfhkKv9N00sV0/img.jpg",
       "output": "menu-today/images/public-gasan.png"
+    },
+    {
+      "name": "더푸드스케치",
+      "page_url": "https://pf.kakao.com/_nFfwj",
+      "image_url": "http://k.kakaocdn.net/dn/ccXjMT/dJMcadO4s3A/HKcpaMaBeAEiBg6ev4AjAK/img.jpg",
+      "output": "menu-today/images/thefoodsketch.png"
+    },
+    {
+      "name": "스타밸리푸드포유",
+      "page_url": "https://pf.kakao.com/_axkixdn",
+      "image_url": "http://k.kakaocdn.net/dn/bvS7Vx/btrt0LOO9QD/wcXGkLgujOk1TYKiSCWqHK/img.jpg",
+      "output": "menu-today/images/starvalley-food4u.png"
+    },
+    {
+      "name": "돈토",
+      "page_url": "https://pf.kakao.com/_Gxjxcbxj",
+      "image_url": "http://k.kakaocdn.net/dn/bUdBlN/btrPybZ1blc/B1Aevq6s9dGBgGBRGFHqhK/img.jpg",
+      "output": "menu-today/images/donto.png"
     }
   ]
 }
