@@ -252,6 +252,28 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
         if len(found) >= config["min_items"]:
             return found[: config["max_items"]], False
         return existing, True
+    if name == "구내식당라온푸드":
+        merged = "\n".join(texts)
+        found: list[str] = []
+        patterns = [
+            (r"오므라이스", "오므라이스"),
+            (r"돈육김치찌개|돈육김치지개", "돈육김치찌개"),
+            (r"차돌박이숙주볶음|차돌박이숙주묶음|차돌박이숙주복음", "차돌박이숙주볶음"),
+            (r"치킨스틱\s*&\s*치즈스틱|치킨스틱치즈스틱", "치킨스틱 & 치즈스틱"),
+            (r"갈비산적데리야끼|갈비산적데리아끼|갈비산적데리야기", "갈비산적데리야끼"),
+            (r"야채비빔만두|야재비빔만두|야채비빔만드", "야채비빔만두"),
+            (r"스팸계란볶음밥|스팸계란복음밥", "스팸계란볶음밥"),
+            (r"셀프라면\s*&\s*배추김치|셀프라면.*배추김치", "셀프라면 & 배추김치"),
+            (r"샐러드\s*&\s*드레싱|샐러드.*드레싱", "샐러드 & 드레싱"),
+            (r"숭늉\s*&\s*음료|숭늉.*음료", "숭늉 & 음료"),
+        ]
+        for pattern, label in patterns:
+            if re.search(pattern, merged):
+                found.append(label)
+        found = [item for idx, item in enumerate(found) if item not in found[:idx]]
+        if len(found) >= config["min_items"]:
+            return found[: config["max_items"]], False
+        return existing, True
     candidates = collect_candidates(texts)
     deduped = dedupe_candidates(candidates)
     if name == "퍼블릭가산 구내식당":
