@@ -1,11 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 9일 목요일",
-<<<<<<< HEAD
-  "updated_at": "2026-04-09 13:18:58",
-=======
-  "updated_at": "2026-04-09 13:08:38",
->>>>>>> a202872 (Show last captured menus while waiting)
+  "updated_at": "2026-04-09 13:22:14",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -16,7 +12,7 @@
       "preview_image": "./images/imeal.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=18.44,0,0,0,dh",
       "menu": [
-        "맘스터치순살치킨 강정",
+        "맘스터치순살치킨 강정(계육:브라질산",
         "어묵잡채",
         "무생채",
         "호박고추장찌개",
