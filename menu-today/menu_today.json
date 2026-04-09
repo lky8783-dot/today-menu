@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
-  "date_label": "2026년 4월 8일 수요일",
-  "updated_at": "2026-04-08 17:34:52",
+  "date_label": "2026년 4월 9일 목요일",
+  "updated_at": "2026-04-09 09:19:29",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -12,19 +12,20 @@
       "preview_image": "./images/imeal.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=18.44,0,0,0,dh",
       "menu": [
-        "특식 육회비빔밥",
-        "불고기비빔밥",
-        "팽이미역장국",
-        "꿔바로우탕수육",
-        "불어묵볶음",
-        "알감자버터오븐구이",
-        "숙주무침",
-        "양념고추지",
-        "가든샐러드 & 오렌지D",
-        "국내산 배추겉절이",
-        "헛개차 / 탄산음료",
+        "맘스터치순살치킨 강정(계육:브라질산",
+        "어묵잡채",
+        "무생채",
+        "호박고추장찌개",
+        "콩나물무침",
+        "백미밥 / 흑미밥",
+        "가든샐러드드드 & 키위ㅁ",
+        "타산을료",
+        "롱나물무침",
+        "호박고주장찌개",
+        "백미밤 / 흑미밥",
         "셀프비빔밥 / 한강라면",
-        "간편식: 치킨텐더샐러드"
+        "간편식: 쉬림프샐러드드드",
+        "SIAL / 탄산음료"
       ]
     },
     {
@@ -38,7 +39,6 @@
         "대파숯불치킨바베큐",
         "해물까스",
         "철판고기산적",
-        "양반단팥찐빵",
         "꽈리고추양념찜",
         "샐러드",
         "깍두기",
@@ -75,16 +75,18 @@
       "preview_image": "./images/raonfood.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdAy2,2AIqEa,%EA%B0%80%EC%82%B0%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%84%BC%ED%84%B0,20574009,PLACE_POI/-/walk?c=16.86,0,0,0,dh",
       "menu": [
-        "맑은콩나물국",
-        "훈제오리포크구이",
-        "고구마닭볶음탕",
-        "생선까스 / 타르타르",
-        "꽈리고추멸치볶음",
-        "청경채겉절이",
-        "알마늘쫑지무침",
-        "셀프라면 & 배추김치",
-        "샐러드 & 드레싱",
-        "숭늉 & 음료"
+        "모듬마재절임",
+        "비빔메밀막국수",
+        "샐러드드드 & 드레심",
+        "팝만두, 팝콘치킨",
+        "팝만두, 팝콘지킨",
+        "삼주쌈 / 쌈잠",
+        "럼지머묵탐",
+        "검지머묵탐",
+        "삼주쌈 / 쌈장",
+        "보쌈 / 새우첫",
+        "김지머묵탐",
+        "ay )바버큐소스구0"
       ]
     },
     {
@@ -144,13 +146,13 @@
   "ocr_log": [
     {
       "name": "아이밀",
-      "items": 13,
-      "updated": false,
-      "used_existing_fallback": true
+      "items": 14,
+      "updated": true,
+      "used_existing_fallback": false
     },
     {
       "name": "다시 봄",
-      "items": 10,
+      "items": 9,
       "updated": true,
       "used_existing_fallback": false
     },
@@ -162,9 +164,9 @@
     },
     {
       "name": "구내식당라온푸드",
-      "items": 10,
-      "updated": false,
-      "used_existing_fallback": true
+      "items": 12,
+      "updated": true,
+      "used_existing_fallback": false
     },
     {
       "name": "마이푸드",
