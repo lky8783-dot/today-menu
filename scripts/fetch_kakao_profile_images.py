@@ -1,11 +1,14 @@
 ﻿from __future__ import annotations
 
+import io
 import json
 import re
+from html import unescape
 from pathlib import Path
 from urllib.parse import urljoin
 
 import requests
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 HEADERS = {
@@ -17,17 +20,23 @@ HEADERS = {
 }
 
 PROFILE_SOURCES = [
-    {"name": "아이밀", "page_url": "https://pf.kakao.com/_vygYn", "output": ROOT / "menu-today" / "images" / "imeal.png"},
-    {"name": "다시 봄", "page_url": "https://pf.kakao.com/_xhNExmn", "output": ROOT / "menu-today" / "images" / "dasibom.png"},
-    {"name": "밥(온) 구내식당", "page_url": "https://pf.kakao.com/_mYxfen", "output": ROOT / "menu-today" / "images" / "babon.png"},
-    {"name": "구내식당라온푸드", "page_url": "https://pf.kakao.com/_Rxkrxfn", "output": ROOT / "menu-today" / "images" / "raonfood.png"},
-    {"name": "마이푸드", "page_url": "https://pf.kakao.com/_xaAvxlG", "output": ROOT / "menu-today" / "images" / "myfood.png"},
-    {"name": "퍼블릭가산 구내식당", "page_url": "https://pf.kakao.com/_ECNfn", "output": ROOT / "menu-today" / "images" / "public-gasan.png"},
-    {"name": "더푸드스케치", "page_url": "https://pf.kakao.com/_nFfwj", "output": ROOT / "menu-today" / "images" / "thefoodsketch.png"},
-    {"name": "스타밸리푸드포유", "page_url": "https://pf.kakao.com/_axkixdn", "output": ROOT / "menu-today" / "images" / "starvalley-food4u.png"},
-    {"name": "돈토", "page_url": "https://pf.kakao.com/_Gxjxcbxj", "output": ROOT / "menu-today" / "images" / "donto.png"},
-    {"name": "에스제이 구내식당", "page_url": "https://www.instagram.com/s_j_food_278/", "output": ROOT / "menu-today" / "images" / "sj-food.png"},
+    {"name": "아이밀", "page_url": "https://pf.kakao.com/_vygYn", "output": ROOT / "menu-today" / "images" / "imeal.png", "strategy": "meta_image"},
+    {"name": "다시 봄", "page_url": "https://pf.kakao.com/_xhNExmn", "output": ROOT / "menu-today" / "images" / "dasibom.png", "strategy": "meta_image"},
+    {"name": "밥(온) 구내식당", "page_url": "https://pf.kakao.com/_mYxfen", "output": ROOT / "menu-today" / "images" / "babon.png", "strategy": "meta_image"},
+    {"name": "구내식당라온푸드", "page_url": "https://pf.kakao.com/_Rxkrxfn", "output": ROOT / "menu-today" / "images" / "raonfood.png", "strategy": "meta_image"},
+    {"name": "마이푸드", "page_url": "https://pf.kakao.com/_xaAvxlG", "output": ROOT / "menu-today" / "images" / "myfood.png", "strategy": "meta_image"},
+    {"name": "퍼블릭가산 구내식당", "page_url": "https://pf.kakao.com/_ECNfn", "output": ROOT / "menu-today" / "images" / "public-gasan.png", "strategy": "meta_image"},
+    {"name": "더푸드스케치", "page_url": "https://pf.kakao.com/_nFfwj", "output": ROOT / "menu-today" / "images" / "thefoodsketch.png", "strategy": "meta_image"},
+    {"name": "스타밸리푸드포유", "page_url": "https://pf.kakao.com/_axkixdn/posts", "output": ROOT / "menu-today" / "images" / "starvalley-food4u.png", "strategy": "kakao_first_post_image"},
+    {"name": "돈토", "page_url": "https://pf.kakao.com/_Gxjxcbxj", "output": ROOT / "menu-today" / "images" / "donto.png", "strategy": "meta_image"},
+    {"name": "에스제이 구내식당", "page_url": "https://www.instagram.com/s_j_food_278/", "output": ROOT / "menu-today" / "images" / "sj-food.png", "strategy": "instagram_first_post_image"},
 ]
+
+
+def fetch_page_html(page_url: str) -> str:
+    response = requests.get(page_url, headers=HEADERS, timeout=30)
+    response.raise_for_status()
+    return response.text
 
 
 def extract_meta_image(page_url: str, html: str) -> str | None:
@@ -39,7 +48,34 @@ def extract_meta_image(page_url: str, html: str) -> str | None:
     for pattern in patterns:
         match = re.search(pattern, html, flags=re.IGNORECASE)
         if match:
-            return urljoin(page_url, match.group(1))
+            return urljoin(page_url, unescape(match.group(1)))
+    return None
+
+
+def extract_first_kakao_post_url(page_url: str, html: str) -> str | None:
+    patterns = [
+        r'<a[^>]+class=["\'][^"\']*link_title[^"\']*["\'][^>]+href=["\']([^"\']+)["\']',
+        r'href=["\']([^"\']+/\d+)["\']',
+    ]
+    for pattern in patterns:
+        matches = re.findall(pattern, html, flags=re.IGNORECASE)
+        for match in matches:
+            post_url = urljoin(page_url, unescape(match))
+            if re.search(r'/_[^/]+/\d+$', post_url):
+                return post_url
+    return None
+
+
+def extract_first_instagram_post_url(page_url: str, html: str) -> str | None:
+    matches = re.findall(r'href=["\']([^"\']*/p/[^"\']+/)["\']', html, flags=re.IGNORECASE)
+    seen: set[str] = set()
+    for match in matches:
+        post_url = urljoin(page_url, unescape(match))
+        if post_url in seen:
+            continue
+        seen.add(post_url)
+        if '/p/' in post_url:
+            return post_url
     return None
 
 
@@ -54,16 +90,49 @@ def download_file(url: str, output_path: Path) -> None:
     response = requests.get(url, headers=HEADERS, timeout=30)
     response.raise_for_status()
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_bytes(response.content)
+    image = Image.open(io.BytesIO(response.content)).convert("RGB")
+    image.save(output_path, format="PNG")
+
+
+def resolve_image_url(source: dict) -> tuple[str | None, str | None]:
+    strategy = source.get("strategy", "meta_image")
+    page_url = source["page_url"]
+    html = fetch_page_html(page_url)
+
+    if strategy == "meta_image":
+        image_url = extract_meta_image(page_url, html)
+        if image_url:
+            return normalize_kakao_image_url(image_url), page_url
+        return None, None
+
+    if strategy == "kakao_first_post_image":
+        detail_url = extract_first_kakao_post_url(page_url, html)
+        if not detail_url:
+            return None, None
+        detail_html = fetch_page_html(detail_url)
+        image_url = extract_meta_image(detail_url, detail_html)
+        if image_url:
+            return normalize_kakao_image_url(image_url), detail_url
+        return None, detail_url
+
+    if strategy == "instagram_first_post_image":
+        detail_url = extract_first_instagram_post_url(page_url, html)
+        if not detail_url:
+            return None, None
+        detail_html = fetch_page_html(detail_url)
+        image_url = extract_meta_image(detail_url, detail_html)
+        if image_url:
+            return image_url, detail_url
+        return None, detail_url
+
+    raise ValueError(f"unknown strategy: {strategy}")
 
 
 def sync_preview_images() -> None:
     results: list[dict] = []
     for source in PROFILE_SOURCES:
         try:
-            page_response = requests.get(source["page_url"], headers=HEADERS, timeout=30)
-            page_response.raise_for_status()
-            image_url = extract_meta_image(source["page_url"], page_response.text)
+            image_url, detail_url = resolve_image_url(source)
             if not image_url:
                 results.append(
                     {
@@ -74,12 +143,12 @@ def sync_preview_images() -> None:
                     }
                 )
                 continue
-            image_url = normalize_kakao_image_url(image_url)
             download_file(image_url, source["output"])
             results.append(
                 {
                     "name": source["name"],
                     "page_url": source["page_url"],
+                    "detail_url": detail_url,
                     "image_url": image_url,
                     "output": str(source["output"].relative_to(ROOT)).replace("\\", "/"),
                     "status": "updated",
@@ -103,7 +172,7 @@ def sync_preview_images() -> None:
 
 def main() -> None:
     sync_preview_images()
-    print("kakao profile images updated")
+    print("menu images updated")
 
 
 if __name__ == "__main__":

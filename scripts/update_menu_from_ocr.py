@@ -295,6 +295,10 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             if re.search(pattern, merged):
                 found.append(label)
         found = [item for idx, item in enumerate(found) if item not in found[:idx]]
+        # 이미지가 오늘 식단으로 확인됐고 핵심 메뉴가 충분히 잡히면,
+        # 수동 보정으로 넣어둔 전체 메뉴를 그대로 유지하면서 오늘 메뉴로 인정한다.
+        if len(found) >= 8 and existing:
+            return existing[: config["max_items"]], False
         if len(found) >= config["min_items"]:
             return found[: config["max_items"]], False
         return existing, True
