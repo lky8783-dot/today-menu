@@ -4,7 +4,7 @@
       "name": "아이밀",
       "page_url": "https://pf.kakao.com/_vygYn",
       "detail_url": "https://pf.kakao.com/_vygYn",
-      "image_url": "http://k.kakaocdn.net/dn/bAlJ11/dJMcaipnOR0/QXQh8gTwC0ZED22QHKbH6k/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/QEVjG/dJMcacJuLlF/d7dKNmHGPAVYS3e3Ydlms1/img.jpg",
       "output": "menu-today/images/imeal.png",
       "status": "updated"
     },
@@ -12,7 +12,7 @@
       "name": "다시 봄",
       "page_url": "https://pf.kakao.com/_xhNExmn",
       "detail_url": "https://pf.kakao.com/_xhNExmn",
-      "image_url": "http://k.kakaocdn.net/dn/b8vvfx/dJMcajaHOf7/1WAXnZPqZPTS3o3Pu5PbGk/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/c705ji/dJMcadO5iPU/UkhKAGy6aSx5KqnBiJ5qv1/img.jpg",
       "output": "menu-today/images/dasibom.png",
       "status": "updated"
     },
@@ -20,7 +20,7 @@
       "name": "밥(온) 구내식당",
       "page_url": "https://pf.kakao.com/_mYxfen",
       "detail_url": "https://pf.kakao.com/_mYxfen",
-      "image_url": "http://k.kakaocdn.net/dn/djLivD/dJMcadhh0rw/kVmhczUORpBKRhkQSZKaUK/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/eomc2k/dJMcaax8i19/5WzWMqBcBRDPRdJePFN5pk/img.jpg",
       "output": "menu-today/images/babon.png",
       "status": "updated"
     },
@@ -28,7 +28,7 @@
       "name": "구내식당라온푸드",
       "page_url": "https://pf.kakao.com/_Rxkrxfn",
       "detail_url": "https://pf.kakao.com/_Rxkrxfn",
-      "image_url": "http://k.kakaocdn.net/dn/efZ4x5/dJMcabX5yK2/blvDNHl116fVkyo0qOfmt0/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/bg6aQX/dJMcahKMSqt/yk85nUd1WVAPEwjSDUQZkk/img.jpg",
       "output": "menu-today/images/raonfood.png",
       "status": "updated"
     },
@@ -36,7 +36,7 @@
       "name": "마이푸드",
       "page_url": "https://pf.kakao.com/_xaAvxlG",
       "detail_url": "https://pf.kakao.com/_xaAvxlG",
-      "image_url": "http://k.kakaocdn.net/dn/0stda/dJMcaflSU6d/SyKSwkXB6AjF6crLYCAA41/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/ld7FO/dJMcadhiMI9/fzdIPdTJn0cSATfdWHprhk/img.jpg",
       "output": "menu-today/images/myfood.png",
       "status": "updated"
     },
@@ -52,7 +52,7 @@
       "name": "더푸드스케치",
       "page_url": "https://pf.kakao.com/_nFfwj",
       "detail_url": "https://pf.kakao.com/_nFfwj",
-      "image_url": "http://k.kakaocdn.net/dn/cfxhY4/dJMcab4QC8Q/HFbES6j1jsQhSg4xd2ekq0/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/cBuJe2/dJMcahxf3H3/O9KiB7AahXzCNQcpLB2yl0/img.jpg",
       "output": "menu-today/images/thefoodsketch.png",
       "status": "updated"
     },
@@ -74,7 +74,7 @@
       "name": "에스제이 구내식당",
       "page_url": "https://www.instagram.com/s_j_food_278/",
       "status": "skipped",
-      "reason": "429 Client Error: Too Many Requests for url: https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fs_j_food_278%2F&is_from_rle"
+      "reason": "image_not_found"
     }
   ]
 }
