@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 10일 금요일",
-  "updated_at": "2026-04-10 11:23:15",
+  "updated_at": "2026-04-10 12:42:04",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -13,17 +13,19 @@
       "map_url": "https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=18.44,0,0,0,dh",
       "menu": [
         "유부미니우동",
-        "돈육메란장조림",
-        "치킨까스 & 머스타드",
-        "콘참치펜네샐러드",
+        "콘참치펜네샐러드드드",
         "얼갈이된장나물",
-        "참나물오리엔탈무침",
-        "가든샐러드 & 블루베리D",
-        "국내산 배추겉절이",
         "흑미밥 / 백미밥",
-        "헛개차 / 탄산음료",
-        "셀프비빔밥 / 한강라면",
-        "간편식: 훈제오리샐러드"
+        "참나물오리엔탈무침",
+        "가든샐러드드드 & 블루베리ㅁ",
+        "치킨까스 & 머스타뜨(계육:국내신",
+        "치킨까스 & 머스타드(계육:국내신",
+        "간식: BMSEIMAAE onan",
+        "B.S 거켜이커",
+        "에타므치",
+        "참나물오리",
+        "즈겨전",
+        "1 즌 —!"
       ]
     },
     {
@@ -172,29 +174,22 @@
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdKjD,2AIpAQ,SJ%ED%85%8C%ED%81%AC%EB%85%B8%EB%B9%8C,19472604,PLACE_POI/-/walk?c=18.00,0,0,0,dh",
       "menu": [
-        "얼큰닭개장",
-        "들깨백불고기",
-        "매콤맛살링튀김",
-        "불닭완자구이",
-        "어묵메추리알조림",
-        "도토리묵무침",
-        "브로컬리숙회",
-        "백미밥 / 잡곡밥 / 김치",
-        "그린셀러드 & 드레싱",
+        "얼큰닭개장 시래기된장국",
+        "불닭완자구이 치즈계란말이",
+        "어묵메추리알조림 모듬채소잡채",
+        "도토리묵무침 계절나물",
+        "브로컬리숙회 백미밥 / 잡곡밥 / 김치",
+        "들깨백불고기 닭볶음탕",
+        "백미밥 / 잡곡밥 / 김치 그린샐러드드드 & 드레싱",
+        "Olt 에스제이구내식당 ht",
+        "매콤맛살링튀김 톤가스",
+        "매콤맛살링튀김 돈가스",
+        "언크다",
+        "개장",
         "시래기된장국",
-        "닭볶음탕",
-        "돈가스",
-        "치즈계란말이",
-        "모듬채소잡채",
-        "계절나물",
-        "백미밥 / 잡곡밥 / 김치",
-        "그린셀러드 & 드레싱",
-        "셀프계란후라이",
-        "한강라면",
-        "토스트 & 딸기잼",
-        "탄산음료",
-        "숍뉖",
-        "매실차"
+        "들깨백불고기",
+        "당보으타",
+        "매콤맛살링튀김"
       ],
       "message": "",
       "preview_image": "./images/sj-food-menu.png",
@@ -270,55 +265,55 @@
   "ocr_log": [
     {
       "name": "아이밀",
-      "items": 12,
+      "items": 14,
       "updated": true,
       "used_existing_fallback": false
     },
     {
       "name": "다시 봄",
       "items": 10,
-      "updated": true,
-      "used_existing_fallback": false
+      "updated": false,
+      "used_existing_fallback": true
     },
     {
       "name": "밥(온) 구내식당",
       "items": 11,
-      "updated": true,
-      "used_existing_fallback": false
+      "updated": false,
+      "used_existing_fallback": true
     },
     {
       "name": "구내식당라온푸드",
       "items": 10,
-      "updated": true,
-      "used_existing_fallback": false
+      "updated": false,
+      "used_existing_fallback": true
     },
     {
       "name": "마이푸드",
       "items": 12,
-      "updated": true,
-      "used_existing_fallback": false
+      "updated": false,
+      "used_existing_fallback": true
     },
     {
       "name": "퍼블릭가산 구내식당",
       "items": 3,
-      "updated": true,
-      "used_existing_fallback": false
+      "updated": false,
+      "used_existing_fallback": true
     },
     {
       "name": "더푸드스케치",
       "items": 11,
-      "updated": true,
-      "used_existing_fallback": false
+      "updated": false,
+      "used_existing_fallback": true
     },
     {
       "name": "스타밸리푸드포유",
       "items": 11,
-      "updated": true,
-      "used_existing_fallback": false
+      "updated": false,
+      "used_existing_fallback": true
     },
     {
       "name": "에스제이 구내식당",
-      "items": 23,
+      "items": 16,
       "updated": true,
       "used_existing_fallback": false
     }
