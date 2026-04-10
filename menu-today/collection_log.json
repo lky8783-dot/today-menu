@@ -20,7 +20,7 @@
       "name": "밥(온) 구내식당",
       "page_url": "https://pf.kakao.com/_mYxfen",
       "detail_url": "https://pf.kakao.com/_mYxfen",
-      "image_url": "http://k.kakaocdn.net/dn/eomc2k/dJMcaax8i19/5WzWMqBcBRDPRdJePFN5pk/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/ceZ568/dJMcaax8Da8/C51xN2neS2kj4SKuhaQJ20/img.jpg",
       "output": "menu-today/images/babon.png",
       "status": "updated"
     },
@@ -52,7 +52,7 @@
       "name": "더푸드스케치",
       "page_url": "https://pf.kakao.com/_nFfwj",
       "detail_url": "https://pf.kakao.com/_nFfwj",
-      "image_url": "http://k.kakaocdn.net/dn/cBuJe2/dJMcahxf3H3/O9KiB7AahXzCNQcpLB2yl0/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/W6uCg/dJMcaduMCWx/jvmgqQS4JuhZyUQQ6FaCDK/img.jpg",
       "output": "menu-today/images/thefoodsketch.png",
       "status": "updated"
     },
@@ -74,7 +74,7 @@
       "name": "에스제이 구내식당",
       "page_url": "https://www.instagram.com/s_j_food_278/",
       "status": "skipped",
-      "reason": "429 Client Error: Too Many Requests for url: https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fs_j_food_278%2F&is_from_rle"
+      "reason": "image_not_found"
     }
   ]
 }
