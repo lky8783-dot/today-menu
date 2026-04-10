@@ -240,6 +240,30 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
     if name in SAFE_FALLBACK_ONLY:
         return existing, True
     config = SOURCE_CONFIG[name]
+    if name == "아이밀":
+        merged = "\n".join(texts)
+        found: list[str] = []
+        patterns = [
+            (r"유부미니우동", "유부미니우동"),
+            (r"돈육메란장조림|돈육메추리알장조림", "돈육메란장조림"),
+            (r"치킨까스\s*&\s*머스타드|치킨까스.*머스타드", "치킨까스 & 머스타드"),
+            (r"콘참치펜네샐러드", "콘참치펜네샐러드"),
+            (r"얼갈이된장나물", "얼갈이된장나물"),
+            (r"참나물오리엔탈무침", "참나물오리엔탈무침"),
+            (r"가든샐러드\s*&\s*블루베리D|가든샐러드.*블루베리D", "가든샐러드 & 블루베리D"),
+            (r"국내산\s*배추겉절이|배추겉절이", "국내산 배추겉절이"),
+            (r"흑미밥\s*/\s*백미밥|흑미밥백미밥", "흑미밥 / 백미밥"),
+            (r"헛개차\s*/\s*탄산음료|헛개차.*탄산음료", "헛개차 / 탄산음료"),
+            (r"셀프비빔밥\s*/\s*한강라면|셀프비빔밥.*한강라면", "셀프비빔밥 / 한강라면"),
+            (r"간편식:\s*훈제오리샐러드|훈제오리샐러드", "간편식: 훈제오리샐러드"),
+        ]
+        for pattern, label in patterns:
+            if re.search(pattern, merged):
+                found.append(label)
+        found = [item for idx, item in enumerate(found) if item not in found[:idx]]
+        if len(found) >= config["min_items"]:
+            return found[: config["max_items"]], False
+        return existing, True
     if name == "다시 봄":
         merged = "\n".join(texts)
         found: list[str] = []
