@@ -4,7 +4,7 @@
       "name": "아이밀",
       "page_url": "https://pf.kakao.com/_vygYn",
       "detail_url": "https://pf.kakao.com/_vygYn",
-      "image_url": "http://k.kakaocdn.net/dn/QEVjG/dJMcacJuLlF/d7dKNmHGPAVYS3e3Ydlms1/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/XI2IU/dJMcaibSoJI/LRm2A9yRYEHk9C97e3UpHK/img.jpg",
       "output": "menu-today/images/imeal.png",
       "status": "updated"
     },
@@ -74,7 +74,7 @@
       "name": "에스제이 구내식당",
       "page_url": "https://www.instagram.com/s_j_food_278/",
       "status": "skipped",
-      "reason": "image_not_found"
+      "reason": "429 Client Error: Too Many Requests for url: https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fs_j_food_278%2F&is_from_rle"
     }
   ]
 }
