@@ -18,6 +18,15 @@ def load_data() -> dict:
     return json.loads(DATA_PATH.read_text(encoding='utf-8-sig'))
 
 
+def parse_logged_time(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    try:
+        return datetime.strptime(value, "%Y-%m-%d %H:%M:%S").replace(tzinfo=SEOUL)
+    except ValueError:
+        return None
+
+
 def sort_restaurants(restaurants: list[dict]) -> list[dict]:
     priority_map = {name: index for index, name in enumerate(PRIORITY)}
 
@@ -117,11 +126,13 @@ def render_restaurant_card(item: dict) -> str:
 
 def render_page(data: dict) -> str:
     ocr_log = {entry.get('name'): entry for entry in data.get('ocr_log', [])}
+    now = datetime.now(SEOUL).date()
     restaurants = []
     for item in data['restaurants']:
         row = dict(item)
         log = ocr_log.get(row.get('name'))
-        row['menu_fresh_today'] = bool(log and log.get('updated'))
+        recorded_at = parse_logged_time(row.get('menu_recorded_at'))
+        row['menu_fresh_today'] = bool((log and log.get('updated')) or (recorded_at and recorded_at.date() == now))
         restaurants.append(row)
     ready_count = count_by_status(restaurants, 'ready')
     preparing_count = count_by_status(restaurants, 'preparing')

@@ -3,7 +3,7 @@
 import json
 import re
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -13,8 +13,10 @@ from PIL import Image, ImageFilter, ImageOps
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "menu-today" / "menu_today.json"
 HINTS_PATH = ROOT / "menu-today" / "dynamic_menu_hints.json"
+COLLECTION_LOG_PATH = ROOT / "menu-today" / "collection_log.json"
 SEOUL = ZoneInfo("Asia/Seoul")
 WEEKDAYS = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
+RECENT_FETCH_WINDOW = timedelta(hours=6)
 
 SOURCE_CONFIG = {
     "아이밀": {"image": ROOT / "menu-today" / "images" / "imeal.png", "min_items": 8, "max_items": 14},
@@ -122,8 +124,51 @@ def load_hints() -> dict[str, dict]:
     return {entry.get("name", ""): entry for entry in data.get("sources", [])}
 
 
+def load_collection_log() -> dict[str, dict]:
+    if not COLLECTION_LOG_PATH.exists():
+        return {}
+    data = json.loads(COLLECTION_LOG_PATH.read_text(encoding="utf-8-sig"))
+    return {entry.get("name", ""): entry for entry in data.get("sources", [])}
+
+
 def save_data(data: dict) -> None:
     DATA_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def parse_logged_time(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    try:
+        return datetime.strptime(value, "%Y-%m-%d %H:%M:%S").replace(tzinfo=SEOUL)
+    except ValueError:
+        return None
+
+
+def get_source_fetched_at(name: str, image_path: Path, collection_log: dict[str, dict]) -> datetime | None:
+    entry = collection_log.get(name, {})
+    fetched_at = parse_logged_time(entry.get("fetched_at"))
+    if fetched_at:
+        return fetched_at
+    if image_path.exists():
+        return datetime.fromtimestamp(image_path.stat().st_mtime, tz=SEOUL)
+    return None
+
+
+def is_recent_fetch(fetched_at: datetime | None, now: datetime) -> bool:
+    if not fetched_at:
+        return False
+    return fetched_at.date() == now.date() and now - fetched_at <= RECENT_FETCH_WINDOW
+
+
+def has_today_marker(texts: list[str], now: datetime) -> bool:
+    weekday = WEEKDAYS[now.weekday()]
+    patterns = [
+        rf"{now.month}\s*월\s*{now.day}\s*일",
+        rf"{now.month}\s*/\s*{now.day}",
+        weekday,
+    ]
+    merged = "\n".join(texts)
+    return any(re.search(pattern, merged) for pattern in patterns)
 
 
 def preprocess_variants(image_path: Path) -> list[tuple[str, Image.Image, str]]:
@@ -456,6 +501,7 @@ def update_json_with_ocr() -> None:
     pytesseract.pytesseract.tesseract_cmd = find_tesseract()
     data = load_data()
     hints = load_hints()
+    collection_log = load_collection_log()
     now = datetime.now(SEOUL)
     data["date_label"] = f"{now.year}년 {now.month}월 {now.day}일 {WEEKDAYS[now.weekday()]}"
 
@@ -469,38 +515,88 @@ def update_json_with_ocr() -> None:
         if not image_path.exists():
             logs.append({"name": name, "updated": False, "reason": "image_missing"})
             continue
+        source_fetched_at = get_source_fetched_at(name, image_path, collection_log)
+        recorded_source_at = parse_logged_time(restaurant.get("menu_recorded_source_fetched_at"))
+        if source_fetched_at and recorded_source_at and recorded_source_at >= source_fetched_at:
+            logs.append(
+                {
+                    "name": name,
+                    "items": len(restaurant.get("menu", [])),
+                    "updated": True,
+                    "used_existing_fallback": True,
+                    "reason": "already_recorded",
+                    "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S"),
+                }
+            )
+            continue
         previous_menu = list(restaurant.get("menu", []))
+        hint_entry = hints.get(name, {})
+        hint_text = hint_entry.get("alt_text", "")
+        fetched_recently = is_recent_fetch(source_fetched_at, now)
         if name == "에스제이 구내식당":
-            hint = hints.get(name, {})
-            sections = parse_sj_sections_from_hint(hint.get("alt_text", ""))
-            if sections:
+            sections = parse_sj_sections_from_hint(hint_text)
+            today_marker = has_today_marker([hint_text], now)
+            if sections and fetched_recently and today_marker:
                 restaurant["menu_sections"] = [{"title": title, "items": items} for title, items in sections.items()]
                 flat_menu = []
                 for items in sections.values():
                     flat_menu.extend(items)
                 restaurant["menu"] = flat_menu
+                restaurant["menu_recorded_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
+                restaurant["menu_recorded_source_fetched_at"] = source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else now.strftime("%Y-%m-%d %H:%M:%S")
                 logs.append(
                     {
                         "name": name,
                         "items": len(flat_menu),
                         "updated": True,
                         "used_existing_fallback": False,
+                        "today_marker": True,
+                        "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
                     }
                 )
                 continue
+            logs.append(
+                {
+                    "name": name,
+                    "items": len(previous_menu),
+                    "updated": False,
+                    "used_existing_fallback": True,
+                    "reason": "today_marker_not_found" if fetched_recently else "source_not_recent",
+                    "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
+                }
+            )
+            continue
         texts = ocr_texts(image_path)
         if name == "다시 봄":
             texts.extend(ocr_dasibom_crops(image_path))
+        today_marker = has_today_marker(texts + ([hint_text] if hint_text else []), now)
+        if not fetched_recently or not today_marker:
+            logs.append(
+                {
+                    "name": name,
+                    "items": len(previous_menu),
+                    "updated": False,
+                    "used_existing_fallback": True,
+                    "reason": "today_marker_not_found" if fetched_recently else "source_not_recent",
+                    "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
+                }
+            )
+            continue
         extracted_menu, used_fallback = parse_restaurant_menu(name, texts, previous_menu)
         restaurant["menu"] = extracted_menu
         if name != "에스제이 구내식당":
             restaurant.pop("menu_sections", None)
+        if extracted_menu:
+            restaurant["menu_recorded_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
+            restaurant["menu_recorded_source_fetched_at"] = source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else now.strftime("%Y-%m-%d %H:%M:%S")
         logs.append(
             {
                 "name": name,
                 "items": len(extracted_menu),
-                "updated": not used_fallback,
+                "updated": bool(extracted_menu),
                 "used_existing_fallback": used_fallback,
+                "today_marker": today_marker,
+                "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
             }
         )
 

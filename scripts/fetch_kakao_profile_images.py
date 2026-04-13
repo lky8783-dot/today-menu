@@ -3,14 +3,17 @@
 import io
 import json
 import re
+from datetime import datetime
 from html import unescape
 from pathlib import Path
 from urllib.parse import urljoin
+from zoneinfo import ZoneInfo
 
 import requests
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
+SEOUL = ZoneInfo("Asia/Seoul")
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -152,6 +155,7 @@ def sync_preview_images() -> None:
                     "image_url": image_url,
                     "output": str(source["output"].relative_to(ROOT)).replace("\\", "/"),
                     "status": "updated",
+                    "fetched_at": datetime.now(SEOUL).strftime("%Y-%m-%d %H:%M:%S"),
                 }
             )
         except Exception as exc:
