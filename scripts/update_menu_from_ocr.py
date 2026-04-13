@@ -586,14 +586,14 @@ def update_json_with_ocr() -> None:
         restaurant["menu"] = extracted_menu
         if name != "에스제이 구내식당":
             restaurant.pop("menu_sections", None)
-        if extracted_menu:
+        if extracted_menu and not used_fallback:
             restaurant["menu_recorded_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
             restaurant["menu_recorded_source_fetched_at"] = source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else now.strftime("%Y-%m-%d %H:%M:%S")
         logs.append(
             {
                 "name": name,
                 "items": len(extracted_menu),
-                "updated": bool(extracted_menu),
+                "updated": bool(extracted_menu) and not used_fallback,
                 "used_existing_fallback": used_fallback,
                 "today_marker": today_marker,
                 "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",

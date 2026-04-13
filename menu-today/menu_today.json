@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 13일 월요일",
-  "updated_at": "2026-04-13 10:50:12",
+  "updated_at": "2026-04-13 11:01:49",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -22,9 +22,7 @@
         "흑미밥 / 백미밥",
         "셀프비빔밥 / 한강라면",
         "간편식: 훈제오리샐러드"
-      ],
-      "menu_recorded_at": "2026-04-13 10:49:32",
-      "menu_recorded_source_fetched_at": "2026-04-13 10:49:11"
+      ]
     },
     {
       "name": "다시 봄",
@@ -44,9 +42,7 @@
         "탄산음료",
         "셀프라면"
       ],
-      "preview_image": "./images/dasibom.png",
-      "menu_recorded_at": "2026-04-13 10:49:32",
-      "menu_recorded_source_fetched_at": "2026-04-13 10:49:11"
+      "preview_image": "./images/dasibom.png"
     },
     {
       "name": "밥(온) 구내식당",
@@ -67,9 +63,7 @@
         "배추겉절이김치",
         "양배추샐러드",
         "단호박식혜 / 후식과자"
-      ],
-      "menu_recorded_at": "2026-04-13 10:49:32",
-      "menu_recorded_source_fetched_at": "2026-04-13 10:49:12"
+      ]
     },
     {
       "name": "구내식당라온푸드",
@@ -89,9 +83,7 @@
         "셀프라면 & 배추김치",
         "샐러드 & 드레싱",
         "숍뉖 & 음료"
-      ],
-      "menu_recorded_at": "2026-04-13 10:49:32",
-      "menu_recorded_source_fetched_at": "2026-04-13 10:49:12"
+      ]
     },
     {
       "name": "마이푸드",
@@ -113,9 +105,7 @@
         "오렌지",
         "잡곡밥 / 백미밥",
         "쌍채소 & 풋고추 / 한강라면 & 달콤한 잼 토스트 / 구수한 숍뉖 & 시원한 탄산음료"
-      ],
-      "menu_recorded_at": "2026-04-13 10:49:32",
-      "menu_recorded_source_fetched_at": "2026-04-13 10:49:12"
+      ]
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -128,9 +118,7 @@
         "제육김치볶음",
         "생선까스 & 타르타르소스",
         "세콤달콤쫄면"
-      ],
-      "menu_recorded_at": "2026-04-13 10:49:32",
-      "menu_recorded_source_fetched_at": "2026-04-13 10:49:13"
+      ]
     },
     {
       "name": "더푸드스케치",
@@ -151,9 +139,7 @@
         "오이부추생채",
         "천사채황도샐러드",
         "얼갈이열무겉절이 / 음료"
-      ],
-      "menu_recorded_at": "2026-04-13 10:49:32",
-      "menu_recorded_source_fetched_at": "2026-04-13 10:49:13"
+      ]
     },
     {
       "name": "스타밸리푸드포유",
@@ -175,9 +161,7 @@
         "포기김치"
       ],
       "message": "",
-      "preview_image": "./images/starvalley-food4u-post.png",
-      "menu_recorded_at": "2026-04-13 10:49:32",
-      "menu_recorded_source_fetched_at": "2026-04-13 10:49:23"
+      "preview_image": "./images/starvalley-food4u-post.png"
     },
     {
       "name": "에스제이 구내식당",
