@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
-  "date_label": "2026년 4월 13일 월요일",
-  "updated_at": "2026-04-13 13:40:27",
+  "date_label": "2026년 4월 14일 화요일",
+  "updated_at": "2026-04-14 09:02:38",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -278,66 +278,66 @@
     {
       "name": "아이밀",
       "items": 12,
-      "updated": true,
-      "used_existing_fallback": false,
+      "updated": false,
+      "used_existing_fallback": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-13 13:28:31"
+      "source_fetched_at": "2026-04-14 09:01:04"
     },
     {
       "name": "다시 봄",
       "items": 11,
-      "updated": true,
-      "used_existing_fallback": false,
-      "today_marker": true,
-      "source_fetched_at": "2026-04-13 13:28:33"
+      "updated": false,
+      "used_existing_fallback": true,
+      "reason": "today_marker_not_found",
+      "source_fetched_at": "2026-04-14 09:01:06"
     },
     {
       "name": "밥(온) 구내식당",
       "items": 9,
-      "updated": true,
-      "used_existing_fallback": false,
+      "updated": false,
+      "used_existing_fallback": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-13 13:28:35"
+      "source_fetched_at": "2026-04-14 09:01:08"
     },
     {
       "name": "구내식당라온푸드",
       "items": 10,
-      "updated": true,
-      "used_existing_fallback": false,
-      "today_marker": true,
-      "source_fetched_at": "2026-04-13 13:28:37"
+      "updated": false,
+      "used_existing_fallback": true,
+      "reason": "today_marker_not_found",
+      "source_fetched_at": "2026-04-14 09:01:10"
     },
     {
       "name": "마이푸드",
       "items": 12,
-      "updated": true,
-      "used_existing_fallback": false,
+      "updated": false,
+      "used_existing_fallback": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-13 13:28:39"
+      "source_fetched_at": "2026-04-14 09:01:12"
     },
     {
       "name": "퍼블릭가산 구내식당",
       "items": 3,
-      "updated": true,
-      "used_existing_fallback": false,
+      "updated": false,
+      "used_existing_fallback": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-13 13:28:41"
+      "source_fetched_at": "2026-04-14 09:01:15"
     },
     {
       "name": "더푸드스케치",
       "items": 11,
-      "updated": true,
-      "used_existing_fallback": false,
+      "updated": false,
+      "used_existing_fallback": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-13 13:28:42"
+      "source_fetched_at": "2026-04-14 09:01:17"
     },
     {
       "name": "스타밸리푸드포유",
       "items": 10,
-      "updated": true,
-      "used_existing_fallback": false,
+      "updated": false,
+      "used_existing_fallback": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-13 13:28:46"
+      "source_fetched_at": "2026-04-14 09:01:21"
     },
     {
       "name": "에스제이 구내식당",
@@ -345,7 +345,7 @@
       "updated": false,
       "used_existing_fallback": true,
       "reason": "today_marker_not_found",
-      "source_fetched_at": "2026-04-13 13:27:53"
+      "source_fetched_at": "2026-04-14 09:00:28"
     }
   ]
 }
