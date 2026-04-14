@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 14일 화요일",
-  "updated_at": "2026-04-14 11:11:51",
+  "updated_at": "2026-04-14 11:33:20",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -25,8 +25,8 @@
         "셀프비빔밥 / 한강라면",
         "간편식: 훈제오리샐러드"
       ],
-      "menu_recorded_at": "2026-04-14 11:11:51",
-      "menu_recorded_source_fetched_at": "2026-04-14 10:04:41",
+      "menu_recorded_at": "2026-04-14 11:31:21",
+      "menu_recorded_source_fetched_at": "2026-04-14 11:30:55",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -50,8 +50,8 @@
         "셀프라면"
       ],
       "preview_image": "./images/dasibom.png",
-      "menu_recorded_at": "2026-04-14 11:11:51",
-      "menu_recorded_source_fetched_at": "2026-04-14 10:04:41",
+      "menu_recorded_at": "2026-04-14 11:31:21",
+      "menu_recorded_source_fetched_at": "2026-04-14 11:30:58",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -74,8 +74,8 @@
         "배추겉절이김치",
         "양배추샐러드 / 인절미떡"
       ],
-      "menu_recorded_at": "2026-04-14 11:11:51",
-      "menu_recorded_source_fetched_at": "2026-04-14 10:04:41",
+      "menu_recorded_at": "2026-04-14 11:31:21",
+      "menu_recorded_source_fetched_at": "2026-04-14 11:31:00",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -124,8 +124,8 @@
         "잡곡밥 / 백미밥",
         "쌈채소 & 풋고추 / 한강라면 & 달콤한 잼 토스트 / 구수한 숭늉 & 시원한 탄산음료"
       ],
-      "menu_recorded_at": "2026-04-14 11:11:51",
-      "menu_recorded_source_fetched_at": "2026-04-14 10:04:41",
+      "menu_recorded_at": "2026-04-14 11:31:21",
+      "menu_recorded_source_fetched_at": "2026-04-14 11:31:04",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -141,8 +141,8 @@
         "고등어김치조림",
         "가스오부시양배추전"
       ],
-      "menu_recorded_at": "2026-04-14 11:11:51",
-      "menu_recorded_source_fetched_at": "2026-04-13 13:12:50",
+      "menu_recorded_at": "2026-04-14 11:31:21",
+      "menu_recorded_source_fetched_at": "2026-04-14 11:31:06",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -166,8 +166,8 @@
         "가든샐러드/드레싱",
         "배추겉절이/음료"
       ],
-      "menu_recorded_at": "2026-04-14 11:11:51",
-      "menu_recorded_source_fetched_at": "2026-04-14 10:04:41",
+      "menu_recorded_at": "2026-04-14 11:31:21",
+      "menu_recorded_source_fetched_at": "2026-04-14 11:31:08",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -191,8 +191,8 @@
       ],
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png",
-      "menu_recorded_at": "2026-04-14 11:11:51",
-      "menu_recorded_source_fetched_at": "2026-04-14 10:04:41",
+      "menu_recorded_at": "2026-04-14 11:31:21",
+      "menu_recorded_source_fetched_at": "2026-04-14 11:31:12",
       "menu_recent_source_today": true
     },
     {
@@ -202,28 +202,23 @@
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdKjD,2AIpAQ,SJ%ED%85%8C%ED%81%AC%EB%85%B8%EB%B9%8C,19472604,PLACE_POI/-/walk?c=18.00,0,0,0,dh",
       "menu": [
-        "조갯살시금치된장국",
         "백미밥 / 잡곡밥",
         "포항닭보쌈",
-        "매콤깐풍육",
-        "김치고기산적구이",
-        "청양풍짜장면",
+        "그린샐러드드드드",
+        "추가찬2종",
+        "계란후라이 / 토스트 & 딸기잼",
         "숙주나물무침",
         "배추김치",
-        "그린샐러드",
-        "추가찬2종",
-        "계란후라이 / 토스트&딸기잼",
-        "셀프 라면",
-        "탄산음료, 숭늉, 매실차",
-        "감자수제비국",
+        "배주김치",
+        "숙주나묻무침",
         "잡곡밥",
-        "오징어볶음",
         "감자고로케 * 소스",
-        "모듬소시지볶음",
-        "고기만두찜 * 소스",
         "계절나물",
         "배추김치",
-        "그린샐러드",
+        "그린샐러드드드드",
+        "계란후라이 / 토스트 & 딸기잼",
+        "감자수제비국",
+        "재란후라이 / 토스트 & 딸기잼",
         "계란후라이 / 토스트&딸기잼",
         "셀프 라면",
         "탄산음료, 숭늉, 매실차"
@@ -234,41 +229,41 @@
         {
           "title": "중식",
           "items": [
-            "조갯살시금치된장국",
             "백미밥 / 잡곡밥",
             "포항닭보쌈",
-            "매콤깐풍육",
-            "김치고기산적구이",
-            "청양풍짜장면",
+            "그린샐러드드드드",
+            "추가찬2종",
+            "계란후라이 / 토스트 & 딸기잼",
             "숙주나물무침",
             "배추김치",
-            "그린샐러드",
-            "추가찬2종",
-            "계란후라이 / 토스트&딸기잼",
-            "셀프 라면",
-            "탄산음료, 숭늉, 매실차"
+            "배주김치",
+            "숙주나묻무침"
           ]
         },
         {
           "title": "석식",
           "items": [
-            "감자수제비국",
             "잡곡밥",
-            "오징어볶음",
             "감자고로케 * 소스",
-            "모듬소시지볶음",
-            "고기만두찜 * 소스",
             "계절나물",
             "배추김치",
-            "그린샐러드",
+            "그린샐러드드드드",
+            "계란후라이 / 토스트 & 딸기잼",
+            "감자수제비국",
+            "재란후라이 / 토스트 & 딸기잼"
+          ]
+        },
+        {
+          "title": "플러스메뉴",
+          "items": [
             "계란후라이 / 토스트&딸기잼",
             "셀프 라면",
             "탄산음료, 숭늉, 매실차"
           ]
         }
       ],
-      "menu_recorded_at": "2026-04-14 11:11:51",
-      "menu_recorded_source_fetched_at": "2026-04-14 10:12:13",
+      "menu_recorded_at": "2026-04-14 11:31:21",
+      "menu_recorded_source_fetched_at": "2026-04-14 11:30:21",
       "menu_recent_source_today": true
     },
     {
@@ -304,82 +299,80 @@
       "name": "아이밀",
       "items": 12,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
+      "used_existing_fallback": true,
+      "fallback_confirmed": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-14 10:04:41"
+      "source_fetched_at": "2026-04-14 11:30:55"
     },
     {
       "name": "다시 봄",
       "items": 11,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
+      "used_existing_fallback": true,
+      "fallback_confirmed": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-14 10:04:41"
+      "source_fetched_at": "2026-04-14 11:30:58"
     },
     {
       "name": "밥(온) 구내식당",
       "items": 10,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
+      "used_existing_fallback": true,
+      "fallback_confirmed": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-14 10:04:41"
+      "source_fetched_at": "2026-04-14 11:31:00"
     },
     {
       "name": "구내식당라온푸드",
       "items": 10,
-      "updated": true,
-      "used_existing_fallback": false,
-      "source_fetched_at": "2026-04-14 10:04:41",
-      "fallback_confirmed": false,
-      "today_marker": true
+      "updated": false,
+      "used_existing_fallback": true,
+      "reason": "today_marker_not_found",
+      "source_fetched_at": "2026-04-14 11:31:02"
     },
     {
       "name": "마이푸드",
       "items": 12,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
+      "used_existing_fallback": true,
+      "fallback_confirmed": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-14 10:04:41"
+      "source_fetched_at": "2026-04-14 11:31:04"
     },
     {
       "name": "퍼블릭가산 구내식당",
       "items": 3,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
+      "used_existing_fallback": true,
+      "fallback_confirmed": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-13 13:12:50"
+      "source_fetched_at": "2026-04-14 11:31:06"
     },
     {
       "name": "더푸드스케치",
       "items": 11,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
+      "used_existing_fallback": true,
+      "fallback_confirmed": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-14 10:04:41"
+      "source_fetched_at": "2026-04-14 11:31:08"
     },
     {
       "name": "스타밸리푸드포유",
       "items": 10,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
+      "used_existing_fallback": true,
+      "fallback_confirmed": true,
       "today_marker": true,
-      "source_fetched_at": "2026-04-14 10:04:41"
+      "source_fetched_at": "2026-04-14 11:31:12"
     },
     {
       "name": "에스제이 구내식당",
-      "items": 25,
+      "items": 20,
       "updated": true,
       "used_existing_fallback": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-14 10:12:13",
-      "fallback_confirmed": false
+      "source_fetched_at": "2026-04-14 11:30:21"
     }
   ]
 }
