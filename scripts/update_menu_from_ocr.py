@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "menu-today" / "menu_today.json"
 HINTS_PATH = ROOT / "menu-today" / "dynamic_menu_hints.json"
 COLLECTION_LOG_PATH = ROOT / "menu-today" / "collection_log.json"
+SJ_WEEKLY_IMAGE_PATH = ROOT / "menu-today" / "images" / "sj-weekly-menu.png"
 SEOUL = ZoneInfo("Asia/Seoul")
 WEEKDAYS = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
 RECENT_FETCH_WINDOW = timedelta(hours=6)
@@ -195,6 +196,20 @@ def ocr_texts(image_path: Path) -> list[str]:
     return outputs
 
 
+def ocr_image_variants(image: Image.Image, configs: list[str] | None = None) -> list[str]:
+    configs = configs or ["--psm 6", "--psm 11"]
+    gray = ImageOps.autocontrast(image.convert("L"))
+    enlarged = gray.resize((gray.width * 3, gray.height * 3)).filter(ImageFilter.SHARPEN)
+    threshold = enlarged.point(lambda px: 255 if px > 182 else 0)
+    variants = [enlarged, threshold]
+    outputs: list[str] = []
+    for variant in variants:
+        for config in configs:
+            text = pytesseract.image_to_string(variant, lang="kor+eng", config=config)
+            outputs.append(text)
+    return outputs
+
+
 def ocr_dasibom_crops(image_path: Path) -> list[str]:
     base = Image.open(image_path).convert("RGB")
     regions = [
@@ -208,6 +223,75 @@ def ocr_dasibom_crops(image_path: Path) -> list[str]:
         text = pytesseract.image_to_string(gray, lang="kor+eng", config=config)
         outputs.append(text)
     return outputs
+
+
+def extract_sj_section_lines(image: Image.Image) -> list[str]:
+    texts = ocr_image_variants(image)
+    candidates = collect_candidates(texts)
+    deduped = dedupe_candidates(candidates)
+    filtered: list[str] = []
+    seen: set[str] = set()
+    footer_patterns = [
+        (r"계란후라이.*토스트.*딸기잼", "계란후라이 / 토스트&딸기잼"),
+        (r"셀프\s*라면|셀프라면", "셀프 라면"),
+        (r"탄산음료.*숭늉.*매실차|숭늉.*매실차", "탄산음료, 숭늉, 매실차"),
+        (r"백미밥\s*/\s*잡곡밥\s*/\s*김치|백미밥잡곡밥김치", "백미밥 / 잡곡밥 / 김치"),
+        (r"그린샐러드.*드레싱", "그린샐러드 & 드레싱"),
+    ]
+    for item in deduped:
+        if any(token in item for token in ["월요일", "화요일", "수요일", "목요일", "금요일", "4월", "점심", "저녁", "구분", "에스제이", "건강식단"]):
+            continue
+        normalized = item
+        for pattern, label in footer_patterns:
+            if re.search(pattern, normalized):
+                normalized = label
+                break
+        if len(normalized) < 2:
+            continue
+        key = canonical_key(normalized)
+        if key in seen:
+            continue
+        seen.add(key)
+        filtered.append(normalize_final_line(normalized))
+    return filtered
+
+
+def parse_sj_weekly_image(image_path: Path, now: datetime) -> tuple[dict[str, list[str]] | None, bool]:
+    if now.weekday() > 4 or not image_path.exists():
+        return None, False
+
+    base = Image.open(image_path).convert("RGB")
+    width, height = base.size
+    left_label_width = int(width * 0.065)
+    col_width = int((width - left_label_width) / 5)
+    day_index = now.weekday()
+    col_left = left_label_width + (col_width * day_index) + int(col_width * 0.04)
+    col_right = left_label_width + (col_width * (day_index + 1)) - int(col_width * 0.04)
+
+    header_crop = base.crop((col_left, int(height * 0.02), col_right, int(height * 0.12)))
+    header_texts = ocr_image_variants(header_crop, ["--psm 6", "--psm 7", "--psm 11"])
+    today_marker = has_today_marker(header_texts, now)
+
+    lunch_crop = base.crop((col_left, int(height * 0.10), col_right, int(height * 0.54)))
+    dinner_crop = base.crop((col_left, int(height * 0.58), col_right, int(height * 0.98)))
+
+    lunch_items = extract_sj_section_lines(lunch_crop)
+    dinner_items = extract_sj_section_lines(dinner_crop)
+
+    plus_menu = ["계란후라이 / 토스트&딸기잼", "셀프 라면", "탄산음료, 숭늉, 매실차"]
+    lunch_items = [item for item in lunch_items if item not in plus_menu]
+    dinner_items = [item for item in dinner_items if item not in plus_menu]
+
+    sections: dict[str, list[str]] = {}
+    if lunch_items:
+        sections["중식"] = lunch_items
+    if dinner_items:
+        sections["석식"] = dinner_items
+    sections["플러스메뉴"] = plus_menu
+
+    if not sections.get("중식") and not sections.get("석식"):
+        return None, today_marker
+    return sections, today_marker
 
 
 def clean_line(line: str) -> str:
@@ -512,6 +596,9 @@ def update_json_with_ocr() -> None:
         if not config:
             continue
         image_path = config["image"]
+        if name == "에스제이 구내식당" and SJ_WEEKLY_IMAGE_PATH.exists():
+            image_path = SJ_WEEKLY_IMAGE_PATH
+            restaurant["preview_image"] = "./images/sj-weekly-menu.png"
         if not image_path.exists():
             logs.append({"name": name, "updated": False, "reason": "image_missing"})
             continue
@@ -534,6 +621,38 @@ def update_json_with_ocr() -> None:
         hint_text = hint_entry.get("alt_text", "")
         fetched_recently = is_recent_fetch(source_fetched_at, now)
         if name == "에스제이 구내식당":
+            if SJ_WEEKLY_IMAGE_PATH.exists():
+                sections, today_marker = parse_sj_weekly_image(SJ_WEEKLY_IMAGE_PATH, now)
+                if sections and fetched_recently and today_marker:
+                    restaurant["menu_sections"] = [{"title": title, "items": items} for title, items in sections.items()]
+                    flat_menu = []
+                    for items in sections.values():
+                        flat_menu.extend(items)
+                    restaurant["menu"] = flat_menu
+                    restaurant["menu_recorded_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
+                    restaurant["menu_recorded_source_fetched_at"] = source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else now.strftime("%Y-%m-%d %H:%M:%S")
+                    logs.append(
+                        {
+                            "name": name,
+                            "items": len(flat_menu),
+                            "updated": True,
+                            "used_existing_fallback": False,
+                            "today_marker": True,
+                            "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
+                        }
+                    )
+                    continue
+                logs.append(
+                    {
+                        "name": name,
+                        "items": len(previous_menu),
+                        "updated": False,
+                        "used_existing_fallback": True,
+                        "reason": "today_marker_not_found" if fetched_recently else "source_not_recent",
+                        "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
+                    }
+                )
+                continue
             sections = parse_sj_sections_from_hint(hint_text)
             today_marker = has_today_marker([hint_text], now)
             if sections and fetched_recently and today_marker:
