@@ -365,6 +365,40 @@ def dedupe_candidates(candidates: list[str]) -> list[str]:
     return [first_line[key] for key in ordered]
 
 
+def has_recorded_menu(restaurant: dict) -> bool:
+    if restaurant.get("menu"):
+        return True
+    for section in restaurant.get("menu_sections", []):
+        if section.get("items"):
+            return True
+    return False
+
+
+def extract_missing_menu_candidates(name: str, texts: list[str]) -> list[str]:
+    config = SOURCE_CONFIG[name]
+    candidates = collect_candidates(texts)
+    deduped = dedupe_candidates(candidates)
+    if name == "퍼블릭가산 구내식당":
+        keywords = ["주물럭", "카레", "전", "볶음", "덮밥", "탕", "찌개", "국", "밥"]
+        filtered = [item for item in deduped if any(keyword in item for keyword in keywords)]
+        limit = 4
+        minimum = 2
+    else:
+        filtered = [
+            item
+            for item in deduped
+            if not any(token in item for token in ["셀프", "간편식", "탄산음료", "헛개차", "숭늉"])
+        ]
+        if not filtered:
+            filtered = deduped
+        limit = config["max_items"]
+        minimum = max(4, config["min_items"] - 2)
+    result = filtered[:limit]
+    if len(result) < minimum:
+        return []
+    return result
+
+
 def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> tuple[list[str], bool]:
     if name in SAFE_FALLBACK_ONLY:
         return existing, True
@@ -604,7 +638,8 @@ def update_json_with_ocr() -> None:
             continue
         source_fetched_at = get_source_fetched_at(name, image_path, collection_log)
         recorded_source_at = parse_logged_time(restaurant.get("menu_recorded_source_fetched_at"))
-        if source_fetched_at and recorded_source_at and recorded_source_at >= source_fetched_at:
+        source_is_new = bool(source_fetched_at and (not recorded_source_at or recorded_source_at < source_fetched_at))
+        if source_fetched_at and recorded_source_at and recorded_source_at >= source_fetched_at and has_recorded_menu(restaurant):
             logs.append(
                 {
                     "name": name,
@@ -702,6 +737,11 @@ def update_json_with_ocr() -> None:
             )
             continue
         extracted_menu, used_fallback = parse_restaurant_menu(name, texts, previous_menu)
+        if source_is_new and used_fallback:
+            candidate_menu = extract_missing_menu_candidates(name, texts)
+            if candidate_menu:
+                extracted_menu = candidate_menu
+                used_fallback = False
         restaurant["menu"] = extracted_menu
         if name != "에스제이 구내식당":
             restaurant.pop("menu_sections", None)
