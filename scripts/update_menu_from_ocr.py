@@ -399,6 +399,31 @@ def extract_missing_menu_candidates(name: str, texts: list[str]) -> list[str]:
     return result
 
 
+def parse_dasibom_menu(texts: list[str], config: dict) -> list[str]:
+    merged = "\n".join(texts)
+    found: list[str] = []
+    patterns = [
+        (r"파송송계란탕", "파송송계란탕"),
+        (r"사[천전]\s*보차이불고기|사천보차이불고기|사전보차이불고기", "사천보차이불고기"),
+        (r"[통동등]살생선까스", "통살생선까스"),
+        (r"삼각군만두부침", "삼각군만두부침"),
+        (r"미트스파게티", "미트스파게티"),
+        (r"수제.?깻잎지|수제.?껏임지|스제깨잎지", "수제깻잎지"),
+        (r"싱싱샐러드+", "싱싱샐러드"),
+        (r"깍두기|까두기|깟두기|7\s*7[\]\|]", "깍두기"),
+        (r"참치마요비빔밥", "참치마요비빔밥"),
+        (r"탄산음료|타.?산.?음.?료|타사을", "탄산음료"),
+        (r"셀프\s*라면|셀프라면", "셀프라면"),
+    ]
+    for pattern, label in patterns:
+        if re.search(pattern, merged):
+            found.append(label)
+    found = [item for idx, item in enumerate(found) if item not in found[:idx]]
+    if len(found) >= max(8, config["min_items"] - 1):
+        return found[: config["max_items"]]
+    return []
+
+
 def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> tuple[list[str], bool]:
     if name in SAFE_FALLBACK_ONLY:
         return existing, True
@@ -428,26 +453,8 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             return found[: config["max_items"]], False
         return existing, True
     if name == "다시 봄":
-        merged = "\n".join(texts)
-        found: list[str] = []
-        patterns = [
-            (r"시금치된장국|\|금치된장국", "시금치된장국"),
-            (r"대파.*치킨바베큐|대파숫불치킨바베큐", "대파숯불치킨바베큐"),
-            (r"해물까스", "해물까스"),
-            (r"철판고기산적|판고기 사전|판고기산적", "철판고기산적"),
-            (r"양반단팥찐빵|단팥찐빵|팥찐빵|한입단팔핀빵|단팔핀빵|단팥핀빵", "양반단팥찐빵"),
-            (r"꽈리고추양념찜|고추양념찜|파리고추양념찜", "꽈리고추양념찜"),
-            (r"샐러드|샐러", "샐러드"),
-            (r"깍두기|까드", "깍두기"),
-            (r"잔치국수", "잔치국수"),
-            (r"탄산음료|산음료|탄\s*산음\s*\w*음료", "탄산음료"),
-            (r"셀프라면|프라면", "셀프라면"),
-        ]
-        for pattern, label in patterns:
-            if re.search(pattern, merged):
-                found.append(label)
-        found = [item for idx, item in enumerate(found) if item not in found[:idx]]
-        if len(found) >= config["min_items"]:
+        found = parse_dasibom_menu(texts, config)
+        if found:
             return found[: config["max_items"]], False
         return existing, True
     if name == "구내식당라온푸드":
