@@ -31,7 +31,7 @@ SOURCE_CONFIG = {
     "에스제이 구내식당": {"image": ROOT / "menu-today" / "images" / "sj-food-menu.png", "min_items": 10, "max_items": 16},
 }
 
-SAFE_FALLBACK_ONLY = {"밥(온) 구내식당", "마이푸드", "퍼블릭가산 구내식당"}
+SAFE_FALLBACK_ONLY = {"퍼블릭가산 구내식당"}
 
 REPLACEMENTS = {
     "대파숫불치킨바베큐": "대파숯불치킨바베큐",
@@ -412,6 +412,14 @@ def extract_pattern_matches_in_order(merged: str, patterns: list[tuple[str, str]
     return ordered
 
 
+def extract_pattern_matches_by_pattern_order(merged: str, patterns: list[tuple[str, str]]) -> list[str]:
+    ordered: list[str] = []
+    for pattern, label in patterns:
+        if re.search(pattern, merged) and label not in ordered:
+            ordered.append(label)
+    return ordered
+
+
 def parse_dasibom_menu(texts: list[str], config: dict) -> list[str]:
     merged = "\n".join(texts)
     patterns = [
@@ -427,8 +435,97 @@ def parse_dasibom_menu(texts: list[str], config: dict) -> list[str]:
         (r"탄산음료|타.?산.?음.?료|타사을", "탄산음료"),
         (r"셀프\s*라면|셀프라면", "셀프라면"),
     ]
-    found = extract_pattern_matches_in_order(merged, patterns)
+    found = extract_pattern_matches_by_pattern_order(merged, patterns)
     if len(found) >= max(8, config["min_items"] - 1):
+        return found[: config["max_items"]]
+    return []
+
+
+def parse_imeal_menu(texts: list[str], config: dict) -> list[str]:
+    merged = "\n".join(texts)
+    patterns = [
+        (r"콩나물김치국|롱나물김짓국|콩나물김짓국", "콩나물김치국"),
+        (r"소불고기납작당면볶음|납작당면볶음", "소불고기납작당면볶음"),
+        (r"수제오징어김치전", "수제오징어김치전"),
+        (r"두부조림", "두부조림"),
+        (r"숙주나물", "숙주나물"),
+        (r"치커리유자청무침", "치커리유자청무침"),
+        (r"가든샐러드\s*&\s*요거트D|가든샐러드.*요거트[DOㅁ0]", "가든샐러드 & 요거트D"),
+        (r"국내산\s*배추겉절이|배추겉절이", "국내산 배추겉절이"),
+        (r"백미밥\s*/\s*흑미밥|백미밥흑미밥", "백미밥 / 흑미밥"),
+        (r"헛개차\s*/\s*탄산음료|AWWA\s*/\s*탄산음료|헛개차.*탄산음료|[AS][WH]A\s*/\s*탄산음료", "헛개차 / 탄산음료"),
+        (r"셀프비빔밥\s*/\s*한강라면|셀프비빔밥.*한강라면", "셀프비빔밥 / 한강라면"),
+        (r"간편식:\s*훈제닭가슴살샐러드|훈제닭가슴살샐러드", "간편식: 훈제닭가슴살샐러드"),
+    ]
+    found = extract_pattern_matches_by_pattern_order(merged, patterns)
+    if len(found) >= config["min_items"]:
+        return found[: config["max_items"]]
+    return []
+
+
+def parse_babon_menu(texts: list[str], config: dict) -> list[str]:
+    merged = "\n".join(texts)
+    patterns = [
+        (r"흰쌀밥\s*/\s*검은쌀잡곡밥|흰쌀밥검은쌀잡곡밥|히.?식.?[빠빨].*쌍.?잡|힌.?쌀.?밥.*검.?은.?쌀.?잡|[윈흰]쌀밥[\s/]*[끔검].?은쌀[\s/]*[삽잡]곡[\s/]*밥|쌀밥[\s/]*.*은쌀[\s/]*.*곡[\s/]*밥", "흰쌀밥 / 검은쌀잡곡밥"),
+        (r"소갈비탕", "소갈비탕"),
+        (r"불맛직화제육볶음", "불맛직화제육볶음"),
+        (r"순살생선까스\*?감자튀김|순살생선까스.*감자튀김|순살생.?선.?까스.*감자튀", "순살생선까스*감자튀김"),
+        (r"부대소시지떡볶이", "부대소시지떡볶이"),
+        (r"분홍소시지전\*?동그랑땡|분홍소시지전.*동그랑땡|BE\s*GARE.*Tapa|PSSaAlnl.*12h", "분홍소시지전*동그랑땡"),
+        (r"간장연근조림", "간장연근조림"),
+        (r"얼갈이겉절이무침|얼.?갈.?이.?겉절이무침|6071.*기거", "얼갈이겉절이무침"),
+        (r"알타리총각김치|알타리총각김지|알타리롱각김치|알타리.*ae.*Al", "알타리총각김치"),
+        (r"양배추샐러드\s*/\s*모듬상추쌈|양배추샐러드.*모듬상추쌈|양배.?주.*[샘삼]러드.*모듬상.?[주추].?쌈|양배.?주.*모듬상.?[주추].?쌈", "양배추샐러드/모듬상추쌈"),
+    ]
+    found = extract_pattern_matches_by_pattern_order(merged, patterns)
+    if (
+        all("흰쌀밥 / 검은쌀잡곡밥" != item for item in found)
+        and re.search(r"쌀밥|쌍.?잡|삽곡|잡곡", merged)
+    ):
+        found.insert(0, "흰쌀밥 / 검은쌀잡곡밥")
+    if len(found) >= max(8, config["min_items"] - 2):
+        return found[: config["max_items"]]
+    return []
+
+
+def parse_raonfood_menu(texts: list[str], config: dict) -> list[str]:
+    merged = "\n".join(texts)
+    patterns = [
+        (r"[닭닥]곰[탕탐]\s*/\s*[다타]대[기\)\!]|[닭닥]곰[탕탐]다대기|[닭닥]곰[탕탐][\/\|]다대", "닭곰탕/다대기"),
+        (r"치즈불닭볶음|지즈불닭볶음", "치즈불닭볶음"),
+        (r"오리엔탈파채돈까스|오리엔탈파채돈가스|오리엔탈파재돈까스", "오리엔탈파채돈까스"),
+        (r"참치김치볶음\s*&\s*두부|참치김치볶음.*두부|참치김치볶음6두부", "참치김치볶음&두부"),
+        (r"콘스크램블드에그|곤스크램블드에그|콘스크랩블드메그", "콘스크램블드에그"),
+        (r"청포묵김가루무침|청포묵김가루묻침|정포묵김가루무침|첨포묵김가루무침", "청포묵김가루무침"),
+        (r"백미밥\s*&\s*잡곡밥|백미밥잡곡밥|백\[\|밥.?잡곡밥", "백미밥&잡곡밥"),
+        (r"셀프라면\s*&\s*배추김치|셀프라면.*배추김치|ss\s*&\s*32|a5\s*&\s*22", "셀프라면 & 배추김치"),
+        (r"그린샐러드", "그린샐러드"),
+        (r"숭늉\s*&\s*음료|숭늉.*음료|[sSaA][s5]\s*&\s*[23][22]", "숭늉 & 음료"),
+    ]
+    found = extract_pattern_matches_by_pattern_order(merged, patterns)
+    if len(found) >= max(8, config["min_items"] - 2):
+        return found[: config["max_items"]]
+    return []
+
+
+def parse_myfood_menu(texts: list[str], config: dict) -> list[str]:
+    merged = "\n".join(texts)
+    patterns = [
+        (r"계림닭갈비", "계림닭갈비"),
+        (r"생선까스\s*&\s*타르소스|생선까스&타르소스", "생선까스&타르소스"),
+        (r"들기름메밀막국수", "들기름메밀막국수"),
+        (r"참치무조림", "참치무조림"),
+        (r"불어묵피망볶음|봉어묵피망볶음|글어묵피망볶음", "불어묵피망볶음"),
+        (r"미역줄기양파볶음|미역술기양파볶음", "미역줄기양파볶음"),
+        (r"양념마늘쫑무침\s*/\s*포기김치|양념마늘쫑무침/포기김치|양념마늘.?쫑무침.?/?.?포기.?김치|orsorsten/E7N Lal", "양념마늘쫑무침/포기김치"),
+        (r"그린샐러드\s*&\s*드레싱|그린샐러드&드레싱", "그린샐러드&드레싱"),
+        (r"청양콩나물국", "청양콩나물국"),
+        (r"춘권튀김\s*&\s*칠리소스|준권투 김&칠리소스|춘권튀김&칠리소스", "춘권튀김&칠리소스"),
+        (r"잡곡밥\s*/\s*백미밥|잡곡밥 / 백미밥", "잡곡밥 / 백미밥"),
+        (r"쌈채소\s*&\s*풋고추\s*/\s*한강라면\s*&\s*달콤한\s*[잼딜]?\s*토스트\s*/\s*구수한\s*[숭승]?[늉능]?\s*&\s*시원한\s*탄산음료|쌈채소[\s\S]*풋고추[\s\S]*한강라면[\s\S]*토스트[\s\S]*탄산음료", "쌈채소 & 풋고추 / 한강라면 & 달콤한 잼 토스트 / 구수한 숭늉 & 시원한 탄산음료"),
+    ]
+    found = extract_pattern_matches_by_pattern_order(merged, patterns)
+    if len(found) >= config["min_items"]:
         return found[: config["max_items"]]
     return []
 
@@ -438,22 +535,7 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
         return existing, True
     config = SOURCE_CONFIG[name]
     if name == "아이밀":
-        merged = "\n".join(texts)
-        patterns = [
-            (r"유부미니우동", "유부미니우동"),
-            (r"돈육메란장조림|돈육메추리알장조림", "돈육메란장조림"),
-            (r"치킨까스\s*&\s*머스타드|치킨까스.*머스타드", "치킨까스 & 머스타드"),
-            (r"콘참치펜네샐러드", "콘참치펜네샐러드"),
-            (r"얼갈이된장나물", "얼갈이된장나물"),
-            (r"참나물오리엔탈무침", "참나물오리엔탈무침"),
-            (r"가든샐러드\s*&\s*블루베리D|가든샐러드.*블루베리D", "가든샐러드 & 블루베리D"),
-            (r"국내산\s*배추겉절이|배추겉절이", "국내산 배추겉절이"),
-            (r"흑미밥\s*/\s*백미밥|흑미밥백미밥", "흑미밥 / 백미밥"),
-            (r"헛개차\s*/\s*탄산음료|헛개차.*탄산음료", "헛개차 / 탄산음료"),
-            (r"셀프비빔밥\s*/\s*한강라면|셀프비빔밥.*한강라면", "셀프비빔밥 / 한강라면"),
-            (r"간편식:\s*훈제오리샐러드|훈제오리샐러드", "간편식: 훈제오리샐러드"),
-        ]
-        found = extract_pattern_matches_in_order(merged, patterns)
+        found = parse_imeal_menu(texts, config)
         if len(found) >= config["min_items"]:
             return found[: config["max_items"]], False
         return existing, True
@@ -462,21 +544,18 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
         if found:
             return found[: config["max_items"]], False
         return existing, True
+    if name == "밥(온) 구내식당":
+        found = parse_babon_menu(texts, config)
+        if found:
+            return found[: config["max_items"]], False
+        return existing, True
     if name == "구내식당라온푸드":
-        merged = "\n".join(texts)
-        patterns = [
-            (r"오므라이스", "오므라이스"),
-            (r"돈육김치찌개|돈육김치지개", "돈육김치찌개"),
-            (r"차돌박이숙주볶음|차돌박이숙주묶음|차돌박이숙주복음", "차돌박이숙주볶음"),
-            (r"치킨스틱\s*&\s*치즈스틱|치킨스틱치즈스틱", "치킨스틱 & 치즈스틱"),
-            (r"갈비산적데리야끼|갈비산적데리아끼|갈비산적데리야기", "갈비산적데리야끼"),
-            (r"야채비빔만두|야재비빔만두|야채비빔만드", "야채비빔만두"),
-            (r"스팸계란볶음밥|스팸계란복음밥", "스팸계란볶음밥"),
-            (r"셀프라면\s*&\s*배추김치|셀프라면.*배추김치", "셀프라면 & 배추김치"),
-            (r"샐러드\s*&\s*드레싱|샐러드.*드레싱", "샐러드 & 드레싱"),
-            (r"숭늉\s*&\s*음료|숭늉.*음료", "숭늉 & 음료"),
-        ]
-        found = extract_pattern_matches_in_order(merged, patterns)
+        found = parse_raonfood_menu(texts, config)
+        if len(found) >= config["min_items"]:
+            return found[: config["max_items"]], False
+        return existing, True
+    if name == "마이푸드":
+        found = parse_myfood_menu(texts, config)
         if len(found) >= config["min_items"]:
             return found[: config["max_items"]], False
         return existing, True
@@ -495,7 +574,7 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             (r"가든샐러드\s*/\s*드레싱|가든샐러드.*드레싱", "가든샐러드 / 드레싱"),
             (r"배추겉절이\s*/\s*음료|배추겉절이.*음료", "배추겉절이 / 음료"),
         ]
-        found = extract_pattern_matches_in_order(merged, patterns)
+        found = extract_pattern_matches_by_pattern_order(merged, patterns)
         # 이미지가 오늘 식단으로 확인됐고 핵심 메뉴가 충분히 잡히면,
         # 수동 보정으로 넣어둔 전체 메뉴를 그대로 유지하면서 오늘 메뉴로 인정한다.
         if len(found) >= 8 and existing:
@@ -517,7 +596,7 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             (r"가든샐러드.*흑임자D|가든샐러드흑임자D", "가든샐러드 & 흑임자D"),
             (r"포기김치", "포기김치"),
         ]
-        found = extract_pattern_matches_in_order(merged, patterns)
+        found = extract_pattern_matches_by_pattern_order(merged, patterns)
         if len(found) >= config["min_items"]:
             return found[: config["max_items"]], False
         return existing, True
