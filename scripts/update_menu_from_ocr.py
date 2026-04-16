@@ -306,6 +306,18 @@ def clean_line(line: str) -> str:
     return line.strip()
 
 
+def normalize_fixed_menu_terms(line: str) -> str:
+    line = re.sub(r"샐러드드+|샐러드뜨|샐러뜨|샘러드|셀러드|셀러뜨|싱싱샐러드드+", "샐러드", line)
+    line = re.sub(r"그린샐러드(?!\s*&)", "그린샐러드", line)
+    line = re.sub(r"가든샐러드(?!\s*&)", "가든샐러드", line)
+    line = re.sub(r"드레심|드래싱|드레신|드래심|드레씽", "드레싱", line)
+    line = re.sub(r"숭능|숭눙|숭뉵|승능|숭늬", "숭늉", line)
+    line = re.sub(r"\s*&\s*", " & ", line)
+    line = re.sub(r"\s*/\s*", " / ", line)
+    line = re.sub(r"\s+", " ", line)
+    return line.strip()
+
+
 def is_valid_candidate(line: str) -> bool:
     if not line:
         return False
@@ -338,6 +350,7 @@ def normalize_final_line(line: str) -> str:
     line = re.sub(r"^[@#]+\s*", "", line)
     line = re.sub(r"\([^)]*\)", "", line)
     line = re.sub(r"\[[^\]]*\]", "", line)
+    line = normalize_fixed_menu_terms(line)
     line = re.sub(r"\s+", " ", line)
     line = line.strip(" -_/,:")
     return line.strip()
