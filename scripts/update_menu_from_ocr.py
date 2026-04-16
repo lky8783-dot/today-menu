@@ -354,14 +354,13 @@ def collect_candidates(texts: list[str]) -> list[str]:
 
 
 def dedupe_candidates(candidates: list[str]) -> list[str]:
-    counts = Counter(canonical_key(item) for item in candidates)
     first_line: dict[str, str] = {}
     first_index: dict[str, int] = {}
     for idx, item in enumerate(candidates):
         key = canonical_key(item)
         first_line.setdefault(key, normalize_final_line(item))
         first_index.setdefault(key, idx)
-    ordered = sorted(first_line, key=lambda key: (-counts[key], first_index[key]))
+    ordered = sorted(first_line, key=lambda key: first_index[key])
     return [first_line[key] for key in ordered]
 
 
@@ -399,9 +398,22 @@ def extract_missing_menu_candidates(name: str, texts: list[str]) -> list[str]:
     return result
 
 
+def extract_pattern_matches_in_order(merged: str, patterns: list[tuple[str, str]]) -> list[str]:
+    matches: list[tuple[int, str]] = []
+    for pattern, label in patterns:
+        found = re.search(pattern, merged)
+        if found:
+            matches.append((found.start(), label))
+    matches.sort(key=lambda item: item[0])
+    ordered: list[str] = []
+    for _, label in matches:
+        if label not in ordered:
+            ordered.append(label)
+    return ordered
+
+
 def parse_dasibom_menu(texts: list[str], config: dict) -> list[str]:
     merged = "\n".join(texts)
-    found: list[str] = []
     patterns = [
         (r"파송송계란탕", "파송송계란탕"),
         (r"사[천전]\s*보차이불고기|사천보차이불고기|사전보차이불고기", "사천보차이불고기"),
@@ -415,10 +427,7 @@ def parse_dasibom_menu(texts: list[str], config: dict) -> list[str]:
         (r"탄산음료|타.?산.?음.?료|타사을", "탄산음료"),
         (r"셀프\s*라면|셀프라면", "셀프라면"),
     ]
-    for pattern, label in patterns:
-        if re.search(pattern, merged):
-            found.append(label)
-    found = [item for idx, item in enumerate(found) if item not in found[:idx]]
+    found = extract_pattern_matches_in_order(merged, patterns)
     if len(found) >= max(8, config["min_items"] - 1):
         return found[: config["max_items"]]
     return []
@@ -430,7 +439,6 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
     config = SOURCE_CONFIG[name]
     if name == "아이밀":
         merged = "\n".join(texts)
-        found: list[str] = []
         patterns = [
             (r"유부미니우동", "유부미니우동"),
             (r"돈육메란장조림|돈육메추리알장조림", "돈육메란장조림"),
@@ -445,10 +453,7 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             (r"셀프비빔밥\s*/\s*한강라면|셀프비빔밥.*한강라면", "셀프비빔밥 / 한강라면"),
             (r"간편식:\s*훈제오리샐러드|훈제오리샐러드", "간편식: 훈제오리샐러드"),
         ]
-        for pattern, label in patterns:
-            if re.search(pattern, merged):
-                found.append(label)
-        found = [item for idx, item in enumerate(found) if item not in found[:idx]]
+        found = extract_pattern_matches_in_order(merged, patterns)
         if len(found) >= config["min_items"]:
             return found[: config["max_items"]], False
         return existing, True
@@ -459,7 +464,6 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
         return existing, True
     if name == "구내식당라온푸드":
         merged = "\n".join(texts)
-        found: list[str] = []
         patterns = [
             (r"오므라이스", "오므라이스"),
             (r"돈육김치찌개|돈육김치지개", "돈육김치찌개"),
@@ -472,16 +476,12 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             (r"샐러드\s*&\s*드레싱|샐러드.*드레싱", "샐러드 & 드레싱"),
             (r"숭늉\s*&\s*음료|숭늉.*음료", "숭늉 & 음료"),
         ]
-        for pattern, label in patterns:
-            if re.search(pattern, merged):
-                found.append(label)
-        found = [item for idx, item in enumerate(found) if item not in found[:idx]]
+        found = extract_pattern_matches_in_order(merged, patterns)
         if len(found) >= config["min_items"]:
             return found[: config["max_items"]], False
         return existing, True
     if name == "더푸드스케치":
         merged = "\n".join(texts)
-        found: list[str] = []
         patterns = [
             (r"혼합잡곡밥|호합잡곡밥|혼합잠곡밥", "혼합잡곡밥"),
             (r"들깨수제비|들깨수재비", "들깨수제비"),
@@ -495,10 +495,7 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             (r"가든샐러드\s*/\s*드레싱|가든샐러드.*드레싱", "가든샐러드 / 드레싱"),
             (r"배추겉절이\s*/\s*음료|배추겉절이.*음료", "배추겉절이 / 음료"),
         ]
-        for pattern, label in patterns:
-            if re.search(pattern, merged):
-                found.append(label)
-        found = [item for idx, item in enumerate(found) if item not in found[:idx]]
+        found = extract_pattern_matches_in_order(merged, patterns)
         # 이미지가 오늘 식단으로 확인됐고 핵심 메뉴가 충분히 잡히면,
         # 수동 보정으로 넣어둔 전체 메뉴를 그대로 유지하면서 오늘 메뉴로 인정한다.
         if len(found) >= 8 and existing:
@@ -508,7 +505,6 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
         return existing, True
     if name == "스타밸리푸드포유":
         merged = "\n".join(texts)
-        found: list[str] = []
         patterns = [
             (r"흑미밥\s*/\s*백미밥|흑미밥백미밥", "흑미밥 / 백미밥"),
             (r"매콤소불고기볶음", "매콤소불고기볶음"),
@@ -521,10 +517,7 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             (r"가든샐러드.*흑임자D|가든샐러드흑임자D", "가든샐러드 & 흑임자D"),
             (r"포기김치", "포기김치"),
         ]
-        for pattern, label in patterns:
-            if re.search(pattern, merged):
-                found.append(label)
-        found = [item for idx, item in enumerate(found) if item not in found[:idx]]
+        found = extract_pattern_matches_in_order(merged, patterns)
         if len(found) >= config["min_items"]:
             return found[: config["max_items"]], False
         return existing, True
