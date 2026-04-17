@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 17일 금요일",
-  "updated_at": "2026-04-17 11:17:37",
+  "updated_at": "2026-04-17 11:32:46",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -27,8 +27,8 @@
         "식: 쉬림프샐러드",
         "간편"
       ],
-      "menu_recorded_at": "2026-04-17 11:16:19",
-      "menu_recorded_source_fetched_at": "2026-04-17 11:15:54",
+      "menu_recorded_at": "2026-04-17 11:31:28",
+      "menu_recorded_source_fetched_at": "2026-04-17 11:31:02",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -53,8 +53,8 @@
         "0168110011608560000반"
       ],
       "preview_image": "./images/dasibom.png",
-      "menu_recorded_at": "2026-04-17 11:16:19",
-      "menu_recorded_source_fetched_at": "2026-04-17 11:15:56",
+      "menu_recorded_at": "2026-04-17 11:31:28",
+      "menu_recorded_source_fetched_at": "2026-04-17 11:31:04",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -79,8 +79,8 @@
         "배주끝설이김지",
         "양배주샐러드"
       ],
-      "menu_recorded_at": "2026-04-17 11:16:19",
-      "menu_recorded_source_fetched_at": "2026-04-17 11:15:58",
+      "menu_recorded_at": "2026-04-17 11:31:28",
+      "menu_recorded_source_fetched_at": "2026-04-17 11:31:05",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -105,8 +105,8 @@
         "중 신보",
         "ss 에어"
       ],
-      "menu_recorded_at": "2026-04-17 11:16:19",
-      "menu_recorded_source_fetched_at": "2026-04-17 11:16:00",
+      "menu_recorded_at": "2026-04-17 11:31:28",
+      "menu_recorded_source_fetched_at": "2026-04-17 11:31:07",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -131,8 +131,8 @@
         "쌈채소 & 풋고추 / 한강라면 & 딜콤한 토스트",
         "보으바"
       ],
-      "menu_recorded_at": "2026-04-17 11:16:19",
-      "menu_recorded_source_fetched_at": "2026-04-17 11:16:02",
+      "menu_recorded_at": "2026-04-17 11:31:28",
+      "menu_recorded_source_fetched_at": "2026-04-17 11:31:09",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -149,8 +149,8 @@
         "참치김치전",
         "양배주전"
       ],
-      "menu_recorded_at": "2026-04-17 11:16:19",
-      "menu_recorded_source_fetched_at": "2026-04-17 11:16:05",
+      "menu_recorded_at": "2026-04-17 11:31:28",
+      "menu_recorded_source_fetched_at": "2026-04-17 11:31:11",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -175,8 +175,8 @@
         "라보으반",
         "김밀이"
       ],
-      "menu_recorded_at": "2026-04-17 11:16:19",
-      "menu_recorded_source_fetched_at": "2026-04-17 11:16:06",
+      "menu_recorded_at": "2026-04-17 11:31:28",
+      "menu_recorded_source_fetched_at": "2026-04-17 11:31:13",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -202,8 +202,8 @@
       ],
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png",
-      "menu_recorded_at": "2026-04-17 11:16:19",
-      "menu_recorded_source_fetched_at": "2026-04-17 11:16:10",
+      "menu_recorded_at": "2026-04-17 11:31:28",
+      "menu_recorded_source_fetched_at": "2026-04-17 11:31:18",
       "menu_recent_source_today": true
     },
     {
@@ -283,8 +283,8 @@
           ]
         }
       ],
-      "menu_recorded_at": "2026-04-17 11:16:19",
-      "menu_recorded_source_fetched_at": "2026-04-17 11:15:17",
+      "menu_recorded_at": "2026-04-17 11:31:28",
+      "menu_recorded_source_fetched_at": "2026-04-17 11:30:21",
       "menu_recent_source_today": true
     },
     {
@@ -323,7 +323,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-17 11:15:54"
+      "source_fetched_at": "2026-04-17 11:31:02"
     },
     {
       "name": "다시 봄",
@@ -332,7 +332,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-17 11:15:56"
+      "source_fetched_at": "2026-04-17 11:31:04"
     },
     {
       "name": "밥(온) 구내식당",
@@ -341,7 +341,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-17 11:15:58"
+      "source_fetched_at": "2026-04-17 11:31:05"
     },
     {
       "name": "구내식당라온푸드",
@@ -350,7 +350,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-17 11:16:00"
+      "source_fetched_at": "2026-04-17 11:31:07"
     },
     {
       "name": "마이푸드",
@@ -359,7 +359,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-17 11:16:02"
+      "source_fetched_at": "2026-04-17 11:31:09"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -368,7 +368,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-17 11:16:05"
+      "source_fetched_at": "2026-04-17 11:31:11"
     },
     {
       "name": "더푸드스케치",
@@ -377,7 +377,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-17 11:16:06"
+      "source_fetched_at": "2026-04-17 11:31:13"
     },
     {
       "name": "스타밸리푸드포유",
@@ -386,7 +386,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-17 11:16:10"
+      "source_fetched_at": "2026-04-17 11:31:18"
     },
     {
       "name": "에스제이 구내식당",
@@ -394,7 +394,7 @@
       "updated": true,
       "used_existing_fallback": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-17 11:15:17"
+      "source_fetched_at": "2026-04-17 11:30:21"
     }
   ]
 }
