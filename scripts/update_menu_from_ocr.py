@@ -4,6 +4,7 @@ import json
 import re
 from collections import Counter
 from datetime import datetime, timedelta
+from difflib import SequenceMatcher
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -101,6 +102,37 @@ NOISE_SUBSTRINGS = [
     "MBS",
     "20555",
 ]
+
+COMMON_MENU_TERMS = {
+    "백미밥",
+    "잡곡밥",
+    "흑미밥",
+    "흰쌀밥 / 검은쌀잡곡밥",
+    "백미밥 / 흑미밥",
+    "백미밥 / 잡곡밥",
+    "포기김치",
+    "배추김치",
+    "배추겉절이",
+    "국내산 포기김치",
+    "그린샐러드",
+    "그린샐러드&드레싱",
+    "가든샐러드",
+    "가든샐러드&드레싱",
+    "샐러드 & 드레싱",
+    "셀프라면",
+    "셀프 라면",
+    "한강라면",
+    "탄산음료",
+    "숭늉",
+    "숭늉 & 음료",
+    "헛개차 / 탄산음료",
+    "계란후라이",
+    "계란후라이 / 토스트&딸기잼",
+    "오렌지",
+    "깍두기",
+    "계절나물",
+    "추가찬2종",
+}
 
 
 def find_tesseract() -> str:
@@ -352,6 +384,30 @@ def canonical_key(line: str) -> str:
     return key
 
 
+def menu_similarity(left: str, right: str) -> float:
+    return SequenceMatcher(None, canonical_key(left), canonical_key(right)).ratio()
+
+
+def is_suspicious_menu_item(line: str) -> bool:
+    if not line:
+        return True
+    if re.search(r"[<>\\\\'\"{}\\[\\]@]", line):
+        return True
+    if re.search(r"[ㄱ-ㅎㅏ-ㅣ]", line):
+        return True
+    if len(re.findall(r"[A-Za-z]", line)) >= 3:
+        allowed = re.sub(r"\b(?:D|S|JPG|JPEG)\b", "", line)
+        if len(re.findall(r"[A-Za-z]", allowed)) >= 2:
+            return True
+    compact = canonical_key(line)
+    korean_count = len(re.findall(r"[가-힣]", compact))
+    if korean_count < 2:
+        return True
+    if len(compact) >= 8 and korean_count / max(len(compact), 1) < 0.45:
+        return True
+    return False
+
+
 def normalize_final_line(line: str) -> str:
     line = clean_line(line)
     line = re.sub(r"^[@#]+\s*", "", line)
@@ -397,6 +453,115 @@ def count_menu_items(restaurant: dict) -> int:
     if restaurant.get("menu_sections"):
         return sum(len(section.get("items", [])) for section in restaurant.get("menu_sections", []))
     return len(restaurant.get("menu", []))
+
+
+def collect_menu_items_from_entry(entry: dict) -> list[str]:
+    items = list(entry.get("menu", []))
+    for section in entry.get("menu_sections", []):
+        items.extend(section.get("items", []))
+    return items
+
+
+def collect_known_menu_terms(data: dict, overrides: dict) -> set[str]:
+    terms = set(COMMON_MENU_TERMS)
+    for restaurant in data.get("restaurants", []):
+        for item in collect_menu_items_from_entry(restaurant):
+            normalized = normalize_final_line(item)
+            if normalized and not is_suspicious_menu_item(normalized):
+                terms.add(normalized)
+
+    for day in overrides.values():
+        for restaurant in day.get("restaurants", {}).values():
+            for item in collect_menu_items_from_entry(restaurant):
+                normalized = normalize_final_line(item)
+                if normalized and not is_suspicious_menu_item(normalized):
+                    terms.add(normalized)
+    return terms
+
+
+def find_best_known_term(item: str, known_terms: set[str]) -> tuple[str | None, float]:
+    if not known_terms:
+        return None, 0.0
+    best_term = None
+    best_score = 0.0
+    item_key = canonical_key(item)
+    for term in known_terms:
+        term_key = canonical_key(term)
+        if not item_key or not term_key:
+            continue
+        score = SequenceMatcher(None, item_key, term_key).ratio()
+        if score > best_score:
+            best_term = term
+            best_score = score
+    return best_term, best_score
+
+
+def repair_menu_items(items: list[str], known_terms: set[str], max_items: int) -> tuple[list[str], int]:
+    repaired: list[str] = []
+    rejected = 0
+    seen: set[str] = set()
+
+    for raw_item in items:
+        item = normalize_final_line(raw_item)
+        if not item:
+            continue
+        best_term, score = find_best_known_term(item, known_terms)
+        if best_term and (score >= 0.86 or (is_suspicious_menu_item(item) and score >= 0.66)):
+            item = best_term
+        if is_suspicious_menu_item(item):
+            rejected += 1
+            continue
+        key = canonical_key(item)
+        if key in seen:
+            continue
+        seen.add(key)
+        repaired.append(item)
+        if len(repaired) >= max_items:
+            break
+    return repaired, rejected
+
+
+def validate_extracted_menu(
+    name: str,
+    items: list[str],
+    known_terms: set[str],
+    strict_min: bool = True,
+) -> tuple[list[str], bool, int]:
+    config = SOURCE_CONFIG[name]
+    repaired, rejected = repair_menu_items(items, known_terms, config["max_items"])
+    if not repaired:
+        return [], False, rejected
+
+    minimum = config["min_items"] if strict_min else max(4, config["min_items"] - 2)
+    if name == "퍼블릭가산 구내식당":
+        minimum = 2
+    if len(repaired) < minimum:
+        return repaired, False, rejected
+    if rejected > max(1, len(repaired) // 3):
+        return repaired, False, rejected
+    return repaired, True, rejected
+
+
+def validate_menu_sections(
+    name: str,
+    sections: dict[str, list[str]],
+    known_terms: set[str],
+) -> tuple[dict[str, list[str]], bool, int]:
+    fixed_sections: dict[str, list[str]] = {}
+    rejected_total = 0
+    useful_count = 0
+    for title, items in sections.items():
+        if title == "플러스메뉴":
+            fixed_sections[title] = items
+            continue
+        fixed, _, rejected = validate_extracted_menu(name, items, known_terms, strict_min=False)
+        rejected_total += rejected
+        if fixed:
+            fixed_sections[title] = fixed
+            useful_count += len(fixed)
+    if sections.get("플러스메뉴"):
+        fixed_sections["플러스메뉴"] = sections["플러스메뉴"]
+    return fixed_sections, useful_count >= 4, rejected_total
 
 
 def apply_manual_overrides(data: dict, logs: list[dict], now: datetime) -> None:
@@ -787,6 +952,8 @@ def update_json_with_ocr() -> None:
     data = load_data()
     hints = load_hints()
     collection_log = load_collection_log()
+    manual_overrides = load_manual_overrides()
+    known_terms = collect_known_menu_terms(data, manual_overrides)
     now = datetime.now(SEOUL)
     data["date_label"] = f"{now.year}년 {now.month}월 {now.day}일 {WEEKDAYS[now.weekday()]}"
 
@@ -825,39 +992,17 @@ def update_json_with_ocr() -> None:
         if name == "에스제이 구내식당":
             if SJ_WEEKLY_IMAGE_PATH.exists():
                 sections, today_marker = parse_sj_weekly_image(SJ_WEEKLY_IMAGE_PATH, now)
-                if sections and fetched_recently and today_marker:
-                    restaurant["menu_sections"] = [{"title": title, "items": items} for title, items in sections.items()]
-                    flat_menu = []
-                    for items in sections.values():
-                        flat_menu.extend(items)
-                    restaurant["menu"] = flat_menu
-                    restaurant["menu_recorded_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
-                    restaurant["menu_recorded_source_fetched_at"] = source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else now.strftime("%Y-%m-%d %H:%M:%S")
-                    logs.append(
-                        {
-                            "name": name,
-                            "items": len(flat_menu),
-                            "updated": True,
-                            "used_existing_fallback": False,
-                            "today_marker": True,
-                            "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
-                        }
-                    )
-                    continue
-                logs.append(
-                    {
-                        "name": name,
-                        "items": len(previous_menu),
-                        "updated": False,
-                        "used_existing_fallback": True,
-                        "reason": "today_marker_not_found" if fetched_recently else "source_not_recent",
-                        "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
-                    }
-                )
-                continue
-            sections = parse_sj_sections_from_hint(hint_text)
-            today_marker = has_today_marker([hint_text], now)
-            if sections and fetched_recently and today_marker:
+            else:
+                sections = parse_sj_sections_from_hint(hint_text)
+                today_marker = has_today_marker([hint_text], now)
+
+            if sections:
+                sections, sections_ok, rejected_count = validate_menu_sections(name, sections, known_terms)
+            else:
+                sections_ok = False
+                rejected_count = 0
+
+            if sections and sections_ok and fetched_recently and today_marker:
                 restaurant["menu_sections"] = [{"title": title, "items": items} for title, items in sections.items()]
                 flat_menu = []
                 for items in sections.values():
@@ -871,18 +1016,24 @@ def update_json_with_ocr() -> None:
                         "items": len(flat_menu),
                         "updated": True,
                         "used_existing_fallback": False,
+                        "ocr_rejected_items": rejected_count,
                         "today_marker": True,
                         "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
                     }
                 )
                 continue
+
+            if fetched_recently and today_marker:
+                restaurant["menu"] = []
+                restaurant.pop("menu_sections", None)
             logs.append(
                 {
                     "name": name,
                     "items": len(previous_menu),
                     "updated": False,
                     "used_existing_fallback": True,
-                    "reason": "today_marker_not_found" if fetched_recently else "source_not_recent",
+                    "reason": "ocr_low_confidence" if fetched_recently and today_marker else ("today_marker_not_found" if fetched_recently else "source_not_recent"),
+                    "ocr_rejected_items": rejected_count,
                     "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
                 }
             )
@@ -904,25 +1055,46 @@ def update_json_with_ocr() -> None:
             )
             continue
         extracted_menu, used_fallback = parse_restaurant_menu(name, texts, previous_menu)
+        extracted_menu, menu_ok, rejected_count = validate_extracted_menu(
+            name,
+            extracted_menu,
+            known_terms,
+            strict_min=not used_fallback,
+        )
+        if not menu_ok:
+            used_fallback = True
         if source_is_new and used_fallback:
             candidate_menu = extract_missing_menu_candidates(name, texts)
-            if candidate_menu:
+            candidate_menu, candidate_ok, candidate_rejected = validate_extracted_menu(
+                name,
+                candidate_menu,
+                known_terms,
+                strict_min=False,
+            )
+            rejected_count += candidate_rejected
+            if candidate_ok:
                 extracted_menu = candidate_menu
                 used_fallback = False
+            else:
+                extracted_menu = []
+        elif used_fallback and fetched_recently and today_marker:
+            extracted_menu = []
         restaurant["menu"] = extracted_menu
         if name != "에스제이 구내식당":
             restaurant.pop("menu_sections", None)
-        fallback_confirmed = bool(extracted_menu) and used_fallback and fetched_recently and today_marker
-        if extracted_menu and (not used_fallback or fallback_confirmed):
+        low_confidence = fetched_recently and today_marker and not extracted_menu
+        if extracted_menu and not used_fallback:
             restaurant["menu_recorded_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
             restaurant["menu_recorded_source_fetched_at"] = source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else now.strftime("%Y-%m-%d %H:%M:%S")
         logs.append(
             {
                 "name": name,
                 "items": len(extracted_menu),
-                "updated": bool(extracted_menu) and (not used_fallback or fallback_confirmed),
+                "updated": bool(extracted_menu) and not used_fallback,
                 "used_existing_fallback": used_fallback,
-                "fallback_confirmed": fallback_confirmed,
+                "fallback_confirmed": False,
+                "reason": "ocr_low_confidence" if low_confidence else "",
+                "ocr_rejected_items": rejected_count,
                 "today_marker": today_marker,
                 "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
             }

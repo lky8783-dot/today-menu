@@ -88,13 +88,13 @@ def render_restaurant_card(item: dict) -> str:
         note_html = ''
         if item['name'] == '퍼블릭가산 구내식당':
             note_html = '<div class="info-note">현재는 메인메뉴만 공개됐습니다.</div>'
-        elif not menu_fresh and item.get('menu_recent_source_today') and (item.get('menu') or menu_sections):
-            note_html = '<div class="info-note">수집대기중입니다. 현재는 마지막으로 확인한 메뉴를 보여줍니다.</div>'
+        elif not menu_fresh and item.get('menu_recent_source_today') and preview_image:
+            note_html = '<div class="info-note">메뉴 이미지는 갱신됐고, 텍스트는 자동 확인 중입니다. 메뉴 이미지 확인 버튼으로 식단을 확인해 주세요.</div>'
         elif not menu_fresh:
             note_html = '<div class="info-note">수집대기중입니다.</div>'
         elif not item.get('menu') and preview_image:
             note_html = '<div class="info-note">메뉴 텍스트는 정리 중입니다. 메뉴 이미지 확인 버튼으로 식단을 확인해 주세요.</div>'
-        show_menu_items = (menu_fresh or item.get('menu_recent_source_today')) and (bool(item.get('menu')) or bool(menu_sections))
+        show_menu_items = menu_fresh and (bool(item.get('menu')) or bool(menu_sections))
         menu_html = section_html if menu_sections else f'<ul>{menu_items}</ul>'
         body = f'{note_html}{menu_html}' if show_menu_items else note_html
         action_html = ''
@@ -134,6 +134,7 @@ def render_page(data: dict) -> str:
         source_fetched_at = parse_logged_time(log.get('source_fetched_at')) if log else None
         row['menu_fresh_today'] = bool((log and log.get('updated')) or (recorded_at and recorded_at.date() == now))
         row['menu_recent_source_today'] = bool(source_fetched_at and source_fetched_at.date() == now)
+        row['ocr_reason'] = log.get('reason', '') if log else ''
         restaurants.append(row)
     ready_count = count_by_status(restaurants, 'ready')
     preparing_count = count_by_status(restaurants, 'preparing')
