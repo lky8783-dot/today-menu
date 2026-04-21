@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "menu-today" / "menu_today.json"
 HINTS_PATH = ROOT / "menu-today" / "dynamic_menu_hints.json"
 COLLECTION_LOG_PATH = ROOT / "menu-today" / "collection_log.json"
+MANUAL_OVERRIDES_PATH = ROOT / "menu-today" / "manual_menu_overrides.json"
 SJ_WEEKLY_IMAGE_PATH = ROOT / "menu-today" / "images" / "sj-weekly-menu.png"
 SEOUL = ZoneInfo("Asia/Seoul")
 WEEKDAYS = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
@@ -130,6 +131,12 @@ def load_collection_log() -> dict[str, dict]:
         return {}
     data = json.loads(COLLECTION_LOG_PATH.read_text(encoding="utf-8-sig"))
     return {entry.get("name", ""): entry for entry in data.get("sources", [])}
+
+
+def load_manual_overrides() -> dict:
+    if not MANUAL_OVERRIDES_PATH.exists():
+        return {}
+    return json.loads(MANUAL_OVERRIDES_PATH.read_text(encoding="utf-8-sig"))
 
 
 def save_data(data: dict) -> None:
@@ -384,6 +391,67 @@ def has_recorded_menu(restaurant: dict) -> bool:
         if section.get("items"):
             return True
     return False
+
+
+def count_menu_items(restaurant: dict) -> int:
+    if restaurant.get("menu_sections"):
+        return sum(len(section.get("items", [])) for section in restaurant.get("menu_sections", []))
+    return len(restaurant.get("menu", []))
+
+
+def apply_manual_overrides(data: dict, logs: list[dict], now: datetime) -> None:
+    overrides = load_manual_overrides()
+    date_key = now.strftime("%Y-%m-%d")
+    date_overrides = overrides.get(date_key, {}).get("restaurants", {})
+    if not date_overrides:
+        return
+
+    logs_by_name = {log.get("name"): log for log in logs}
+    recorded_at = now.strftime("%Y-%m-%d %H:%M:%S")
+
+    for restaurant in data.get("restaurants", []):
+        name = restaurant.get("name", "")
+        override = date_overrides.get(name)
+        if not override:
+            continue
+
+        if "status" in override:
+            restaurant["status"] = override["status"]
+        if "message" in override:
+            restaurant["message"] = override["message"]
+        if "preview_image" in override:
+            restaurant["preview_image"] = override["preview_image"]
+
+        sections = override.get("menu_sections")
+        if sections:
+            restaurant["menu_sections"] = sections
+            flat_menu: list[str] = []
+            for section in sections:
+                flat_menu.extend(section.get("items", []))
+            restaurant["menu"] = flat_menu
+        else:
+            restaurant["menu"] = override.get("menu", restaurant.get("menu", []))
+            restaurant.pop("menu_sections", None)
+
+        restaurant["menu_recorded_at"] = recorded_at
+        restaurant["menu_recorded_source_fetched_at"] = restaurant.get("menu_recorded_source_fetched_at") or recorded_at
+        restaurant["menu_recent_source_today"] = True
+
+        log = logs_by_name.get(name)
+        if not log:
+            log = {"name": name}
+            logs.append(log)
+            logs_by_name[name] = log
+        log.update(
+            {
+                "items": count_menu_items(restaurant),
+                "updated": True,
+                "used_existing_fallback": False,
+                "manual_override": True,
+                "today_marker": True,
+                "source_fetched_at": restaurant.get("menu_recorded_source_fetched_at", ""),
+            }
+        )
 
 
 def extract_missing_menu_candidates(name: str, texts: list[str]) -> list[str]:
@@ -860,6 +928,7 @@ def update_json_with_ocr() -> None:
             }
         )
 
+    apply_manual_overrides(data, logs, now)
     data["ocr_log"] = logs
     save_data(data)
 

@@ -55,7 +55,7 @@ try {
         throw "build_menu_page.py failed"
     }
 
-    & git add "menu-today\collection_log.json" "menu-today\dynamic_menu_hints.json" "menu-today\images\*.png" "menu-today\index.html" "menu-today\menu_today.json"
+    & git add "menu-today\collection_log.json" "menu-today\dynamic_menu_hints.json" "menu-today\manual_menu_overrides.json" "menu-today\images\*.png" "menu-today\index.html" "menu-today\menu_today.json"
     if ($LASTEXITCODE -ne 0) {
         throw "git add failed"
     }
