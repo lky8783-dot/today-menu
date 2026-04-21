@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 21일 화요일",
-  "updated_at": "2026-04-21 10:03:02",
+  "updated_at": "2026-04-21 10:12:39",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -27,8 +27,8 @@
         "타사으",
         "가펴시"
       ],
-      "menu_recorded_at": "2026-04-21 10:01:32",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:01:00",
+      "menu_recorded_at": "2026-04-21 10:11:14",
+      "menu_recorded_source_fetched_at": "2026-04-21 10:10:49",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -53,8 +53,8 @@
         "샐러드"
       ],
       "preview_image": "./images/dasibom.png",
-      "menu_recorded_at": "2026-04-21 10:01:32",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:01:03",
+      "menu_recorded_at": "2026-04-21 10:11:14",
+      "menu_recorded_source_fetched_at": "2026-04-21 10:10:51",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -79,8 +79,8 @@
         "고바",
         "고기육"
       ],
-      "menu_recorded_at": "2026-04-21 10:01:32",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:01:05",
+      "menu_recorded_at": "2026-04-21 10:11:14",
+      "menu_recorded_source_fetched_at": "2026-04-21 10:10:53",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -105,8 +105,8 @@
         "21일",
         "대파육개장"
       ],
-      "menu_recorded_at": "2026-04-21 10:01:32",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:01:08",
+      "menu_recorded_at": "2026-04-21 10:11:14",
+      "menu_recorded_source_fetched_at": "2026-04-21 10:10:55",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -131,8 +131,8 @@
         "쌈채소 & 풋고추 / 한강라면 & 딜콤한 WSEAS",
         "구수한 숭등 & 시원한"
       ],
-      "menu_recorded_at": "2026-04-21 10:01:32",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:01:11",
+      "menu_recorded_at": "2026-04-21 10:11:14",
+      "menu_recorded_source_fetched_at": "2026-04-21 10:10:57",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -149,8 +149,8 @@
         "ee eee 건새우파전 분총소세지전 동! ) 00 a",
         "김치제육볶음"
       ],
-      "menu_recorded_at": "2026-04-21 10:01:32",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:01:13",
+      "menu_recorded_at": "2026-04-21 10:11:14",
+      "menu_recorded_source_fetched_at": "2026-04-21 10:11:00",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -175,8 +175,8 @@
         "무보으",
         "우동"
       ],
-      "menu_recorded_at": "2026-04-21 10:01:32",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:01:15",
+      "menu_recorded_at": "2026-04-21 10:11:14",
+      "menu_recorded_source_fetched_at": "2026-04-21 10:11:02",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -202,8 +202,8 @@
       ],
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png",
-      "menu_recorded_at": "2026-04-21 10:01:32",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:01:22",
+      "menu_recorded_at": "2026-04-21 10:11:14",
+      "menu_recorded_source_fetched_at": "2026-04-21 10:11:05",
       "menu_recent_source_today": true
     },
     {
@@ -214,22 +214,35 @@
       "map_url": "https://map.naver.com/p/directions/-/3zdKjD,2AIpAQ,SJ%ED%85%8C%ED%81%AC%EB%85%B8%EB%B9%8C,19472604,PLACE_POI/-/walk?c=18.00,0,0,0,dh",
       "menu": [
         "백미밥 / 잡곡밥",
-        "포항닭보쌈",
-        "숙주나묻무침",
+        "두부지짐이 * 소스",
         "배추김치",
         "그린샐러드",
         "추가찬2종",
-        "계란후라이 / 토스트 & 딸기잼",
-        "숙주나물무침",
+        "후라이 / 토스트 & 딸기잼",
+        "모듬어묵탕",
+        "취나",
+        "곤ㅜㅎㅎ",
+        "간후라이 / 토스트 & 딸기잼",
+        "취나물무침",
+        "주가찬2종",
+        "고 ㅜㅎ",
         "배주김치",
+        "+S eto] / 토스트 & 딸기잼",
+        "부대찌개",
         "잡곡밥",
-        "감자고로케 * 소스",
+        "스크렘블에그",
         "계절나물",
         "배추김치",
         "그린샐러드",
-        "계란후라이 / 토스트 & 딸기잼",
-        "감자수제비국",
-        "재란후라이 / 토스트 & 딸기잼",
+        "가후라이 / 토스트 & 딸기잼",
+        "타사을르 =S WAI",
+        "후라이 / 토스트 & 딸기잼",
+        "스크램불에그",
+        "간후라이 / 토스트 & 딸기잼",
+        "ERAFSQe2 수능 매식차",
+        "스크램붙에그",
+        "+210] / 토스트 & 딸기잼",
+        "프 라면",
         "계란후라이 / 토스트&딸기잼",
         "셀프 라면",
         "탄산음료, 숭늉, 매실차"
@@ -241,27 +254,40 @@
           "title": "중식",
           "items": [
             "백미밥 / 잡곡밥",
-            "포항닭보쌈",
-            "숙주나묻무침",
+            "두부지짐이 * 소스",
             "배추김치",
             "그린샐러드",
             "추가찬2종",
-            "계란후라이 / 토스트 & 딸기잼",
-            "숙주나물무침",
-            "배주김치"
+            "후라이 / 토스트 & 딸기잼",
+            "모듬어묵탕",
+            "취나",
+            "곤ㅜㅎㅎ",
+            "간후라이 / 토스트 & 딸기잼",
+            "취나물무침",
+            "주가찬2종",
+            "고 ㅜㅎ",
+            "배주김치",
+            "+S eto] / 토스트 & 딸기잼"
           ]
         },
         {
           "title": "석식",
           "items": [
+            "부대찌개",
             "잡곡밥",
-            "감자고로케 * 소스",
+            "스크렘블에그",
             "계절나물",
             "배추김치",
             "그린샐러드",
-            "계란후라이 / 토스트 & 딸기잼",
-            "감자수제비국",
-            "재란후라이 / 토스트 & 딸기잼"
+            "가후라이 / 토스트 & 딸기잼",
+            "타사을르 =S WAI",
+            "후라이 / 토스트 & 딸기잼",
+            "스크램불에그",
+            "간후라이 / 토스트 & 딸기잼",
+            "ERAFSQe2 수능 매식차",
+            "스크램붙에그",
+            "+210] / 토스트 & 딸기잼",
+            "프 라면"
           ]
         },
         {
@@ -273,8 +299,8 @@
           ]
         }
       ],
-      "menu_recorded_at": "2026-04-21 10:01:32",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:00:21",
+      "menu_recorded_at": "2026-04-21 10:11:14",
+      "menu_recorded_source_fetched_at": "2026-04-21 10:10:14",
       "menu_recent_source_today": true
     },
     {
@@ -313,7 +339,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:01:00"
+      "source_fetched_at": "2026-04-21 10:10:49"
     },
     {
       "name": "다시 봄",
@@ -322,7 +348,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:01:03"
+      "source_fetched_at": "2026-04-21 10:10:51"
     },
     {
       "name": "밥(온) 구내식당",
@@ -331,7 +357,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:01:05"
+      "source_fetched_at": "2026-04-21 10:10:53"
     },
     {
       "name": "구내식당라온푸드",
@@ -340,7 +366,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:01:08"
+      "source_fetched_at": "2026-04-21 10:10:55"
     },
     {
       "name": "마이푸드",
@@ -349,7 +375,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:01:11"
+      "source_fetched_at": "2026-04-21 10:10:57"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -358,7 +384,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:01:13"
+      "source_fetched_at": "2026-04-21 10:11:00"
     },
     {
       "name": "더푸드스케치",
@@ -367,7 +393,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:01:15"
+      "source_fetched_at": "2026-04-21 10:11:02"
     },
     {
       "name": "스타밸리푸드포유",
@@ -376,15 +402,15 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:01:22"
+      "source_fetched_at": "2026-04-21 10:11:05"
     },
     {
       "name": "에스제이 구내식당",
-      "items": 20,
+      "items": 33,
       "updated": true,
       "used_existing_fallback": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:00:21"
+      "source_fetched_at": "2026-04-21 10:10:14"
     }
   ]
 }
