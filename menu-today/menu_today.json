@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 21일 화요일",
-  "updated_at": "2026-04-21 10:47:37",
+  "updated_at": "2026-04-21 11:02:55",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -25,8 +25,8 @@
         "셀프비빔밥 / 한강라면",
         "간편식: 훈제오리샐러드"
       ],
-      "menu_recorded_at": "2026-04-21 10:46:11",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:45:50",
+      "menu_recorded_at": "2026-04-21 11:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-21 11:00:58",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -50,8 +50,8 @@
         "셀프라면"
       ],
       "preview_image": "./images/dasibom.png",
-      "menu_recorded_at": "2026-04-21 10:46:11",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:45:52",
+      "menu_recorded_at": "2026-04-21 11:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-21 11:01:01",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -74,8 +74,8 @@
         "배추겉절이김치",
         "양배추샐러드 / 미니찐빵"
       ],
-      "menu_recorded_at": "2026-04-21 10:46:11",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:45:53",
+      "menu_recorded_at": "2026-04-21 11:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-21 11:01:03",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -98,8 +98,8 @@
         "샐러드 & 드레싱",
         "숭늉 & 음료"
       ],
-      "menu_recorded_at": "2026-04-21 10:46:11",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:45:55",
+      "menu_recorded_at": "2026-04-21 11:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-21 11:01:05",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -124,8 +124,8 @@
         "잡곡밥 / 백미밥",
         "쌈채소 & 풋고추 / 한강라면 & 달콤한 잼 토스트 / 구수한 숭늉 & 시원한 탄산음료"
       ],
-      "menu_recorded_at": "2026-04-21 10:46:11",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:45:57",
+      "menu_recorded_at": "2026-04-21 11:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-21 11:01:07",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -141,8 +141,8 @@
         "자반고등어양념구이",
         "분홍소세지전"
       ],
-      "menu_recorded_at": "2026-04-21 10:46:11",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:45:58",
+      "menu_recorded_at": "2026-04-21 11:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-21 11:01:09",
       "message": "",
       "menu_recent_source_today": true,
       "menu_sections": [
@@ -176,8 +176,8 @@
         "가든샐러드/드레싱",
         "배추겉절이/음료"
       ],
-      "menu_recorded_at": "2026-04-21 10:46:11",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:46:00",
+      "menu_recorded_at": "2026-04-21 11:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-21 11:01:12",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -201,8 +201,8 @@
       ],
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png",
-      "menu_recorded_at": "2026-04-21 10:46:11",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:46:04",
+      "menu_recorded_at": "2026-04-21 11:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-21 11:01:16",
       "menu_recent_source_today": true
     },
     {
@@ -276,8 +276,8 @@
           ]
         }
       ],
-      "menu_recorded_at": "2026-04-21 10:46:11",
-      "menu_recorded_source_fetched_at": "2026-04-21 10:45:14",
+      "menu_recorded_at": "2026-04-21 11:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-21 11:00:22",
       "menu_recent_source_today": true
     },
     {
@@ -316,7 +316,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:45:50",
+      "source_fetched_at": "2026-04-21 11:00:58",
       "manual_override": true
     },
     {
@@ -326,7 +326,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:45:52",
+      "source_fetched_at": "2026-04-21 11:01:01",
       "manual_override": true
     },
     {
@@ -336,7 +336,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:45:53",
+      "source_fetched_at": "2026-04-21 11:01:03",
       "manual_override": true
     },
     {
@@ -346,7 +346,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:45:55",
+      "source_fetched_at": "2026-04-21 11:01:05",
       "manual_override": true
     },
     {
@@ -356,7 +356,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:45:57",
+      "source_fetched_at": "2026-04-21 11:01:07",
       "manual_override": true
     },
     {
@@ -366,7 +366,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:45:58",
+      "source_fetched_at": "2026-04-21 11:01:09",
       "manual_override": true
     },
     {
@@ -376,7 +376,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:46:00",
+      "source_fetched_at": "2026-04-21 11:01:12",
       "manual_override": true
     },
     {
@@ -386,7 +386,7 @@
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:46:04",
+      "source_fetched_at": "2026-04-21 11:01:16",
       "manual_override": true
     },
     {
@@ -395,7 +395,7 @@
       "updated": true,
       "used_existing_fallback": false,
       "today_marker": true,
-      "source_fetched_at": "2026-04-21 10:45:14",
+      "source_fetched_at": "2026-04-21 11:00:22",
       "manual_override": true
     }
   ]
