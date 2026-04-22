@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 22일 수요일",
-  "updated_at": "2026-04-22 09:47:51",
+  "updated_at": "2026-04-22 10:02:50",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -27,8 +27,8 @@
         "Se 비빔막국수",
         "총 특식 호 훈제삼겹보쌈 & 마늘소스"
       ],
-      "menu_recorded_at": "2026-04-22 09:46:21",
-      "menu_recorded_source_fetched_at": "2026-04-22 09:45:49",
+      "menu_recorded_at": "2026-04-22 10:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-22 10:01:03",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -66,8 +66,8 @@
         "히쌍밥 / 건으쌍잡",
         "그 구마고르케튀김"
       ],
-      "menu_recorded_at": "2026-04-22 09:46:21",
-      "menu_recorded_source_fetched_at": "2026-04-22 09:45:54",
+      "menu_recorded_at": "2026-04-22 10:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-22 10:01:06",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -91,8 +91,8 @@
         "대찌개",
         "자돌박0"
       ],
-      "menu_recorded_at": "2026-04-22 09:46:21",
-      "menu_recorded_source_fetched_at": "2026-04-22 09:45:56",
+      "menu_recorded_at": "2026-04-22 10:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-22 10:01:08",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -142,8 +142,8 @@
         "소세지선",
         "상주 / 일배기 / 쌈장"
       ],
-      "menu_recorded_at": "2026-04-22 09:46:21",
-      "menu_recorded_source_fetched_at": "2026-04-22 09:46:03",
+      "menu_recorded_at": "2026-04-22 10:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-22 10:01:13",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -256,8 +256,8 @@
           ]
         }
       ],
-      "menu_recorded_at": "2026-04-22 09:46:21",
-      "menu_recorded_source_fetched_at": "2026-04-22 09:45:13",
+      "menu_recorded_at": "2026-04-22 10:01:25",
+      "menu_recorded_source_fetched_at": "2026-04-22 10:00:24",
       "menu_recent_source_today": true
     },
     {
@@ -298,7 +298,7 @@
       "reason": "",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-04-22 09:45:49"
+      "source_fetched_at": "2026-04-22 10:01:03"
     },
     {
       "name": "다시 봄",
@@ -309,7 +309,7 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 6,
       "today_marker": true,
-      "source_fetched_at": "2026-04-22 09:45:51"
+      "source_fetched_at": "2026-04-22 10:01:05"
     },
     {
       "name": "밥(온) 구내식당",
@@ -320,7 +320,7 @@
       "reason": "",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-04-22 09:45:54"
+      "source_fetched_at": "2026-04-22 10:01:06"
     },
     {
       "name": "구내식당라온푸드",
@@ -331,7 +331,7 @@
       "reason": "",
       "ocr_rejected_items": 1,
       "today_marker": true,
-      "source_fetched_at": "2026-04-22 09:45:56"
+      "source_fetched_at": "2026-04-22 10:01:08"
     },
     {
       "name": "마이푸드",
@@ -342,7 +342,7 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-04-22 09:45:59"
+      "source_fetched_at": "2026-04-22 10:01:10"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -353,7 +353,7 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-04-22 09:46:01"
+      "source_fetched_at": "2026-04-22 10:01:12"
     },
     {
       "name": "더푸드스케치",
@@ -364,7 +364,7 @@
       "reason": "",
       "ocr_rejected_items": 1,
       "today_marker": true,
-      "source_fetched_at": "2026-04-22 09:46:03"
+      "source_fetched_at": "2026-04-22 10:01:13"
     },
     {
       "name": "스타밸리푸드포유",
@@ -372,7 +372,7 @@
       "updated": false,
       "used_existing_fallback": true,
       "reason": "today_marker_not_found",
-      "source_fetched_at": "2026-04-22 09:46:09"
+      "source_fetched_at": "2026-04-22 10:01:17"
     },
     {
       "name": "에스제이 구내식당",
@@ -381,7 +381,7 @@
       "used_existing_fallback": false,
       "ocr_rejected_items": 1,
       "today_marker": true,
-      "source_fetched_at": "2026-04-22 09:45:13"
+      "source_fetched_at": "2026-04-22 10:00:24"
     }
   ]
 }
