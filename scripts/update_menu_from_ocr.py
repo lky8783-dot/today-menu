@@ -20,6 +20,7 @@ SJ_WEEKLY_IMAGE_PATH = ROOT / "menu-today" / "images" / "sj-weekly-menu.png"
 SEOUL = ZoneInfo("Asia/Seoul")
 WEEKDAYS = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
 RECENT_FETCH_WINDOW = timedelta(hours=6)
+PARTIAL_MENU_MIN_ITEMS = 1
 
 SOURCE_CONFIG = {
     "아이밀": {"image": ROOT / "menu-today" / "images" / "imeal.png", "min_items": 8, "max_items": 14},
@@ -543,12 +544,12 @@ def validate_extracted_menu(
     if not repaired:
         return [], False, rejected
 
-    minimum = config["min_items"] if strict_min else max(4, config["min_items"] - 2)
+    minimum = config["min_items"] if strict_min else PARTIAL_MENU_MIN_ITEMS
     if name == "퍼블릭가산 구내식당":
         minimum = 2
     if len(repaired) < minimum:
         return repaired, False, rejected
-    if rejected > max(1, len(repaired) // 3):
+    if strict_min and rejected > max(2, len(repaired)):
         return repaired, False, rejected
     return repaired, True, rejected
 
@@ -648,7 +649,7 @@ def extract_missing_menu_candidates(name: str, texts: list[str]) -> list[str]:
         if not filtered:
             filtered = deduped
         limit = config["max_items"]
-        minimum = max(4, config["min_items"] - 2)
+        minimum = PARTIAL_MENU_MIN_ITEMS
     result = filtered[:limit]
     if len(result) < minimum:
         return []
@@ -1080,7 +1081,8 @@ def update_json_with_ocr() -> None:
         )
         if not menu_ok:
             used_fallback = True
-        if source_is_new and used_fallback:
+        partial_ocr = False
+        if used_fallback and fetched_recently and today_marker:
             candidate_menu = extract_missing_menu_candidates(name, texts)
             candidate_menu, candidate_ok, candidate_rejected = validate_extracted_menu(
                 name,
@@ -1092,10 +1094,9 @@ def update_json_with_ocr() -> None:
             if candidate_ok:
                 extracted_menu = candidate_menu
                 used_fallback = False
+                partial_ocr = True
             else:
                 extracted_menu = []
-        elif used_fallback and fetched_recently and today_marker:
-            extracted_menu = []
         restaurant["menu"] = extracted_menu
         if name != "에스제이 구내식당":
             restaurant.pop("menu_sections", None)
@@ -1110,7 +1111,7 @@ def update_json_with_ocr() -> None:
                 "updated": bool(extracted_menu) and not used_fallback,
                 "used_existing_fallback": used_fallback,
                 "fallback_confirmed": False,
-                "reason": "ocr_low_confidence" if low_confidence else "",
+                "reason": "partial_ocr" if partial_ocr else ("ocr_low_confidence" if low_confidence else ""),
                 "ocr_rejected_items": rejected_count,
                 "today_marker": today_marker,
                 "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
