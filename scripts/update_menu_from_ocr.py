@@ -391,9 +391,17 @@ def menu_similarity(left: str, right: str) -> float:
 def is_suspicious_menu_item(line: str) -> bool:
     if not line:
         return True
+    if re.search(r"[€£¥¢]", line):
+        return True
     if re.search(r"[<>\\\\'\"{}\\[\\]@]", line):
         return True
     if re.search(r"[ㄱ-ㅎㅏ-ㅣ]", line):
+        return True
+    if re.search(r"\b[A-Za-z]\d|\d[A-Za-z]", line):
+        return True
+    if re.search(r"^\d+\s+", line):
+        return True
+    if re.search(r"\d", line) and not re.search(r"(추가찬\s*\d+종|\d+종|[A-Za-z]D|st)", line):
         return True
     if len(re.findall(r"[A-Za-z]", line)) >= 3:
         allowed = re.sub(r"\b(?:D|S|JPG|JPEG)\b", "", line)
@@ -464,12 +472,8 @@ def collect_menu_items_from_entry(entry: dict) -> list[str]:
 
 def collect_known_menu_terms(data: dict, overrides: dict) -> set[str]:
     terms = set(COMMON_MENU_TERMS)
-    for restaurant in data.get("restaurants", []):
-        for item in collect_menu_items_from_entry(restaurant):
-            normalized = normalize_final_line(item)
-            if normalized and not is_suspicious_menu_item(normalized):
-                terms.add(normalized)
-
+    # Do not learn from menu_today.json itself: one bad OCR run can otherwise
+    # become a "known good" menu and keep passing future validation.
     for day in overrides.values():
         for restaurant in day.get("restaurants", {}).values():
             for item in collect_menu_items_from_entry(restaurant):
@@ -477,6 +481,13 @@ def collect_known_menu_terms(data: dict, overrides: dict) -> set[str]:
                 if normalized and not is_suspicious_menu_item(normalized):
                     terms.add(normalized)
     return terms
+
+
+def menu_output_quality_ok(restaurant: dict) -> bool:
+    items = collect_menu_items_from_entry(restaurant)
+    if not items:
+        return False
+    return not any(is_suspicious_menu_item(normalize_final_line(item)) for item in items)
 
 
 def find_best_known_term(item: str, known_terms: set[str]) -> tuple[str | None, float]:
@@ -973,7 +984,13 @@ def update_json_with_ocr() -> None:
         source_fetched_at = get_source_fetched_at(name, image_path, collection_log)
         recorded_source_at = parse_logged_time(restaurant.get("menu_recorded_source_fetched_at"))
         source_is_new = bool(source_fetched_at and (not recorded_source_at or recorded_source_at < source_fetched_at))
-        if source_fetched_at and recorded_source_at and recorded_source_at >= source_fetched_at and has_recorded_menu(restaurant):
+        if (
+            source_fetched_at
+            and recorded_source_at
+            and recorded_source_at >= source_fetched_at
+            and has_recorded_menu(restaurant)
+            and menu_output_quality_ok(restaurant)
+        ):
             logs.append(
                 {
                     "name": name,
