@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 24일 금요일",
-  "updated_at": "2026-04-24 09:32:41",
+  "updated_at": "2026-04-24 09:47:44",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -23,8 +23,8 @@
         "둥굴레차",
         "타사을"
       ],
-      "menu_recorded_at": "2026-04-24 09:31:20",
-      "menu_recorded_source_fetched_at": "2026-04-24 09:30:55",
+      "menu_recorded_at": "2026-04-24 09:46:24",
+      "menu_recorded_source_fetched_at": "2026-04-24 09:45:57",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -35,21 +35,21 @@
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [
-        "꽃게찌개",
-        "꼬들살간장구이",
-        "치즈품은등심돈까스",
-        "어두부전",
-        "새콤야채쫄면",
-        "부추생채",
-        "싱싱샐러드",
-        "깍두기",
-        "셀프토스트 * 과일",
-        "탄산음료",
-        "셀프라면"
+        "어묵탕",
+        "꽃삼겹철판구이",
+        "토마토카레파스타",
+        "잠치무조림",
+        "아삭고추된장무침",
+        "샐러드",
+        "숙성김치",
+        "꽂삼겹철판구이",
+        "^ 맛초킹치킨",
+        "삼치무조림",
+        "아삭고추된 자므친"
       ],
       "preview_image": "./images/dasibom.png",
-      "menu_recorded_at": "2026-04-23 11:46:17",
-      "menu_recorded_source_fetched_at": "2026-04-23 11:45:55",
+      "menu_recorded_at": "2026-04-24 09:46:24",
+      "menu_recorded_source_fetched_at": "2026-04-24 09:46:00",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -66,8 +66,8 @@
         "힌쌀밥 / 점은쌀잡",
         "고바"
       ],
-      "menu_recorded_at": "2026-04-24 09:31:20",
-      "menu_recorded_source_fetched_at": "2026-04-24 09:30:59",
+      "menu_recorded_at": "2026-04-24 09:46:24",
+      "menu_recorded_source_fetched_at": "2026-04-24 09:46:02",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -91,8 +91,8 @@
         "셀라면",
         "샐러드"
       ],
-      "menu_recorded_at": "2026-04-24 09:31:20",
-      "menu_recorded_source_fetched_at": "2026-04-24 09:31:01",
+      "menu_recorded_at": "2026-04-24 09:46:24",
+      "menu_recorded_source_fetched_at": "2026-04-24 09:46:04",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -115,8 +115,8 @@
         "잡곡밥 / 백미밥",
         "고규돈채굴소스볶음 & 꽃빵곳곳"
       ],
-      "menu_recorded_at": "2026-04-24 09:31:20",
-      "menu_recorded_source_fetched_at": "2026-04-24 09:31:03",
+      "menu_recorded_at": "2026-04-24 09:46:24",
+      "menu_recorded_source_fetched_at": "2026-04-24 09:46:06",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -154,8 +154,8 @@
         "우유블튀김",
         "튀김어묵떡볶이"
       ],
-      "menu_recorded_at": "2026-04-24 09:31:20",
-      "menu_recorded_source_fetched_at": "2026-04-24 09:31:06",
+      "menu_recorded_at": "2026-04-24 09:46:24",
+      "menu_recorded_source_fetched_at": "2026-04-24 09:46:11",
       "message": "",
       "menu_recent_source_today": true
     },
@@ -178,8 +178,8 @@
       ],
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png",
-      "menu_recorded_at": "2026-04-24 09:31:20",
-      "menu_recorded_source_fetched_at": "2026-04-24 09:31:11",
+      "menu_recorded_at": "2026-04-24 09:46:24",
+      "menu_recorded_source_fetched_at": "2026-04-24 09:46:15",
       "menu_recent_source_today": true
     },
     {
@@ -259,8 +259,8 @@
           ]
         }
       ],
-      "menu_recorded_at": "2026-04-24 09:31:20",
-      "menu_recorded_source_fetched_at": "2026-04-24 09:30:18",
+      "menu_recorded_at": "2026-04-24 09:46:24",
+      "menu_recorded_source_fetched_at": "2026-04-24 09:45:15",
       "menu_recent_source_today": true
     },
     {
@@ -304,15 +304,18 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 1,
       "today_marker": true,
-      "source_fetched_at": "2026-04-24 09:30:55"
+      "source_fetched_at": "2026-04-24 09:45:57"
     },
     {
       "name": "다시 봄",
       "items": 11,
-      "updated": false,
-      "used_existing_fallback": true,
-      "reason": "today_marker_not_found",
-      "source_fetched_at": "2026-04-24 09:30:57"
+      "updated": true,
+      "used_existing_fallback": false,
+      "fallback_confirmed": false,
+      "reason": "partial_ocr",
+      "ocr_rejected_items": 1,
+      "today_marker": true,
+      "source_fetched_at": "2026-04-24 09:46:00"
     },
     {
       "name": "밥(온) 구내식당",
@@ -323,7 +326,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 8,
       "today_marker": true,
-      "source_fetched_at": "2026-04-24 09:30:59"
+      "source_fetched_at": "2026-04-24 09:46:02"
     },
     {
       "name": "구내식당라온푸드",
@@ -334,7 +337,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 1,
       "today_marker": true,
-      "source_fetched_at": "2026-04-24 09:31:01"
+      "source_fetched_at": "2026-04-24 09:46:04"
     },
     {
       "name": "마이푸드",
@@ -345,7 +348,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-04-24 09:31:03"
+      "source_fetched_at": "2026-04-24 09:46:06"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -356,7 +359,7 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-04-24 09:31:05"
+      "source_fetched_at": "2026-04-24 09:46:09"
     },
     {
       "name": "더푸드스케치",
@@ -367,7 +370,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-04-24 09:31:06"
+      "source_fetched_at": "2026-04-24 09:46:11"
     },
     {
       "name": "스타밸리푸드포유",
@@ -378,7 +381,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-04-24 09:31:11"
+      "source_fetched_at": "2026-04-24 09:46:15"
     },
     {
       "name": "에스제이 구내식당",
@@ -387,7 +390,7 @@
       "used_existing_fallback": false,
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-04-24 09:30:18"
+      "source_fetched_at": "2026-04-24 09:45:15"
     }
   ]
 }
