@@ -58,7 +58,6 @@ def render_registered_restaurants(restaurants: list[dict]) -> str:
     return f'''
     <section class="registered-section" aria-label="등록 식당 목록">
       <h2 class="registered-title">등록 식당</h2>
-      <p class="registered-copy">가산디지털단지 구내식당 메뉴 검색 대상 식당 목록입니다. 식당명, 건물명, 주소 텍스트를 함께 제공해 검색에 잘 잡히도록 구성했습니다.</p>
       <ul class="registered-list">{items}</ul>
     </section>'''
 
