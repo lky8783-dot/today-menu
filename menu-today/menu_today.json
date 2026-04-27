@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 4월 27일 월요일",
-  "updated_at": "2026-04-27 10:47:43",
+  "updated_at": "2026-04-27 10:51:04",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -198,10 +198,10 @@
         "느타리버섯볶음",
         "배추김치",
         "그린샐러드",
+        "추가찬2종",
         "계란후라이 / 토스트&딸기잼",
         "치즈고로케 * 소스",
         "무비빔냉면",
-        "추가찬2종",
         "셀프 is",
         "열무비빔냉면 미",
         "시금치된장국",
@@ -211,8 +211,8 @@
         "배추김치",
         "그린샐러드",
         "계란후라이 / 토스트&딸기잼",
-        "+사을르 AL 매신사",
         "배주김치",
+        "노트",
         "계란후라이 / 토스트&딸기잼",
         "셀프 라면",
         "탄산음료, 숭늉, 매실차"
@@ -228,10 +228,10 @@
             "느타리버섯볶음",
             "배추김치",
             "그린샐러드",
+            "추가찬2종",
             "계란후라이 / 토스트&딸기잼",
             "치즈고로케 * 소스",
             "무비빔냉면",
-            "추가찬2종",
             "셀프 is",
             "열무비빔냉면 미"
           ]
@@ -246,8 +246,8 @@
             "배추김치",
             "그린샐러드",
             "계란후라이 / 토스트&딸기잼",
-            "+사을르 AL 매신사",
-            "배주김치"
+            "배주김치",
+            "노트"
           ]
         },
         {
@@ -259,8 +259,8 @@
           ]
         }
       ],
-      "menu_recorded_at": "2026-04-27 10:46:23",
-      "menu_recorded_source_fetched_at": "2026-04-27 10:45:14",
+      "menu_recorded_at": "2026-04-27 10:51:00",
+      "menu_recorded_source_fetched_at": "2026-04-27 10:47:36",
       "menu_recent_source_today": true
     },
     {
@@ -299,88 +299,64 @@
       "name": "아이밀",
       "items": 10,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 4,
-      "today_marker": true,
+      "used_existing_fallback": true,
+      "reason": "already_recorded",
       "source_fetched_at": "2026-04-27 10:45:57"
     },
     {
       "name": "다시 봄",
       "items": 9,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 2,
-      "today_marker": true,
+      "used_existing_fallback": true,
+      "reason": "already_recorded",
       "source_fetched_at": "2026-04-27 10:46:00"
     },
     {
       "name": "밥(온) 구내식당",
       "items": 11,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 1,
-      "today_marker": true,
+      "used_existing_fallback": true,
+      "reason": "already_recorded",
       "source_fetched_at": "2026-04-27 10:46:02"
     },
     {
       "name": "구내식당라온푸드",
       "items": 7,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 5,
-      "today_marker": true,
+      "used_existing_fallback": true,
+      "reason": "already_recorded",
       "source_fetched_at": "2026-04-27 10:46:04"
     },
     {
       "name": "마이푸드",
       "items": 11,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 1,
-      "today_marker": true,
+      "used_existing_fallback": true,
+      "reason": "already_recorded",
       "source_fetched_at": "2026-04-27 10:46:06"
     },
     {
       "name": "퍼블릭가산 구내식당",
       "items": 2,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 2,
-      "today_marker": true,
+      "used_existing_fallback": true,
+      "reason": "already_recorded",
       "source_fetched_at": "2026-04-27 10:46:08"
     },
     {
       "name": "더푸드스케치",
       "items": 10,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 2,
-      "today_marker": true,
+      "used_existing_fallback": true,
+      "reason": "already_recorded",
       "source_fetched_at": "2026-04-27 10:46:10"
     },
     {
       "name": "스타밸리푸드포유",
       "items": 10,
       "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 2,
-      "today_marker": true,
+      "used_existing_fallback": true,
+      "reason": "already_recorded",
       "source_fetched_at": "2026-04-27 10:46:14"
     },
     {
@@ -388,9 +364,9 @@
       "items": 23,
       "updated": true,
       "used_existing_fallback": false,
-      "ocr_rejected_items": 6,
+      "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-04-27 10:45:14"
+      "source_fetched_at": "2026-04-27 10:47:36"
     }
   ]
 }

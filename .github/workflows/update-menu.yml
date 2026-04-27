@@ -9,28 +9,67 @@ on:
 permissions:
   contents: write
 
+env:
+  TESSERACT_VERSION: '5.5.0'
+  PYTESSERACT_VERSION: '0.3.13'
+  PILLOW_VERSION: '12.1.1'
+  REQUESTS_VERSION: '2.32.5'
+
 jobs:
   update-menu:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        shell: bash -el {0}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up OCR runtime
+        uses: mamba-org/setup-micromamba@v2
         with:
-          python-version: '3.11'
+          environment-name: ocr
+          cache-environment: true
+          create-args: >-
+            python=3.11
+            tesseract=${{ env.TESSERACT_VERSION }}
+            pip
 
       - name: Install Python dependencies
-        run: python -m pip install requests pillow pytesseract playwright
+        run: |
+          python -m pip install \
+            requests==${REQUESTS_VERSION} \
+            pillow==${PILLOW_VERSION} \
+            pytesseract==${PYTESSERACT_VERSION} \
+            playwright
 
       - name: Install Playwright browser
         run: python -m playwright install --with-deps chromium
 
-      - name: Install Tesseract OCR
+      - name: Install OCR language data
         run: |
           sudo apt-get update
-          sudo apt-get install -y tesseract-ocr tesseract-ocr-kor
+          sudo apt-get install -y tesseract-ocr-eng tesseract-ocr-kor
+          mkdir -p "${CONDA_PREFIX}/share/tessdata"
+          cp /usr/share/tesseract-ocr/5/tessdata/eng.traineddata "${CONDA_PREFIX}/share/tessdata/"
+          cp /usr/share/tesseract-ocr/5/tessdata/kor.traineddata "${CONDA_PREFIX}/share/tessdata/"
+          echo "TESSDATA_PREFIX=${CONDA_PREFIX}/share/tessdata" >> "${GITHUB_ENV}"
+
+      - name: Verify OCR versions
+        run: |
+          which tesseract
+          tesseract --version
+          actual_version="$(tesseract --version | head -n 1 | awk '{print $2}')"
+          test "${actual_version}" = "${TESSERACT_VERSION}"
+          tesseract --list-langs
+          python - <<'PY'
+          import PIL
+          import pytesseract
+          import requests
+          print('pytesseract', pytesseract.get_tesseract_version())
+          print('Pillow', PIL.__version__)
+          print('requests', requests.__version__)
+          PY
 
       - name: Fetch Kakao profile menu images
         run: python scripts/fetch_kakao_profile_images.py
@@ -48,4 +87,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Update menu board assets'
-          file_pattern: menu-today/index.html menu-today/menu_today.json menu-today/images/*.png menu-today/collection_log.json menu-today/dynamic_menu_hints.json
+          file_pattern: menu-today/index.html menu-today/menu_today.json menu-today/images/*.png menu-today/images/*.jpg menu-today/collection_log.json menu-today/dynamic_menu_hints.json
