@@ -31,6 +31,7 @@ SOURCE_CONFIG = {
     "퍼블릭가산 구내식당": {"image": ROOT / "menu-today" / "images" / "public-gasan.png", "min_items": 3, "max_items": 4},
     "더푸드스케치": {"image": ROOT / "menu-today" / "images" / "thefoodsketch.png", "min_items": 9, "max_items": 12},
     "스타밸리푸드포유": {"image": ROOT / "menu-today" / "images" / "starvalley-food4u-post.png", "min_items": 8, "max_items": 12},
+    "디폴리스 구내식당": {"image": ROOT / "menu-today" / "images" / "dipolis.png", "min_items": 3, "max_items": 20},
     "에스제이 구내식당": {"image": ROOT / "menu-today" / "images" / "sj-food-menu.png", "min_items": 10, "max_items": 16},
 }
 
@@ -63,6 +64,7 @@ REPLACEMENTS = {
     "생선까스/타르타르": "생선까스 / 타르타르",
     "꽈리고추멸지볶음": "꽈리고추멸치볶음",
     "알마늘종지무침": "알마늘쫑지무침",
+    "실곤약야채무침": "실곤약 야채 무침",
     "샐러드&드레심": "샐러드 & 드레싱",
     "숭능": "숭늉",
     "잠치마요밥&조미김": "참치마요밥 & 조미김",
@@ -263,6 +265,31 @@ def ocr_dasibom_crops(image_path: Path) -> list[str]:
         text = pytesseract.image_to_string(gray, lang="kor+eng", config=config)
         outputs.append(text)
     return outputs
+
+
+def has_dipolis_meal_marker(texts: list[str]) -> bool:
+    merged = "\n".join(texts)
+    return bool(re.search(r"저\s*녁|점\s*심|중\s*식|아\s*침|조\s*식|5\s*시\s*10\s*분|6\s*시\s*30\s*분", merged))
+
+
+def parse_dipolis_menu_sections(texts: list[str], config: dict) -> dict[str, list[str]] | None:
+    merged = "\n".join(texts)
+    title = "석식" if re.search(r"저\s*녁|5\s*시\s*10\s*분|6\s*시\s*30\s*분", merged) else "중식"
+    patterns = [
+        (r"잡곡밥\s*/\s*흰쌀밥|잘곡밥\s*/\s*흰쌀밥|잡곡밥.*흰쌀밥", "잡곡밥 / 흰쌀밥"),
+        (r"돼지\s*양념\s*구이", "돼지 양념 구이"),
+        (r"순살\s*후라이드|후라이드\s*&\s*매운소스", "순살 후라이드 & 매운소스"),
+        (r"두부구이\s*양념\s*조림|툴로.*양념\s*소림|두부.*양념\s*조림", "두부구이 양념 조림"),
+        (r"얼.?갈.?이\s*된장국|열갈이\s*된장국", "얼갈이 된장국"),
+        (r"실.?곤약\s*야채\s*무침|곤약\s*야재\s*무진", "실곤약 야채 무침"),
+        (r"양상추\s*야채\s*샐러드", "양상추 야채 샐러드"),
+        (r"국산\s*포기김치|국산포기김치", "국산 포기김치"),
+        (r"탄\s*산\s*음료|EAA\s*음료|Eb\s*At", "탄산음료"),
+    ]
+    found = extract_pattern_matches_by_pattern_order(merged, patterns)
+    if len(found) < config["min_items"]:
+        return None
+    return {title: found[: config["max_items"]]}
 
 
 def extract_sj_section_lines(image: Image.Image) -> list[str]:
@@ -520,6 +547,7 @@ def repair_menu_items(items: list[str], known_terms: set[str], max_items: int) -
         best_term, score = find_best_known_term(item, known_terms)
         if best_term and (score >= 0.86 or (is_suspicious_menu_item(item) and score >= 0.66)):
             item = best_term
+        item = normalize_final_line(item)
         if is_suspicious_menu_item(item):
             rejected += 1
             continue
@@ -1060,6 +1088,8 @@ def update_json_with_ocr() -> None:
         if name == "다시 봄":
             texts.extend(ocr_dasibom_crops(image_path))
         today_marker = has_today_marker(texts + ([hint_text] if hint_text else []), now)
+        if name == "디폴리스 구내식당" and has_dipolis_meal_marker(texts + ([hint_text] if hint_text else [])):
+            today_marker = True
         if not fetched_recently or not today_marker:
             logs.append(
                 {
@@ -1072,6 +1102,31 @@ def update_json_with_ocr() -> None:
                 }
             )
             continue
+        if name == "디폴리스 구내식당":
+            sections = parse_dipolis_menu_sections(texts, config)
+            if sections:
+                sections, sections_ok, rejected_count = validate_menu_sections(name, sections, known_terms)
+                if sections_ok:
+                    restaurant["menu_sections"] = [{"title": title, "items": items} for title, items in sections.items()]
+                    flat_menu = []
+                    for items in sections.values():
+                        flat_menu.extend(items)
+                    restaurant["menu"] = flat_menu
+                    restaurant["message"] = ""
+                    restaurant["menu_recorded_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
+                    restaurant["menu_recorded_source_fetched_at"] = source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else now.strftime("%Y-%m-%d %H:%M:%S")
+                    logs.append(
+                        {
+                            "name": name,
+                            "items": len(flat_menu),
+                            "updated": True,
+                            "used_existing_fallback": False,
+                            "ocr_rejected_items": rejected_count,
+                            "today_marker": True,
+                            "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
+                        }
+                    )
+                    continue
         extracted_menu, used_fallback = parse_restaurant_menu(name, texts, previous_menu)
         extracted_menu, menu_ok, rejected_count = validate_extracted_menu(
             name,

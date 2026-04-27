@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / 'menu-today' / 'menu_today.json'
 HTML_PATH = ROOT / 'menu-today' / 'index.html'
 SEOUL = ZoneInfo('Asia/Seoul')
-PRIORITY = ['아이밀', '다시 봄', '밥(온) 구내식당']
+PRIORITY = ['아이밀', '다시 봄', '밥(온) 구내식당', '디폴리스 구내식당']
 
 
 def load_data() -> dict:
@@ -45,6 +45,69 @@ def sort_restaurants(restaurants: list[dict]) -> list[dict]:
 def count_by_status(restaurants: list[dict], status: str) -> int:
     return sum(1 for item in restaurants if item.get('status') == status)
 
+
+def render_registered_restaurants(restaurants: list[dict]) -> str:
+    items = ''.join(
+        '<li>'
+        f'<strong>{escape(item.get("name", ""))}</strong>'
+        f'<span>{escape(item.get("building", ""))}</span>'
+        f'<small>{escape(item.get("address", ""))}</small>'
+        '</li>'
+        for item in restaurants
+    )
+    return f'''
+    <section class="registered-section" aria-label="등록 식당 목록">
+      <h2 class="registered-title">등록 식당</h2>
+      <p class="registered-copy">가산디지털단지 구내식당 메뉴 검색 대상 식당 목록입니다. 식당명, 건물명, 주소 텍스트를 함께 제공해 검색에 잘 잡히도록 구성했습니다.</p>
+      <ul class="registered-list">{items}</ul>
+    </section>'''
+
+
+def build_seo_metadata(data: dict, restaurants: list[dict]) -> dict:
+    names = [item.get('name', '') for item in restaurants]
+    buildings = [item.get('building', '') for item in restaurants if item.get('building')]
+    addresses = [item.get('address', '') for item in restaurants if item.get('address')]
+    keywords = [
+        '가산디지털단지 구내식당',
+        '가산디지털단지 메뉴',
+        '가산 점심',
+        '가산 구내식당',
+        '오늘 메뉴',
+        *names,
+        *buildings,
+    ]
+    description = '가산디지털단지 구내식당 오늘 메뉴 모음: ' + ', '.join(names[:10])
+    item_list = []
+    for index, item in enumerate(restaurants, start=1):
+        entry = {
+            '@type': 'FoodEstablishment',
+            'position': index,
+            'name': item.get('name', ''),
+            'servesCuisine': '구내식당',
+            'address': item.get('address', ''),
+        }
+        if item.get('map_url'):
+            entry['url'] = item['map_url']
+        if item.get('preview_image'):
+            entry['image'] = item['preview_image']
+        if item.get('building'):
+            entry['containedInPlace'] = {'@type': 'Place', 'name': item['building']}
+        item_list.append(entry)
+    structured_data = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        'name': data.get('title', '가산디지털단지 구내식당 메뉴정보'),
+        'description': description,
+        'itemListElement': item_list,
+    }
+    return {
+        'description': description,
+        'keywords': ', '.join(dict.fromkeys(keyword for keyword in keywords if keyword)),
+        'restaurants_text': ', '.join(names),
+        'buildings_text': ', '.join(buildings),
+        'addresses_text': ', '.join(dict.fromkeys(addresses)),
+        'structured_data': json.dumps(structured_data, ensure_ascii=False),
+    }
 
 def render_restaurant_card(item: dict) -> str:
     name = escape(item['name'])
@@ -127,7 +190,8 @@ def render_page(data: dict) -> str:
     ocr_log = {entry.get('name'): entry for entry in data.get('ocr_log', [])}
     now = datetime.now(SEOUL).date()
     restaurants = []
-    for item in data['restaurants']:
+    visible_items = [item for item in data['restaurants'] if item.get('status', 'ready') == 'ready']
+    for item in visible_items:
         row = dict(item)
         log = ocr_log.get(row.get('name'))
         recorded_at = parse_logged_time(row.get('menu_recorded_at'))
@@ -137,15 +201,24 @@ def render_page(data: dict) -> str:
         row['ocr_reason'] = log.get('reason', '') if log else ''
         restaurants.append(row)
     ready_count = count_by_status(restaurants, 'ready')
-    preparing_count = count_by_status(restaurants, 'preparing')
+    preparing_count = count_by_status(data['restaurants'], 'preparing')
     cards = '\n'.join(render_restaurant_card(item) for item in restaurants)
+    registered = render_registered_restaurants(restaurants)
+    seo = build_seo_metadata(data, restaurants)
     return f'''<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{escape(data['title'])}</title>
-  <meta name="description" content="가산디지털단지 구내식당 오늘 메뉴를 식당별로 한눈에 확인할 수 있는 화면입니다.">
+  <meta name="description" content="{escape(seo['description'])}">
+  <meta name="keywords" content="{escape(seo['keywords'])}">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{escape(data['title'])}">
+  <meta property="og:description" content="{escape(seo['description'])}">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">{seo['structured_data']}</script>
   <style>
     :root {{
       --bg: #f4f7fb;
@@ -212,6 +285,11 @@ def render_page(data: dict) -> str:
     .meta-label {{ font-size: 12px; font-weight: 800; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }}
     .meta-value {{ font-size: 21px; font-weight: 800; line-height: 1.35; }}
     .usage-note {{ margin: 0 0 22px; padding: 16px 18px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--muted); line-height: 1.7; font-size: 15px; }}
+    .registered-section {{ margin: 22px 0 0; padding: 18px 20px; border-radius: 22px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }}
+    .registered-title {{ margin-bottom: 12px; font-size: 15px; font-weight: 900; color: var(--text); }}
+    .registered-list {{ list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; line-height: 1.4; }}
+    .registered-list li {{ display: inline-flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 999px; background: #f7faff; border: 1px solid var(--line); }}
+    .registered-list small {{ color: var(--muted); font-size: 12px; }}
     .grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }}
     .restaurant-card {{ border-radius: 24px; padding: 22px; display: flex; flex-direction: column; min-height: 100%; }}
     .card-head {{ display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 14px; }}
@@ -267,6 +345,7 @@ def render_page(data: dict) -> str:
     .title-wrap:hover .menu-preview {{ opacity: 1; visibility: visible; transform: translateY(0); }}
     .footer-note {{ margin-top: 22px; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: center; }}
     .hidden-card {{ display: none; }}
+    .seo-text-block {{ position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }}
     .modal-overlay {{
       position: fixed;
       inset: 0;
@@ -381,6 +460,15 @@ def render_page(data: dict) -> str:
 
     <section class="grid" id="restaurant-grid">
 {cards}
+    </section>
+
+    {registered}
+
+    <section class="seo-text-block" aria-label="검색용 식당 텍스트">
+      <h2>가산디지털단지 구내식당 검색 정보</h2>
+      <p>{escape(seo['restaurants_text'])}</p>
+      <p>{escape(seo['buildings_text'])}</p>
+      <p>{escape(seo['addresses_text'])}</p>
     </section>
 
     <div class="footer-note">메뉴 이미지는 공개 채널 기준으로 자동 수집한 뒤 정리한 결과입니다. 실제 운영 사정에 따라 식당 현장 메뉴와 일부 차이가 있을 수 있습니다.</div>

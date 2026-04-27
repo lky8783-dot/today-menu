@@ -31,6 +31,7 @@ PROFILE_SOURCES = [
     {"name": "퍼블릭가산 구내식당", "page_url": "https://pf.kakao.com/_ECNfn", "output": ROOT / "menu-today" / "images" / "public-gasan.png", "strategy": "meta_image"},
     {"name": "더푸드스케치", "page_url": "https://pf.kakao.com/_nFfwj", "output": ROOT / "menu-today" / "images" / "thefoodsketch.png", "strategy": "meta_image"},
     {"name": "스타밸리푸드포유", "page_url": "https://pf.kakao.com/_axkixdn/posts", "output": ROOT / "menu-today" / "images" / "starvalley-food4u.png", "strategy": "kakao_first_post_image"},
+    {"name": "디폴리스 구내식당", "page_url": "https://pf.kakao.com/_iyscG", "output": ROOT / "menu-today" / "images" / "dipolis.png", "strategy": "meta_image"},
     {"name": "돈토", "page_url": "https://pf.kakao.com/_Gxjxcbxj", "output": ROOT / "menu-today" / "images" / "donto.png", "strategy": "meta_image"},
     {"name": "에스제이 구내식당", "page_url": "https://www.instagram.com/s_j_food_278/", "output": ROOT / "menu-today" / "images" / "sj-food.png", "strategy": "instagram_first_post_image"},
 ]
