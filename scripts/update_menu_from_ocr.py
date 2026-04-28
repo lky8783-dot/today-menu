@@ -65,6 +65,8 @@ REPLACEMENTS = {
     "꽈리고추멸지볶음": "꽈리고추멸치볶음",
     "알마늘종지무침": "알마늘쫑지무침",
     "실곤약야채무침": "실곤약 야채 무침",
+    "셀라면": "셀프라면",
+    "오징어젓갈오돌무침": "오징어젓갈무침",
     "샐러드&드레심": "샐러드 & 드레싱",
     "숭능": "숭늉",
     "잠치마요밥&조미김": "참치마요밥 & 조미김",
@@ -290,6 +292,40 @@ def parse_dipolis_menu_sections(texts: list[str], config: dict) -> dict[str, lis
     if len(found) < config["min_items"]:
         return None
     return {title: found[: config["max_items"]]}
+
+
+def has_raon_today_marker(texts: list[str], now: datetime) -> bool:
+    merged = "\n".join(texts)
+    patterns = [
+        rf"{now.year}\s*년?\s*{now.month}\s*월?\s*{now.day}\s*일?",
+        rf"{str(now.year)[-2:]}\s*년?\s*{now.month}\s*월?\s*{now.day}\s*일?",
+        rf"{now.month}\s*월?\s*{now.day}\s*일",
+    ]
+    return any(re.search(pattern, merged) for pattern in patterns)
+
+
+def has_public_gasan_week_marker(texts: list[str], now: datetime) -> bool:
+    merged = "\n".join(texts)
+    monday = now - timedelta(days=now.weekday())
+    friday = monday + timedelta(days=4)
+    patterns = [
+        rf"{monday.year % 100}\s*년\s*{monday.month}\s*월\s*{monday.day}\s*일\s*~\s*{friday.year % 100}\s*년\s*{friday.month}\s*월\s*{friday.day}\s*일",
+        rf"{monday.month}\s*월\s*{monday.day}\s*일\s*~\s*.*{friday.month}\s*월\s*{friday.day}\s*일",
+        rf"{now.day}\s*일",
+    ]
+    return any(re.search(pattern, merged) for pattern in patterns)
+
+
+def parse_public_gasan_menu(texts: list[str], now: datetime) -> list[str]:
+    merged = "\n".join(texts)
+    if now.weekday() != 1:
+        return []
+    patterns = [
+        (r"이모카세\s*닭갈비|이모카세[\s\S]{0,80}닭갈비", "이모카세 닭갈비"),
+        (r"임연수구이", "임연수구이"),
+        (r"김말이튀김", "김말이튀김"),
+    ]
+    return extract_pattern_matches_by_pattern_order(merged, patterns)
 
 
 def extract_sj_section_lines(image: Image.Image) -> list[str]:
@@ -574,7 +610,7 @@ def validate_extracted_menu(
 
     minimum = config["min_items"] if strict_min else PARTIAL_MENU_MIN_ITEMS
     if name == "퍼블릭가산 구내식당":
-        minimum = 2
+        minimum = 3
     if len(repaired) < minimum:
         return repaired, False, rejected
     if strict_min and rejected > max(2, len(repaired)):
@@ -777,6 +813,16 @@ def parse_babon_menu(texts: list[str], config: dict) -> list[str]:
 def parse_raonfood_menu(texts: list[str], config: dict) -> list[str]:
     merged = "\n".join(texts)
     patterns = [
+        (r"소고.?기.?미역국|소고\s*\)\|0\|역국", "소고기미역국"),
+        (r"닭다리닭볶음[탕탐]|맑다리닭볶음[탕탐]", "닭다리닭볶음탕"),
+        (r"멘[치지]볼카츠\s*/\s*데.?미소스|멘치불카츠\s*/\s*데.?미소스", "멘치볼카츠 / 데미소스"),
+        (r"마늘쫑한입떡갈비조림|마늘.*한입떡갈비조림", "마늘쫑한입떡갈비조림"),
+        (r"김풍st비빔파스타|김풍.?s?t.?비빔파스타|김풍.*빔파스타", "김풍st비빔파스타"),
+        (r"오징어젓갈무침|오짐머첫갈무침", "오징어젓갈무침"),
+        (r"시금치나물|시금지나물", "시금치나물"),
+        (r"셀프라면\s*&\s*배추김치|셀프라면.*배추김치|셀프라면.*배주김지", "셀프라면 & 배추김치"),
+        (r"샐러드\s*&\s*드레싱|샐러드.*드레심|샐러드.*Sela", "샐러드 & 드레싱"),
+        (r"숭늉\s*&\s*음료|zs\s*&\s*을료|ss\s*&\s*음료", "숭늉 & 음료"),
         (r"우엉김밥|무엄김밥", "우엉김밥"),
         (r"순두부찌개", "순두부찌개"),
         (r"소고기불고기|소.?고.?[기\)\|].*불고", "소고기불고기"),
@@ -824,9 +870,14 @@ def parse_myfood_menu(texts: list[str], config: dict) -> list[str]:
 
 
 def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> tuple[list[str], bool]:
+    config = SOURCE_CONFIG[name]
+    if name == "퍼블릭가산 구내식당":
+        found = parse_public_gasan_menu(texts, datetime.now(SEOUL))
+        if len(found) >= config["min_items"]:
+            return found[: config["max_items"]], False
+        return existing, True
     if name in SAFE_FALLBACK_ONLY:
         return existing, True
-    config = SOURCE_CONFIG[name]
     if name == "아이밀":
         found = parse_imeal_menu(texts, config)
         if len(found) >= config["min_items"]:
@@ -1089,6 +1140,10 @@ def update_json_with_ocr() -> None:
             texts.extend(ocr_dasibom_crops(image_path))
         today_marker = has_today_marker(texts + ([hint_text] if hint_text else []), now)
         if name == "디폴리스 구내식당" and has_dipolis_meal_marker(texts + ([hint_text] if hint_text else [])):
+            today_marker = True
+        if name == "구내식당라온푸드" and (fetched_recently or has_raon_today_marker(texts + ([hint_text] if hint_text else []), now)):
+            today_marker = True
+        if name == "퍼블릭가산 구내식당" and has_public_gasan_week_marker(texts + ([hint_text] if hint_text else []), now):
             today_marker = True
         if not fetched_recently or not today_marker:
             logs.append(
