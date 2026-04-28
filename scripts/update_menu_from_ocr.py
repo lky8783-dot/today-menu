@@ -288,7 +288,7 @@ def parse_dipolis_menu_sections(texts: list[str], config: dict) -> dict[str, lis
         (r"국산\s*포기김치|국산포기김치", "국산 포기김치"),
         (r"탄\s*산\s*음료|EAA\s*음료|Eb\s*At", "탄산음료"),
     ]
-    found = extract_pattern_matches_by_pattern_order(merged, patterns)
+    found = extract_pattern_matches_in_order(merged, patterns)
     if len(found) < config["min_items"]:
         return None
     return {title: found[: config["max_items"]]}
@@ -325,7 +325,7 @@ def parse_public_gasan_menu(texts: list[str], now: datetime) -> list[str]:
         (r"임연수구이", "임연수구이"),
         (r"김말이튀김", "김말이튀김"),
     ]
-    return extract_pattern_matches_by_pattern_order(merged, patterns)
+    return extract_pattern_matches_in_order(merged, patterns)
 
 
 def extract_sj_section_lines(image: Image.Image) -> list[str]:
@@ -757,7 +757,7 @@ def parse_dasibom_menu(texts: list[str], config: dict) -> list[str]:
         (r"탄산음료|타.?산.?음.?료|타사을", "탄산음료"),
         (r"셀프\s*라면|셀프라면", "셀프라면"),
     ]
-    found = extract_pattern_matches_by_pattern_order(merged, patterns)
+    found = extract_pattern_matches_in_order(merged, patterns)
     if len(found) >= max(8, config["min_items"] - 1):
         return found[: config["max_items"]]
     return []
@@ -779,7 +779,7 @@ def parse_imeal_menu(texts: list[str], config: dict) -> list[str]:
         (r"셀프비빔밥\s*/\s*한강라면|셀프비빔밥.*한강라면", "셀프비빔밥 / 한강라면"),
         (r"간편식:\s*훈제닭가슴살샐러드|훈제닭가슴살샐러드", "간편식: 훈제닭가슴살샐러드"),
     ]
-    found = extract_pattern_matches_by_pattern_order(merged, patterns)
+    found = extract_pattern_matches_in_order(merged, patterns)
     if len(found) >= config["min_items"]:
         return found[: config["max_items"]]
     return []
@@ -799,7 +799,7 @@ def parse_babon_menu(texts: list[str], config: dict) -> list[str]:
         (r"알타리총각김치|알타리총각김지|알타리롱각김치|알타리.*ae.*Al", "알타리총각김치"),
         (r"양배추샐러드\s*/\s*모듬상추쌈|양배추샐러드.*모듬상추쌈|양배.?주.*[샘삼]러드.*모듬상.?[주추].?쌈|양배.?주.*모듬상.?[주추].?쌈", "양배추샐러드/모듬상추쌈"),
     ]
-    found = extract_pattern_matches_by_pattern_order(merged, patterns)
+    found = extract_pattern_matches_in_order(merged, patterns)
     if (
         all("흰쌀밥 / 검은쌀잡곡밥" != item for item in found)
         and re.search(r"쌀밥|쌍.?잡|삽곡|잡곡", merged)
@@ -841,7 +841,7 @@ def parse_raonfood_menu(texts: list[str], config: dict) -> list[str]:
         (r"청포묵김가루무침|청포묵김가루묻침|정포묵김가루무침|첨포묵김가루무침", "청포묵김가루무침"),
         (r"백미밥\s*&\s*잡곡밥|백미밥잡곡밥|백\[\|밥.?잡곡밥", "백미밥&잡곡밥"),
     ]
-    found = extract_pattern_matches_by_pattern_order(merged, patterns)
+    found = extract_pattern_matches_in_order(merged, patterns)
     if len(found) >= max(7, config["min_items"] - 3):
         return found[: config["max_items"]]
     return []
@@ -863,7 +863,7 @@ def parse_myfood_menu(texts: list[str], config: dict) -> list[str]:
         (r"잡곡밥\s*/\s*백미밥|잡곡밥 / 백미밥", "잡곡밥 / 백미밥"),
         (r"쌈채소\s*&\s*풋고추\s*/\s*한강라면\s*&\s*달콤한\s*[잼딜]?\s*토스트\s*/\s*구수한\s*[숭승]?[늉능]?\s*&\s*시원한\s*탄산음료|쌈채소[\s\S]*풋고추[\s\S]*한강라면[\s\S]*토스트[\s\S]*탄산음료", "쌈채소 & 풋고추 / 한강라면 & 달콤한 잼 토스트 / 구수한 숭늉 & 시원한 탄산음료"),
     ]
-    found = extract_pattern_matches_by_pattern_order(merged, patterns)
+    found = extract_pattern_matches_in_order(merged, patterns)
     if len(found) >= config["min_items"]:
         return found[: config["max_items"]]
     return []
@@ -918,7 +918,7 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             (r"가든샐러드\s*/\s*드레싱|가든샐러드.*드레싱", "가든샐러드 / 드레싱"),
             (r"배추겉절이\s*/\s*음료|배추겉절이.*음료", "배추겉절이 / 음료"),
         ]
-        found = extract_pattern_matches_by_pattern_order(merged, patterns)
+        found = extract_pattern_matches_in_order(merged, patterns)
         # 이미지가 오늘 식단으로 확인됐고 핵심 메뉴가 충분히 잡히면,
         # 수동 보정으로 넣어둔 전체 메뉴를 그대로 유지하면서 오늘 메뉴로 인정한다.
         if len(found) >= 8 and existing:
@@ -940,7 +940,7 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             (r"가든샐러드.*흑임자D|가든샐러드흑임자D|가든셀.*AtD|가든샐러드드.*흑임자|가든샐러드드.*측임자", "가든샐러드 & 흑임자D"),
             (r"포기김치", "포기김치"),
         ]
-        found = extract_pattern_matches_by_pattern_order(merged, patterns)
+        found = extract_pattern_matches_in_order(merged, patterns)
         if len(found) >= max(8, config["min_items"] - 2):
             return found[: config["max_items"]], False
         return existing, True
