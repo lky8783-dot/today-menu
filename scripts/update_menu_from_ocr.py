@@ -46,10 +46,17 @@ REPLACEMENTS = {
     "불고 기": "불고기",
     "볼어묵볶음": "불어묵볶음",
     "가든샐러드&오렌지ㅁ": "가든샐러드&오렌지D",
+    "가든샐러드 & 흑임자ㅁ": "가든샐러드 & 흑임자D",
+    "가든샐러드 & 흑임자ㅁ2": "가든샐러드 & 흑임자D",
+    "백미밤 / ae": "백미밥 / 흑미밥",
     "배주겉절이": "배추겉절이",
+    "배주끝절이짐지": "배추겉절이김치",
     "셀프비빔밤": "셀프비빔밥",
     "치킨덴더샐러뜨": "치킨텐더샐러드",
+    "치킨덴더샐러드뜨": "치킨텐더샐러드",
+    "치킨덴더샐러드": "치킨텐더샐러드",
     "흰쌀밥/검은쌀잡곡밥": "흰쌀밥 / 검은쌀잡곡밥",
+    "린쌀밥 / 검은쌀잡": "흰쌀밥 / 검은쌀잡곡밥",
     "인쌀밥": "흰쌀밥",
     "검은쌀삽곡밥": "검은쌀잡곡밥",
     "김지제육두루지기": "김치제육두루치기",
@@ -67,6 +74,17 @@ REPLACEMENTS = {
     "실곤약야채무침": "실곤약 야채 무침",
     "셀라면": "셀프라면",
     "오징어젓갈오돌무침": "오징어젓갈무침",
+    "햄쌀밥": "흰쌀밥",
+    "Sq": "누룽지",
+    "지킨": "치킨",
+    "얼길이": "얼갈이",
+    "고주군만두": "고추군만두",
+    "데미s": "데미S",
+    "데미5": "데미S",
+    "데미6": "데미S",
+    "= 버섯두부조림": "버섯두부조림",
+    "기 견과류멸치볶음": "견과류멸치볶음",
+    "Ww 숙주나물": "숙주나물",
     "샐러드&드레심": "샐러드 & 드레싱",
     "숭능": "숭늉",
     "잠치마요밥&조미김": "참치마요밥 & 조미김",
@@ -279,6 +297,16 @@ def parse_dipolis_menu_sections(texts: list[str], config: dict) -> dict[str, lis
     title = "석식" if re.search(r"저\s*녁|5\s*시\s*10\s*분|6\s*시\s*30\s*분", merged) else "중식"
     patterns = [
         (r"잡곡밥\s*/\s*흰쌀밥|잘곡밥\s*/\s*흰쌀밥|잡곡밥.*흰쌀밥", "잡곡밥 / 흰쌀밥"),
+        (r"베이컨\s*김치\s*볶음밥", "베이컨 김치 볶음밥"),
+        (r"목살\s*버섯\s*불고기", "목살 버섯 불고기"),
+        (r"수제\s*치킨\s*텐더\s*&\s*교촌간장소스|수제\s*치킨\s*텐더.*교촌간장소스", "수제 치킨 텐더 & 교촌간장소스"),
+        (r"구수한\s*누룽지\s*/\s*프렌치\s*토스트|구수한\s*Sq\s*/\s*프렌치\s*토스트", "구수한 누룽지 / 프렌치 토스트"),
+        (r"미트볼\s*폭찹\s*스테이크조림|미트볼.*스테이크조림", "미트볼 폭찹 스테이크조림"),
+        (r"시금치\s*된장국|금치\s*된장국", "시금치 된장국"),
+        (r"매운\s*국물\s*떡볶이\s*/\s*돌나물\s*매실초장", "매운 국물 떡볶이 / 돌나물 매실초장"),
+        (r"양배추\s*야채\s*샐러드", "양배추 야채 샐러드"),
+        (r"열무\s*얼갈이\s*김치|열무\s*얼갈이\s*ZAI", "열무 얼갈이 김치"),
+        (r"탄\s*산\s*음료", "탄산음료"),
         (r"돼지\s*양념\s*구이", "돼지 양념 구이"),
         (r"순살\s*후라이드|후라이드\s*&\s*매운소스", "순살 후라이드 & 매운소스"),
         (r"두부구이\s*양념\s*조림|툴로.*양념\s*소림|두부.*양념\s*조림", "두부구이 양념 조림"),
@@ -304,6 +332,12 @@ def has_raon_today_marker(texts: list[str], now: datetime) -> bool:
     return any(re.search(pattern, merged) for pattern in patterns)
 
 
+def has_raon_other_day_marker(texts: list[str], now: datetime) -> bool:
+    merged = "\n".join(texts)
+    day_matches = [int(match) for match in re.findall(r"(\d{1,2})\s*일", merged)]
+    return any(day != now.day for day in day_matches)
+
+
 def has_public_gasan_week_marker(texts: list[str], now: datetime) -> bool:
     merged = "\n".join(texts)
     monday = now - timedelta(days=now.weekday())
@@ -318,13 +352,26 @@ def has_public_gasan_week_marker(texts: list[str], now: datetime) -> bool:
 
 def parse_public_gasan_menu(texts: list[str], now: datetime) -> list[str]:
     merged = "\n".join(texts)
-    if now.weekday() != 1:
+    if now.weekday() not in (1, 2):
         return []
-    patterns = [
-        (r"이모카세\s*닭갈비|이모카세[\s\S]{0,80}닭갈비", "이모카세 닭갈비"),
-        (r"임연수구이", "임연수구이"),
-        (r"김말이튀김", "김말이튀김"),
-    ]
+    weekly_fixed = {
+        1: ["이모카세 닭갈비", "임연수구이", "김말이튀김"],
+        2: ["생선까스 & 어니언콘소스", "의정부대볶음", "얼큰참치순두부국"],
+    }
+    if has_public_gasan_week_marker(texts, now):
+        return weekly_fixed[now.weekday()]
+    if now.weekday() == 1:
+        patterns = [
+            (r"이모카세\s*닭갈비|이모카세[\s\S]{0,80}닭갈비", "이모카세 닭갈비"),
+            (r"임연수구이", "임연수구이"),
+            (r"김말이튀김", "김말이튀김"),
+        ]
+    else:
+        patterns = [
+            (r"생선까스\s*&\s*어니언콘소스|생선까스[\s\S]{0,40}어니언콘소", "생선까스 & 어니언콘소스"),
+            (r"의정부대볶음", "의정부대볶음"),
+            (r"얼큰참치\s*순두부국|얼큰참치[\s\S]{0,20}순두부국", "얼큰참치순두부국"),
+        ]
     return extract_pattern_matches_in_order(merged, patterns)
 
 
@@ -525,6 +572,12 @@ def count_menu_items(restaurant: dict) -> int:
     if restaurant.get("menu_sections"):
         return sum(len(section.get("items", [])) for section in restaurant.get("menu_sections", []))
     return len(restaurant.get("menu", []))
+
+
+def mark_menu_uncollected(restaurant: dict) -> None:
+    restaurant["menu"] = []
+    restaurant.pop("menu_sections", None)
+    restaurant["message"] = "오늘 메뉴 미수집 상태입니다."
 
 
 def collect_menu_items_from_entry(entry: dict) -> list[str]:
@@ -766,6 +819,18 @@ def parse_dasibom_menu(texts: list[str], config: dict) -> list[str]:
 def parse_imeal_menu(texts: list[str], config: dict) -> list[str]:
     merged = "\n".join(texts)
     patterns = [
+        (r"근대된장국", "근대된장국"),
+        (r"고추장제육볶음", "고추장제육볶음"),
+        (r"야채고로케\s*&\s*케찹|야채고로케.*케찹", "야채고로케 & 케찹"),
+        (r"베이컨감자채볶음", "베이컨감자채볶음"),
+        (r"오이무침", "오이무침"),
+        (r"양배추숙쌈\s*&\s*우렁강된장|양배추숙쌈.*우렁강된장", "양배추숙쌈 & 우렁강된장"),
+        (r"가든샐러드\s*&\s*흑임자[DOㅁ0]", "가든샐러드 & 흑임자D"),
+        (r"국내산\s*포기김치|포기김치", "국내산 포기김치"),
+        (r"백미밥\s*/\s*흑미밥|백미밤\s*/\s*ae", "백미밥 / 흑미밥"),
+        (r"둥굴레차\s*/\s*탄산음료|둥굴레차", "둥굴레차 / 탄산음료"),
+        (r"셀프비빔밥\s*/\s*한강라면|셀프비빔밥.*한강라면", "셀프비빔밥 / 한강라면"),
+        (r"간편식:\s*치킨[텐덴]더샐러드|치킨[텐덴]더샐러드", "간편식: 치킨텐더샐러드"),
         (r"콩나물김치국|롱나물김짓국|콩나물김짓국", "콩나물김치국"),
         (r"소불고기납작당면볶음|납작당면볶음", "소불고기납작당면볶음"),
         (r"수제오징어김치전", "수제오징어김치전"),
@@ -788,6 +853,16 @@ def parse_imeal_menu(texts: list[str], config: dict) -> list[str]:
 def parse_babon_menu(texts: list[str], config: dict) -> list[str]:
     merged = "\n".join(texts)
     patterns = [
+        (r"흰쌀밥\s*/\s*검은쌀잡곡밥|린쌀밥\s*/\s*검은쌀잡", "흰쌀밥 / 검은쌀잡곡밥"),
+        (r"무우어묵탕|무우\s*어묵탕", "무우어묵탕"),
+        (r"치즈닭갈비볶음|지즈닭갈비볶음|지즈닭깔비볶음", "치즈닭갈비볶음"),
+        (r"그릴떡갈비채소구이|그림떡갈비재소구이|그릴떡갈비재소", "그릴떡갈비채소구이"),
+        (r"새우계란볶음밥", "새우계란볶음밥"),
+        (r"바삭햄김치전", "바삭햄김치전"),
+        (r"메추리알마요샐러드|메주리알마요샐러드", "메추리알마요샐러드"),
+        (r"청경채겉절이|청경채거절이", "청경채겉절이"),
+        (r"배추겉절이김치|배주끝절이짐지", "배추겉절이김치"),
+        (r"양배추샐러드\s*/\s*식빵러스크|양배주샐러드\s*/\s*식빵러스크", "양배추샐러드 / 식빵러스크"),
         (r"흰쌀밥\s*/\s*검은쌀잡곡밥|흰쌀밥검은쌀잡곡밥|히.?식.?[빠빨].*쌍.?잡|힌.?쌀.?밥.*검.?은.?쌀.?잡|[윈흰]쌀밥[\s/]*[끔검].?은쌀[\s/]*[삽잡]곡[\s/]*밥|쌀밥[\s/]*.*은쌀[\s/]*.*곡[\s/]*밥", "흰쌀밥 / 검은쌀잡곡밥"),
         (r"소갈비탕", "소갈비탕"),
         (r"불맛직화제육볶음", "불맛직화제육볶음"),
@@ -850,6 +925,18 @@ def parse_raonfood_menu(texts: list[str], config: dict) -> list[str]:
 def parse_myfood_menu(texts: list[str], config: dict) -> list[str]:
     merged = "\n".join(texts)
     patterns = [
+        (r"미나리대패볶음", "미나리대패볶음"),
+        (r"생선까스\s*&\s*타르소스|생선까스&타르소스", "생선까스 & 타르소스"),
+        (r"해물크림짬뽕면", "해물크림짬뽕면"),
+        (r"잡채어묵강정", "잡채어묵강정"),
+        (r"모듬버섯볶음", "모듬버섯볶음"),
+        (r"미역레몬초무침|미역레몬초무짐", "미역레몬초무침"),
+        (r"고추잎무말랭이무침\s*/\s*포기김치|무말랭이무짐\s*/\s*포기김치", "고추잎무말랭이무침 / 포기김치"),
+        (r"그린샐러드\s*&\s*드레싱|그린샐러드&드레싱", "그린샐러드 & 드레싱"),
+        (r"우거지해장국", "우거지해장국"),
+        (r"고구마맛탕", "고구마맛탕"),
+        (r"잡곡밥\s*/\s*백미밥|잡곡밥 / 백미밥", "잡곡밥 / 백미밥"),
+        (r"쌈채소\s*&\s*풋고추\s*/\s*한강라면\s*&\s*달콤한\s*[잼딜]?\s*토스트\s*/\s*구수한\s*[숭승]?[늉능]?\s*&\s*시원한\s*탄산음료|쌈채소[\s\S]*풋고추[\s\S]*한강라면[\s\S]*토스트[\s\S]*탄산음료", "쌈채소 & 풋고추 / 한강라면 & 달콤한 잼 토스트 / 구수한 숭늉 & 시원한 탄산음료"),
         (r"계림닭갈비", "계림닭갈비"),
         (r"생선까스\s*&\s*타르소스|생선까스&타르소스", "생선까스&타르소스"),
         (r"들기름메밀막국수", "들기름메밀막국수"),
@@ -906,6 +993,17 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
     if name == "더푸드스케치":
         merged = "\n".join(texts)
         patterns = [
+            (r"혼합잡곡밥", "혼합잡곡밥"),
+            (r"꼬치어묵탕", "꼬치어묵탕"),
+            (r"오리훈제김치볶음", "오리훈제김치볶음"),
+            (r"치즈돈까스\s*/\s*데미S|치즈돈까스\s*/\s*데미[5s6]", "치즈돈까스 / 데미S"),
+            (r"고추군만두\s*/\s*양념장|고주군만두\s*/\s*양념장", "고추군만두 / 양념장"),
+            (r"크래미스크램블에그", "크래미스크램블에그"),
+            (r"버섯두부조림", "버섯두부조림"),
+            (r"견과류멸치볶음|견과류명\s*치볶음", "견과류멸치볶음"),
+            (r"숙주나물", "숙주나물"),
+            (r"가든샐러드\s*/\s*드레싱|가든샐러드.*드레싱", "가든샐러드 / 드레싱"),
+            (r"얼갈이열무겉절이\s*/\s*음료|얼길이열무겉절이\s*/\s*음료", "얼갈이열무겉절이 / 음료"),
             (r"혼합잡곡밥|호합잡곡밥|혼합잠곡밥", "혼합잡곡밥"),
             (r"들깨수제비|들깨수재비", "들깨수제비"),
             (r"매운갈비찜", "매운갈비찜"),
@@ -919,10 +1017,6 @@ def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> t
             (r"배추겉절이\s*/\s*음료|배추겉절이.*음료", "배추겉절이 / 음료"),
         ]
         found = extract_pattern_matches_in_order(merged, patterns)
-        # 이미지가 오늘 식단으로 확인됐고 핵심 메뉴가 충분히 잡히면,
-        # 수동 보정으로 넣어둔 전체 메뉴를 그대로 유지하면서 오늘 메뉴로 인정한다.
-        if len(found) >= 8 and existing:
-            return existing[: config["max_items"]], False
         if len(found) >= config["min_items"]:
             return found[: config["max_items"]], False
         return existing, True
@@ -1059,14 +1153,18 @@ def update_json_with_ocr() -> None:
             image_path = SJ_WEEKLY_IMAGE_PATH
             restaurant["preview_image"] = "./images/sj-weekly-menu.png"
         if not image_path.exists():
+            mark_menu_uncollected(restaurant)
             logs.append({"name": name, "updated": False, "reason": "image_missing"})
             continue
         source_fetched_at = get_source_fetched_at(name, image_path, collection_log)
         recorded_source_at = parse_logged_time(restaurant.get("menu_recorded_source_fetched_at"))
+        source_is_today = bool(source_fetched_at and source_fetched_at.date() == now.date())
         source_is_new = bool(source_fetched_at and (not recorded_source_at or recorded_source_at < source_fetched_at))
         if (
             source_fetched_at
             and recorded_source_at
+            and source_is_today
+            and recorded_source_at.date() == now.date()
             and recorded_source_at >= source_fetched_at
             and has_recorded_menu(restaurant)
             and menu_output_quality_ok(restaurant)
@@ -1120,13 +1218,12 @@ def update_json_with_ocr() -> None:
                 )
                 continue
 
-            if fetched_recently and today_marker:
-                restaurant["menu"] = []
-                restaurant.pop("menu_sections", None)
+            if not source_is_today or not today_marker or not sections_ok:
+                mark_menu_uncollected(restaurant)
             logs.append(
                 {
                     "name": name,
-                    "items": len(previous_menu),
+                    "items": 0,
                     "updated": False,
                     "used_existing_fallback": True,
                     "reason": "ocr_low_confidence" if fetched_recently and today_marker else ("today_marker_not_found" if fetched_recently else "source_not_recent"),
@@ -1141,18 +1238,20 @@ def update_json_with_ocr() -> None:
         today_marker = has_today_marker(texts + ([hint_text] if hint_text else []), now)
         if name == "디폴리스 구내식당" and has_dipolis_meal_marker(texts + ([hint_text] if hint_text else [])):
             today_marker = True
-        if name == "구내식당라온푸드" and (fetched_recently or has_raon_today_marker(texts + ([hint_text] if hint_text else []), now)):
+        raon_stale_image = name == "구내식당라온푸드" and has_raon_other_day_marker(texts + ([hint_text] if hint_text else []), now)
+        if name == "구내식당라온푸드" and not raon_stale_image and has_raon_today_marker(texts + ([hint_text] if hint_text else []), now):
             today_marker = True
         if name == "퍼블릭가산 구내식당" and has_public_gasan_week_marker(texts + ([hint_text] if hint_text else []), now):
             today_marker = True
-        if not fetched_recently or not today_marker:
+        if not source_is_today or not today_marker:
+            mark_menu_uncollected(restaurant)
             logs.append(
                 {
                     "name": name,
-                    "items": len(previous_menu),
+                    "items": 0,
                     "updated": False,
                     "used_existing_fallback": True,
-                    "reason": "today_marker_not_found" if fetched_recently else "source_not_recent",
+                    "reason": "stale_menu_date" if name == "구내식당라온푸드" and raon_stale_image else ("today_marker_not_found" if source_is_today else "source_not_recent"),
                     "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
                 }
             )
@@ -1212,6 +1311,7 @@ def update_json_with_ocr() -> None:
             restaurant.pop("menu_sections", None)
         low_confidence = fetched_recently and today_marker and not extracted_menu
         if extracted_menu and not used_fallback:
+            restaurant["message"] = ""
             restaurant["menu_recorded_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
             restaurant["menu_recorded_source_fetched_at"] = source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else now.strftime("%Y-%m-%d %H:%M:%S")
         logs.append(

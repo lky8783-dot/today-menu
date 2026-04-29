@@ -150,10 +150,12 @@ def render_restaurant_card(item: dict) -> str:
         note_html = ''
         if item['name'] == '퍼블릭가산 구내식당':
             note_html = '<div class="info-note">현재는 메인메뉴만 공개됐습니다.</div>'
+        elif item.get('message') and not item.get('menu') and not menu_sections:
+            note_html = f'<div class="info-note">{escape(item.get("message", ""))}</div>'
         elif not menu_fresh and item.get('menu_recent_source_today') and preview_image:
             note_html = '<div class="info-note">메뉴 이미지는 갱신됐고, 텍스트는 자동 확인 중입니다. 메뉴 이미지 확인 버튼으로 식단을 확인해 주세요.</div>'
         elif not menu_fresh:
-            note_html = '<div class="info-note">수집대기중입니다.</div>'
+            note_html = '<div class="info-note">오늘 메뉴 미수집 상태입니다.</div>'
         elif not item.get('menu') and preview_image:
             note_html = '<div class="info-note">메뉴 텍스트는 정리 중입니다. 메뉴 이미지 확인 버튼으로 식단을 확인해 주세요.</div>'
         show_menu_items = bool(item.get('menu')) or bool(menu_sections)
