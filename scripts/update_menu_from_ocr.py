@@ -223,6 +223,12 @@ def is_recent_fetch(fetched_at: datetime | None, now: datetime) -> bool:
     return fetched_at.date() == now.date() and now - fetched_at <= RECENT_FETCH_WINDOW
 
 
+def is_current_week_fetch(fetched_at: datetime | None, now: datetime) -> bool:
+    if not fetched_at:
+        return False
+    return fetched_at.isocalendar()[:2] == now.isocalendar()[:2]
+
+
 def has_today_marker(texts: list[str], now: datetime) -> bool:
     weekday = WEEKDAYS[now.weekday()]
     patterns = [
@@ -377,6 +383,30 @@ def parse_public_gasan_menu(texts: list[str], now: datetime) -> list[str]:
 
 def extract_sj_section_lines(image: Image.Image) -> list[str]:
     texts = ocr_image_variants(image)
+    merged = "\n".join(texts)
+    section_patterns = [
+        (r"얼큰김치수제비", "얼큰김치수제비"),
+        (r"소고기콩나물밥", "소고기콩나물밥(우육:호주산)"),
+        (r"후라이드치킨", "후라이드치킨(계육:국산) * 소스"),
+        (r"매콤순대볶음", "매콤순대볶음(돈혈:국산)"),
+        (r"깻잎옥수수맛살전|T[il1]O.*OFA", "깻잎옥수수맛살전"),
+        (r"매콤두부조림|매콤[\s\S]{0,12}부조림", "매콤두부조림"),
+        (r"청경채[걸겉]절이", "청경채겉절이"),
+        (r"버섯순두부찌개|셔수드브[\s\S]{0,16}찌개|셔소드브[\s\S]{0,16}찌개", "버섯순두부찌개"),
+        (r"잡곡밥", "잡곡밥"),
+        (r"오징어돈육볶음|징어돈육볶음", "오징어돈육볶음(오징어:중국산, 돈육:국산)"),
+        (r"치즈돈까스", "치즈돈까스(돈육:국산) * 소스"),
+        (r"오색산적구이", "오색산적구이"),
+        (r"미역[줄즐]기[볶뷰]음", "미역줄기볶음"),
+        (r"계절나물", "계절나물"),
+        (r"배[추주]김치|베[추주]김치", "배추김치"),
+        (r"그린샐러드", "그린샐러드"),
+        (r"추가찬2종|주가찬2종", "추가찬2종"),
+    ]
+    patterned = extract_pattern_matches_in_order(merged, section_patterns)
+    if len(patterned) >= 6:
+        return patterned
+
     candidates = collect_candidates(texts)
     deduped = dedupe_candidates(candidates)
     filtered: list[str] = []
@@ -429,8 +459,9 @@ def parse_sj_weekly_image(image_path: Path, now: datetime) -> tuple[dict[str, li
     dinner_items = extract_sj_section_lines(dinner_crop)
 
     plus_menu = ["계란후라이 / 토스트&딸기잼", "셀프 라면", "탄산음료, 숭늉, 매실차"]
-    lunch_items = [item for item in lunch_items if item not in plus_menu]
-    dinner_items = [item for item in dinner_items if item not in plus_menu]
+    plus_keys = {canonical_key(item) for item in plus_menu}
+    lunch_items = [item for item in lunch_items if canonical_key(item) not in plus_keys]
+    dinner_items = [item for item in dinner_items if canonical_key(item) not in plus_keys]
 
     sections: dict[str, list[str]] = {}
     if lunch_items:
@@ -1184,6 +1215,7 @@ def update_json_with_ocr() -> None:
         hint_entry = hints.get(name, {})
         hint_text = hint_entry.get("alt_text", "")
         fetched_recently = is_recent_fetch(source_fetched_at, now)
+        source_is_current_week = is_current_week_fetch(source_fetched_at, now)
         if name == "에스제이 구내식당":
             if SJ_WEEKLY_IMAGE_PATH.exists():
                 sections, today_marker = parse_sj_weekly_image(SJ_WEEKLY_IMAGE_PATH, now)
@@ -1197,7 +1229,7 @@ def update_json_with_ocr() -> None:
                 sections_ok = False
                 rejected_count = 0
 
-            if sections and sections_ok and fetched_recently and today_marker:
+            if sections and sections_ok and source_is_current_week and today_marker:
                 restaurant["menu_sections"] = [{"title": title, "items": items} for title, items in sections.items()]
                 flat_menu = []
                 for items in sections.values():
@@ -1218,7 +1250,7 @@ def update_json_with_ocr() -> None:
                 )
                 continue
 
-            if not source_is_today or not today_marker or not sections_ok:
+            if not source_is_current_week or not today_marker or not sections_ok:
                 mark_menu_uncollected(restaurant)
             logs.append(
                 {
@@ -1226,7 +1258,7 @@ def update_json_with_ocr() -> None:
                     "items": 0,
                     "updated": False,
                     "used_existing_fallback": True,
-                    "reason": "ocr_low_confidence" if fetched_recently and today_marker else ("today_marker_not_found" if fetched_recently else "source_not_recent"),
+                    "reason": "ocr_low_confidence" if source_is_current_week and today_marker else ("today_marker_not_found" if source_is_current_week else "source_not_current_week"),
                     "ocr_rejected_items": rejected_count,
                     "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
                 }
