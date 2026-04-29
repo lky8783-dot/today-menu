@@ -851,7 +851,7 @@ def parse_imeal_menu(texts: list[str], config: dict) -> list[str]:
     merged = "\n".join(texts)
     patterns = [
         (r"근대된장국", "근대된장국"),
-        (r"고추장제육볶음", "고추장제육볶음"),
+        (r"[고구]추?장제육볶음|직화고추장제육볶음", "고추장제육볶음(돈육:미국산)"),
         (r"야채고로케\s*&\s*케찹|야채고로케.*케찹", "야채고로케 & 케찹"),
         (r"베이컨감자채볶음", "베이컨감자채볶음"),
         (r"오이무침", "오이무침"),
@@ -876,6 +876,12 @@ def parse_imeal_menu(texts: list[str], config: dict) -> list[str]:
         (r"간편식:\s*훈제닭가슴살샐러드|훈제닭가슴살샐러드", "간편식: 훈제닭가슴살샐러드"),
     ]
     found = extract_pattern_matches_in_order(merged, patterns)
+    main_items = ["고추장제육볶음(돈육:미국산)"]
+    for main_item in main_items:
+        if main_item in found:
+            found.remove(main_item)
+            insert_at = 1 if found and found[0] == "근대된장국" else 0
+            found.insert(insert_at, main_item)
     if len(found) >= config["min_items"]:
         return found[: config["max_items"]]
     return []
