@@ -62,6 +62,9 @@ jobs:
           actual_version="$(tesseract --version | head -n 1 | awk '{print $2}')"
           test "${actual_version}" = "${TESSERACT_VERSION}"
           tesseract --list-langs
+          python --version
+          echo "TESSDATA_PREFIX=${TESSDATA_PREFIX}"
+          sha256sum "${TESSDATA_PREFIX}/kor.traineddata" "${TESSDATA_PREFIX}/eng.traineddata"
           python - <<'PY'
           import PIL
           import pytesseract
