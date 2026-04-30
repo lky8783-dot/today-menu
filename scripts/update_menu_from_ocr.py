@@ -36,7 +36,8 @@ SOURCE_CONFIG = {
 }
 
 SAFE_FALLBACK_ONLY = {"퍼블릭가산 구내식당"}
-ALLOW_PARTIAL_OCR_CANDIDATES: set[str] = set()
+ALLOW_PARTIAL_OCR_CANDIDATES = set(SOURCE_CONFIG) - SAFE_FALLBACK_ONLY
+PARTIAL_CANDIDATE_NOISE = {"요일", "고기", "가득", "가든", "시사", "곡밥", "짜장떤", "타산은료"}
 
 REPLACEMENTS = {
     "대파숫불치킨바베큐": "대파숯불치킨바베큐",
@@ -846,6 +847,7 @@ def extract_missing_menu_candidates(name: str, texts: list[str]) -> list[str]:
             item
             for item in deduped
             if not any(token in item for token in ["셀프", "간편식", "탄산음료", "헛개차", "숭늉"])
+            and normalize_final_line(item) not in PARTIAL_CANDIDATE_NOISE
         ]
         if not filtered:
             filtered = deduped
@@ -1343,6 +1345,8 @@ def update_json_with_ocr() -> None:
             today_marker = True
         raon_stale_image = name == "구내식당라온푸드" and has_raon_other_day_marker(texts + ([hint_text] if hint_text else []), now)
         if name == "구내식당라온푸드" and not raon_stale_image and has_raon_today_marker(texts + ([hint_text] if hint_text else []), now):
+            today_marker = True
+        if name == "다시 봄" and source_is_today:
             today_marker = True
         if name == "퍼블릭가산 구내식당" and has_public_gasan_week_marker(texts + ([hint_text] if hint_text else []), now):
             today_marker = True
