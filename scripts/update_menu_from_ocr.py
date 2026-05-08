@@ -41,6 +41,7 @@ PARTIAL_CANDIDATE_NOISE = {"요일", "고기", "가득", "가든", "시사", "�
 
 REPLACEMENTS = {
     "대파숫불치킨바베큐": "대파숯불치킨바베큐",
+    "소고기미역국": "소고기 미역국",
     "판고기 사전": "철판고기산적",
     "샐러": "샐러드",
     "까드": "깍두기",
@@ -157,6 +158,63 @@ COMMON_MENU_TERMS = {
     "깍두기",
     "계절나물",
     "추가찬2종",
+    "부대찌개(돈육,계육:국산)",
+    "닭갈비볶음밥(계육:브라질산)",
+    "훈제오리볶음(오리:중국산)",
+    "오징어까스(오징어:중국산) * 소스",
+    "해물완자(어육:중국산)",
+    "콩나물잡채",
+    "미나리무생채",
+    "얼큰어묵국",
+    "잡곡밥",
+    "삼겹살구이(돈육:국산)",
+    "매콤불닭고로케(계육:국산)",
+    "매콤불닭고로케",
+    "햄김치볶음(돈육,계육:국산)",
+    "계절나물",
+    "고추장 제육볶음",
+    "얼큰두부조림",
+    "김치전",
+    "매콤달콤양념치킨",
+    "고등어조림",
+    "분홍소세지전",
+    "순살돈까스",
+    "얼큰닭계장",
+    "순대야채볶음",
+    "잡곡밥 / 햅쌀밥",
+    "묵은지 삼겹살 볶음",
+    "후라이드 치킨 & 와사비 소스",
+    "굴소스 볶음 우동",
+    "구수한 누룽지 / 상큼 오렌지",
+    "철판 계란 두부 구이",
+    "얼큰 모듬 어묵탕",
+    "참나물 쑥갓 겉절이",
+    "양배추 야채 샐러드",
+    "백김치",
+    "소고기장터국밥",
+    "수제순살카레치킨",
+    "제육쌈밥정식",
+    "상추, 알배추, 로메인 / 우렁쌈장",
+    "소고기갈릭파스타",
+    "불고기햄전, 동그랑땡전",
+    "모듬야채절임",
+    "셀프라면 & 깍두기",
+    "어묵국",
+    "오삼직화구이",
+    "통통치킨까스",
+    "한식잡채",
+    "폭신철판핫케익",
+    "미역오이초무침",
+    "싱싱샐러드",
+    "참치마요비빔밥",
+    "제육 고추장 불고기",
+    "등심 탕수육, 떡탕수",
+    "새콤달콤 비빔 국수",
+    "구수한 누룽지 / 모듬 야채쌈",
+    "크림소스 미트볼 조림",
+    "소고기 미역국",
+    "숙주나물 무침",
+    "겉절이 김치",
 }
 
 
@@ -295,6 +353,35 @@ def ocr_dasibom_crops(image_path: Path) -> list[str]:
     return outputs
 
 
+def ocr_public_gasan_day_column(image_path: Path, now: datetime) -> list[str]:
+    base = Image.open(image_path).convert("RGB")
+    width, height = base.size
+    table_left = int(width * 0.17)
+    table_right = int(width * 0.96)
+    table_top = int(height * 0.38)
+    table_bottom = int(height * 0.88)
+    day_width = (table_right - table_left) / 5
+    best_texts: list[str] = []
+    best_score = 0
+
+    for index in range(5):
+        left = int(table_left + day_width * index)
+        right = int(table_left + day_width * (index + 1))
+        crop = base.crop((left, table_top, right, table_bottom))
+        texts = ocr_image_variants(crop, ["--psm 6", "--psm 11"])
+        merged = "\n".join(texts)
+        score = 0
+        if re.search(rf"{now.day}\s*일", merged):
+            score += 4
+        if re.search(rf"\b{now.day}\b", merged):
+            score += 1
+        if score > best_score:
+            best_score = score
+            best_texts = texts
+
+    return best_texts if best_score else []
+
+
 def has_dipolis_meal_marker(texts: list[str]) -> bool:
     merged = "\n".join(texts)
     return bool(re.search(r"저\s*녁|점\s*심|중\s*식|아\s*침|조\s*식|5\s*시\s*10\s*분|6\s*시\s*30\s*분", merged))
@@ -303,7 +390,34 @@ def has_dipolis_meal_marker(texts: list[str]) -> bool:
 def parse_dipolis_menu_sections(texts: list[str], config: dict) -> dict[str, list[str]] | None:
     merged = "\n".join(texts)
     title = "석식" if re.search(r"저\s*녁|5\s*시\s*10\s*분|6\s*시\s*30\s*분", merged) else "중식"
+    current_patterns = [
+        (r"잡곡밥\s*/\s*(햅|햄|흰)?\s*쌀밥|잡곡밥\s*/\s*e?8a?e?|Sa\s*/8a8|gaee\s*/aas", "잡곡밥 / 햅쌀밥"),
+        (r"제육\s*고추장\s*불고기|\[추장\s*불고기", "제육 고추장 불고기"),
+        (r"등심\s*탕수육\s*,\s*떡탕수|등심\s*탕수\s*육?\s*[,=H\s]*떡탕수|RAS.*탕", "등심 탕수육, 떡탕수"),
+        (r"새콤달콤\s*비빔\s*국수|[MN][eao]+s[ee]*\s*비빔\s*국수|jee\s+ee", "새콤달콤 비빔 국수"),
+        (r"구수한\s*누[룽릉]지\s*/\s*모듬\s*야채쌈|구수한\s*\+?S[Aa]l\s*/\s*2s\s*야[재채]쌈|구수한\s*SS[AaX]\s*/\s*2S\s*야[재채]쌈", "구수한 누룽지 / 모듬 야채쌈"),
+        (r"[크코]림소스\s*미트볼\s*[조소]림", "크림소스 미트볼 조림"),
+        (r"소고기\s*미역국|0201\s*\|\s*SA|fe\s*\|S", "소고기 미역국"),
+        (r"숙주나물\s*무침|숙주\s*물무", "숙주나물 무침"),
+        (r"양배추\s*(야채|야재)\s*샐러드", "양배추 야채 샐러드"),
+        (r"겉절이\s*(김치|dA)", "겉절이 김치"),
+        (r"탄\s*산\s*(음료|음|S|=)|탄\s*산\s*음\s*로", "탄산음료"),
+    ]
+    current_found = extract_pattern_matches_by_pattern_order(merged, current_patterns)
+    if len(current_found) >= config["min_items"]:
+        return {title: current_found[: config["max_items"]]}
+
     patterns = [
+        (r"잡곡밥\s*/\s*(햅|햄|흰)?\s*쌀밥|잡곡밥\s*/\s*ae8|빼고\s*반\s*/\s*햄\s*쌀밥", "잡곡밥 / 햅쌀밥"),
+        (r"묵은지\s*삼겹살\s*(볶음|부음)|묵은지\s*삼겹살|물은시\s*삼겹살", "묵은지 삼겹살 볶음"),
+        (r"후라이드\s*[치지]킨\s*&\s*와사비\s*소스|뚜리\s*드\s*지킨\s*&\s*와사비", "후라이드 치킨 & 와사비 소스"),
+        (r"굴소스\s*볶음\s*우동|굴소스\s*5S\s*우동|BAA\s*sE95", "굴소스 볶음 우동"),
+        (r"구수한\s*누[룽릉]지\s*/\s*상큼\s*오렌지|Set\s*SSN\s*/\s*상큼\s*오렌지", "구수한 누룽지 / 상큼 오렌지"),
+        (r"[철절]판\s*계란\s*두부\s*구이|0806\s*두부\s*구이", "철판 계란 두부 구이"),
+        (r"얼큰\s*모듬\s*어묵탕|열큰\s*fs\s*어묵탕|얼큰\s*05\s*어묵탕|a2\s*058", "얼큰 모듬 어묵탕"),
+        (r"참나물\s*쑥갓\s*겉절이", "참나물 쑥갓 겉절이"),
+        (r"양배추\s*(야채|야재|OFAH|OFAN)\s*샐러드", "양배추 야채 샐러드"),
+        (r"백\s*김\s*치|백김치|백경", "백김치"),
         (r"잡곡밥\s*/\s*흰쌀밥|잘곡밥\s*/\s*흰쌀밥|잡곡밥.*흰쌀밥", "잡곡밥 / 흰쌀밥"),
         (r"베이컨\s*김치\s*볶음밥", "베이컨 김치 볶음밥"),
         (r"목살\s*버섯\s*불고기", "목살 버섯 불고기"),
@@ -323,6 +437,7 @@ def parse_dipolis_menu_sections(texts: list[str], config: dict) -> dict[str, lis
         (r"양상추\s*야채\s*샐러드", "양상추 야채 샐러드"),
         (r"국산\s*포기김치|국산포기김치", "국산 포기김치"),
         (r"탄\s*산\s*음료|EAA\s*음료|Eb\s*At", "탄산음료"),
+        (r"탄\s*산\s*(음료|음|들)|'탄산음", "탄산음료"),
     ]
     found = extract_pattern_matches_in_order(merged, patterns)
     if len(found) < config["min_items"]:
@@ -358,10 +473,28 @@ def has_public_gasan_week_marker(texts: list[str], now: datetime) -> bool:
     return any(re.search(pattern, merged) for pattern in patterns)
 
 
-def parse_public_gasan_menu(texts: list[str], now: datetime) -> list[str]:
+def parse_public_gasan_menu(texts: list[str], now: datetime, day_texts: list[str] | None = None) -> list[str]:
+    selected = day_texts if day_texts else texts
+    merged = "\n".join(selected)
+    day_patterns = [
+        (r"고추장\s*제육볶음|고추장[\s\S]{0,20}제육볶음", "고추장 제육볶음"),
+        (r"얼큰두부[조졸줄]임|언크드브조으|연크드브조", "얼큰두부조림"),
+        (r"김치전", "김치전"),
+        (r"매콤달콤양념\s*치킨|매콤달콤양념[\s\S]{0,12}치킨", "매콤달콤양념치킨"),
+        (r"고등어조림", "고등어조림"),
+        (r"분홍소세지전", "분홍소세지전"),
+        (r"순살돈까스|수살돈까스", "순살돈까스"),
+        (r"얼큰닭계장", "얼큰닭계장"),
+        (r"순대\s*야채볶음|순대야채볶음", "순대야채볶음"),
+        (r"김치\s*제육볶음|김치[\s\S]{0,12}제육볶음", "김치 제육볶음"),
+        (r"신전떡볶이|신전력볶이", "신전떡볶이"),
+        (r"소야", "소야"),
+    ]
+    found = extract_pattern_matches_by_pattern_order(merged, day_patterns)
+    if len(found) >= 3:
+        return found[:3]
+
     merged = "\n".join(texts)
-    if now.weekday() not in (1, 2, 3):
-        return []
     monday = (now - timedelta(days=now.weekday())).date().isoformat()
     weekly_fixed_by_monday = {
         "2026-04-27": {
@@ -409,7 +542,45 @@ def has_starvalley_menu_marker(texts: list[str]) -> bool:
 def extract_sj_section_lines(image: Image.Image) -> list[str]:
     texts = ocr_image_variants(image)
     merged = "\n".join(texts)
+    sj_lunch_patterns = [
+        (r"부대찌개", "부대찌개(돈육,계육:국산)"),
+        (r"닭[갈같]비볶음밥", "닭갈비볶음밥(계육:브라질산)"),
+        (r"훈제오리볶음", "훈제오리볶음(오리:중국산)"),
+        (r"오징어까스", "오징어까스(오징어:중국산) * 소스"),
+        (r"해물완자", "해물완자(어육:중국산)"),
+        (r"콩나물잡채|콩나물잡", "콩나물잡채"),
+        (r"미나리무생채", "미나리무생채"),
+        (r"배[추주]김치|베[추주]김치", "배추김치"),
+        (r"그린[샐셀]러드", "그린샐러드"),
+        (r"추가찬2종|주가찬2종", "추가찬2종"),
+    ]
+    sj_dinner_patterns = [
+        (r"얼큰어묵국", "얼큰어묵국"),
+        (r"잡곡밥", "잡곡밥"),
+        (r"삼겹살구이", "삼겹살구이(돈육:국산)"),
+        (r"매콤불닭고로케|매콤[\s\S]{0,24}부닷고[\s\S]{0,16}로케", "매콤불닭고로케(계육:국산)"),
+        (r"햄김치볶음", "햄김치볶음(돈육,계육:국산)"),
+        (r"계절나물", "계절나물"),
+        (r"배[추주]김치|베[추주]김치", "배추김치"),
+        (r"그린[샐셀]러드", "그린샐러드"),
+    ]
+    for patterns in (sj_lunch_patterns, sj_dinner_patterns):
+        preferred = extract_pattern_matches_by_pattern_order(merged, patterns)
+        if len(preferred) >= 6:
+            return preferred
+
     section_patterns = [
+        (r"부대찌개", "부대찌개(돈육,계육:국산)"),
+        (r"닭[갈같]비볶음밥", "닭갈비볶음밥(계육:브라질산)"),
+        (r"훈제오리볶음", "훈제오리볶음(오리:중국산)"),
+        (r"오징어까스", "오징어까스(오징어:중국산) * 소스"),
+        (r"해물완자", "해물완자(어육:중국산)"),
+        (r"콩나물잡채|콩나물잡", "콩나물잡채"),
+        (r"미나리무생채", "미나리무생채"),
+        (r"얼큰어묵국", "얼큰어묵국"),
+        (r"삼겹살구이", "삼겹살구이(돈육:국산)"),
+        (r"매콤불닭고로케|매콤[\s\S]{0,24}부닷고[\s\S]{0,16}로케", "매콤불닭고로케(계육:국산)"),
+        (r"햄김치볶음", "햄김치볶음(돈육,계육:국산)"),
         (r"얼큰김치수제비", "얼큰김치수제비"),
         (r"소고기콩나물밥", "소고기콩나물밥(우육:호주산)"),
         (r"후라이드치킨", "후라이드치킨(계육:국산) * 소스"),
@@ -425,7 +596,7 @@ def extract_sj_section_lines(image: Image.Image) -> list[str]:
         (r"미역[줄즐]기[볶뷰]음", "미역줄기볶음"),
         (r"계절나물", "계절나물"),
         (r"배[추주]김치|베[추주]김치", "배추김치"),
-        (r"그린샐러드", "그린샐러드"),
+        (r"그린[샐셀]러드", "그린샐러드"),
         (r"추가찬2종|주가찬2종", "추가찬2종"),
     ]
     patterned = extract_pattern_matches_in_order(merged, section_patterns)
@@ -535,7 +706,10 @@ def clean_line(line: str) -> str:
     line = re.sub(r"\s+", " ", line)
     line = line.strip(" -_:,./")
     for before, after in REPLACEMENTS.items():
-        line = line.replace(before, after)
+        if before == "샐러":
+            line = re.sub(r"샐러(?!드)", after, line)
+        else:
+            line = line.replace(before, after)
     line = re.sub(r"\s*&\s*", " & ", line)
     line = re.sub(r"\s*/\s*", " / ", line)
     return line.strip()
@@ -883,6 +1057,23 @@ def extract_pattern_matches_by_pattern_order(merged: str, patterns: list[tuple[s
 
 def parse_dasibom_menu(texts: list[str], config: dict) -> list[str]:
     merged = "\n".join(texts)
+    current_layout_patterns = [
+        (r"어묵국", "어묵국"),
+        (r"오삼직\s*화구이|오삼직화구이", "오삼직화구이"),
+        (r"[통동토][통동토][치지]킨까스|[통동토][통동토]\s*[치지]킨까스|토토치키까스", "통통치킨까스"),
+        (r"한식잡채|하신\s*AF\s*채|식잡채", "한식잡채"),
+        (r"폭신철판핫케[익일]|시점\s*판핫케|철판핫케", "폭신철판핫케익"),
+        (r"미역오이[초조]무[침점]|미역오이초무침", "미역오이초무침"),
+        (r"싱싱샐러드|싱싱샐러|Al\s*Al\s*AH\s*러", "싱싱샐러드"),
+        (r"깍두기|AA\s*두기|UE\s*7\|", "깍두기"),
+        (r"참치마요비빔밥|참\s*지[\s\S]{0,12}요[\s\S]{0,12}비[바밥]", "참치마요비빔밥"),
+        (r"탄산음료|탄산을료", "탄산음료"),
+        (r"셀프라면|셈프라면|All\s*고\s*라면", "셀프라면"),
+    ]
+    current_found = extract_pattern_matches_by_pattern_order(merged, current_layout_patterns)
+    if len(current_found) >= config["min_items"]:
+        return current_found[: config["max_items"]]
+
     patterns = [
         (r"파송송계란탕", "파송송계란탕"),
         (r"사[천전]\s*보차이불고기|사천보차이불고기|사전보차이불고기", "사천보차이불고기"),
@@ -980,6 +1171,14 @@ def parse_babon_menu(texts: list[str], config: dict) -> list[str]:
 def parse_raonfood_menu(texts: list[str], config: dict) -> list[str]:
     merged = "\n".join(texts)
     patterns = [
+        (r"소고.?[기7\)\|]\s*장터국밥|소고.?[기7\)\|]\s*잠터국밥", "소고기장터국밥"),
+        (r"수제순살카레[치지]킨", "수제순살카레치킨"),
+        (r"제.?육쌈밥[정점]식", "제육쌈밥정식"),
+        (r"상추|삼추|알배추|로메인|우렁쌈[장잠]", "상추, 알배추, 로메인 / 우렁쌈장"),
+        (r"소고.?[기7\)\|]\s*갈릭파스타", "소고기갈릭파스타"),
+        (r"불고.?[기\)\|]\s*햄전|동그랑땡전|sI[eE]8a|SIS8a", "불고기햄전, 동그랑땡전"),
+        (r"모듬[야마]재절임|모듬야채절임", "모듬야채절임"),
+        (r"셀프라면\s*&\s*(깍두기|WSs|BI)", "셀프라면 & 깍두기"),
         (r"소고.?기.?미역국|소고\s*\)\|0\|역국", "소고기미역국"),
         (r"닭다리닭볶음[탕탐]|맑다리닭볶음[탕탐]", "닭다리닭볶음탕"),
         (r"멘[치지]볼카츠\s*/\s*데.?미소스|멘치불카츠\s*/\s*데.?미소스", "멘치볼카츠 / 데미소스"),
@@ -999,7 +1198,7 @@ def parse_raonfood_menu(texts: list[str], config: dict) -> list[str]:
         (r"빨강콩나물|빨감콩나물|빨강공나물", "빨강콩나물"),
         (r"셀프라면\s*&\s*배추김치|셀프라면.*배추김치|ss\s*&\s*32|a5\s*&\s*22", "셀프라면 & 배추김치"),
         (r"샐러드\s*&\s*드레싱|그린샐러드|샐러드드드.*드레싱|샐러드.*드레심|샐러드드\s*&", "샐러드 & 드레싱"),
-        (r"숭늉\s*&\s*음료|숭늉.*음료|[sSaA][s5]\s*&\s*[23][22]|ss\s*&\s*SF", "숭늉 & 음료"),
+        (r"숭늉\s*&\s*음료|숭늉.*음료|[sSaA][s5]\s*&\s*[23][22]|ss\s*&\s*SF|=s\s*&\s*S&F|sa\s*&\s*음료", "숭늉 & 음료"),
         (r"[닭닥]곰[탕탐]\s*/\s*[다타]대[기\)\!]|[닭닥]곰[탕탐]다대기|[닭닥]곰[탕탐][\/\|]다대", "닭곰탕/다대기"),
         (r"치즈불닭볶음|지즈불닭볶음", "치즈불닭볶음"),
         (r"오리엔탈파채돈까스|오리엔탈파채돈가스|오리엔탈파재돈까스", "오리엔탈파채돈까스"),
@@ -1048,10 +1247,15 @@ def parse_myfood_menu(texts: list[str], config: dict) -> list[str]:
     return []
 
 
-def parse_restaurant_menu(name: str, texts: list[str], existing: list[str]) -> tuple[list[str], bool]:
+def parse_restaurant_menu(
+    name: str,
+    texts: list[str],
+    existing: list[str],
+    public_day_texts: list[str] | None = None,
+) -> tuple[list[str], bool]:
     config = SOURCE_CONFIG[name]
     if name == "퍼블릭가산 구내식당":
-        found = parse_public_gasan_menu(texts, datetime.now(SEOUL))
+        found = parse_public_gasan_menu(texts, datetime.now(SEOUL), public_day_texts)
         if len(found) >= config["min_items"]:
             return found[: config["max_items"]], False
         return existing, True
@@ -1271,6 +1475,7 @@ def update_json_with_ocr() -> None:
             and has_recorded_menu(restaurant)
             and menu_output_quality_ok(restaurant)
             and previous_ocr_log.get(name, {}).get("reason") != "partial_ocr"
+            and not (name == "다시 봄" and "샐러드" in restaurant.get("menu", []))
         ):
             logs.append(
                 {
@@ -1338,6 +1543,10 @@ def update_json_with_ocr() -> None:
             )
             continue
         texts = ocr_texts(image_path)
+        public_day_texts: list[str] = []
+        if name == "퍼블릭가산 구내식당":
+            public_day_texts = ocr_public_gasan_day_column(image_path, now)
+            texts.extend(public_day_texts)
         if name == "다시 봄":
             texts.extend(ocr_dasibom_crops(image_path))
         today_marker = has_today_marker(texts + ([hint_text] if hint_text else []), now)
@@ -1390,7 +1599,7 @@ def update_json_with_ocr() -> None:
                         }
                     )
                     continue
-        extracted_menu, used_fallback = parse_restaurant_menu(name, texts, previous_menu)
+        extracted_menu, used_fallback = parse_restaurant_menu(name, texts, previous_menu, public_day_texts)
         extracted_menu, menu_ok, rejected_count = validate_extracted_menu(
             name,
             extracted_menu,

@@ -158,9 +158,16 @@ def render_restaurant_card(item: dict) -> str:
             note_html = '<div class="info-note">오늘 메뉴 미수집 상태입니다.</div>'
         elif not item.get('menu') and preview_image:
             note_html = '<div class="info-note">메뉴 텍스트는 정리 중입니다. 메뉴 이미지 확인 버튼으로 식단을 확인해 주세요.</div>'
+        inline_image_html = ''
+        if item['name'] in {'다시 봄', '디폴리스 구내식당'} and preview_image:
+            inline_image_html = (
+                f'<div class="menu-inline-image">'
+                f'<img src="{escape(preview_image)}" alt="{name} 식단 이미지">'
+                f'</div>'
+            )
         show_menu_items = bool(item.get('menu')) or bool(menu_sections)
         menu_html = section_html if menu_sections else f'<ul>{menu_items}</ul>'
-        body = f'{note_html}{menu_html}' if show_menu_items else note_html
+        body = f'{inline_image_html}{note_html}{menu_html}' if show_menu_items else f'{inline_image_html}{note_html}'
         action_html = ''
         if preview_image:
             action_html = (
@@ -333,6 +340,20 @@ def render_page(data: dict) -> str:
     li + li {{ margin-top: 2px; }}
     .pending-box {{ margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }}
     .info-note {{ margin: 2px 0 12px; color: var(--muted); font-size: 14px; line-height: 1.6; }}
+    .menu-inline-image {{
+      margin: 0 0 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #f8fbff;
+      overflow: hidden;
+    }}
+    .menu-inline-image img {{
+      display: block;
+      width: 100%;
+      max-height: 440px;
+      object-fit: contain;
+      background: #fff;
+    }}
     .menu-section + .menu-section {{ margin-top: 14px; }}
     .menu-section-title {{
       margin: 0 0 8px;
@@ -357,12 +378,12 @@ def render_page(data: dict) -> str:
     .modal-overlay.open {{ display: block; }}
     .modal-dialog {{
       position: fixed;
-      width: min(92vw, 640px);
-      max-height: min(82vh, 920px);
+      width: min(96vw, 920px);
+      max-height: 92vh;
       background: #fff;
       border-radius: 24px;
       box-shadow: 0 28px 60px rgba(9, 20, 45, 0.32);
-      overflow: hidden;
+      overflow: auto;
     }}
     .modal-head {{
       display: flex;
@@ -386,11 +407,12 @@ def render_page(data: dict) -> str:
     .modal-body {{ padding: 14px; background: #f8fbff; }}
     .modal-body img {{
       display: block;
-      width: 100%;
+      width: auto;
+      max-width: 100%;
       height: auto;
-      max-height: calc(82vh - 92px);
       border-radius: 16px;
       background: #fff;
+      margin: 0 auto;
     }}
     @media (max-width: 960px) {{
       .meta-bar {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
@@ -411,6 +433,9 @@ def render_page(data: dict) -> str:
       }}
       .name {{
         font-size: 22px;
+      }}
+      .menu-inline-image img {{
+        max-height: 360px;
       }}
       .meta-card {{
         padding: 14px 16px;

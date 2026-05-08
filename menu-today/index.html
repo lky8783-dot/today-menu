@@ -125,6 +125,20 @@
     li + li { margin-top: 2px; }
     .pending-box { margin-top: 8px; padding: 16px 18px; border-radius: 18px; background: #fffaf0; border: 1px dashed rgba(191,123,0,0.35); color: #6f5607; line-height: 1.7; font-size: 15px; }
     .info-note { margin: 2px 0 12px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .menu-inline-image {
+      margin: 0 0 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #f8fbff;
+      overflow: hidden;
+    }
+    .menu-inline-image img {
+      display: block;
+      width: 100%;
+      max-height: 440px;
+      object-fit: contain;
+      background: #fff;
+    }
     .menu-section + .menu-section { margin-top: 14px; }
     .menu-section-title {
       margin: 0 0 8px;
@@ -149,12 +163,12 @@
     .modal-overlay.open { display: block; }
     .modal-dialog {
       position: fixed;
-      width: min(92vw, 640px);
-      max-height: min(82vh, 920px);
+      width: min(96vw, 920px);
+      max-height: 92vh;
       background: #fff;
       border-radius: 24px;
       box-shadow: 0 28px 60px rgba(9, 20, 45, 0.32);
-      overflow: hidden;
+      overflow: auto;
     }
     .modal-head {
       display: flex;
@@ -178,11 +192,12 @@
     .modal-body { padding: 14px; background: #f8fbff; }
     .modal-body img {
       display: block;
-      width: 100%;
+      width: auto;
+      max-width: 100%;
       height: auto;
-      max-height: calc(82vh - 92px);
       border-radius: 16px;
       background: #fff;
+      margin: 0 auto;
     }
     @media (max-width: 960px) {
       .meta-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -203,6 +218,9 @@
       }
       .name {
         font-size: 22px;
+      }
+      .menu-inline-image img {
+        max-height: 360px;
       }
       .meta-card {
         padding: 14px 16px;
@@ -244,7 +262,7 @@
 
     <section class="meta-bar">
       <div class="meta-card"><div class="meta-label">기준 날짜</div><div class="meta-value">2026년 5월 8일 금요일</div></div>
-      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-05-08 11:48:51</div></div>
+      <div class="meta-card"><div class="meta-label">최종 가져온 시간</div><div class="meta-value">2026-05-08 14:54:55</div></div>
       <div class="meta-card"><div class="meta-label">확인 완료</div><div class="meta-value">10개 식당</div></div>
       <div class="meta-card"><div class="meta-label">준비중</div><div class="meta-value">3개 채널</div></div>
     </section>
@@ -265,7 +283,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/imeal.png" data-title="아이밀">메뉴 이미지 확인</button>
         </div>
-        <ul><li>콩나물국</li><li>새콤달콤비빔야채만두</li><li>연근조림</li><li>미역줄기볶음</li><li>참나물파프리카무침</li><li>가든샐러드 &amp; 블루베리D</li><li>흑미밥 / 백미밥</li><li>닭 볶음 탕</li><li>비빔야채만두</li><li>즈겨전</li><li>둥굴레차</li></ul>
+        <ul><li>콩나물국</li><li>새콤달콤비빔야채만두</li><li>연근조림</li><li>미역줄기볶음</li><li>참나물파프리카무침</li><li>가든샐러드 &amp; 블루베리D</li><li>흑미밥 / 백미밥</li><li>비빔야채만두</li><li>즈겨전</li><li>둥굴레차</li><li>타산을</li></ul>
       </article>
 
       <article class="restaurant-card">
@@ -280,7 +298,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/dasibom.png" data-title="다시 봄">메뉴 이미지 확인</button>
         </div>
-        <ul><li>Se 노기</li><li>토토치키까스 &amp;</li><li>하심잔 이</li><li>; 재해</li><li>오삼직화구이</li></ul>
+        <div class="menu-inline-image"><img src="./images/dasibom.png" alt="다시 봄 식단 이미지"></div><ul><li>어묵국</li><li>오삼직화구이</li><li>통통치킨까스</li><li>한식잡채</li><li>폭신철판핫케익</li><li>미역오이초무침</li><li>싱싱샐러드</li><li>깍두기</li><li>참치마요비빔밥</li><li>탄산음료</li><li>셀프라면</li></ul>
       </article>
 
       <article class="restaurant-card">
@@ -295,7 +313,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/babon.png" data-title="밥(온) 구내식당">메뉴 이미지 확인</button>
         </div>
-        <ul><li>윈쌀밥 / 끔은쌀삽곡밥</li><li>소고기무국</li><li>고구마닭볶음탕</li><li>레몬소스등심탕수육</li><li>중화류산슬덮밥</li><li>분홍소시지전*케잡</li><li>옆무*얼갈이겉절이</li><li>배주절절이김지</li><li>양배 주생 &quot;ag</li><li>식혜 / 후식과자</li></ul>
+        <ul><li>소고기무국</li><li>고구마닭볶음탕</li><li>레몬소스등심탕수육</li><li>중화류산슬덮밥</li><li>분홍소시지전*케잡</li><li>배주끝설이짐지</li><li>양배주샐러드</li><li>식혜 / 후식과자</li><li>중화류 사스더바</li><li>호소시지저*궤자</li><li>식혜 / 우 Al 과자</li></ul>
       </article>
 
       <article class="restaurant-card">
@@ -310,7 +328,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/dipolis.png" data-title="디폴리스 구내식당">메뉴 이미지 확인</button>
         </div>
-        <ul><li>이 점 A</li><li>제육고추장불고기</li><li>등심 탕수육, 떡탕수</li><li>새콤달콤 비빔 국수</li><li>크림미트볼조림</li><li>숙주나물무침</li><li>양배추 야채 샐러드</li><li>겉절이 김지</li><li>O 맛있게 드세요 Y</li><li>등심 탕수</li><li>떡탕수</li><li>크림소스 미트볼 AS</li></ul>
+        <div class="menu-inline-image"><img src="./images/dipolis.png" alt="디폴리스 구내식당 식단 이미지"></div><div class="menu-section"><div class="menu-section-title">중식</div><ul><li>잡곡밥 / 햅쌀밥</li><li>제육 고추장 불고기</li><li>등심 탕수육, 떡탕수</li><li>새콤달콤 비빔 국수</li><li>구수한 누룽지 / 모듬 야채쌈</li><li>크림소스 미트볼 조림</li><li>소고기 미역국</li><li>숙주나물 무침</li><li>양배추 야채 샐러드</li><li>겉절이 김치</li><li>탄산음료</li></ul></div>
       </article>
 
       <article class="restaurant-card">
@@ -325,7 +343,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/raonfood.png" data-title="구내식당라온푸드">메뉴 이미지 확인</button>
         </div>
-        <ul><li>스팸김지볶음밥</li><li>미니잔치국수</li><li>순살양념대지갈비찜</li><li>샐러드 &amp; 드레싱</li><li>돼지갈비찜</li><li>기 에에</li><li>샐러드</li></ul>
+        <ul><li>스팸김지볶음밥</li><li>미니잔치국수</li><li>샐러드 &amp; 드레싱</li><li>돼지갈비찜</li><li>— 에에</li><li>샐러드 &amp;</li><li>음료</li></ul>
       </article>
 
       <article class="restaurant-card">
@@ -340,7 +358,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/myfood.png" data-title="마이푸드">메뉴 이미지 확인</button>
         </div>
-        <ul><li>가래떡면잡채 yk</li><li>매콤두부조림</li><li>감자채피망볶음</li><li>삼나물사과무침</li><li>양념고추지 / 김치겉절이</li><li>그린샐러드 &amp; 드레싱</li><li>단호박숙</li><li>잡곡밥 / 백미밥</li><li>쌈채소 &amp; 풋고추 / 한강라면 &amp; 딜콤한 토스트</li><li>삼나물사과무짐</li><li>추지 / 김치겉절이</li></ul>
+        <ul><li>가래떡면잡채 yk</li><li>매콤두부조림</li><li>감자채피망볶음</li><li>삼나물사과무침</li><li>양념고추지 / 김치겉절이</li><li>그린샐러드 &amp; 드레싱</li><li>단호박숙</li><li>잡곡밥 / 백미밥</li><li>쌈채소 &amp; 풋고추 / 한강라면 &amp; 딜콤한 토스트</li><li>가래떡면잡채 ye</li><li>야년</li><li>추지 / 김치겉절이</li></ul>
       </article>
 
       <article class="restaurant-card">
@@ -355,7 +373,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/public-gasan.png" data-title="퍼블릭가산 구내식당">메뉴 이미지 확인</button>
         </div>
-        <div class="info-note">현재는 메인메뉴만 공개됐습니다.</div>
+        <div class="info-note">현재는 메인메뉴만 공개됐습니다.</div><ul><li>매콤달콤양념치킨</li><li>고등어조림</li><li>분홍소세지전</li></ul>
       </article>
 
       <article class="restaurant-card">
@@ -370,7 +388,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/thefoodsketch.png" data-title="더푸드스케치">메뉴 이미지 확인</button>
         </div>
-        <ul><li>햄김치볶음밥</li><li>바지락킬국수</li><li>순대꼬치</li><li>에그샌드위치</li><li>~ 떡볶이</li><li>Sj 양장피냉채</li><li>삐 참나물겉절이</li><li>가든샐러드 &amp; 드레싱</li><li>배추겉절이 / 음료</li><li>식고추잡채</li></ul>
+        <ul><li>햄김치볶음밥</li><li>바지락킬국수</li><li>순대꼬치</li><li>에그샌드위치</li><li>~ 떡볶이</li><li>삐 참나물겉절이</li><li>가든샐러드 / 드레싱</li><li>배추겉절이 / 음료</li><li>더프드케차</li><li>식고추잡채</li></ul>
       </article>
 
       <article class="restaurant-card">
@@ -385,7 +403,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/starvalley-food4u-post.png" data-title="스타밸리푸드포유">메뉴 이미지 확인</button>
         </div>
-        <ul><li>^ 백미밥</li><li>과리고주소고기볶슴</li><li>바지락칼국수</li><li>모듬튀김 &amp; 장정소스</li><li>까르보미트볼조림</li><li>꽂맛살과일사라다</li><li>” 오징어림지전</li><li>야채결절이</li><li>가든샐러드 &amp; 포도D</li><li>포기김치</li><li>팟타이볶음밥</li></ul>
+        <div class="info-note">오늘 메뉴 미수집 상태입니다.</div>
       </article>
 
       <article class="restaurant-card">
@@ -400,7 +418,7 @@
           </div>
           <button class="badge image-button" type="button" data-image="./images/sj-weekly-menu.png" data-title="에스제이 구내식당">메뉴 이미지 확인</button>
         </div>
-        <div class="menu-section"><div class="menu-section-title">중식</div><ul><li>롱나물국</li><li>백미밥 / 잡곡밥</li><li>메추리알조림</li><li>도토리묵무침</li><li>배추김치</li><li>그린샐러드</li><li>추가찬2종</li><li>콩나물국</li></ul></div><div class="menu-section"><div class="menu-section-title">석식</div><ul><li>잡곡밥</li><li>통통감자고로케 * 소스</li><li>조미김구이</li><li>계절나물</li><li>배추김치</li><li>그린샐러드</li><li>어크다</li><li>감자고로케 * AA</li><li>라면</li><li>스즈</li><li>계란후라이 / 토스트 &amp; 딸기잼</li><li>『추김</li></ul></div><div class="menu-section"><div class="menu-section-title">플러스메뉴</div><ul><li>계란후라이 / 토스트&amp;딸기잼</li><li>셀프 라면</li><li>탄산음료, 숭늉, 매실차</li></ul></div>
+        <div class="menu-section"><div class="menu-section-title">중식</div><ul><li>롱나물국</li><li>백미밥 / 잡곡밥</li><li>메추리알조림</li><li>도토리묵무침</li><li>배추김치</li><li>그린샐러드</li><li>추가찬2종</li><li>콩나물국</li></ul></div><div class="menu-section"><div class="menu-section-title">석식</div><ul><li>잡곡밥</li><li>통통감자고로케 * 소스</li><li>조미김구이</li><li>계절나물</li><li>배추김치</li><li>그린샐러드</li><li>어크다</li><li>라면</li><li>계란후라이 / 토스트 &amp; 딸기잼</li><li>감자고로케 * AA</li><li>『추김</li></ul></div><div class="menu-section"><div class="menu-section-title">플러스메뉴</div><ul><li>계란후라이 / 토스트&amp;딸기잼</li><li>셀프 라면</li><li>탄산음료, 숭늉, 매실차</li></ul></div>
       </article>
     </section>
 

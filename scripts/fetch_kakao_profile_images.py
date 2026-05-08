@@ -36,6 +36,8 @@ PROFILE_SOURCES = [
     {"name": "에스제이 구내식당", "page_url": "https://www.instagram.com/s_j_food_278/", "output": ROOT / "menu-today" / "images" / "sj-food.png", "strategy": "instagram_first_post_image"},
 ]
 
+SKIP_IMAGE_COLLECTION = {"디폴리스 구내식당"}
+
 
 def fetch_page_html(page_url: str) -> str:
     response = requests.get(page_url, headers=HEADERS, timeout=30)
@@ -135,6 +137,17 @@ def resolve_image_url(source: dict) -> tuple[str | None, str | None]:
 def sync_preview_images() -> None:
     results: list[dict] = []
     for source in PROFILE_SOURCES:
+        if source["name"] in SKIP_IMAGE_COLLECTION:
+            results.append(
+                {
+                    "name": source["name"],
+                    "page_url": source["page_url"],
+                    "output": str(source["output"].relative_to(ROOT)).replace("\\", "/"),
+                    "status": "skipped",
+                    "reason": "use_existing_collected_image",
+                }
+            )
+            continue
         try:
             image_url, detail_url = resolve_image_url(source)
             if not image_url:
