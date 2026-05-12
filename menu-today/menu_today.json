@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 5월 12일 화요일",
-  "updated_at": "2026-05-12 09:33:17",
+  "updated_at": "2026-05-12 09:48:06",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -24,21 +24,20 @@
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [
-        "청파래오징어까스",
-        "= 닭 = 먼 「",
-        "추억의소세지전",
-        "직접담은겉절이 은",
-        "얼큰콩나물국",
-        "가마솔삼겹보쌈",
-        "다쪼며",
-        "물들",
-        "그 근 LL"
+        "가스오순두부",
+        "철판꿀호떡",
+        "베이컨짬뽕볶음라면",
+        "고주쌈장무침",
+        "싱싱샐러드",
+        "가스오",
+        "다리데리야끼구이",
+        "통등심꿔바로우탕수"
       ],
       "preview_image": "./images/dasibom.png",
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-12 09:31:34",
-      "menu_recorded_source_fetched_at": "2026-05-12 09:31:09"
+      "menu_recorded_at": "2026-05-12 09:46:27",
+      "menu_recorded_source_fetched_at": "2026-05-12 09:46:04"
     },
     {
       "name": "밥(온) 구내식당",
@@ -61,8 +60,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-12 09:31:34",
-      "menu_recorded_source_fetched_at": "2026-05-12 09:31:11"
+      "menu_recorded_at": "2026-05-12 09:46:27",
+      "menu_recorded_source_fetched_at": "2026-05-12 09:46:06"
     },
     {
       "name": "디폴리스 구내식당",
@@ -78,14 +77,14 @@
         "구수한 누룽지 / 모듬 야채쌈",
         "크림소스 미트볼 조림",
         "소고기 미역국",
-        "숙주나물무침",
+        "숙주나물 무침",
         "양배추 야채 샐러드",
         "겉절이 김치",
         "탄산음료"
       ],
       "message": "",
-      "menu_recorded_at": "2026-05-12 09:31:34",
-      "menu_recorded_source_fetched_at": "2026-05-12 09:30:24",
+      "menu_recorded_at": "2026-05-12 09:46:27",
+      "menu_recorded_source_fetched_at": "2026-05-12 09:45:15",
       "menu_sections": [
         {
           "title": "중식",
@@ -96,7 +95,7 @@
             "구수한 누룽지 / 모듬 야채쌈",
             "크림소스 미트볼 조림",
             "소고기 미역국",
-            "숙주나물무침",
+            "숙주나물 무침",
             "양배추 야채 샐러드",
             "겉절이 김치",
             "탄산음료"
@@ -140,8 +139,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-12 09:31:34",
-      "menu_recorded_source_fetched_at": "2026-05-12 09:31:17"
+      "menu_recorded_at": "2026-05-12 09:46:27",
+      "menu_recorded_source_fetched_at": "2026-05-12 09:46:09"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -177,8 +176,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-12 09:31:34",
-      "menu_recorded_source_fetched_at": "2026-05-12 09:31:21"
+      "menu_recorded_at": "2026-05-12 09:46:27",
+      "menu_recorded_source_fetched_at": "2026-05-12 09:46:12"
     },
     {
       "name": "스타밸리푸드포유",
@@ -199,8 +198,8 @@
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-12 09:31:34",
-      "menu_recorded_source_fetched_at": "2026-05-12 09:31:25"
+      "menu_recorded_at": "2026-05-12 09:46:27",
+      "menu_recorded_source_fetched_at": "2026-05-12 09:46:17"
     },
     {
       "name": "에스제이 구내식당",
@@ -268,8 +267,8 @@
           ]
         }
       ],
-      "menu_recorded_at": "2026-05-12 09:31:34",
-      "menu_recorded_source_fetched_at": "2026-05-12 09:30:24"
+      "menu_recorded_at": "2026-05-12 09:46:27",
+      "menu_recorded_source_fetched_at": "2026-05-12 09:45:15"
     },
     {
       "name": "돈토",
@@ -306,18 +305,18 @@
       "updated": false,
       "used_existing_fallback": true,
       "reason": "today_marker_not_found",
-      "source_fetched_at": "2026-05-12 09:31:06"
+      "source_fetched_at": "2026-05-12 09:46:02"
     },
     {
       "name": "다시 봄",
-      "items": 9,
+      "items": 8,
       "updated": true,
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "reason": "partial_ocr",
-      "ocr_rejected_items": 2,
+      "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-05-12 09:31:09"
+      "source_fetched_at": "2026-05-12 09:46:04"
     },
     {
       "name": "밥(온) 구내식당",
@@ -328,7 +327,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-05-12 09:31:11"
+      "source_fetched_at": "2026-05-12 09:46:06"
     },
     {
       "name": "디폴리스 구내식당",
@@ -337,7 +336,7 @@
       "used_existing_fallback": false,
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-05-12 09:30:24"
+      "source_fetched_at": "2026-05-12 09:45:15"
     },
     {
       "name": "구내식당라온푸드",
@@ -345,7 +344,7 @@
       "updated": false,
       "used_existing_fallback": true,
       "reason": "stale_menu_date",
-      "source_fetched_at": "2026-05-12 09:31:13"
+      "source_fetched_at": "2026-05-12 09:46:07"
     },
     {
       "name": "마이푸드",
@@ -356,7 +355,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 1,
       "today_marker": true,
-      "source_fetched_at": "2026-05-12 09:31:17"
+      "source_fetched_at": "2026-05-12 09:46:09"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -367,7 +366,7 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-05-12 09:31:19"
+      "source_fetched_at": "2026-05-12 09:46:10"
     },
     {
       "name": "더푸드스케치",
@@ -378,7 +377,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-05-12 09:31:21"
+      "source_fetched_at": "2026-05-12 09:46:12"
     },
     {
       "name": "스타밸리푸드포유",
@@ -389,7 +388,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-05-12 09:31:25"
+      "source_fetched_at": "2026-05-12 09:46:17"
     },
     {
       "name": "에스제이 구내식당",
@@ -398,7 +397,7 @@
       "used_existing_fallback": false,
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-05-12 09:30:24"
+      "source_fetched_at": "2026-05-12 09:45:15"
     }
   ]
 }
