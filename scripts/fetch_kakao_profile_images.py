@@ -36,7 +36,7 @@ PROFILE_SOURCES = [
     {"name": "에스제이 구내식당", "page_url": "https://www.instagram.com/s_j_food_278/", "output": ROOT / "menu-today" / "images" / "sj-food.png", "strategy": "instagram_first_post_image"},
 ]
 
-SKIP_IMAGE_COLLECTION = {"디폴리스 구내식당"}
+SKIP_IMAGE_COLLECTION: set[str] = set()
 
 
 def fetch_page_html(page_url: str) -> str:
