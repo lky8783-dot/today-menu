@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 5월 26일 화요일",
-  "updated_at": "2026-05-26 10:13:14",
+  "updated_at": "2026-05-26 10:18:03",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -27,8 +27,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-26 10:11:26",
-      "menu_recorded_source_fetched_at": "2026-05-26 10:11:02"
+      "menu_recorded_at": "2026-05-26 10:16:34",
+      "menu_recorded_source_fetched_at": "2026-05-26 10:16:03"
     },
     {
       "name": "다시 봄",
@@ -51,8 +51,8 @@
       "preview_image": "./images/dasibom.png",
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-26 10:11:26",
-      "menu_recorded_source_fetched_at": "2026-05-26 10:11:04"
+      "menu_recorded_at": "2026-05-26 10:16:34",
+      "menu_recorded_source_fetched_at": "2026-05-26 10:16:06"
     },
     {
       "name": "밥(온) 구내식당",
@@ -74,8 +74,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-26 10:11:26",
-      "menu_recorded_source_fetched_at": "2026-05-26 10:11:06"
+      "menu_recorded_at": "2026-05-26 10:16:34",
+      "menu_recorded_source_fetched_at": "2026-05-26 10:16:08"
     },
     {
       "name": "디폴리스 구내식당",
@@ -97,8 +97,8 @@
         "맛살 콩나물 냉재"
       ],
       "message": "",
-      "menu_recorded_at": "2026-05-26 10:11:26",
-      "menu_recorded_source_fetched_at": "2026-05-26 10:11:14",
+      "menu_recorded_at": "2026-05-26 10:16:34",
+      "menu_recorded_source_fetched_at": "2026-05-26 10:16:20",
       "menu_recent_source_today": true
     },
     {
@@ -120,8 +120,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-26 10:11:26",
-      "menu_recorded_source_fetched_at": "2026-05-26 10:11:07"
+      "menu_recorded_at": "2026-05-26 10:16:34",
+      "menu_recorded_source_fetched_at": "2026-05-26 10:16:10"
     },
     {
       "name": "마이푸드",
@@ -143,8 +143,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-26 10:11:26",
-      "menu_recorded_source_fetched_at": "2026-05-26 10:11:09"
+      "menu_recorded_at": "2026-05-26 10:16:34",
+      "menu_recorded_source_fetched_at": "2026-05-26 10:16:13"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -172,15 +172,15 @@
         "수제후라이드치킨",
         "명이버섯개란전",
         "온두부 / 김치볶음",
-        "콩나물무침",
+        "취나물무침",
         "삐 오이지무침",
-        "가든샐러드 / 드레싱",
+        "가든샐러드 & 드레싱",
         "음료"
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-26 10:11:26",
-      "menu_recorded_source_fetched_at": "2026-05-26 10:11:12"
+      "menu_recorded_at": "2026-05-26 10:16:34",
+      "menu_recorded_source_fetched_at": "2026-05-26 10:16:17"
     },
     {
       "name": "스타밸리푸드포유",
@@ -201,8 +201,8 @@
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-05-26 10:11:26",
-      "menu_recorded_source_fetched_at": "2026-05-26 10:11:17"
+      "menu_recorded_at": "2026-05-26 10:16:34",
+      "menu_recorded_source_fetched_at": "2026-05-26 10:16:23"
     },
     {
       "name": "에스제이 구내식당",
@@ -298,8 +298,8 @@
           ]
         }
       ],
-      "menu_recorded_at": "2026-05-26 10:11:26",
-      "menu_recorded_source_fetched_at": "2026-05-26 10:10:20"
+      "menu_recorded_at": "2026-05-26 10:16:34",
+      "menu_recorded_source_fetched_at": "2026-05-26 10:15:16"
     },
     {
       "name": "돈토",
@@ -339,7 +339,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-05-26 10:11:02"
+      "source_fetched_at": "2026-05-26 10:16:03"
     },
     {
       "name": "다시 봄",
@@ -350,7 +350,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-05-26 10:11:04"
+      "source_fetched_at": "2026-05-26 10:16:06"
     },
     {
       "name": "밥(온) 구내식당",
@@ -361,7 +361,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-05-26 10:11:06"
+      "source_fetched_at": "2026-05-26 10:16:08"
     },
     {
       "name": "디폴리스 구내식당",
@@ -372,7 +372,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 9,
       "today_marker": true,
-      "source_fetched_at": "2026-05-26 10:11:14"
+      "source_fetched_at": "2026-05-26 10:16:20"
     },
     {
       "name": "구내식당라온푸드",
@@ -383,7 +383,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-05-26 10:11:07"
+      "source_fetched_at": "2026-05-26 10:16:10"
     },
     {
       "name": "마이푸드",
@@ -394,7 +394,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-05-26 10:11:09"
+      "source_fetched_at": "2026-05-26 10:16:13"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -405,7 +405,7 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-05-26 10:11:10"
+      "source_fetched_at": "2026-05-26 10:16:15"
     },
     {
       "name": "더푸드스케치",
@@ -416,7 +416,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-05-26 10:11:12"
+      "source_fetched_at": "2026-05-26 10:16:17"
     },
     {
       "name": "스타밸리푸드포유",
@@ -427,7 +427,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-05-26 10:11:17"
+      "source_fetched_at": "2026-05-26 10:16:23"
     },
     {
       "name": "에스제이 구내식당",
@@ -436,7 +436,7 @@
       "used_existing_fallback": false,
       "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-05-26 10:10:20"
+      "source_fetched_at": "2026-05-26 10:15:16"
     }
   ]
 }
