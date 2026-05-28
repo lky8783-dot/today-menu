@@ -7,7 +7,7 @@
       "image_url": "http://k.kakaocdn.net/dn/cNi67E/dJMcaftc2CG/fxU0TkdoDmK3XKXAIWqaW0/img.jpg",
       "output": "menu-today/images/imeal.png",
       "status": "updated",
-      "fetched_at": "2026-05-28 11:16:00"
+      "fetched_at": "2026-05-28 11:31:04"
     },
     {
       "name": "다시 봄",
@@ -16,7 +16,7 @@
       "image_url": "http://k.kakaocdn.net/dn/dQjABV/dJMcadvkfQF/fbVwk27OM6Z5P5CcnbSNk1/img.jpg",
       "output": "menu-today/images/dasibom.png",
       "status": "updated",
-      "fetched_at": "2026-05-28 11:16:02"
+      "fetched_at": "2026-05-28 11:31:07"
     },
     {
       "name": "밥(온) 구내식당",
@@ -25,7 +25,7 @@
       "image_url": "http://k.kakaocdn.net/dn/cNRThs/dJMcaf01wX0/FlhDSMQkgL0rec5JKj0DNK/img.jpg",
       "output": "menu-today/images/babon.png",
       "status": "updated",
-      "fetched_at": "2026-05-28 11:16:04"
+      "fetched_at": "2026-05-28 11:31:10"
     },
     {
       "name": "구내식당라온푸드",
@@ -34,7 +34,7 @@
       "image_url": "http://k.kakaocdn.net/dn/bntPI4/dJMcahLlgsg/AZXcsaUaXAYliv5RPPx881/img.jpg",
       "output": "menu-today/images/raonfood.png",
       "status": "updated",
-      "fetched_at": "2026-05-28 11:16:06"
+      "fetched_at": "2026-05-28 11:31:12"
     },
     {
       "name": "마이푸드",
@@ -43,7 +43,7 @@
       "image_url": "http://k.kakaocdn.net/dn/ha3NC/dJMcajbdD7o/JEwNR20TuqLYCMm7ZfNf3K/img.jpg",
       "output": "menu-today/images/myfood.png",
       "status": "updated",
-      "fetched_at": "2026-05-28 11:16:07"
+      "fetched_at": "2026-05-28 11:31:14"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -52,7 +52,7 @@
       "image_url": "http://k.kakaocdn.net/dn/babJay/dJMcah5FaM4/rRZQ5WsAzpyO68KP0uXKFk/img.jpg",
       "output": "menu-today/images/public-gasan.png",
       "status": "updated",
-      "fetched_at": "2026-05-28 11:16:09"
+      "fetched_at": "2026-05-28 11:31:17"
     },
     {
       "name": "더푸드스케치",
@@ -61,7 +61,7 @@
       "image_url": "http://k.kakaocdn.net/dn/dlYCQp/dJMcabqQd0e/zJBngJGQGFs8OifMpA37Z1/img.jpg",
       "output": "menu-today/images/thefoodsketch.png",
       "status": "updated",
-      "fetched_at": "2026-05-28 11:16:10"
+      "fetched_at": "2026-05-28 11:31:19"
     },
     {
       "name": "스타밸리푸드포유",
@@ -70,7 +70,7 @@
       "image_url": "https://k.kakaocdn.net/dn/bsi6EQ/dJMcabLbnTC/udkwJjhTz6jKbG99Nz4mKk/img_xl.jpg",
       "output": "menu-today/images/starvalley-food4u-post.png",
       "status": "updated",
-      "fetched_at": "2026-05-28 11:16:15"
+      "fetched_at": "2026-05-28 11:31:27"
     },
     {
       "name": "디폴리스 구내식당",
@@ -79,7 +79,7 @@
       "image_url": "http://k.kakaocdn.net/dn/5LAUX/dJMcaaeoRNq/UrFRYTLbUkSAsjsWrMFFR1/img.jpg",
       "output": "menu-today/images/dipolis.png",
       "status": "updated",
-      "fetched_at": "2026-05-28 11:16:13"
+      "fetched_at": "2026-05-28 11:31:22"
     },
     {
       "name": "돈토",
@@ -88,7 +88,7 @@
       "image_url": "http://k.kakaocdn.net/dn/bUdBlN/btrPybZ1blc/B1Aevq6s9dGBgGBRGFHqhK/img.jpg",
       "output": "menu-today/images/donto.png",
       "status": "updated",
-      "fetched_at": "2026-05-28 11:16:14"
+      "fetched_at": "2026-05-28 11:31:24"
     },
     {
       "name": "에스제이 구내식당",
