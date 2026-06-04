@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 6월 4일 목요일",
-  "updated_at": "2026-06-04 11:13:10",
+  "updated_at": "2026-06-04 11:18:16",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -25,8 +25,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-04 11:11:31",
-      "menu_recorded_source_fetched_at": "2026-06-04 11:11:01"
+      "menu_recorded_at": "2026-06-04 11:16:30",
+      "menu_recorded_source_fetched_at": "2026-06-04 11:16:01"
     },
     {
       "name": "다시 봄",
@@ -50,8 +50,8 @@
       "preview_image": "./images/dasibom.png",
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-04 11:11:31",
-      "menu_recorded_source_fetched_at": "2026-06-04 11:11:04"
+      "menu_recorded_at": "2026-06-04 11:16:30",
+      "menu_recorded_source_fetched_at": "2026-06-04 11:16:04"
     },
     {
       "name": "밥(온) 구내식당",
@@ -72,8 +72,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-04 11:11:31",
-      "menu_recorded_source_fetched_at": "2026-06-04 11:11:06"
+      "menu_recorded_at": "2026-06-04 11:16:30",
+      "menu_recorded_source_fetched_at": "2026-06-04 11:16:06"
     },
     {
       "name": "디폴리스 구내식당",
@@ -93,8 +93,8 @@
         "냉면"
       ],
       "message": "",
-      "menu_recorded_at": "2026-06-04 11:11:31",
-      "menu_recorded_source_fetched_at": "2026-06-04 11:11:18",
+      "menu_recorded_at": "2026-06-04 11:16:30",
+      "menu_recorded_source_fetched_at": "2026-06-04 11:16:17",
       "menu_recent_source_today": true
     },
     {
@@ -113,8 +113,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-04 11:11:31",
-      "menu_recorded_source_fetched_at": "2026-06-04 11:11:08"
+      "menu_recorded_at": "2026-06-04 11:16:30",
+      "menu_recorded_source_fetched_at": "2026-06-04 11:16:07"
     },
     {
       "name": "마이푸드",
@@ -135,8 +135,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-04 11:11:31",
-      "menu_recorded_source_fetched_at": "2026-06-04 11:11:10"
+      "menu_recorded_at": "2026-06-04 11:16:30",
+      "menu_recorded_source_fetched_at": "2026-06-04 11:16:09"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -172,8 +172,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-04 11:11:31",
-      "menu_recorded_source_fetched_at": "2026-06-04 11:11:15"
+      "menu_recorded_at": "2026-06-04 11:16:30",
+      "menu_recorded_source_fetched_at": "2026-06-04 11:16:14"
     },
     {
       "name": "스타밸리푸드포유",
@@ -196,8 +196,8 @@
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-04 11:11:31",
-      "menu_recorded_source_fetched_at": "2026-06-04 11:11:21"
+      "menu_recorded_at": "2026-06-04 11:16:30",
+      "menu_recorded_source_fetched_at": "2026-06-04 11:16:20"
     },
     {
       "name": "에스제이 구내식당",
@@ -243,8 +243,8 @@
       "message": "",
       "preview_image": "./images/sj-weekly-menu.png",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-04 11:11:31",
-      "menu_recorded_source_fetched_at": "2026-06-04 11:10:19",
+      "menu_recorded_at": "2026-06-04 11:16:30",
+      "menu_recorded_source_fetched_at": "2026-06-04 11:15:18",
       "menu_sections": [
         {
           "title": "중식",
@@ -334,7 +334,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-06-04 11:11:01"
+      "source_fetched_at": "2026-06-04 11:16:01"
     },
     {
       "name": "다시 봄",
@@ -345,7 +345,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 1,
       "today_marker": true,
-      "source_fetched_at": "2026-06-04 11:11:04"
+      "source_fetched_at": "2026-06-04 11:16:04"
     },
     {
       "name": "밥(온) 구내식당",
@@ -356,7 +356,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-06-04 11:11:06"
+      "source_fetched_at": "2026-06-04 11:16:06"
     },
     {
       "name": "디폴리스 구내식당",
@@ -367,7 +367,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 12,
       "today_marker": true,
-      "source_fetched_at": "2026-06-04 11:11:18"
+      "source_fetched_at": "2026-06-04 11:16:17"
     },
     {
       "name": "구내식당라온푸드",
@@ -378,7 +378,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 7,
       "today_marker": true,
-      "source_fetched_at": "2026-06-04 11:11:08"
+      "source_fetched_at": "2026-06-04 11:16:07"
     },
     {
       "name": "마이푸드",
@@ -389,7 +389,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-06-04 11:11:10"
+      "source_fetched_at": "2026-06-04 11:16:09"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -400,7 +400,7 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-06-04 11:11:13"
+      "source_fetched_at": "2026-06-04 11:16:12"
     },
     {
       "name": "더푸드스케치",
@@ -411,7 +411,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-06-04 11:11:15"
+      "source_fetched_at": "2026-06-04 11:16:14"
     },
     {
       "name": "스타밸리푸드포유",
@@ -422,7 +422,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-06-04 11:11:21"
+      "source_fetched_at": "2026-06-04 11:16:20"
     },
     {
       "name": "에스제이 구내식당",
@@ -431,7 +431,7 @@
       "used_existing_fallback": false,
       "ocr_rejected_items": 6,
       "today_marker": true,
-      "source_fetched_at": "2026-06-04 11:10:19"
+      "source_fetched_at": "2026-06-04 11:15:18"
     }
   ]
 }
