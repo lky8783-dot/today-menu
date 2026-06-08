@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 6월 8일 월요일",
-  "updated_at": "2026-06-08 09:33:37",
+  "updated_at": "2026-06-08 09:49:04",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -25,8 +25,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-08 09:31:41",
-      "menu_recorded_source_fetched_at": "2026-06-08 09:31:15"
+      "menu_recorded_at": "2026-06-08 09:47:01",
+      "menu_recorded_source_fetched_at": "2026-06-08 09:46:34"
     },
     {
       "name": "다시 봄",
@@ -35,22 +35,22 @@
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [
-        "콩나물국",
-        "훌랄라닭구이",
-        "투움바파스타",
-        "멘지돈카즈",
-        "중화철판군만두",
-        "오이송송무침",
+        "황태해장국",
+        "대패삼겹소금구이",
+        "치즈치킨까스",
+        "바지락부추부침개",
+        "김치비빔국수",
         "싱싱샐러드",
-        "숙성김치",
-        "멘치돈카즈",
-        "중화절판군"
+        "직접담은겉절이",
+        "대 패 사겨",
+        "구이",
+        "바지락 라"
       ],
       "preview_image": "./images/dasibom.png",
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-08 09:31:41",
-      "menu_recorded_source_fetched_at": "2026-06-08 09:31:17"
+      "menu_recorded_at": "2026-06-08 09:47:01",
+      "menu_recorded_source_fetched_at": "2026-06-08 09:46:36"
     },
     {
       "name": "밥(온) 구내식당",
@@ -71,8 +71,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-08 09:31:41",
-      "menu_recorded_source_fetched_at": "2026-06-08 09:31:19"
+      "menu_recorded_at": "2026-06-08 09:47:01",
+      "menu_recorded_source_fetched_at": "2026-06-08 09:46:38"
     },
     {
       "name": "디폴리스 구내식당",
@@ -94,8 +94,8 @@
         "통살 생선까스 &"
       ],
       "message": "",
-      "menu_recorded_at": "2026-06-08 09:31:41",
-      "menu_recorded_source_fetched_at": "2026-06-08 09:31:28",
+      "menu_recorded_at": "2026-06-08 09:47:01",
+      "menu_recorded_source_fetched_at": "2026-06-08 09:46:47",
       "menu_recent_source_today": true
     },
     {
@@ -116,8 +116,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-08 09:31:41",
-      "menu_recorded_source_fetched_at": "2026-06-08 09:31:21"
+      "menu_recorded_at": "2026-06-08 09:47:01",
+      "menu_recorded_source_fetched_at": "2026-06-08 09:46:40"
     },
     {
       "name": "마이푸드",
@@ -161,13 +161,13 @@
         "머쉬룸함박스테이크",
         "새우무조림",
         "삐 오이지무침",
-        "가든샐러드 & 드레싱",
+        "가든샐러드 / 드레싱",
         "배추겉절이 / 음료"
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-08 09:31:41",
-      "menu_recorded_source_fetched_at": "2026-06-08 09:31:26"
+      "menu_recorded_at": "2026-06-08 09:47:01",
+      "menu_recorded_source_fetched_at": "2026-06-08 09:46:45"
     },
     {
       "name": "스타밸리푸드포유",
@@ -225,8 +225,8 @@
       "message": "",
       "preview_image": "./images/sj-weekly-menu.png",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-06-08 09:31:41",
-      "menu_recorded_source_fetched_at": "2026-06-08 09:30:25",
+      "menu_recorded_at": "2026-06-08 09:47:01",
+      "menu_recorded_source_fetched_at": "2026-06-08 09:45:44",
       "menu_sections": [
         {
           "title": "중식",
@@ -315,7 +315,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-06-08 09:31:15"
+      "source_fetched_at": "2026-06-08 09:46:34"
     },
     {
       "name": "다시 봄",
@@ -326,7 +326,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-06-08 09:31:17"
+      "source_fetched_at": "2026-06-08 09:46:36"
     },
     {
       "name": "밥(온) 구내식당",
@@ -337,7 +337,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-06-08 09:31:19"
+      "source_fetched_at": "2026-06-08 09:46:38"
     },
     {
       "name": "디폴리스 구내식당",
@@ -348,7 +348,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 8,
       "today_marker": true,
-      "source_fetched_at": "2026-06-08 09:31:28"
+      "source_fetched_at": "2026-06-08 09:46:47"
     },
     {
       "name": "구내식당라온푸드",
@@ -359,7 +359,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 5,
       "today_marker": true,
-      "source_fetched_at": "2026-06-08 09:31:21"
+      "source_fetched_at": "2026-06-08 09:46:40"
     },
     {
       "name": "마이푸드",
@@ -367,7 +367,7 @@
       "updated": false,
       "used_existing_fallback": true,
       "reason": "today_marker_not_found",
-      "source_fetched_at": "2026-06-08 09:31:23"
+      "source_fetched_at": "2026-06-08 09:46:42"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -378,7 +378,7 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-06-08 09:31:25"
+      "source_fetched_at": "2026-06-08 09:46:43"
     },
     {
       "name": "더푸드스케치",
@@ -389,7 +389,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-06-08 09:31:26"
+      "source_fetched_at": "2026-06-08 09:46:45"
     },
     {
       "name": "스타밸리푸드포유",
@@ -397,7 +397,7 @@
       "updated": false,
       "used_existing_fallback": true,
       "reason": "today_marker_not_found",
-      "source_fetched_at": "2026-06-08 09:31:32"
+      "source_fetched_at": "2026-06-08 09:46:51"
     },
     {
       "name": "에스제이 구내식당",
@@ -406,7 +406,7 @@
       "used_existing_fallback": false,
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-06-08 09:30:25"
+      "source_fetched_at": "2026-06-08 09:45:44"
     }
   ]
 }
