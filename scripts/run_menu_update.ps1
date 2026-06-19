@@ -55,7 +55,22 @@ try {
         throw "build_menu_page.py failed"
     }
 
-    & git add "menu-today\collection_log.json" "menu-today\dynamic_menu_hints.json" "menu-today\manual_menu_overrides.json" "menu-today\images\*.png" "menu-today\index.html" "menu-today\menu_today.json"
+    & $pythonExe "scripts\fetch_guro_menu_images.py"
+    if ($LASTEXITCODE -ne 0) {
+        throw "fetch_guro_menu_images.py failed"
+    }
+
+    & $pythonExe "scripts\update_guro_menu_from_ocr.py"
+    if ($LASTEXITCODE -ne 0) {
+        throw "update_guro_menu_from_ocr.py failed"
+    }
+
+    & $pythonExe "scripts\build_guro_menu_page.py"
+    if ($LASTEXITCODE -ne 0) {
+        throw "build_guro_menu_page.py failed"
+    }
+
+    & git add "menu-today\collection_log.json" "menu-today\dynamic_menu_hints.json" "menu-today\manual_menu_overrides.json" "menu-today\images\*.png" "menu-today\index.html" "menu-today\menu_today.json" "guro-menu\collection_log.json" "guro-menu\manual_menu_overrides.json" "guro-menu\images\*.png" "guro-menu\index.html" "guro-menu\menu_today.json"
     if ($LASTEXITCODE -ne 0) {
         throw "git add failed"
     }

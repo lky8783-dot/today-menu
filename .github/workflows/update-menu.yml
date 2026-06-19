@@ -86,8 +86,17 @@ jobs:
       - name: Rebuild menu page
         run: python scripts/build_menu_page.py
 
+      - name: Fetch Guro menu images
+        run: python scripts/fetch_guro_menu_images.py
+
+      - name: Update Guro menu json from OCR
+        run: python scripts/update_guro_menu_from_ocr.py
+
+      - name: Rebuild Guro menu page
+        run: python scripts/build_guro_menu_page.py
+
       - name: Commit updated page
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Update menu board assets'
-          file_pattern: menu-today/index.html menu-today/menu_today.json menu-today/images/*.png menu-today/images/*.jpg menu-today/collection_log.json menu-today/dynamic_menu_hints.json
+          file_pattern: menu-today/index.html menu-today/menu_today.json menu-today/images/*.png menu-today/images/*.jpg menu-today/collection_log.json menu-today/dynamic_menu_hints.json guro-menu/index.html guro-menu/menu_today.json guro-menu/images/*.png guro-menu/collection_log.json

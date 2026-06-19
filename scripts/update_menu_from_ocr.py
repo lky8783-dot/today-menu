@@ -16,7 +16,6 @@ DATA_PATH = ROOT / "menu-today" / "menu_today.json"
 HINTS_PATH = ROOT / "menu-today" / "dynamic_menu_hints.json"
 COLLECTION_LOG_PATH = ROOT / "menu-today" / "collection_log.json"
 MANUAL_OVERRIDES_PATH = ROOT / "menu-today" / "manual_menu_overrides.json"
-SJ_WEEKLY_IMAGE_PATH = ROOT / "menu-today" / "images" / "sj-weekly-menu.png"
 SEOUL = ZoneInfo("Asia/Seoul")
 WEEKDAYS = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
 RECENT_FETCH_WINDOW = timedelta(hours=6)
@@ -32,7 +31,6 @@ SOURCE_CONFIG = {
     "더푸드스케치": {"image": ROOT / "menu-today" / "images" / "thefoodsketch.png", "min_items": 9, "max_items": 12},
     "스타밸리푸드포유": {"image": ROOT / "menu-today" / "images" / "starvalley-food4u-post.png", "min_items": 8, "max_items": 12},
     "디폴리스 구내식당": {"image": ROOT / "menu-today" / "images" / "dipolis.png", "min_items": 3, "max_items": 20},
-    "에스제이 구내식당": {"image": ROOT / "menu-today" / "images" / "sj-food-menu.png", "min_items": 10, "max_items": 16},
 }
 
 SAFE_FALLBACK_ONLY = {"퍼블릭가산 구내식당"}
@@ -615,7 +613,7 @@ def extract_sj_section_lines(image: Image.Image) -> list[str]:
         (r"그린샐러드.*드레싱", "그린샐러드 & 드레싱"),
     ]
     for item in deduped:
-        if any(token in item for token in ["월요일", "화요일", "수요일", "목요일", "금요일", "4월", "점심", "저녁", "구분", "에스제이", "건강식단"]):
+        if any(token in item for token in ["월요일", "화요일", "수요일", "목요일", "금요일", "4월", "점심", "저녁", "구분", "건강식단"]):
             continue
         normalized = item
         for pattern, label in footer_patterns:
@@ -1455,9 +1453,6 @@ def update_json_with_ocr() -> None:
         if not config:
             continue
         image_path = config["image"]
-        if name == "에스제이 구내식당" and SJ_WEEKLY_IMAGE_PATH.exists():
-            image_path = SJ_WEEKLY_IMAGE_PATH
-            restaurant["preview_image"] = "./images/sj-weekly-menu.png"
         if not image_path.exists():
             mark_menu_uncollected(restaurant)
             logs.append({"name": name, "updated": False, "reason": "image_missing"})
@@ -1493,55 +1488,6 @@ def update_json_with_ocr() -> None:
         hint_text = hint_entry.get("alt_text", "")
         fetched_recently = is_recent_fetch(source_fetched_at, now)
         source_is_current_week = is_current_week_fetch(source_fetched_at, now)
-        if name == "에스제이 구내식당":
-            if SJ_WEEKLY_IMAGE_PATH.exists():
-                sections, today_marker = parse_sj_weekly_image(SJ_WEEKLY_IMAGE_PATH, now)
-            else:
-                sections = parse_sj_sections_from_hint(hint_text)
-                today_marker = has_today_marker([hint_text], now)
-
-            if sections:
-                sections, sections_ok, rejected_count = validate_menu_sections(name, sections, known_terms)
-            else:
-                sections_ok = False
-                rejected_count = 0
-
-            if sections and sections_ok and source_is_current_week and today_marker:
-                restaurant["menu_sections"] = [{"title": title, "items": items} for title, items in sections.items()]
-                flat_menu = []
-                for items in sections.values():
-                    flat_menu.extend(items)
-                restaurant["menu"] = flat_menu
-                restaurant["message"] = ""
-                restaurant["menu_recorded_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
-                restaurant["menu_recorded_source_fetched_at"] = source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else now.strftime("%Y-%m-%d %H:%M:%S")
-                logs.append(
-                    {
-                        "name": name,
-                        "items": len(flat_menu),
-                        "updated": True,
-                        "used_existing_fallback": False,
-                        "ocr_rejected_items": rejected_count,
-                        "today_marker": True,
-                        "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
-                    }
-                )
-                continue
-
-            if not source_is_current_week or not today_marker or not sections_ok:
-                mark_menu_uncollected(restaurant)
-            logs.append(
-                {
-                    "name": name,
-                    "items": 0,
-                    "updated": False,
-                    "used_existing_fallback": True,
-                    "reason": "ocr_low_confidence" if source_is_current_week and today_marker else ("today_marker_not_found" if source_is_current_week else "source_not_current_week"),
-                    "ocr_rejected_items": rejected_count,
-                    "source_fetched_at": source_fetched_at.strftime("%Y-%m-%d %H:%M:%S") if source_fetched_at else "",
-                }
-            )
-            continue
         texts = ocr_texts(image_path)
         public_day_texts: list[str] = []
         if name == "퍼블릭가산 구내식당":
@@ -1627,8 +1573,7 @@ def update_json_with_ocr() -> None:
         elif used_fallback:
             extracted_menu = []
         restaurant["menu"] = extracted_menu
-        if name != "에스제이 구내식당":
-            restaurant.pop("menu_sections", None)
+        restaurant.pop("menu_sections", None)
         low_confidence = fetched_recently and today_marker and not extracted_menu
         if extracted_menu and not used_fallback:
             restaurant["message"] = ""

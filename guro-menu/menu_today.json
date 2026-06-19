@@ -1,0 +1,148 @@
+{
+  "title": "구로디지털단지 구내식당 메뉴정보",
+  "area_name": "구로디지털단지",
+  "date_label": "2026년 6월 19일 금요일",
+  "updated_at": "2026-06-19 11:26:40",
+  "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
+  "restaurants": [
+    {
+      "name": "한신IT타워 구내식당",
+      "building": "한신IT타워",
+      "address": "서울 구로구 디지털로 272 한신IT타워 지하1층",
+      "channel_url": "https://pf.kakao.com/_QRALxb",
+      "map_query": "한신IT타워 구내식당",
+      "status": "ready",
+      "preview_image": "./images/hanshin-it.png",
+      "menu": [
+        "버섯밥*양념장",
+        "유부잔치국수",
+        "두반장돈불고기",
+        "부추전*초간장",
+        "비엔나조랭이볶음",
+        "명엽채강정",
+        "미역오이초무침",
+        "야채겉절이",
+        "포기김치",
+        "백미밥",
+        "양배추샐러드&유자드레싱",
+        "탄산음료"
+      ],
+      "message": ""
+    },
+    {
+      "name": "자연푸드 구내식당",
+      "building": "벽산디지털밸리7차",
+      "address": "서울 구로구 디지털로33길 50 벽산디지털밸리7차 지하1층",
+      "channel_url": "https://pf.kakao.com/_xcvRLxb",
+      "map_query": "벽산디지털밸리7차 자연푸드 구내식당",
+      "status": "ready",
+      "preview_image": "./images/nature-food.png",
+      "menu": [],
+      "message": "공개 채널에서 최신 메뉴 이미지 제공 방식을 확인 중입니다."
+    },
+    {
+      "name": "더이츠푸드",
+      "building": "대륭포스트타워1차",
+      "address": "서울 구로구 디지털로 288 대륭포스트타워1차 지하1층",
+      "channel_url": "https://pf.kakao.com/_xeVwxnn",
+      "map_query": "구로 대륭포스트타워1차 더이츠푸드",
+      "status": "ready",
+      "preview_image": "./images/the-eats-food.png",
+      "menu": [
+        "쌀밥/흑미잡곡밥",
+        "맑은감자국",
+        "삼겹오징어볶음",
+        "수육야채무침",
+        "김말이&만두튀김",
+        "도토리묵무침",
+        "콩나물무침",
+        "수제배추겉절이",
+        "달콤한 미숫가루"
+      ],
+      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+    },
+    {
+      "name": "벽산더이룸",
+      "building": "벽산디지털밸리1차",
+      "address": "서울 구로구 디지털로27길 24 벽산디지털밸리1차 지하1층",
+      "channel_url": "https://pf.kakao.com/_xdLzxgG",
+      "map_query": "벽산디지털밸리1차 벽산더이룸",
+      "status": "ready",
+      "preview_image": "./images/byucksan-theirum.png",
+      "menu": [
+        "백미밥/잡곡밥",
+        "새우튀김 냉우동",
+        "오리훈제",
+        "김말이 강정",
+        "순대 콩나물찜",
+        "한입 국물 떡볶이",
+        "무말랭이 무침",
+        "쌈무& 머스타드",
+        "그린샐러드&드레싱",
+        "배추김치",
+        "후식/복숭아 요거트",
+        "숭늉/탄산음료"
+      ],
+      "message": ""
+    },
+    {
+      "name": "윤쉐프 코오롱",
+      "building": "코오롱싸이언스밸리1차",
+      "address": "서울 구로구 디지털로34길 43 코오롱싸이언스밸리1차 지하1층",
+      "channel_url": "https://pf.kakao.com/_Xxhxkhs",
+      "map_query": "윤쉐프 코오롱싸이언스밸리1차",
+      "status": "ready",
+      "preview_image": "./images/yoon-chef-kolon.png",
+      "menu": [
+        "미나리부대찌개",
+        "묵은지찜닭",
+        "떡갈비야채조림",
+        "들기름막국수",
+        "라자고추장조림",
+        "간장고추지",
+        "잡곡밥/백미밥",
+        "그린샐러드&쌈채소",
+        "셀프라면&토스트",
+        "탄산음료/직접담근식혜"
+      ],
+      "message": ""
+    }
+  ],
+  "ocr_log": [
+    {
+      "name": "한신IT타워 구내식당",
+      "items": 12,
+      "updated": true,
+      "today_marker": true,
+      "source_fetched_at": "2026-06-19 11:25:34"
+    },
+    {
+      "name": "자연푸드 구내식당",
+      "items": 0,
+      "updated": false,
+      "today_marker": false,
+      "source_fetched_at": "2026-06-19 11:25:35"
+    },
+    {
+      "name": "더이츠푸드",
+      "items": 9,
+      "updated": true,
+      "today_marker": false,
+      "source_fetched_at": "2026-06-19 11:25:35"
+    },
+    {
+      "name": "벽산더이룸",
+      "items": 12,
+      "updated": true,
+      "today_marker": true,
+      "source_fetched_at": "2026-06-19 11:25:36"
+    },
+    {
+      "name": "윤쉐프 코오롱",
+      "items": 10,
+      "updated": true,
+      "today_marker": true,
+      "source_fetched_at": "2026-06-19 11:25:37"
+    }
+  ]
+}

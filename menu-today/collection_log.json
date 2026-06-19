@@ -89,12 +89,6 @@
       "output": "menu-today/images/donto.png",
       "status": "updated",
       "fetched_at": "2026-06-19 11:16:18"
-    },
-    {
-      "name": "에스제이 구내식당",
-      "page_url": "https://www.instagram.com/s_j_food_278/",
-      "status": "skipped",
-      "reason": "sj_today_menu_image_not_found"
     }
   ]
 }
