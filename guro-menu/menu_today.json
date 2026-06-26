@@ -1,8 +1,8 @@
 {
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
-  "date_label": "2026년 6월 25일 목요일",
-  "updated_at": "2026-06-25 11:48:19",
+  "date_label": "2026년 6월 26일 금요일",
+  "updated_at": "2026-06-26 09:03:28",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -14,17 +14,17 @@
       "status": "ready",
       "preview_image": "./images/hanshin-it.png",
       "menu": [
-        "잘 냉면",
-        "춘천닭갈비",
-        "생선까스*타르소스",
-        "백순대야채볶음",
-        "매콤국물밀떡볶이",
-        "애호박나물",
-        "명엽채강정",
+        "닭개장",
+        "간장돈불고기",
+        "끼바로우",
+        "돈카레소스",
+        "새콤달콤밀면",
+        "청양송송부추전*초간장",
+        "돌자반홍고추무침",
         "야채겉절이",
-        "포기김치",
-        "흑미밥/백미밥",
-        "양배추샐러드&키위드레싱",
+        "포기겸처",
+        "백미밥",
+        "양배추샐러드&망고드레싱",
         "탄산음료"
       ],
       "message": ""
@@ -49,26 +49,18 @@
       "status": "ready",
       "preview_image": "./images/the-eats-food.png",
       "menu": [
-        "epee rete 이 ~",
-        "1. : . 줄로 Elf \"@ My q",
-        "a oFol 고 0 Orv",
-        "04 (25 che 대",
-        "i : 뻐 Booz — : ais 비 그이 나",
-        "= — 는 x",
-        "에 WS Uae aes",
-        "y 3 6월 259 (2)",
-        "2 얼큰육개장",
-        "ee 라이 「",
-        "Ml 항께 시정세요: a — ares Rarer e All",
-        "a 개 수제후라이드치킨&양념소스",
-        "관상엉/. ew SE Barz) 2) 21",
-        "A 즈거저",
-        "Bee (ire 월 198 ie",
-        "10시부터 A 114221 I 그린샐러드&드레싱",
-        "zg q ) [Ke Pate 식자재 사정에 의해 ae 수 있습니다",
-        "를 4 - 202 음식과 함께 즐거운 되세요!"
+        "이 2c",
+        "흑미잡곡밥/나물비빔밥&약고추장",
+        "미역국",
+        "제육불고기",
+        "치킨텐더&머스타드",
+        "오징어어묵볶음",
+        "무생채무침",
+        "수제배추겉절이 ，",
+        "그린샐러드&드레싱 %",
+        "과일 <"
       ],
-      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+      "message": ""
     },
     {
       "name": "벽산더이룸",
@@ -90,7 +82,7 @@
         "후식/블루베리 요거트",
         "숭등/탄산음료"
       ],
-      "message": ""
+      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
     },
     {
       "name": "윤쉐프 코오롱",
@@ -110,7 +102,7 @@
         "셀프라면&토스트",
         "탄산음료/냉모밀"
       ],
-      "message": ""
+      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
     }
   ],
   "ocr_log": [
@@ -119,35 +111,35 @@
       "items": 12,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-06-25 11:48:05"
+      "source_fetched_at": "2026-06-26 09:03:17"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-06-25 11:48:07"
+      "source_fetched_at": "2026-06-26 09:03:19"
     },
     {
       "name": "더이츠푸드",
-      "items": 18,
+      "items": 10,
       "updated": true,
-      "today_marker": false,
-      "source_fetched_at": "2026-06-25 11:48:10"
+      "today_marker": true,
+      "source_fetched_at": "2026-06-26 09:03:21"
     },
     {
       "name": "벽산더이룸",
       "items": 10,
       "updated": true,
-      "today_marker": true,
-      "source_fetched_at": "2026-06-25 11:48:11"
+      "today_marker": false,
+      "source_fetched_at": "2026-06-26 09:03:22"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 8,
       "updated": true,
-      "today_marker": true,
-      "source_fetched_at": "2026-06-25 11:48:13"
+      "today_marker": false,
+      "source_fetched_at": "2026-06-26 09:03:24"
     }
   ]
 }
