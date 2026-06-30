@@ -2,7 +2,7 @@
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
   "date_label": "2026년 6월 30일 화요일",
-  "updated_at": "2026-06-30 09:03:33",
+  "updated_at": "2026-06-30 09:13:29",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -70,20 +70,20 @@
       "status": "ready",
       "preview_image": "./images/byucksan-theirum.png",
       "menu": [
-        "2026-06-29(월)",
         "백미밥/잡곡밥",
-        "바지락순두부찌개",
-        "수제 순실지킨/머스타드",
-        "토마토스파게티",
-        "새송이 맛실볶음",
-        "도토리묵무침",
-        "들깨고사리 무침",
+        "된장찌개",
+        "$캠핑6+삼겹소금구이?",
+        "치즈돈까스/데미글라스",
+        "베이컨 계란",
+        "콩나물무침",
+        "궁채장아찌&(일마늘지",
+        "상추 치커리쌈&쌈장",
         "그린샐러드&드레싱",
-        "배추 겉절이",
-        "후식/떨기 요거트",
+        "포기김치",
+        "후식/복분자&옥수수뱅튀기",
         "숭늉/탄산음료"
       ],
-      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+      "message": ""
     },
     {
       "name": "윤쉐프 코오롱",
@@ -114,35 +114,35 @@
       "items": 11,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-06-30 09:03:24"
+      "source_fetched_at": "2026-06-30 09:13:17"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-06-30 09:03:25"
+      "source_fetched_at": "2026-06-30 09:13:19"
     },
     {
       "name": "더이츠푸드",
       "items": 10,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-06-30 09:03:26"
+      "source_fetched_at": "2026-06-30 09:13:21"
     },
     {
       "name": "벽산더이룸",
       "items": 12,
       "updated": true,
-      "today_marker": false,
-      "source_fetched_at": "2026-06-30 09:03:28"
+      "today_marker": true,
+      "source_fetched_at": "2026-06-30 09:13:22"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 10,
       "updated": true,
       "today_marker": false,
-      "source_fetched_at": "2026-06-30 09:03:29"
+      "source_fetched_at": "2026-06-30 09:13:24"
     }
   ]
 }
