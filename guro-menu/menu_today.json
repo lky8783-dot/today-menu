@@ -1,8 +1,8 @@
 {
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
-  "date_label": "2026년 7월 2일 목요일",
-  "updated_at": "2026-07-02 11:48:14",
+  "date_label": "2026년 7월 3일 금요일",
+  "updated_at": "2026-07-03 09:03:42",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -14,16 +14,17 @@
       "status": "ready",
       "preview_image": "./images/hanshin-it.png",
       "menu": [
-        "유부잔처국수",
-        "바베규찜닭",
-        "참쌀탕수육*레몬소스",
-        "철판비엔나볶음&머스타드",
-        "메추리알밀떡볶이",
-        "청포묵김무침",
-        "열무야채겉절이",
+        "진칼국수",
+        "숫불제육볶음",
+        "멘치까스*타르소스",
+        "때콤순대야채볶음",
+        "청양송송김치전",
+        "들깨무나물",
+        "양념고추지",
+        "야채겉절이",
         "포기김치",
         "흑미밥/백미밥",
-        "양배추샐러드&파인드레싱",
+        "양배추샐러드&오렌지드레싱",
         "탄산음료"
       ],
       "message": ""
@@ -48,17 +49,16 @@
       "status": "ready",
       "preview_image": "./images/the-eats-food.png",
       "menu": [
-        "더이즈푸드",
+        "이 긋고 ㄷ",
         "쌀밥/흑미잡곡밥",
-        "황태해장국",
-        "푸꾸미제육볶음",
-        "단호박고로케",
-        "연근조림",
-        "숙주나물",
-        "청경채겉절이",
+        "계란감자국",
+        "매운돼지갈비찜",
+        "오징어브로콜리숙회",
+        "멸치볶음",
+        "오이지무침",
         "수제배추겉절이",
-        "그린샐러드&드레싱 Y",
-        "수박화채 개"
+        "그린샐러드&드레싱 y%",
+        "과일 Y"
       ],
       "message": ""
     },
@@ -71,15 +71,17 @@
       "status": "ready",
       "preview_image": "./images/byucksan-theirum.png",
       "menu": [
-        "백미밥/잡곡밥",
-        "바삭한 FAQRAAY",
-        "카레라이스",
-        "참치마요샌드위치",
-        "잡채",
-        "실곤약초무침",
-        "열길이 나물",
+        "백미밥/떡길비야채볶음밥",
+        "부대찌개",
+        "Vactela 파채볶음",
+        "모듬튀김",
+        "국물떡볶이",
+        "유부 삼색냉채",
+        "열무된장무침",
+        "우엉채조림",
         "그린샐러드&드레싱",
-        "후식/유자차&마카로니",
+        "배추김치",
+        "후식/복숭아요거트",
         "숭늉/탄산음료"
       ],
       "message": ""
@@ -102,44 +104,44 @@
         "셀프라면&토스트",
         "탄산옴료/전복죽"
       ],
-      "message": ""
+      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
     }
   ],
   "ocr_log": [
     {
       "name": "한신IT타워 구내식당",
-      "items": 11,
+      "items": 12,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-07-02 11:48:03"
+      "source_fetched_at": "2026-07-03 09:03:33"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-07-02 11:48:05"
+      "source_fetched_at": "2026-07-03 09:03:34"
     },
     {
       "name": "더이츠푸드",
-      "items": 11,
-      "updated": true,
-      "today_marker": true,
-      "source_fetched_at": "2026-07-02 11:48:06"
-    },
-    {
-      "name": "벽산더이룸",
       "items": 10,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-07-02 11:48:09"
+      "source_fetched_at": "2026-07-03 09:03:36"
+    },
+    {
+      "name": "벽산더이룸",
+      "items": 12,
+      "updated": true,
+      "today_marker": true,
+      "source_fetched_at": "2026-07-03 09:03:37"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 8,
       "updated": true,
-      "today_marker": true,
-      "source_fetched_at": "2026-07-02 11:48:10"
+      "today_marker": false,
+      "source_fetched_at": "2026-07-03 09:03:38"
     }
   ]
 }
