@@ -2,7 +2,7 @@
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
   "date_label": "2026년 7월 13일 월요일",
-  "updated_at": "2026-07-13 09:03:54",
+  "updated_at": "2026-07-13 09:13:37",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -70,20 +70,20 @@
       "status": "ready",
       "preview_image": "./images/byucksan-theirum.png",
       "menu": [
-        "백미밥/삽곡밥",
-        "열무밀이 김치국수",
-        "소고기청경채볶음",
-        "탕수육&소스",
-        "마파두부덮밥",
-        "비엔나푸실리볶음",
-        "해파리냉채",
-        "단무지무침",
+        "백미밥/잡곡밥",
+        "고깃집 된장찌개",
+        "삼겹어브솔트구이",
+        "버터길릭감자튀김",
+        "국물 떡볶이",
+        "느타리버섯볶음",
+        "콤나물파절이무침",
+        "양배추찜&쌈장",
         "그린샐러드&드레싱",
         "포기김치",
-        "후식/떨기요거트",
-        "숭등/탄산음료"
+        "후식/요거트8&씨리얼",
+        "숭늉/탄산음료"
       ],
-      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+      "message": ""
     },
     {
       "name": "윤쉐프 코오롱",
@@ -112,35 +112,35 @@
       "items": 11,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-07-13 09:03:45"
+      "source_fetched_at": "2026-07-13 09:13:28"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-07-13 09:03:46"
+      "source_fetched_at": "2026-07-13 09:13:29"
     },
     {
       "name": "더이츠푸드",
       "items": 10,
       "updated": true,
       "today_marker": false,
-      "source_fetched_at": "2026-07-13 09:03:47"
+      "source_fetched_at": "2026-07-13 09:13:31"
     },
     {
       "name": "벽산더이룸",
       "items": 12,
       "updated": true,
-      "today_marker": false,
-      "source_fetched_at": "2026-07-13 09:03:49"
+      "today_marker": true,
+      "source_fetched_at": "2026-07-13 09:13:32"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 8,
       "updated": true,
       "today_marker": false,
-      "source_fetched_at": "2026-07-13 09:03:50"
+      "source_fetched_at": "2026-07-13 09:13:34"
     }
   ]
 }
