@@ -1,8 +1,8 @@
 {
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
-  "date_label": "2026년 7월 17일 금요일",
-  "updated_at": "2026-07-17 11:48:37",
+  "date_label": "2026년 7월 20일 월요일",
+  "updated_at": "2026-07-20 09:03:33",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -13,8 +13,21 @@
       "map_query": "한신IT타워 구내식당",
       "status": "ready",
       "preview_image": "./images/hanshin-it.png",
-      "menu": [],
-      "message": "오늘 메뉴 이미지를 가져오지 못했습니다."
+      "menu": [
+        "콩나물밥*양념장",
+        "매콤닭볶음",
+        "참쌀탕수육*레온소스",
+        "마싸두우",
+        "브로콜리펜네흑임자",
+        "양넘고주지",
+        "돌자반흥고추무침",
+        "야채걸절이",
+        "포기김치",
+        "백미밥",
+        "양배추샐러드&파인드레싱",
+        "탄산음료"
+      ],
+      "message": ""
     },
     {
       "name": "자연푸드 구내식당",
@@ -36,15 +49,18 @@
       "status": "ready",
       "preview_image": "./images/the-eats-food.png",
       "menu": [
-        "~ 고프 로 기",
-        "mie 휴무일 —",
-        "이용에 참고 부탁드립니다. AArUICh. f",
-        "> We. ESS ; 호",
-        "ai (pee ) ic \"ich fae 개개 snag ees",
-        "( . Lu 」 」 이",
-        "ㄴㄴ ㄴㅜㅠ, 매고 A 2 ~ ~ mal aw aes ~ Ge"
+        "× 더",
+        "7월 202 (월)",
+        "쌀밥/흑미잡곡밥",
+        "얼큰닭계장",
+        "파인애플숙성 목살구이",
+        "눈꽃치즈떡갈비",
+        "김말이&만두튀김",
+        "과리고추찜",
+        "오이부추무침",
+        "그린샐러드&드레싱 Y"
       ],
-      "message": ""
+      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
     },
     {
       "name": "벽산더이룸",
@@ -56,18 +72,18 @@
       "preview_image": "./images/byucksan-theirum.png",
       "menu": [
         "백미밥/잡곡밥",
-        "쑥갓어묵국",
-        "직화 제육볶음?",
-        "간장비빔국수",
-        "건새우마늘쯤볶음",
-        "구이김&양념장",
-        "상추겉절이",
-        "그린샐러드&드레싱",
-        "포기김치",
-        "후식/매실차&소라형 스넥",
+        "된장찌개",
+        "오징어스틱&타르타르",
+        "새콤 메밀막국수",
+        "볼어묵볶음",
+        "콩나물무침",
+        "상추쌈&쌈장",
+        "그린샐러드&오리엔틸드레싱",
+        "보쌈김치",
+        "후식/블루베리요거트",
         "숭늉/탄산음료"
       ],
-      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+      "message": ""
     },
     {
       "name": "윤쉐프 코오롱",
@@ -78,51 +94,54 @@
       "status": "ready",
       "preview_image": "./images/yoon-chef-kolon.png",
       "menu": [
-        "댄지김치찌개",
-        "고기만두찜&조관장",
-        "비빔야재국수",
-        "오이지무침",
-        "깝곡밥/벽미밥",
-        "그린샐러드&쌈재소",
+        "대파닭개장",
+        "고추장제육볶음",
+        "생선까스&타르6",
+        "괄릭하이라이스",
+        "콩나물무침",
+        "잡곡밥/벽미밥",
+        "그린샐러드&쌈채소",
         "셀프라면&토스트",
-        "탄산음료/알새우집"
+        "탄산음료/미슷기루"
       ],
-      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+      "message": ""
     }
   ],
   "ocr_log": [
     {
       "name": "한신IT타워 구내식당",
-      "updated": false,
-      "reason": "image_missing"
+      "items": 12,
+      "updated": true,
+      "today_marker": true,
+      "source_fetched_at": "2026-07-20 09:03:23"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-07-17 11:48:25"
+      "source_fetched_at": "2026-07-20 09:03:24"
     },
     {
       "name": "더이츠푸드",
-      "items": 7,
+      "items": 10,
       "updated": true,
-      "today_marker": true,
-      "source_fetched_at": "2026-07-17 11:48:28"
+      "today_marker": false,
+      "source_fetched_at": "2026-07-20 09:03:26"
     },
     {
       "name": "벽산더이룸",
       "items": 11,
       "updated": true,
-      "today_marker": false,
-      "source_fetched_at": "2026-07-17 11:48:30"
+      "today_marker": true,
+      "source_fetched_at": "2026-07-20 09:03:27"
     },
     {
       "name": "윤쉐프 코오롱",
-      "items": 8,
+      "items": 9,
       "updated": true,
-      "today_marker": false,
-      "source_fetched_at": "2026-07-17 11:48:32"
+      "today_marker": true,
+      "source_fetched_at": "2026-07-20 09:03:29"
     }
   ]
 }
