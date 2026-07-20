@@ -2,7 +2,7 @@
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
   "date_label": "2026년 7월 20일 월요일",
-  "updated_at": "2026-07-20 09:03:33",
+  "updated_at": "2026-07-20 09:13:15",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -113,35 +113,35 @@
       "items": 12,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-07-20 09:03:23"
+      "source_fetched_at": "2026-07-20 09:13:06"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-07-20 09:03:24"
+      "source_fetched_at": "2026-07-20 09:13:07"
     },
     {
       "name": "더이츠푸드",
       "items": 10,
       "updated": true,
       "today_marker": false,
-      "source_fetched_at": "2026-07-20 09:03:26"
+      "source_fetched_at": "2026-07-20 09:13:09"
     },
     {
       "name": "벽산더이룸",
       "items": 11,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-07-20 09:03:27"
+      "source_fetched_at": "2026-07-20 09:13:10"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 9,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-07-20 09:03:29"
+      "source_fetched_at": "2026-07-20 09:13:11"
     }
   ]
 }
