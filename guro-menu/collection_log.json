@@ -3,10 +3,10 @@
     {
       "name": "한신IT타워 구내식당",
       "page_url": "https://pf.kakao.com/_QRALxb",
-      "image_url": "http://k.kakaocdn.net/dn/xrrOx/dJMcagNgKbx/kpICIY4ZK9ZAORKmOqPJy0/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/yN9cY/dJMcadv323p/Y4xIT4FZE0Ll7ADjID7tK0/img.jpg",
       "output": "guro-menu/images/hanshin-it.png",
       "status": "updated",
-      "fetched_at": "2026-07-31 11:48:07"
+      "fetched_at": "2026-08-03 09:03:29"
     },
     {
       "name": "자연푸드 구내식당",
@@ -14,31 +14,31 @@
       "image_url": "http://k.kakaocdn.net/dn/XNgcf/btqEGa4N6HT/sS22Vmf3bkwhjdkaJ7xHX1/img.jpg",
       "output": "guro-menu/images/nature-food.png",
       "status": "updated",
-      "fetched_at": "2026-07-31 11:48:08"
+      "fetched_at": "2026-08-03 09:03:30"
     },
     {
       "name": "더이츠푸드",
       "page_url": "https://pf.kakao.com/_xeVwxnn",
-      "image_url": "http://k.kakaocdn.net/dn/cYV2cV/dJMcad3VMwf/xihBwVsKhab0Jf9r1aFn4K/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/bcMOtl/dJMb99UPsyD/OtIJmxmqmlNxtHGuGsHIc1/img.jpg",
       "output": "guro-menu/images/the-eats-food.png",
       "status": "updated",
-      "fetched_at": "2026-07-31 11:48:10"
+      "fetched_at": "2026-08-03 09:03:31"
     },
     {
       "name": "벽산더이룸",
       "page_url": "https://pf.kakao.com/_xdLzxgG",
-      "image_url": "http://k.kakaocdn.net/dn/bSz0SS/dJMcadCMy8Q/Inx9mMWgQCpvRlqXIuj4H0/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/iWW6i/dJMcajiSNYl/xHPq8uKcwWNMPBS70C6YUK/img.jpg",
       "output": "guro-menu/images/byucksan-theirum.png",
       "status": "updated",
-      "fetched_at": "2026-07-31 11:48:11"
+      "fetched_at": "2026-08-03 09:03:33"
     },
     {
       "name": "윤쉐프 코오롱",
       "page_url": "https://pf.kakao.com/_Xxhxkhs",
-      "image_url": "http://k.kakaocdn.net/dn/MlYDl/dJMcagfkXif/wJOW2Yuc2ZivKGyrAuXEi1/img.jpg",
+      "image_url": "http://k.kakaocdn.net/dn/deE6Ff/dJMcabL0gXt/YNcljDlmVnKCZCcgHAVYH1/img.jpg",
       "output": "guro-menu/images/yoon-chef-kolon.png",
       "status": "updated",
-      "fetched_at": "2026-07-31 11:48:13"
+      "fetched_at": "2026-08-03 09:03:34"
     }
   ]
 }
