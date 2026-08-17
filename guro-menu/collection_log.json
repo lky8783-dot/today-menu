@@ -12,7 +12,7 @@
       "image_url": "https://k.kakaocdn.net/dn/XNgcf/btqEGa4N6HT/sS22Vmf3bkwhjdkaJ7xHX1/img.jpg",
       "output": "guro-menu/images/nature-food.png",
       "status": "updated",
-      "fetched_at": "2026-08-17 09:17:49"
+      "fetched_at": "2026-08-17 09:33:12"
     },
     {
       "name": "더이츠푸드",
@@ -20,7 +20,7 @@
       "image_url": "https://k.kakaocdn.net/dn/bdsvF5/dJMcahlh1CS/ndVEcIKloKxQV9EcnrwiMK/img.jpg",
       "output": "guro-menu/images/the-eats-food.png",
       "status": "updated",
-      "fetched_at": "2026-08-17 09:17:51"
+      "fetched_at": "2026-08-17 09:33:14"
     },
     {
       "name": "벽산더이룸",
@@ -28,7 +28,7 @@
       "image_url": "https://k.kakaocdn.net/dn/VrAUk/dJMcadpulV7/EF7tCnTwtdT0WaaTkeIKok/img.jpg",
       "output": "guro-menu/images/byucksan-theirum.png",
       "status": "updated",
-      "fetched_at": "2026-08-17 09:17:53"
+      "fetched_at": "2026-08-17 09:33:15"
     },
     {
       "name": "윤쉐프 코오롱",
@@ -36,7 +36,7 @@
       "image_url": "https://k.kakaocdn.net/dn/c2NMWO/dJMcaji1KKH/i5EKxRB9n6M3qkKq3p4Iok/img.jpg",
       "output": "guro-menu/images/yoon-chef-kolon.png",
       "status": "updated",
-      "fetched_at": "2026-08-17 09:17:54"
+      "fetched_at": "2026-08-17 09:33:17"
     }
   ]
 }
