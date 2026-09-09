@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 9월 9일 수요일",
-  "updated_at": "2026-09-09 09:33:15",
+  "updated_at": "2026-09-09 09:48:12",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -25,8 +25,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-09-09 09:31:46",
-      "menu_recorded_source_fetched_at": "2026-09-09 09:31:14"
+      "menu_recorded_at": "2026-09-09 09:46:41",
+      "menu_recorded_source_fetched_at": "2026-09-09 09:46:15"
     },
     {
       "name": "다시 봄",
@@ -35,17 +35,21 @@
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [
-        "아이 R",
-        "오늘의 메",
-        "톡채",
-        "다시",
-        "카톡채널"
+        "수제후라이드치킨",
+        "싱싱샐러드",
+        "배주김치",
+        "알배기된장국",
+        "갈비산적불고기",
+        "몽골레파스타",
+        "후레쉬오이피클",
+        "배추김치",
+        "오렌지"
       ],
       "preview_image": "./images/dasibom.png",
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-09-09 09:31:46",
-      "menu_recorded_source_fetched_at": "2026-09-09 09:31:17"
+      "menu_recorded_at": "2026-09-09 09:46:41",
+      "menu_recorded_source_fetched_at": "2026-09-09 09:46:18"
     },
     {
       "name": "밥(온) 구내식당",
@@ -68,8 +72,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-09-09 09:31:46",
-      "menu_recorded_source_fetched_at": "2026-09-09 09:31:20"
+      "menu_recorded_at": "2026-09-09 09:46:41",
+      "menu_recorded_source_fetched_at": "2026-09-09 09:46:20"
     },
     {
       "name": "디폴리스 구내식당",
@@ -92,8 +96,8 @@
         "비엔나카레라이스"
       ],
       "message": "",
-      "menu_recorded_at": "2026-09-09 09:31:46",
-      "menu_recorded_source_fetched_at": "2026-09-09 09:31:34",
+      "menu_recorded_at": "2026-09-09 09:46:41",
+      "menu_recorded_source_fetched_at": "2026-09-09 09:46:30",
       "menu_recent_source_today": true
     },
     {
@@ -117,8 +121,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-09-09 09:31:46",
-      "menu_recorded_source_fetched_at": "2026-09-09 09:31:22"
+      "menu_recorded_at": "2026-09-09 09:46:41",
+      "menu_recorded_source_fetched_at": "2026-09-09 09:46:22"
     },
     {
       "name": "마이푸드",
@@ -140,8 +144,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-09-09 09:31:46",
-      "menu_recorded_source_fetched_at": "2026-09-09 09:31:25"
+      "menu_recorded_at": "2026-09-09 09:46:41",
+      "menu_recorded_source_fetched_at": "2026-09-09 09:46:24"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -171,14 +175,14 @@
         "= 소세지볶음",
         "들기름김구이",
         "무생채",
-        "가든샐러드 & 드레싱",
+        "가든샐러드 / 드레싱",
         "배추겉절이 / 응료",
         "더푸드스케치"
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-09-09 09:31:46",
-      "menu_recorded_source_fetched_at": "2026-09-09 09:31:30"
+      "menu_recorded_at": "2026-09-09 09:46:41",
+      "menu_recorded_source_fetched_at": "2026-09-09 09:46:28"
     },
     {
       "name": "스타밸리푸드포유",
@@ -201,8 +205,8 @@
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-09-09 09:31:46",
-      "menu_recorded_source_fetched_at": "2026-09-09 09:31:37"
+      "menu_recorded_at": "2026-09-09 09:46:41",
+      "menu_recorded_source_fetched_at": "2026-09-09 09:46:33"
     },
     {
       "name": "돈토",
@@ -242,18 +246,18 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-09-09 09:31:14"
+      "source_fetched_at": "2026-09-09 09:46:15"
     },
     {
       "name": "다시 봄",
-      "items": 5,
+      "items": 9,
       "updated": true,
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "reason": "partial_ocr",
-      "ocr_rejected_items": 7,
+      "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-09-09 09:31:17"
+      "source_fetched_at": "2026-09-09 09:46:18"
     },
     {
       "name": "밥(온) 구내식당",
@@ -264,7 +268,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-09-09 09:31:20"
+      "source_fetched_at": "2026-09-09 09:46:20"
     },
     {
       "name": "디폴리스 구내식당",
@@ -275,7 +279,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 8,
       "today_marker": true,
-      "source_fetched_at": "2026-09-09 09:31:34"
+      "source_fetched_at": "2026-09-09 09:46:30"
     },
     {
       "name": "구내식당라온푸드",
@@ -286,7 +290,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-09-09 09:31:22"
+      "source_fetched_at": "2026-09-09 09:46:22"
     },
     {
       "name": "마이푸드",
@@ -297,7 +301,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-09-09 09:31:25"
+      "source_fetched_at": "2026-09-09 09:46:24"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -308,7 +312,7 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-09-09 09:31:28"
+      "source_fetched_at": "2026-09-09 09:46:26"
     },
     {
       "name": "더푸드스케치",
@@ -319,7 +323,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-09-09 09:31:30"
+      "source_fetched_at": "2026-09-09 09:46:28"
     },
     {
       "name": "스타밸리푸드포유",
@@ -330,7 +334,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 1,
       "today_marker": true,
-      "source_fetched_at": "2026-09-09 09:31:37"
+      "source_fetched_at": "2026-09-09 09:46:33"
     }
   ]
 }
