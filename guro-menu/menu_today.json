@@ -2,7 +2,7 @@
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
   "date_label": "2026년 9월 10일 목요일",
-  "updated_at": "2026-09-10 09:03:53",
+  "updated_at": "2026-09-10 09:13:21",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -72,19 +72,20 @@
       "status": "ready",
       "preview_image": "./images/byucksan-theirum.png",
       "menu": [
-        "백미밥/잡곡밥",
-        "쑥갓어묵탐",
-        "파재 돈불고기",
-        "마파두부덮밥소스",
-        "오색잡채",
-        "가지청경채볶음",
-        "백목이버섯일마늘무침",
-        "그린샐러드&과일드레싱",
-        "직접 담근 무생채",
-        "후식/매실차&나초칩",
-        "숭늉/탄산음료"
+        "백미밥/버섯콤나물밥&양념장",
+        "황태해장국",
+        "해물까스&칠리소스",
+        "D? S# 라구파스타",
+        "단호박꿀찜",
+        "고사리들깨볶음",
+        "치커리유자무침",
+        "메쉬드포테이토범벅",
+        "포기김치",
+        "숭늉/탄산음료",
+        "ME: 국산 / 배추김치(바추,고촛가루:중국산)",
+        "기타 원산지 표시는 카운터에 부착되어 있습니다"
       ],
-      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+      "message": ""
     },
     {
       "name": "윤쉐프 코오롱",
@@ -115,35 +116,35 @@
       "items": 12,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-09-10 09:03:43"
+      "source_fetched_at": "2026-09-10 09:13:08"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-09-10 09:03:45"
+      "source_fetched_at": "2026-09-10 09:13:10"
     },
     {
       "name": "더이츠푸드",
       "items": 11,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-09-10 09:03:46"
+      "source_fetched_at": "2026-09-10 09:13:13"
     },
     {
       "name": "벽산더이룸",
-      "items": 11,
+      "items": 12,
       "updated": true,
-      "today_marker": false,
-      "source_fetched_at": "2026-09-10 09:03:48"
+      "today_marker": true,
+      "source_fetched_at": "2026-09-10 09:13:15"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 10,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-09-10 09:03:49"
+      "source_fetched_at": "2026-09-10 09:13:17"
     }
   ]
 }
