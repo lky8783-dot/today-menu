@@ -6,7 +6,7 @@
       "image_url": "https://k.kakaocdn.net/dn/cvKXe8/dJMb99VteP8/3yuELdUjK76VVOntLaHj1K/img.jpg",
       "output": "guro-menu/images/hanshin-it.png",
       "status": "updated",
-      "fetched_at": "2026-09-23 11:33:55"
+      "fetched_at": "2026-09-23 11:48:40"
     },
     {
       "name": "자연푸드 구내식당",
@@ -14,7 +14,7 @@
       "image_url": "https://k.kakaocdn.net/dn/XNgcf/btqEGa4N6HT/sS22Vmf3bkwhjdkaJ7xHX1/img.jpg",
       "output": "guro-menu/images/nature-food.png",
       "status": "updated",
-      "fetched_at": "2026-09-23 11:33:57"
+      "fetched_at": "2026-09-23 11:48:41"
     },
     {
       "name": "더이츠푸드",
@@ -22,7 +22,7 @@
       "image_url": "https://k.kakaocdn.net/dn/bMkM7Y/dJMcaf2pKVw/i0PAwo4v2uKahGHb9mgzu0/img.jpg",
       "output": "guro-menu/images/the-eats-food.png",
       "status": "updated",
-      "fetched_at": "2026-09-23 11:33:58"
+      "fetched_at": "2026-09-23 11:48:43"
     },
     {
       "name": "벽산더이룸",
@@ -30,7 +30,7 @@
       "image_url": "https://k.kakaocdn.net/dn/yyzd0/dJMcaiEXHcC/uPoUzTiIWUPCG9dqR7Eynk/img.jpg",
       "output": "guro-menu/images/byucksan-theirum.png",
       "status": "updated",
-      "fetched_at": "2026-09-23 11:34:00"
+      "fetched_at": "2026-09-23 11:48:44"
     },
     {
       "name": "윤쉐프 코오롱",
@@ -38,7 +38,7 @@
       "image_url": "https://k.kakaocdn.net/dn/xGuiR/dJMcaafSZsn/bFSQxxMgVNEkce7juFMcUK/img.jpg",
       "output": "guro-menu/images/yoon-chef-kolon.png",
       "status": "updated",
-      "fetched_at": "2026-09-23 11:34:01"
+      "fetched_at": "2026-09-23 11:48:46"
     }
   ]
 }
