@@ -3,10 +3,10 @@
     {
       "name": "한신IT타워 구내식당",
       "page_url": "https://pf.kakao.com/_QRALxb",
-      "image_url": "https://k.kakaocdn.net/dn/cvKXe8/dJMb99VteP8/3yuELdUjK76VVOntLaHj1K/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/wf5xo/dJMcadcpXfe/fpO6CC9Ewi7h95Z3xK1pLk/img.jpg",
       "output": "guro-menu/images/hanshin-it.png",
       "status": "updated",
-      "fetched_at": "2026-09-23 11:48:40"
+      "fetched_at": "2026-09-24 09:06:38"
     },
     {
       "name": "자연푸드 구내식당",
@@ -14,15 +14,15 @@
       "image_url": "https://k.kakaocdn.net/dn/XNgcf/btqEGa4N6HT/sS22Vmf3bkwhjdkaJ7xHX1/img.jpg",
       "output": "guro-menu/images/nature-food.png",
       "status": "updated",
-      "fetched_at": "2026-09-23 11:48:41"
+      "fetched_at": "2026-09-24 09:06:39"
     },
     {
       "name": "더이츠푸드",
       "page_url": "https://pf.kakao.com/_xeVwxnn",
-      "image_url": "https://k.kakaocdn.net/dn/bMkM7Y/dJMcaf2pKVw/i0PAwo4v2uKahGHb9mgzu0/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/dqUV5B/dJMcahlQfVr/LNu7hWvJvzfzZKMjdagvb0/img.jpg",
       "output": "guro-menu/images/the-eats-food.png",
       "status": "updated",
-      "fetched_at": "2026-09-23 11:48:43"
+      "fetched_at": "2026-09-24 09:06:42"
     },
     {
       "name": "벽산더이룸",
@@ -30,15 +30,15 @@
       "image_url": "https://k.kakaocdn.net/dn/yyzd0/dJMcaiEXHcC/uPoUzTiIWUPCG9dqR7Eynk/img.jpg",
       "output": "guro-menu/images/byucksan-theirum.png",
       "status": "updated",
-      "fetched_at": "2026-09-23 11:48:44"
+      "fetched_at": "2026-09-24 09:06:43"
     },
     {
       "name": "윤쉐프 코오롱",
       "page_url": "https://pf.kakao.com/_Xxhxkhs",
-      "image_url": "https://k.kakaocdn.net/dn/xGuiR/dJMcaafSZsn/bFSQxxMgVNEkce7juFMcUK/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/ctwZlu/dJMcahsA6A0/x6gf9EywlFuoaOi4mfT3xk/img.jpg",
       "output": "guro-menu/images/yoon-chef-kolon.png",
       "status": "updated",
-      "fetched_at": "2026-09-23 11:48:46"
+      "fetched_at": "2026-09-24 09:06:45"
     }
   ]
 }

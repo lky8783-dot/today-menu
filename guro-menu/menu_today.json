@@ -1,8 +1,8 @@
 {
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
-  "date_label": "2026년 9월 23일 수요일",
-  "updated_at": "2026-09-23 11:48:49",
+  "date_label": "2026년 9월 24일 목요일",
+  "updated_at": "2026-09-24 09:06:49",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -14,19 +14,12 @@
       "status": "ready",
       "preview_image": "./images/hanshin-it.png",
       "menu": [
-        "설렁탕&소면",
-        "숫불돈불고기",
-        "크림참쌀탕수육",
-        "한입떡갈비*소스",
-        "마파두부",
-        "양념무말랭이",
-        "야채겉절이",
-        "포기김치",
-        "흑미밥/백미밥",
-        "양배추샐러드&오렌지드레싱",
-        "탄산음료"
+        "즈석연유 세프",
+        "마음이 풍성해지는 한가우",
+        "해복하게 보내시길 기원합니다",
+        "‘= 후"
       ],
-      "message": ""
+      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
     },
     {
       "name": "자연푸드 구내식당",
@@ -48,20 +41,13 @@
       "status": "ready",
       "preview_image": "./images/the-eats-food.png",
       "menu": [
-        "~ 으> > 본",
-        "더 이",
-        "92 23% (수)",
-        "쌀밥/흑미잡곡밥",
-        "얼갈이국",
-        "파채제육볶음",
-        "바삭돈까스&데미소스",
-        "과일사라다",
-        "야채겉절이",
-        "수제겉절이김치 y",
-        "그린샐러드&드레싱 %",
-        "꿀떡"
+        "주. 노지",
+        "ig EI L 다",
+        "추석 휴무입니다",
+        "2 이용에 참고 부탁드립니다",
+        "추석 휴무 ㅣ 정상 영업합니다"
       ],
-      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+      "message": ""
     },
     {
       "name": "벽산더이룸",
@@ -83,7 +69,7 @@
         "후식/복숭아요거트",
         "숭등/탄산음료"
       ],
-      "message": ""
+      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
     },
     {
       "name": "윤쉐프 코오롱",
@@ -94,16 +80,10 @@
       "status": "ready",
       "preview_image": "./images/yoon-chef-kolon.png",
       "menu": [
-        "배주된장국",
-        "간장불백",
-        "타코야끼",
-        "야재준권&조관장",
-        "마파두부뭔밥",
-        "도토리묵무침",
-        "잡곡밥/백미밥",
-        "그린샐러드&쌈채소",
-        "셀프라면&토스트",
-        "탄산옴료/모듬과자"
+        "추석 연휴 휴무",
+        "안내",
+        "조무",
+        "즐거운 한가위 yan"
       ],
       "message": ""
     }
@@ -111,38 +91,38 @@
   "ocr_log": [
     {
       "name": "한신IT타워 구내식당",
-      "items": 11,
+      "items": 4,
       "updated": true,
-      "today_marker": true,
-      "source_fetched_at": "2026-09-23 11:48:40"
+      "today_marker": false,
+      "source_fetched_at": "2026-09-24 09:06:38"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-09-23 11:48:41"
+      "source_fetched_at": "2026-09-24 09:06:39"
     },
     {
       "name": "더이츠푸드",
-      "items": 12,
+      "items": 5,
       "updated": true,
-      "today_marker": false,
-      "source_fetched_at": "2026-09-23 11:48:43"
+      "today_marker": true,
+      "source_fetched_at": "2026-09-24 09:06:42"
     },
     {
       "name": "벽산더이룸",
       "items": 10,
       "updated": true,
-      "today_marker": true,
-      "source_fetched_at": "2026-09-23 11:48:44"
+      "today_marker": false,
+      "source_fetched_at": "2026-09-24 09:06:43"
     },
     {
       "name": "윤쉐프 코오롱",
-      "items": 10,
+      "items": 4,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-09-23 11:48:46"
+      "source_fetched_at": "2026-09-24 09:06:45"
     }
   ]
 }
