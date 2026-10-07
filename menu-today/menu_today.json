@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 10월 7일 수요일",
-  "updated_at": "2026-10-07 10:33:27",
+  "updated_at": "2026-10-07 10:48:11",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -27,8 +27,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-07 10:31:43",
-      "menu_recorded_source_fetched_at": "2026-10-07 10:31:09"
+      "menu_recorded_at": "2026-10-07 10:46:40",
+      "menu_recorded_source_fetched_at": "2026-10-07 10:46:06"
     },
     {
       "name": "다시 봄",
@@ -50,8 +50,8 @@
       "preview_image": "./images/dasibom.png",
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-07 10:31:43",
-      "menu_recorded_source_fetched_at": "2026-10-07 10:31:12"
+      "menu_recorded_at": "2026-10-07 10:46:40",
+      "menu_recorded_source_fetched_at": "2026-10-07 10:46:08"
     },
     {
       "name": "밥(온) 구내식당",
@@ -73,8 +73,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-07 10:31:43",
-      "menu_recorded_source_fetched_at": "2026-10-07 10:31:15"
+      "menu_recorded_at": "2026-10-07 10:46:40",
+      "menu_recorded_source_fetched_at": "2026-10-07 10:46:11"
     },
     {
       "name": "디폴리스 구내식당",
@@ -96,8 +96,8 @@
         "매운"
       ],
       "message": "",
-      "menu_recorded_at": "2026-10-07 10:31:43",
-      "menu_recorded_source_fetched_at": "2026-10-07 10:31:31",
+      "menu_recorded_at": "2026-10-07 10:46:40",
+      "menu_recorded_source_fetched_at": "2026-10-07 10:46:24",
       "menu_recent_source_today": true
     },
     {
@@ -120,8 +120,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-07 10:31:43",
-      "menu_recorded_source_fetched_at": "2026-10-07 10:31:18"
+      "menu_recorded_at": "2026-10-07 10:46:40",
+      "menu_recorded_source_fetched_at": "2026-10-07 10:46:13"
     },
     {
       "name": "마이푸드",
@@ -143,8 +143,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-07 10:31:43",
-      "menu_recorded_source_fetched_at": "2026-10-07 10:31:21"
+      "menu_recorded_at": "2026-10-07 10:46:40",
+      "menu_recorded_source_fetched_at": "2026-10-07 10:46:15"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -167,16 +167,22 @@
       "preview_image": "./images/thefoodsketch.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdBv9,2AIxGX,%EB%8D%94%ED%91%B8%EB%93%9C%EC%8A%A4%EC%BC%80%EC%B9%98,37648388,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [
+        "온합잡곡밥",
         "황태해장국",
-        "불카츠 / 사우전 소스",
-        "= 스팸 두부조림 ※",
-        "sR 유이 / 과을",
-        "일 수요일"
+        "호제오리배주짱",
+        "볼카츠 / 사우전 소스",
+        "감자전",
+        "정양떡갈비",
+        "> 스팸 두부조림",
+        "ui 견과류멸치볶음",
+        "= 유자청 치커리",
+        "가든샐러드 / 오렌지드레싱",
+        "배추걷절이 / 과일"
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-07 10:31:43",
-      "menu_recorded_source_fetched_at": "2026-10-07 10:31:27"
+      "menu_recorded_at": "2026-10-07 10:46:40",
+      "menu_recorded_source_fetched_at": "2026-10-07 10:46:21"
     },
     {
       "name": "스타밸리푸드포유",
@@ -199,8 +205,8 @@
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-07 10:31:43",
-      "menu_recorded_source_fetched_at": "2026-10-07 10:31:34"
+      "menu_recorded_at": "2026-10-07 10:46:40",
+      "menu_recorded_source_fetched_at": "2026-10-07 10:46:27"
     },
     {
       "name": "돈토",
@@ -240,7 +246,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-10-07 10:31:09"
+      "source_fetched_at": "2026-10-07 10:46:06"
     },
     {
       "name": "다시 봄",
@@ -251,7 +257,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-10-07 10:31:12"
+      "source_fetched_at": "2026-10-07 10:46:08"
     },
     {
       "name": "밥(온) 구내식당",
@@ -262,7 +268,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-10-07 10:31:15"
+      "source_fetched_at": "2026-10-07 10:46:11"
     },
     {
       "name": "디폴리스 구내식당",
@@ -273,7 +279,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 6,
       "today_marker": true,
-      "source_fetched_at": "2026-10-07 10:31:31"
+      "source_fetched_at": "2026-10-07 10:46:24"
     },
     {
       "name": "구내식당라온푸드",
@@ -284,7 +290,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-10-07 10:31:18"
+      "source_fetched_at": "2026-10-07 10:46:13"
     },
     {
       "name": "마이푸드",
@@ -295,7 +301,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-10-07 10:31:21"
+      "source_fetched_at": "2026-10-07 10:46:15"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -306,18 +312,18 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-10-07 10:31:23"
+      "source_fetched_at": "2026-10-07 10:46:18"
     },
     {
       "name": "더푸드스케치",
-      "items": 5,
+      "items": 11,
       "updated": true,
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "reason": "partial_ocr",
-      "ocr_rejected_items": 7,
+      "ocr_rejected_items": 1,
       "today_marker": true,
-      "source_fetched_at": "2026-10-07 10:31:27"
+      "source_fetched_at": "2026-10-07 10:46:21"
     },
     {
       "name": "스타밸리푸드포유",
@@ -328,7 +334,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-10-07 10:31:34"
+      "source_fetched_at": "2026-10-07 10:46:27"
     }
   ]
 }
