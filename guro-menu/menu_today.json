@@ -1,8 +1,8 @@
 {
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
-  "date_label": "2026년 10월 8일 목요일",
-  "updated_at": "2026-10-08 11:48:25",
+  "date_label": "2026년 10월 9일 금요일",
+  "updated_at": "2026-10-09 09:03:42",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -13,21 +13,8 @@
       "map_query": "한신IT타워 구내식당",
       "status": "ready",
       "preview_image": "./images/hanshin-it.png",
-      "menu": [
-        "사누끼유부우동",
-        "훈제오리야채볶음",
-        "교자만두*중화소스",
-        "부추산적구이*소스",
-        "철판비엔나브로콜리볶음",
-        "가지나물",
-        "매콤국물떡복이",
-        "야채겉절이",
-        "포기김치",
-        "흑미밥/백미밥",
-        "양배추샐러드&유자청드레싱",
-        "탄산음료"
-      ],
-      "message": ""
+      "menu": [],
+      "message": "오늘 메뉴 이미지를 가져오지 못했습니다."
     },
     {
       "name": "자연푸드 구내식당",
@@ -48,20 +35,8 @@
       "map_query": "구로 대륭포스트타워1차 더이츠푸드",
       "status": "ready",
       "preview_image": "./images/the-eats-food.png",
-      "menu": [
-        "더이 2 ㄷ",
-        "쌀밥/흑미잡곡밥",
-        "우거지된장국",
-        "국내산삼겹매운떡찜",
-        "수제후라이드치킨&양념소스",
-        "물만두&양념장",
-        "무생채무침",
-        "야채겉절이",
-        "수제겉절이김치 0",
-        "그린샐러드&드레싱 %",
-        "제철과일 이"
-      ],
-      "message": ""
+      "menu": [],
+      "message": "공개 채널에서 최신 메뉴 이미지 제공 방식을 확인 중입니다."
     },
     {
       "name": "벽산더이룸",
@@ -86,7 +61,7 @@
         "Wf: 국산 / 배추김치(배추,고추가루:중국산)",
         "기타 원산지 표시는 카운터에 부착되어 있습니다"
       ],
-      "message": ""
+      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
     },
     {
       "name": "윤쉐프 코오롱",
@@ -107,44 +82,42 @@
         "셀프라면&토스트",
         "탄산옴료/수정과"
       ],
-      "message": ""
+      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
     }
   ],
   "ocr_log": [
     {
       "name": "한신IT타워 구내식당",
-      "items": 12,
-      "updated": true,
-      "today_marker": true,
-      "source_fetched_at": "2026-10-08 11:48:14"
+      "updated": false,
+      "reason": "image_missing"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-10-08 11:48:16"
+      "source_fetched_at": "2026-10-09 09:03:32"
     },
     {
       "name": "더이츠푸드",
-      "items": 11,
-      "updated": true,
-      "today_marker": true,
-      "source_fetched_at": "2026-10-08 11:48:18"
+      "items": 0,
+      "updated": false,
+      "today_marker": false,
+      "source_fetched_at": "2026-10-09 09:03:34"
     },
     {
       "name": "벽산더이룸",
       "items": 13,
       "updated": true,
-      "today_marker": true,
-      "source_fetched_at": "2026-10-08 11:48:20"
+      "today_marker": false,
+      "source_fetched_at": "2026-10-09 09:03:36"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 9,
       "updated": true,
-      "today_marker": true,
-      "source_fetched_at": "2026-10-08 11:48:22"
+      "today_marker": false,
+      "source_fetched_at": "2026-10-09 09:03:39"
     }
   ]
 }
