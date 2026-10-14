@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 10월 14일 수요일",
-  "updated_at": "2026-10-14 09:32:46",
+  "updated_at": "2026-10-14 09:47:25",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -26,8 +26,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-14 09:31:39",
-      "menu_recorded_source_fetched_at": "2026-10-14 09:31:05"
+      "menu_recorded_at": "2026-10-14 09:46:21",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:45:58"
     },
     {
       "name": "다시 봄",
@@ -36,19 +36,18 @@
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [
-        "아게",
-        "카톡채널",
-        "다시롬",
-        "' : » ol 반 워크 다 시 도",
-        "카톡채 L=",
-        "어빈",
-        "Ee 상이선 이니 버이애리 아이나 아아 드 : 사서"
+        "준천식닭갈비",
+        "베이컨라면볶음",
+        "오이상추무침",
+        "직접담은겉절이",
+        "유부두부장국",
+        "춘천식닭갈비"
       ],
       "preview_image": "./images/dasibom.png",
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-14 09:31:39",
-      "menu_recorded_source_fetched_at": "2026-10-14 09:31:07"
+      "menu_recorded_at": "2026-10-14 09:46:21",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:46:00"
     },
     {
       "name": "밥(온) 구내식당",
@@ -69,8 +68,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-14 09:31:39",
-      "menu_recorded_source_fetched_at": "2026-10-14 09:31:10"
+      "menu_recorded_at": "2026-10-14 09:46:21",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:46:02"
     },
     {
       "name": "디폴리스 구내식당",
@@ -86,8 +85,8 @@
         "탄산음료"
       ],
       "message": "",
-      "menu_recorded_at": "2026-10-14 09:31:39",
-      "menu_recorded_source_fetched_at": "2026-10-14 09:31:23",
+      "menu_recorded_at": "2026-10-14 09:46:21",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:46:12",
       "menu_recent_source_today": true,
       "menu_sections": [
         {
@@ -121,8 +120,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-14 09:31:39",
-      "menu_recorded_source_fetched_at": "2026-10-14 09:31:12"
+      "menu_recorded_at": "2026-10-14 09:46:21",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:46:03"
     },
     {
       "name": "마이푸드",
@@ -142,8 +141,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-14 09:31:39",
-      "menu_recorded_source_fetched_at": "2026-10-14 09:31:14"
+      "menu_recorded_at": "2026-10-14 09:46:21",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:46:05"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -180,8 +179,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-14 09:31:39",
-      "menu_recorded_source_fetched_at": "2026-10-14 09:31:20"
+      "menu_recorded_at": "2026-10-14 09:46:21",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:46:09"
     },
     {
       "name": "스타밸리푸드포유",
@@ -234,18 +233,18 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-10-14 09:31:05"
+      "source_fetched_at": "2026-10-14 09:45:58"
     },
     {
       "name": "다시 봄",
-      "items": 7,
+      "items": 6,
       "updated": true,
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "reason": "partial_ocr",
-      "ocr_rejected_items": 5,
+      "ocr_rejected_items": 6,
       "today_marker": true,
-      "source_fetched_at": "2026-10-14 09:31:07"
+      "source_fetched_at": "2026-10-14 09:46:00"
     },
     {
       "name": "밥(온) 구내식당",
@@ -256,7 +255,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-10-14 09:31:10"
+      "source_fetched_at": "2026-10-14 09:46:02"
     },
     {
       "name": "디폴리스 구내식당",
@@ -265,7 +264,7 @@
       "used_existing_fallback": false,
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-10-14 09:31:23"
+      "source_fetched_at": "2026-10-14 09:46:12"
     },
     {
       "name": "구내식당라온푸드",
@@ -276,7 +275,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-10-14 09:31:12"
+      "source_fetched_at": "2026-10-14 09:46:03"
     },
     {
       "name": "마이푸드",
@@ -287,7 +286,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 5,
       "today_marker": true,
-      "source_fetched_at": "2026-10-14 09:31:14"
+      "source_fetched_at": "2026-10-14 09:46:05"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -298,7 +297,7 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-10-14 09:31:18"
+      "source_fetched_at": "2026-10-14 09:46:07"
     },
     {
       "name": "더푸드스케치",
@@ -309,7 +308,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 1,
       "today_marker": true,
-      "source_fetched_at": "2026-10-14 09:31:20"
+      "source_fetched_at": "2026-10-14 09:46:09"
     },
     {
       "name": "스타밸리푸드포유",
@@ -317,7 +316,7 @@
       "updated": false,
       "used_existing_fallback": true,
       "reason": "today_marker_not_found",
-      "source_fetched_at": "2026-10-14 09:31:26"
+      "source_fetched_at": "2026-10-14 09:46:14"
     }
   ]
 }
