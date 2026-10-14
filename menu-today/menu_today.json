@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
-  "date_label": "2026년 10월 13일 화요일",
-  "updated_at": "2026-10-13 11:48:17",
+  "date_label": "2026년 10월 14일 수요일",
+  "updated_at": "2026-10-14 09:03:31",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -11,11 +11,23 @@
       "status": "ready",
       "preview_image": "./images/imeal.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=18.44,0,0,0,dh",
-      "menu": [],
-      "message": "오늘 메뉴 미수집 상태입니다.",
+      "menu": [
+        "근대된장국",
+        "부들통삼겹보쌈 & 새우첫",
+        "굴소스가지볶음",
+        "미나리무말랭이무침",
+        "알배기쌈 & 상추쌈 & 쌈장",
+        "가든샐러드 & 키위D",
+        "배추겉절이",
+        "백미밥 / 흑미밥",
+        "타사음료",
+        "넌르 「",
+        "턴르 oO"
+      ],
+      "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-12 11:46:28",
-      "menu_recorded_source_fetched_at": "2026-10-12 11:46:05"
+      "menu_recorded_at": "2026-10-14 09:02:05",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:01:38"
     },
     {
       "name": "다시 봄",
@@ -24,22 +36,19 @@
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdtkV,2AIq3l,%EA%B0%80%EC%82%B0%EC%96%B4%EB%B0%98%EC%9B%8C%ED%81%AC,1823111605,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [
-        "매콤직화불고기",
-        "정양새우카츠",
-        "수제치즈감자전 é",
-        "신림동백순대볶음 L",
-        "향긋미나리무침",
-        "직접담은알타리",
-        "수제치즈감자전",
-        "신림동백순대볶음",
-        "싱싱샐러드",
-        "즈 개삼코 불국"
+        "아게",
+        "카톡채널",
+        "다시롬",
+        "' : » ol 반 워크 다 시 도",
+        "카톡채 L=",
+        "어빈",
+        "Ee 상이선 이니 버이애리 아이나 아아 드 : 사서"
       ],
       "preview_image": "./images/dasibom.png",
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-13 11:46:38",
-      "menu_recorded_source_fetched_at": "2026-10-13 11:46:06"
+      "menu_recorded_at": "2026-10-14 09:02:05",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:01:41"
     },
     {
       "name": "밥(온) 구내식당",
@@ -48,11 +57,20 @@
       "status": "ready",
       "preview_image": "./images/babon.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdsu0,2AIrKV,%EB%B0%A5%EC%98%A8%20%EA%B5%AC%EB%82%B4%EC%8B%9D%EB%8B%B9,2085424978,PLACE_POI/-/walk?c=15.00,0,0,0,dh",
-      "menu": [],
-      "message": "오늘 메뉴 미수집 상태입니다.",
+      "menu": [
+        "흰쌀밥 / 검은쌀잡곡밥",
+        "순살생선까스*감자튀김",
+        "망향비빙국수",
+        "= [소마드",
+        "고주장멸지볶음",
+        "잠소스양파부주절임",
+        "양배주샐러드 / 모듬상주쌈",
+        "우거지된장국"
+      ],
+      "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-12 11:46:28",
-      "menu_recorded_source_fetched_at": "2026-10-12 11:46:09"
+      "menu_recorded_at": "2026-10-14 09:02:05",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:01:43"
     },
     {
       "name": "디폴리스 구내식당",
@@ -62,21 +80,26 @@
       "preview_image": "./images/dipolis.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdqxQ,2AIpVg,%EB%94%94%ED%8F%B4%EB%A6%AC%EC%8A%A4%EC%A7%80%EC%8B%9D%EC%82%B0%EC%97%85%EC%84%BC%ED%84%B0,18979316,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [
-        "준전 닭갈비 =S",
-        "GX] 고 ) 카레라이스",
-        "돈재 청경재 aS",
-        "구수한 +S / 상큼 오렌지",
-        "얼큰콩나물국",
+        "두부구이 양념 조림",
         "양배추 야채 샐러드",
-        "*** 위 식단은 사정에 따라 변경될 수 있습니다",
-        "me 카레라이스",
-        "=i 청경채 볶음",
-        "구수한 SI) / 상큼 오렌지"
+        "국내산 포기김치",
+        "탄산음료"
       ],
       "message": "",
-      "menu_recorded_at": "2026-10-13 11:46:38",
-      "menu_recorded_source_fetched_at": "2026-10-13 11:46:26",
-      "menu_recent_source_today": true
+      "menu_recorded_at": "2026-10-14 09:02:05",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:01:53",
+      "menu_recent_source_today": true,
+      "menu_sections": [
+        {
+          "title": "중식",
+          "items": [
+            "두부구이 양념 조림",
+            "양배추 야채 샐러드",
+            "국내산 포기김치",
+            "탄산음료"
+          ]
+        }
+      ]
     },
     {
       "name": "구내식당라온푸드",
@@ -86,21 +109,20 @@
       "preview_image": "./images/raonfood.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdAy2,2AIqEa,%EA%B0%80%EC%82%B0%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EC%84%BC%ED%84%B0,20574009,PLACE_POI/-/walk?c=16.86,0,0,0,dh",
       "menu": [
-        "라잠돼지불백",
-        "게맛살달갈찜",
-        "시금지나물무침",
-        "쌈재소 & 쌈 잠",
+        "북며콩나물해장국",
+        "한입치킨까스 / 허머스",
+        "칠리탐수육",
+        "비빔밥나물*고주잠",
         "샐러드 & 드레싱",
         "백미밥 / 잡곡밥",
-        "수제후라이드치킨",
-        "시금지나",
-        "쌈재소 & 쌈",
-        "샐러드 &"
+        "북여콩나물해장국",
+        "한입치킨까스 / 허니머스",
+        "질리탕수육"
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-13 11:46:38",
-      "menu_recorded_source_fetched_at": "2026-10-13 11:46:11"
+      "menu_recorded_at": "2026-10-14 09:02:05",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:01:45"
     },
     {
       "name": "마이푸드",
@@ -110,22 +132,18 @@
       "preview_image": "./images/myfood.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdNjq,2AIh9q,%EB%B2%BD%EC%82%B0%EB%94%94%EC%A7%80%ED%84%B8%EB%B0%B8%EB%A6%AC5%EC%B0%A8,18981320,PLACE_POI/-/walk?c=17.77,0,0,0,dh",
       "menu": [
-        "(탕수육 @ 복분자소스 <",
-        "[= 미마그",
-        "통들깨메밀막국수 ye",
-        "브로콜리꼬마새송이볶음",
-        "피쉬볼강정",
-        "견과우엉조림",
-        "고충잎무말랭이무침 / 포기김치",
+        "가리비살야채무침",
+        "들깨고구마순나물",
         "그린샐러드 & 드레싱",
-        "뿌링클타코야끼",
+        "얼큰순두부찌개",
+        "사새끄떠",
         "잡곡밥 / 백미밥",
-        "복분자소스"
+        "쌈채소 / 한강라면 & 딜콤한 BW 토스트"
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-13 11:46:38",
-      "menu_recorded_source_fetched_at": "2026-10-13 11:46:15"
+      "menu_recorded_at": "2026-10-14 09:02:05",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:01:46"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -148,21 +166,22 @@
       "preview_image": "./images/thefoodsketch.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdBv9,2AIxGX,%EB%8D%94%ED%91%B8%EB%93%9C%EC%8A%A4%EC%BC%80%EC%B9%98,37648388,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
       "menu": [
-        "미역국",
-        "통등심돈까스",
-        "차돌묵은지파스타",
-        "두부구이 / 양념장",
-        "바람떡",
-        "= 해물콩나물찜",
-        "브로콜리참깨소스무침",
-        "가든 샐러드 / 바나나드레싱",
-        "배추겉절이 vf",
-        "요구르트"
+        "혼합잡곡밥",
+        "황태해장국",
+        "돈갈비묵은지찜",
+        "벌집감자튀김 / 뿌링클",
+        "메밀전병",
+        "명란버터우동",
+        "( 데미클라스미트볼",
+        "해파리냉채",
+        "가든 샐러드 / 오렌지드레싱",
+        "알배기겉절이 . NE",
+        "한강라면실시"
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-10-13 11:46:38",
-      "menu_recorded_source_fetched_at": "2026-10-13 11:46:21"
+      "menu_recorded_at": "2026-10-14 09:02:05",
+      "menu_recorded_source_fetched_at": "2026-10-14 09:01:51"
     },
     {
       "name": "스타밸리푸드포유",
@@ -170,20 +189,8 @@
       "address": "서울 금천구 디지털로9길 99",
       "status": "ready",
       "map_url": "https://map.naver.com/p/directions/-/3zdKQV,2AIuaL,%EC%8A%A4%ED%83%80%EB%B0%B8%EB%A6%AC,18976994,PLACE_POI/-/walk?c=14.00,0,0,0,dh",
-      "menu": [
-        "확요일",
-        "옥미밥 / 백미밥",
-        "직화오징어볶슴",
-        "팽이두부장국",
-        "고구마치즈스틱",
-        "램계란전",
-        "감자채퉁깨무짐",
-        "콩나물파채무침",
-        "가든샐러드 & 흑임자D",
-        "포기김치",
-        "욱미밥 / 백미밥"
-      ],
-      "message": "",
+      "menu": [],
+      "message": "오늘 메뉴 미수집 상태입니다.",
       "preview_image": "./images/starvalley-food4u-post.png",
       "menu_recent_source_today": true,
       "menu_recorded_at": "2026-10-13 11:46:38",
@@ -220,63 +227,67 @@
   "ocr_log": [
     {
       "name": "아이밀",
-      "items": 0,
-      "updated": false,
-      "used_existing_fallback": true,
-      "reason": "today_marker_not_found",
-      "source_fetched_at": "2026-10-13 11:46:03"
-    },
-    {
-      "name": "다시 봄",
-      "items": 10,
-      "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 2,
-      "today_marker": true,
-      "source_fetched_at": "2026-10-13 11:46:06"
-    },
-    {
-      "name": "밥(온) 구내식당",
-      "items": 0,
-      "updated": false,
-      "used_existing_fallback": true,
-      "reason": "today_marker_not_found",
-      "source_fetched_at": "2026-10-13 11:46:09"
-    },
-    {
-      "name": "디폴리스 구내식당",
-      "items": 10,
-      "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 8,
-      "today_marker": true,
-      "source_fetched_at": "2026-10-13 11:46:26"
-    },
-    {
-      "name": "구내식당라온푸드",
-      "items": 10,
-      "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 2,
-      "today_marker": true,
-      "source_fetched_at": "2026-10-13 11:46:11"
-    },
-    {
-      "name": "마이푸드",
       "items": 11,
       "updated": true,
       "used_existing_fallback": false,
       "fallback_confirmed": false,
       "reason": "partial_ocr",
-      "ocr_rejected_items": 1,
+      "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-10-13 11:46:15"
+      "source_fetched_at": "2026-10-14 09:01:38"
+    },
+    {
+      "name": "다시 봄",
+      "items": 7,
+      "updated": true,
+      "used_existing_fallback": false,
+      "fallback_confirmed": false,
+      "reason": "partial_ocr",
+      "ocr_rejected_items": 5,
+      "today_marker": true,
+      "source_fetched_at": "2026-10-14 09:01:41"
+    },
+    {
+      "name": "밥(온) 구내식당",
+      "items": 8,
+      "updated": true,
+      "used_existing_fallback": false,
+      "fallback_confirmed": false,
+      "reason": "partial_ocr",
+      "ocr_rejected_items": 4,
+      "today_marker": true,
+      "source_fetched_at": "2026-10-14 09:01:43"
+    },
+    {
+      "name": "디폴리스 구내식당",
+      "items": 4,
+      "updated": true,
+      "used_existing_fallback": false,
+      "ocr_rejected_items": 0,
+      "today_marker": true,
+      "source_fetched_at": "2026-10-14 09:01:53"
+    },
+    {
+      "name": "구내식당라온푸드",
+      "items": 9,
+      "updated": true,
+      "used_existing_fallback": false,
+      "fallback_confirmed": false,
+      "reason": "partial_ocr",
+      "ocr_rejected_items": 3,
+      "today_marker": true,
+      "source_fetched_at": "2026-10-14 09:01:45"
+    },
+    {
+      "name": "마이푸드",
+      "items": 7,
+      "updated": true,
+      "used_existing_fallback": false,
+      "fallback_confirmed": false,
+      "reason": "partial_ocr",
+      "ocr_rejected_items": 5,
+      "today_marker": true,
+      "source_fetched_at": "2026-10-14 09:01:46"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -287,21 +298,10 @@
       "reason": "ocr_low_confidence",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-10-13 11:46:18"
+      "source_fetched_at": "2026-10-14 09:01:49"
     },
     {
       "name": "더푸드스케치",
-      "items": 10,
-      "updated": true,
-      "used_existing_fallback": false,
-      "fallback_confirmed": false,
-      "reason": "partial_ocr",
-      "ocr_rejected_items": 2,
-      "today_marker": true,
-      "source_fetched_at": "2026-10-13 11:46:21"
-    },
-    {
-      "name": "스타밸리푸드포유",
       "items": 11,
       "updated": true,
       "used_existing_fallback": false,
@@ -309,7 +309,15 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 1,
       "today_marker": true,
-      "source_fetched_at": "2026-10-13 11:46:29"
+      "source_fetched_at": "2026-10-14 09:01:51"
+    },
+    {
+      "name": "스타밸리푸드포유",
+      "items": 0,
+      "updated": false,
+      "used_existing_fallback": true,
+      "reason": "today_marker_not_found",
+      "source_fetched_at": "2026-10-14 09:01:57"
     }
   ]
 }
