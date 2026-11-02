@@ -2,7 +2,7 @@
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
   "date_label": "2026년 11월 2일 월요일",
-  "updated_at": "2026-11-02 09:03:40",
+  "updated_at": "2026-11-02 09:13:47",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -73,22 +73,23 @@
       "status": "ready",
       "preview_image": "./images/byucksan-theirum.png",
       "menu": [
+        "i= 그니",
         "백미밥/잡곡밥",
-        "뜨끈한 유부우동",
-        "$오삼불고기",
-        "생선까스&어니언소스",
-        "참치마요샌드위치",
-        "Bret 김치전",
-        "쑥갓두부버무리",
-        "꼬들오이지무침",
-        "그린샐러드&오리엔틸드레싱",
-        "포기김치",
-        "후식/미숫가루&마카로니",
+        "황태해장국",
+        "삼겹보삼",
+        "순실후라이드치킨&양념소스",
+        "이 Sty pi",
+        "감자혁",
+        "무말랭이무침",
+        "상추^배추쌈&우렁쌈장",
+        "그린샐러드&과일드레싱",
+        "보쌈김치",
+        "후식/단호박식혜&고구마형스넥",
         "숭늉/탄산음료",
-        "A 국산 / 배추김치(배추,고추가루:중국산)",
+        "Af: 국산 / 배추김치(배추,고추가루:중국산)",
         "기타 원산지 표시는 카운터에 부착되어 있습니다"
       ],
-      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+      "message": ""
     },
     {
       "name": "윤쉐프 코오롱",
@@ -119,35 +120,35 @@
       "items": 13,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-02 09:03:29"
+      "source_fetched_at": "2026-11-02 09:13:34"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-11-02 09:03:31"
+      "source_fetched_at": "2026-11-02 09:13:36"
     },
     {
       "name": "더이츠푸드",
       "items": 11,
       "updated": true,
       "today_marker": false,
-      "source_fetched_at": "2026-11-02 09:03:33"
+      "source_fetched_at": "2026-11-02 09:13:38"
     },
     {
       "name": "벽산더이룸",
-      "items": 14,
+      "items": 15,
       "updated": true,
-      "today_marker": false,
-      "source_fetched_at": "2026-11-02 09:03:34"
+      "today_marker": true,
+      "source_fetched_at": "2026-11-02 09:13:40"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 10,
       "updated": true,
       "today_marker": false,
-      "source_fetched_at": "2026-11-02 09:03:36"
+      "source_fetched_at": "2026-11-02 09:13:43"
     }
   ]
 }
