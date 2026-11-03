@@ -2,7 +2,7 @@
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
   "date_label": "2026년 11월 3일 화요일",
-  "updated_at": "2026-11-03 09:03:43",
+  "updated_at": "2026-11-03 09:13:56",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -96,16 +96,17 @@
       "status": "ready",
       "preview_image": "./images/yoon-chef-kolon.png",
       "menu": [
-        "정양풍불고기",
-        "군만두&조관장",
-        "짜장면",
-        "메주리알곤약조림",
-        "시커리음자정무침",
-        "짜사이무침",
+        "월 O32! 한요일",
+        "시금지된장국",
+        "부주훈제오리구이",
+        "지킨너것&머스타드6",
+        "러말이튀김",
+        "새송이버섯볶음",
+        "새콤쌈무",
         "잡곡밥/백미밥",
-        "그린샐러드&쌈채소",
+        "그린샐러드&쌈재소",
         "셀프라면&토스트",
-        "탄산음료/따뜻한추세트"
+        "탄산옴료/미니잔치국수"
       ],
       "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
     }
@@ -116,35 +117,35 @@
       "items": 12,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-03 09:03:33"
+      "source_fetched_at": "2026-11-03 09:13:45"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-11-03 09:03:34"
+      "source_fetched_at": "2026-11-03 09:13:47"
     },
     {
       "name": "더이츠푸드",
       "items": 10,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-03 09:03:36"
+      "source_fetched_at": "2026-11-03 09:13:48"
     },
     {
       "name": "벽산더이룸",
       "items": 13,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-03 09:03:38"
+      "source_fetched_at": "2026-11-03 09:13:50"
     },
     {
       "name": "윤쉐프 코오롱",
-      "items": 10,
+      "items": 11,
       "updated": true,
       "today_marker": false,
-      "source_fetched_at": "2026-11-03 09:03:39"
+      "source_fetched_at": "2026-11-03 09:13:52"
     }
   ]
 }
