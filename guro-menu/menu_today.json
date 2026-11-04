@@ -2,7 +2,7 @@
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
   "date_label": "2026년 11월 4일 수요일",
-  "updated_at": "2026-11-04 09:03:09",
+  "updated_at": "2026-11-04 09:13:09",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -72,20 +72,19 @@
       "preview_image": "./images/byucksan-theirum.png",
       "menu": [
         "백미밥/잡곡밥",
-        "킬킬한 된장찌개",
-        "DHOI 카지노",
-        "Hi rr 간 Oo 불고",
-        "깐풍탕수육",
-        "손만두*김치만두찜&소스",
-        "오징어초무침",
-        "시금치나물무침",
+        "장터국밥",
+        "오징어마파두부",
+        "들기름애호박국수",
+        "고사리들깨볶음",
+        "오이양파생채",
         "그린샐러드&과일드레싱",
         "포기김치",
+        "후식/복숭아요거트",
         "숭늉/탄산음료",
-        "Bf: 국산 / 배추김치(배추,고추가루:중국산)",
+        "A 국산 / 배추김치(배추,고추가루:중국산)",
         "기타 원산지 표시는 카운터에 부착되어 있습니다"
       ],
-      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+      "message": ""
     },
     {
       "name": "윤쉐프 코오롱",
@@ -116,35 +115,35 @@
       "items": 11,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-04 09:02:59"
+      "source_fetched_at": "2026-11-04 09:13:00"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-11-04 09:03:00"
+      "source_fetched_at": "2026-11-04 09:13:01"
     },
     {
       "name": "더이츠푸드",
       "items": 11,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-04 09:03:02"
+      "source_fetched_at": "2026-11-04 09:13:03"
     },
     {
       "name": "벽산더이룸",
-      "items": 13,
+      "items": 12,
       "updated": true,
-      "today_marker": false,
-      "source_fetched_at": "2026-11-04 09:03:04"
+      "today_marker": true,
+      "source_fetched_at": "2026-11-04 09:13:04"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 10,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-04 09:03:06"
+      "source_fetched_at": "2026-11-04 09:13:06"
     }
   ]
 }
