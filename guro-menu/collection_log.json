@@ -3,10 +3,10 @@
     {
       "name": "한신IT타워 구내식당",
       "page_url": "https://pf.kakao.com/_QRALxb",
-      "image_url": "https://k.kakaocdn.net/dn/bApkoi/dJMcah0Ie5T/5FLKkv2zta3ebTTZosjIv0/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/hFIlJ/dJMcag8AnUp/KAd9rBCaH6ScJeuxb0s7OK/img.jpg",
       "output": "guro-menu/images/hanshin-it.png",
       "status": "updated",
-      "fetched_at": "2026-11-04 11:48:21"
+      "fetched_at": "2026-11-05 09:10:13"
     },
     {
       "name": "자연푸드 구내식당",
@@ -14,31 +14,31 @@
       "image_url": "https://k.kakaocdn.net/dn/XNgcf/btqEGa4N6HT/sS22Vmf3bkwhjdkaJ7xHX1/img.jpg",
       "output": "guro-menu/images/nature-food.png",
       "status": "updated",
-      "fetched_at": "2026-11-04 11:48:23"
+      "fetched_at": "2026-11-05 09:10:14"
     },
     {
       "name": "더이츠푸드",
       "page_url": "https://pf.kakao.com/_xeVwxnn",
-      "image_url": "https://k.kakaocdn.net/dn/KkKTK/dJMcaaHwpRz/Jx4pHxRH48saWjzoKKIl2K/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/dMIVu8/dJMcafIQqoE/blKHMMLRJTdTsNxKGSmH80/img.jpg",
       "output": "guro-menu/images/the-eats-food.png",
       "status": "updated",
-      "fetched_at": "2026-11-04 11:48:24"
+      "fetched_at": "2026-11-05 09:10:16"
     },
     {
       "name": "벽산더이룸",
       "page_url": "https://pf.kakao.com/_xdLzxgG",
-      "image_url": "https://k.kakaocdn.net/dn/8ctAj/dJMcah7HQDU/339QOX7noW23DGkpTk9lJ0/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/LGy9F/dJMcaf9BItT/YoT2Iyx7e8qmopWzEyKhwK/img.jpg",
       "output": "guro-menu/images/byucksan-theirum.png",
       "status": "updated",
-      "fetched_at": "2026-11-04 11:48:26"
+      "fetched_at": "2026-11-05 09:10:17"
     },
     {
       "name": "윤쉐프 코오롱",
       "page_url": "https://pf.kakao.com/_Xxhxkhs",
-      "image_url": "https://k.kakaocdn.net/dn/teG8I/dJMcadKN6Qr/n13AIjL5EjObpT1h6tIMn1/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/Ku9nu/dJMcaiL6Lqw/y1yWTn3fIUDcP5exy13mPK/img.jpg",
       "output": "guro-menu/images/yoon-chef-kolon.png",
       "status": "updated",
-      "fetched_at": "2026-11-04 11:48:28"
+      "fetched_at": "2026-11-05 09:10:19"
     }
   ]
 }
