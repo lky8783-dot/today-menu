@@ -4,10 +4,10 @@
       "name": "아이밀",
       "page_url": "https://pf.kakao.com/_vygYn",
       "detail_url": "https://pf.kakao.com/_vygYn",
-      "image_url": "https://k.kakaocdn.net/dn/8Ts5D/dJMcadKOXY9/pK2rkgmGXxCUOkJ3rarcZk/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/jCJUH/dJMcadRAoRV/svatZB3QwWZcMcQWu6acG0/img.jpg",
       "output": "menu-today/images/imeal.png",
       "status": "updated",
-      "fetched_at": "2026-11-05 11:46:15"
+      "fetched_at": "2026-11-06 09:01:16"
     },
     {
       "name": "다시 봄",
@@ -16,16 +16,16 @@
       "image_url": "https://k.kakaocdn.net/dn/bLXaTC/dJMcadRzxg8/PI7ki9kD9MvHSRGCXvGls1/img.jpg",
       "output": "menu-today/images/dasibom.png",
       "status": "updated",
-      "fetched_at": "2026-11-05 11:46:17"
+      "fetched_at": "2026-11-06 09:01:19"
     },
     {
       "name": "밥(온) 구내식당",
       "page_url": "https://pf.kakao.com/_mYxfen",
       "detail_url": "https://pf.kakao.com/_mYxfen",
-      "image_url": "https://k.kakaocdn.net/dn/dv7EUq/dJMcahGtG1Y/zzKIvgpySBOS8lMIANrjw0/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/bil3Zp/dJMcadqAZg1/HMZ58DQPVfT3zseMXsjaL0/img.jpg",
       "output": "menu-today/images/babon.png",
       "status": "updated",
-      "fetched_at": "2026-11-05 11:46:18"
+      "fetched_at": "2026-11-06 09:01:21"
     },
     {
       "name": "구내식당라온푸드",
@@ -34,25 +34,25 @@
       "image_url": "https://k.kakaocdn.net/dn/deDtk9/dJMcabe3Ek7/7InXTJ7ljOcswoqy5O9Tt0/img.jpg",
       "output": "menu-today/images/raonfood.png",
       "status": "updated",
-      "fetched_at": "2026-11-05 11:46:20"
+      "fetched_at": "2026-11-06 09:01:24"
     },
     {
       "name": "마이푸드",
       "page_url": "https://pf.kakao.com/_xaAvxlG",
       "detail_url": "https://pf.kakao.com/_xaAvxlG",
-      "image_url": "https://k.kakaocdn.net/dn/HvAsl/dJMcabTPfV7/hi8q8NpuZanZwGHYtRcD60/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/1xgbc/dJMcaamW5dx/0D5bDyoxja6ZCGK5yVZ0f1/img.jpg",
       "output": "menu-today/images/myfood.png",
       "status": "updated",
-      "fetched_at": "2026-11-05 11:46:22"
+      "fetched_at": "2026-11-06 09:01:26"
     },
     {
       "name": "퍼블릭가산 구내식당",
       "page_url": "https://pf.kakao.com/_ECNfn",
       "detail_url": "https://pf.kakao.com/_ECNfn",
-      "image_url": "https://k.kakaocdn.net/dn/blEiyl/dJMb99O632Z/VXp1dVx1TVbaRpUqFacDa0/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/BSaUr/dJMcah0JycZ/QjCPQKTprpPiNkxairrKFk/img.jpg",
       "output": "menu-today/images/public-gasan.png",
       "status": "updated",
-      "fetched_at": "2026-11-05 11:46:24"
+      "fetched_at": "2026-11-06 09:01:29"
     },
     {
       "name": "더푸드스케치",
@@ -61,7 +61,7 @@
       "image_url": "https://k.kakaocdn.net/dn/bskwCQ/dJMcac6gpYO/mUjdjOKcd8EoF660SkRtVK/img.jpg",
       "output": "menu-today/images/thefoodsketch.png",
       "status": "updated",
-      "fetched_at": "2026-11-05 11:46:27"
+      "fetched_at": "2026-11-06 09:01:31"
     },
     {
       "name": "스타밸리푸드포유",
@@ -70,16 +70,16 @@
       "image_url": "https://k.kakaocdn.net/dn/E9dMD/dJMcadqz58n/nDZOwbMLbEQcqAlrW7nYy1/img_xl.jpg",
       "output": "menu-today/images/starvalley-food4u-post.png",
       "status": "updated",
-      "fetched_at": "2026-11-05 11:46:31"
+      "fetched_at": "2026-11-06 09:01:36"
     },
     {
       "name": "디폴리스 구내식당",
       "page_url": "https://pf.kakao.com/_iyscG",
       "detail_url": "https://pf.kakao.com/_iyscG",
-      "image_url": "https://k.kakaocdn.net/dn/cm5ChL/dJMcaaAHSsn/pLWDew4HX17Gx2OOnivKyK/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/bTmjuf/dJMcagHL2e1/HfrBtPT2YN2BTsP6uw0Jv0/img.jpg",
       "output": "menu-today/images/dipolis.png",
       "status": "updated",
-      "fetched_at": "2026-11-05 11:46:29"
+      "fetched_at": "2026-11-06 09:01:34"
     },
     {
       "name": "돈토",
@@ -88,7 +88,7 @@
       "image_url": "https://k.kakaocdn.net/dn/bUdBlN/btrPybZ1blc/B1Aevq6s9dGBgGBRGFHqhK/img.jpg",
       "output": "menu-today/images/donto.png",
       "status": "updated",
-      "fetched_at": "2026-11-05 11:46:30"
+      "fetched_at": "2026-11-06 09:01:35"
     }
   ]
 }
