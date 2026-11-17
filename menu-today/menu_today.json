@@ -1,7 +1,7 @@
 {
   "title": "가산디지털단지 구내식당 메뉴정보",
   "date_label": "2026년 11월 17일 화요일",
-  "updated_at": "2026-11-17 09:03:10",
+  "updated_at": "2026-11-17 09:14:02",
   "notice": "공개 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -11,11 +11,24 @@
       "status": "ready",
       "preview_image": "./images/imeal.png",
       "map_url": "https://map.naver.com/p/directions/-/3zdwpt,2AIssW,%ED%98%84%EB%8C%80%ED%85%8C%EB%9D%BC%ED%83%80%EC%9B%8C%20%EA%B0%80%EC%82%B0DK,1276717932,PLACE_POI/-/walk?c=18.44,0,0,0,dh",
-      "menu": [],
-      "message": "오늘 메뉴 미수집 상태입니다.",
+      "menu": [
+        "소고기장터국밥",
+        "콘치즈순살불닭",
+        "찰떡궁합한입떡갈비",
+        "& 데리소스",
+        "부들어묵볶음",
+        "계절과일",
+        "치커리겉절이",
+        "가든샐러드",
+        "포기김치",
+        "백미밥 / 흑미밥",
+        "사브다",
+        "곤치즈순"
+      ],
+      "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-11-16 11:47:05",
-      "menu_recorded_source_fetched_at": "2026-11-16 11:46:29"
+      "menu_recorded_at": "2026-11-17 09:12:21",
+      "menu_recorded_source_fetched_at": "2026-11-17 09:11:53"
     },
     {
       "name": "다시 봄",
@@ -38,8 +51,8 @@
       "preview_image": "./images/dasibom.png",
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-11-17 09:01:43",
-      "menu_recorded_source_fetched_at": "2026-11-17 09:01:22"
+      "menu_recorded_at": "2026-11-17 09:12:21",
+      "menu_recorded_source_fetched_at": "2026-11-17 09:11:55"
     },
     {
       "name": "밥(온) 구내식당",
@@ -62,8 +75,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-11-17 09:01:43",
-      "menu_recorded_source_fetched_at": "2026-11-17 09:01:24"
+      "menu_recorded_at": "2026-11-17 09:12:21",
+      "menu_recorded_source_fetched_at": "2026-11-17 09:11:56"
     },
     {
       "name": "디폴리스 구내식당",
@@ -88,8 +101,8 @@
         "닭가즘살 후라이드 & 닭강정소스"
       ],
       "message": "",
-      "menu_recorded_at": "2026-11-17 09:01:43",
-      "menu_recorded_source_fetched_at": "2026-11-17 09:01:34",
+      "menu_recorded_at": "2026-11-17 09:12:21",
+      "menu_recorded_source_fetched_at": "2026-11-17 09:12:07",
       "menu_recent_source_today": true
     },
     {
@@ -111,8 +124,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-11-17 09:01:43",
-      "menu_recorded_source_fetched_at": "2026-11-17 09:01:26"
+      "menu_recorded_at": "2026-11-17 09:12:21",
+      "menu_recorded_source_fetched_at": "2026-11-17 09:11:58"
     },
     {
       "name": "마이푸드",
@@ -134,8 +147,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-11-17 09:01:43",
-      "menu_recorded_source_fetched_at": "2026-11-17 09:01:28"
+      "menu_recorded_at": "2026-11-17 09:12:21",
+      "menu_recorded_source_fetched_at": "2026-11-17 09:12:00"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -151,8 +164,8 @@
       ],
       "message": "",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-11-17 09:01:43",
-      "menu_recorded_source_fetched_at": "2026-11-17 09:01:30"
+      "menu_recorded_at": "2026-11-17 09:12:21",
+      "menu_recorded_source_fetched_at": "2026-11-17 09:12:02"
     },
     {
       "name": "더푸드스케치",
@@ -188,8 +201,8 @@
       "message": "",
       "preview_image": "./images/starvalley-food4u-post.png",
       "menu_recent_source_today": true,
-      "menu_recorded_at": "2026-11-17 09:01:43",
-      "menu_recorded_source_fetched_at": "2026-11-17 09:01:36"
+      "menu_recorded_at": "2026-11-17 09:12:21",
+      "menu_recorded_source_fetched_at": "2026-11-17 09:12:13"
     },
     {
       "name": "돈토",
@@ -222,11 +235,14 @@
   "ocr_log": [
     {
       "name": "아이밀",
-      "items": 0,
-      "updated": false,
-      "used_existing_fallback": true,
-      "reason": "today_marker_not_found",
-      "source_fetched_at": "2026-11-17 09:01:20"
+      "items": 12,
+      "updated": true,
+      "used_existing_fallback": false,
+      "fallback_confirmed": false,
+      "reason": "partial_ocr",
+      "ocr_rejected_items": 2,
+      "today_marker": true,
+      "source_fetched_at": "2026-11-17 09:11:53"
     },
     {
       "name": "다시 봄",
@@ -237,7 +253,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-11-17 09:01:22"
+      "source_fetched_at": "2026-11-17 09:11:55"
     },
     {
       "name": "밥(온) 구내식당",
@@ -248,7 +264,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-11-17 09:01:24"
+      "source_fetched_at": "2026-11-17 09:11:56"
     },
     {
       "name": "디폴리스 구내식당",
@@ -259,7 +275,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 5,
       "today_marker": true,
-      "source_fetched_at": "2026-11-17 09:01:34"
+      "source_fetched_at": "2026-11-17 09:12:07"
     },
     {
       "name": "구내식당라온푸드",
@@ -270,7 +286,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 4,
       "today_marker": true,
-      "source_fetched_at": "2026-11-17 09:01:26"
+      "source_fetched_at": "2026-11-17 09:11:58"
     },
     {
       "name": "마이푸드",
@@ -281,7 +297,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 3,
       "today_marker": true,
-      "source_fetched_at": "2026-11-17 09:01:28"
+      "source_fetched_at": "2026-11-17 09:12:00"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -292,7 +308,7 @@
       "reason": "",
       "ocr_rejected_items": 0,
       "today_marker": true,
-      "source_fetched_at": "2026-11-17 09:01:30"
+      "source_fetched_at": "2026-11-17 09:12:02"
     },
     {
       "name": "더푸드스케치",
@@ -300,7 +316,7 @@
       "updated": false,
       "used_existing_fallback": true,
       "reason": "today_marker_not_found",
-      "source_fetched_at": "2026-11-17 09:01:32"
+      "source_fetched_at": "2026-11-17 09:12:05"
     },
     {
       "name": "스타밸리푸드포유",
@@ -311,7 +327,7 @@
       "reason": "partial_ocr",
       "ocr_rejected_items": 2,
       "today_marker": true,
-      "source_fetched_at": "2026-11-17 09:01:36"
+      "source_fetched_at": "2026-11-17 09:12:13"
     }
   ]
 }
