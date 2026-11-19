@@ -3,10 +3,10 @@
     {
       "name": "한신IT타워 구내식당",
       "page_url": "https://pf.kakao.com/_QRALxb",
-      "image_url": "https://k.kakaocdn.net/dn/NgmFz/dJMcaaOqUs5/BviiO8kKWkgFKzU66lNdg1/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/tHGxu/dJMcaaOrVD3/9BqbtReXWBVhUPXNZgF5v1/img.jpg",
       "output": "guro-menu/images/hanshin-it.png",
       "status": "updated",
-      "fetched_at": "2026-11-18 11:52:34"
+      "fetched_at": "2026-11-19 09:19:11"
     },
     {
       "name": "자연푸드 구내식당",
@@ -14,31 +14,31 @@
       "image_url": "https://k.kakaocdn.net/dn/XNgcf/btqEGa4N6HT/sS22Vmf3bkwhjdkaJ7xHX1/img.jpg",
       "output": "guro-menu/images/nature-food.png",
       "status": "updated",
-      "fetched_at": "2026-11-18 11:52:36"
+      "fetched_at": "2026-11-19 09:19:13"
     },
     {
       "name": "더이츠푸드",
       "page_url": "https://pf.kakao.com/_xeVwxnn",
-      "image_url": "https://k.kakaocdn.net/dn/cQhRbm/dJMcairZb5u/afoNb6AlK9IvY8gYj2KCBK/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/bLQ99D/dJMcacehx49/L7t326r0DUTZyBOXzHfHy1/img.jpg",
       "output": "guro-menu/images/the-eats-food.png",
       "status": "updated",
-      "fetched_at": "2026-11-18 11:52:38"
+      "fetched_at": "2026-11-19 09:19:15"
     },
     {
       "name": "벽산더이룸",
       "page_url": "https://pf.kakao.com/_xdLzxgG",
-      "image_url": "https://k.kakaocdn.net/dn/bnlO0z/dJMcafviNC5/Wt7MBxNF2SOMcFA5wv8mKk/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/ctMwtg/dJMcad5h7YR/QukwjAEJJpcHlLKMJyOXcK/img.jpg",
       "output": "guro-menu/images/byucksan-theirum.png",
       "status": "updated",
-      "fetched_at": "2026-11-18 11:52:40"
+      "fetched_at": "2026-11-19 09:19:17"
     },
     {
       "name": "윤쉐프 코오롱",
       "page_url": "https://pf.kakao.com/_Xxhxkhs",
-      "image_url": "https://k.kakaocdn.net/dn/cb7ZtO/dJMcahmwoBs/naVkqKHK697quYkNOkk7q0/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/zC6xU/dJMcah7TbtM/YdoeVsha2b9czVKQHfWsZ1/img.jpg",
       "output": "guro-menu/images/yoon-chef-kolon.png",
       "status": "updated",
-      "fetched_at": "2026-11-18 11:52:42"
+      "fetched_at": "2026-11-19 09:19:19"
     }
   ]
 }
