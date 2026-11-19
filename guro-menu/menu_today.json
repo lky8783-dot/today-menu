@@ -2,7 +2,7 @@
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
   "date_label": "2026년 11월 19일 목요일",
-  "updated_at": "2026-11-19 09:39:39",
+  "updated_at": "2026-11-19 09:58:00",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -14,14 +14,15 @@
       "status": "ready",
       "preview_image": "./images/hanshin-it.png",
       "menu": [
-        "가 부잔지국수",
+        "유부잔치국수",
         "볼케이노닭갈비",
-        "생선까스*타르소스",
+        "생선까스*타르수스",
         "야채계란말이",
-        "매콜콩나물무침",
+        "물만두*초간장",
+        "매콤콩나물무침",
         "명엽채강정",
         "야채겉절이",
-        "포기김치",
+        "배추겉절이",
         "흑미밥/백미밥",
         "양배추샐러드&커피드레싱",
         "탄산음료"
@@ -112,38 +113,38 @@
   "ocr_log": [
     {
       "name": "한신IT타워 구내식당",
-      "items": 11,
+      "items": 12,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-19 09:39:30"
+      "source_fetched_at": "2026-11-19 09:57:51"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-11-19 09:39:32"
+      "source_fetched_at": "2026-11-19 09:57:53"
     },
     {
       "name": "더이츠푸드",
       "items": 12,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-19 09:39:33"
+      "source_fetched_at": "2026-11-19 09:57:54"
     },
     {
       "name": "벽산더이룸",
       "items": 11,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-19 09:39:35"
+      "source_fetched_at": "2026-11-19 09:57:56"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 10,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-19 09:39:36"
+      "source_fetched_at": "2026-11-19 09:57:57"
     }
   ]
 }
