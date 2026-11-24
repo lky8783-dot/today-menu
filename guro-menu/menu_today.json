@@ -2,7 +2,7 @@
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
   "date_label": "2026년 11월 24일 화요일",
-  "updated_at": "2026-11-24 09:03:33",
+  "updated_at": "2026-11-24 09:17:02",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -74,18 +74,18 @@
       "preview_image": "./images/byucksan-theirum.png",
       "menu": [
         "백미밥/잡곡밥",
-        "청대구실생선까스&콘타르소스",
-        "새콤비빔국수",
-        "모듬야채쌈&수제견과류쌈장",
-        "아삭고추무침",
-        "그린샐러드&상큼키위드레싱",
-        "보쌈김치",
-        "후식/식혜&마카로니",
+        "사골손만두국",
+        "바삭촉촉 경양식돈까스",
+        "DISS 라구스파게티",
+        "스파게티면",
+        "도토리묵무침",
+        "포기김치",
+        "후식/양송이크림스프",
         "숭늉/탄산음료",
-        "WM: 국산 / HAYA (HA DERBY)",
-        "기타 원산지 BALE 카운터에 부착되어 있습니다"
+        "쌀: 국산 / 배추김치(배추,고촛가루:중국산)",
+        "기타 원산지 표시는 카운터에 부착되어 있습니다"
       ],
-      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+      "message": ""
     },
     {
       "name": "윤쉐프 코오롱",
@@ -117,35 +117,35 @@
       "items": 13,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-24 09:03:25"
+      "source_fetched_at": "2026-11-24 09:16:53"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-11-24 09:03:26"
+      "source_fetched_at": "2026-11-24 09:16:54"
     },
     {
       "name": "더이츠푸드",
       "items": 11,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-24 09:03:27"
+      "source_fetched_at": "2026-11-24 09:16:56"
     },
     {
       "name": "벽산더이룸",
       "items": 11,
       "updated": true,
-      "today_marker": false,
-      "source_fetched_at": "2026-11-24 09:03:29"
+      "today_marker": true,
+      "source_fetched_at": "2026-11-24 09:16:57"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 11,
       "updated": true,
       "today_marker": false,
-      "source_fetched_at": "2026-11-24 09:03:30"
+      "source_fetched_at": "2026-11-24 09:16:59"
     }
   ]
 }
