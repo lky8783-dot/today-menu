@@ -2,7 +2,7 @@
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
   "date_label": "2026년 11월 26일 목요일",
-  "updated_at": "2026-11-26 09:27:46",
+  "updated_at": "2026-11-26 09:34:09",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -13,8 +13,20 @@
       "map_query": "한신IT타워 구내식당",
       "status": "ready",
       "preview_image": "./images/hanshin-it.png",
-      "menu": [],
-      "message": "오늘 메뉴 이미지를 가져오지 못했습니다."
+      "menu": [
+        "황태칼국수",
+        "바베규찜닭",
+        "생선까스*타르소스",
+        "백순대야채볶음",
+        "참나물묵야채무침",
+        "양념무말랭이",
+        "야채겉절이",
+        "포기김치",
+        "흑미밥/백미밥",
+        "양배추샐러드&오렌지드레싱",
+        "탄산음료"
+      ],
+      "message": ""
     },
     {
       "name": "자연푸드 구내식당",
@@ -25,7 +37,7 @@
       "status": "ready",
       "preview_image": "./images/nature-food.png",
       "menu": [],
-      "message": "오늘 메뉴 이미지를 가져오지 못했습니다."
+      "message": "공개 채널에서 최신 메뉴 이미지 제공 방식을 확인 중입니다."
     },
     {
       "name": "더이츠푸드",
@@ -35,8 +47,21 @@
       "map_query": "구로 대륭포스트타워1차 더이츠푸드",
       "status": "ready",
       "preview_image": "./images/the-eats-food.png",
-      "menu": [],
-      "message": "오늘 메뉴 이미지를 가져오지 못했습니다."
+      "menu": [
+        "더 이",
+        "112) 26% (목)",
+        "쌀밥/흑미잡곡밥",
+        "우거지시래기국",
+        "불닭치킨볶음",
+        "오징어볶음&소면",
+        "해물파전",
+        "애호박새송이버섯볶음",
+        "부추겉절이",
+        "수제겉절이김치",
+        "그린샐러드&드레싱 Y",
+        "제철과일"
+      ],
+      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
     },
     {
       "name": "벽산더이룸",
@@ -46,8 +71,20 @@
       "map_query": "벽산디지털밸리1차 벽산더이룸",
       "status": "ready",
       "preview_image": "./images/byucksan-theirum.png",
-      "menu": [],
-      "message": "오늘 메뉴 이미지를 가져오지 못했습니다."
+      "menu": [
+        "백미밥/잡곡밥",
+        "킬킬안 된장찌개",
+        "수제 F2O SSS.DAOOQAA",
+        "감자채볶음",
+        "박막례애호박국수",
+        "꼬들 오이지무침",
+        "배주겉절이",
+        "후식/딸기요거트",
+        "숭늉/탄산음료",
+        "Wi: 국산 / HAA (WHA DS7R-ZAAN)",
+        "기타 원산지 표시는 카운터에 부착되어 있습니다"
+      ],
+      "message": ""
     },
     {
       "name": "윤쉐프 코오롱",
@@ -57,35 +94,56 @@
       "map_query": "윤쉐프 코오롱싸이언스밸리1차",
       "status": "ready",
       "preview_image": "./images/yoon-chef-kolon.png",
-      "menu": [],
-      "message": "오늘 메뉴 이미지를 가져오지 못했습니다."
+      "menu": [
+        "유재된장국",
+        "묵은지찜닭",
+        "지즈함박스테이크",
+        "준권&조간장",
+        "람자고추장조림",
+        "콩나물무침",
+        "잡곡밥/벽미밥",
+        "그린샐러드&쌈채소",
+        "셀프라면&토스트",
+        "탄산을료/전복죽"
+      ],
+      "message": ""
     }
   ],
   "ocr_log": [
     {
       "name": "한신IT타워 구내식당",
-      "updated": false,
-      "reason": "image_missing"
+      "items": 11,
+      "updated": true,
+      "today_marker": true,
+      "source_fetched_at": "2026-11-26 09:33:59"
     },
     {
       "name": "자연푸드 구내식당",
+      "items": 0,
       "updated": false,
-      "reason": "image_missing"
+      "today_marker": false,
+      "source_fetched_at": "2026-11-26 09:34:00"
     },
     {
       "name": "더이츠푸드",
-      "updated": false,
-      "reason": "image_missing"
+      "items": 12,
+      "updated": true,
+      "today_marker": false,
+      "source_fetched_at": "2026-11-26 09:34:02"
     },
     {
       "name": "벽산더이룸",
-      "updated": false,
-      "reason": "image_missing"
+      "items": 11,
+      "updated": true,
+      "today_marker": true,
+      "source_fetched_at": "2026-11-26 09:34:04"
     },
     {
       "name": "윤쉐프 코오롱",
-      "updated": false,
-      "reason": "image_missing"
+      "items": 10,
+      "updated": true,
+      "today_marker": true,
+      "source_fetched_at": "2026-11-26 09:34:06"
     }
   ]
 }

@@ -3,62 +3,92 @@
     {
       "name": "아이밀",
       "page_url": "https://pf.kakao.com/_vygYn",
-      "status": "skipped",
-      "reason": "HTTPSConnectionPool(host='pf.kakao.com', port=443): Max retries exceeded with url: /_vygYn (Caused by ConnectTimeoutError(<HTTPSConnection(host='pf.kakao.com', port=443) at 0x7f3543f52050>, 'Connection to pf.kakao.com timed out. (connect timeout=30)'))"
+      "detail_url": "https://pf.kakao.com/_vygYn",
+      "image_url": "https://k.kakaocdn.net/dn/bATPQl/dJMcafWBDzA/9tCb6Vt0TpdktJ6mnPbAO1/img.jpg",
+      "output": "menu-today/images/imeal.png",
+      "status": "updated",
+      "fetched_at": "2026-11-26 09:31:40"
     },
     {
       "name": "다시 봄",
       "page_url": "https://pf.kakao.com/_xhNExmn",
-      "status": "skipped",
-      "reason": "HTTPSConnectionPool(host='pf.kakao.com', port=443): Max retries exceeded with url: /_xhNExmn (Caused by ConnectTimeoutError(<HTTPSConnection(host='pf.kakao.com', port=443) at 0x7f3543f5c390>, 'Connection to pf.kakao.com timed out. (connect timeout=30)'))"
+      "detail_url": "https://pf.kakao.com/_xhNExmn",
+      "image_url": "https://k.kakaocdn.net/dn/bc6aK2/dJMcabT3HGF/1TT1uci0RVC3OWPkk1ALHk/img.jpg",
+      "output": "menu-today/images/dasibom.png",
+      "status": "updated",
+      "fetched_at": "2026-11-26 09:31:43"
     },
     {
       "name": "밥(온) 구내식당",
       "page_url": "https://pf.kakao.com/_mYxfen",
-      "status": "skipped",
-      "reason": "HTTPSConnectionPool(host='pf.kakao.com', port=443): Max retries exceeded with url: /_mYxfen (Caused by ConnectTimeoutError(<HTTPSConnection(host='pf.kakao.com', port=443) at 0x7f3543f52010>, 'Connection to pf.kakao.com timed out. (connect timeout=30)'))"
+      "detail_url": "https://pf.kakao.com/_mYxfen",
+      "image_url": "https://k.kakaocdn.net/dn/bDfT9M/dJMcadROMue/oX0HL9nfAdyzviHDpTD1DK/img.jpg",
+      "output": "menu-today/images/babon.png",
+      "status": "updated",
+      "fetched_at": "2026-11-26 09:31:46"
     },
     {
       "name": "구내식당라온푸드",
       "page_url": "https://pf.kakao.com/_Rxkrxfn",
-      "status": "skipped",
-      "reason": "HTTPSConnectionPool(host='pf.kakao.com', port=443): Max retries exceeded with url: /_Rxkrxfn (Caused by ConnectTimeoutError(<HTTPSConnection(host='pf.kakao.com', port=443) at 0x7f3543f5d950>, 'Connection to pf.kakao.com timed out. (connect timeout=30)'))"
+      "detail_url": "https://pf.kakao.com/_Rxkrxfn",
+      "image_url": "https://k.kakaocdn.net/dn/bPSGcG/dJMcaf9QVic/hwoN9ZlK5X5D51t6NzI7B0/img.jpg",
+      "output": "menu-today/images/raonfood.png",
+      "status": "updated",
+      "fetched_at": "2026-11-26 09:31:48"
     },
     {
       "name": "마이푸드",
       "page_url": "https://pf.kakao.com/_xaAvxlG",
-      "status": "skipped",
-      "reason": "HTTPSConnectionPool(host='pf.kakao.com', port=443): Max retries exceeded with url: /_xaAvxlG (Caused by ConnectTimeoutError(<HTTPSConnection(host='pf.kakao.com', port=443) at 0x7f3543f5f4d0>, 'Connection to pf.kakao.com timed out. (connect timeout=30)'))"
+      "detail_url": "https://pf.kakao.com/_xaAvxlG",
+      "image_url": "https://k.kakaocdn.net/dn/IYhU9/dJMcajxVXIN/XJKuQW1bnKM3gkTq9HYwj1/img.jpg",
+      "output": "menu-today/images/myfood.png",
+      "status": "updated",
+      "fetched_at": "2026-11-26 09:31:52"
     },
     {
       "name": "퍼블릭가산 구내식당",
       "page_url": "https://pf.kakao.com/_ECNfn",
-      "status": "skipped",
-      "reason": "HTTPSConnectionPool(host='pf.kakao.com', port=443): Max retries exceeded with url: /_ECNfn (Caused by ConnectTimeoutError(<HTTPSConnection(host='pf.kakao.com', port=443) at 0x7f3543f71610>, 'Connection to pf.kakao.com timed out. (connect timeout=30)'))"
+      "detail_url": "https://pf.kakao.com/_ECNfn",
+      "image_url": "https://k.kakaocdn.net/dn/b7KQDM/dJMcabmjFvO/SvLp9eYqBsjHKKoLYBl40k/img.jpg",
+      "output": "menu-today/images/public-gasan.png",
+      "status": "updated",
+      "fetched_at": "2026-11-26 09:31:54"
     },
     {
       "name": "더푸드스케치",
       "page_url": "https://pf.kakao.com/_nFfwj",
-      "status": "skipped",
-      "reason": "HTTPSConnectionPool(host='pf.kakao.com', port=443): Max retries exceeded with url: /_nFfwj (Caused by ConnectTimeoutError(<HTTPSConnection(host='pf.kakao.com', port=443) at 0x7f3543f736d0>, 'Connection to pf.kakao.com timed out. (connect timeout=30)'))"
+      "detail_url": "https://pf.kakao.com/_nFfwj",
+      "image_url": "https://k.kakaocdn.net/dn/gMW1t/dJMcabNlz27/RgX8vyflWW4RuNKLYo4y1K/img.jpg",
+      "output": "menu-today/images/thefoodsketch.png",
+      "status": "updated",
+      "fetched_at": "2026-11-26 09:31:57"
     },
     {
       "name": "스타밸리푸드포유",
       "page_url": "https://pf.kakao.com/_axkixdn/posts",
-      "status": "skipped",
-      "reason": "Page.goto: Timeout 120000ms exceeded.\nCall log:\n  - navigating to \"https://pf.kakao.com/_axkixdn/posts\", waiting until \"networkidle\"\n"
+      "detail_url": "https://pf.kakao.com/_axkixdn/contents/posts/115366091",
+      "image_url": "https://k.kakaocdn.net/dn/bkGX7Z/dJMcafPUqtT/k7h4MntfmMJXxkIu8nt5dK/img_xl.jpg",
+      "output": "menu-today/images/starvalley-food4u-post.png",
+      "status": "updated",
+      "fetched_at": "2026-11-26 09:32:06"
     },
     {
       "name": "디폴리스 구내식당",
       "page_url": "https://pf.kakao.com/_iyscG",
-      "status": "skipped",
-      "reason": "HTTPSConnectionPool(host='pf.kakao.com', port=443): Max retries exceeded with url: /_iyscG (Caused by ConnectTimeoutError(<HTTPSConnection(host='pf.kakao.com', port=443) at 0x7f3543f72210>, 'Connection to pf.kakao.com timed out. (connect timeout=30)'))"
+      "detail_url": "https://pf.kakao.com/_iyscG",
+      "image_url": "https://k.kakaocdn.net/dn/t7Ysq/dJMcaaAXbPS/VyuuoMGTgfLPbfhiuVIHq0/img.jpg",
+      "output": "menu-today/images/dipolis.png",
+      "status": "updated",
+      "fetched_at": "2026-11-26 09:32:00"
     },
     {
       "name": "돈토",
       "page_url": "https://pf.kakao.com/_Gxjxcbxj",
-      "status": "skipped",
-      "reason": "HTTPSConnectionPool(host='pf.kakao.com', port=443): Max retries exceeded with url: /_Gxjxcbxj (Caused by ConnectTimeoutError(<HTTPSConnection(host='pf.kakao.com', port=443) at 0x7f3543f70550>, 'Connection to pf.kakao.com timed out. (connect timeout=30)'))"
+      "detail_url": "https://pf.kakao.com/_Gxjxcbxj",
+      "image_url": "https://k.kakaocdn.net/dn/bUdBlN/btrPybZ1blc/B1Aevq6s9dGBgGBRGFHqhK/img.jpg",
+      "output": "menu-today/images/donto.png",
+      "status": "updated",
+      "fetched_at": "2026-11-26 09:32:03"
     }
   ]
 }
