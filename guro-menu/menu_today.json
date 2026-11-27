@@ -2,7 +2,7 @@
   "title": "구로디지털단지 구내식당 메뉴정보",
   "area_name": "구로디지털단지",
   "date_label": "2026년 11월 27일 금요일",
-  "updated_at": "2026-11-27 09:33:42",
+  "updated_at": "2026-11-27 09:48:32",
   "notice": "공개 카카오 채널 기준으로 자동 수집한 메뉴 정보를 식당별로 정리한 화면입니다.",
   "restaurants": [
     {
@@ -72,18 +72,18 @@
       "preview_image": "./images/byucksan-theirum.png",
       "menu": [
         "백미밥/잡곡밥",
-        "킬킬안 된장찌개",
-        "수제 F2O SSS.DAOOQAA",
-        "감자채볶음",
-        "박막례애호박국수",
-        "꼬들 오이지무침",
-        "배주겉절이",
-        "후식/딸기요거트",
+        "김치콩나물국",
+        "Ven 연탄불고기",
+        "모듬땅콩강정",
+        "UP 부추전&간장소스",
+        "고추장쥐어채볶음",
+        "새콤딜콤 쪽파무생채",
+        "백김치",
         "숭늉/탄산음료",
-        "Wi: 국산 / HAA (WHA DS7R-ZAAN)",
+        "A: 국산 / HAA (HA, DE7RSRA",
         "기타 원산지 표시는 카운터에 부착되어 있습니다"
       ],
-      "message": "최신 공개 식단 이미지의 텍스트입니다. 날짜는 원본 이미지를 확인해 주세요."
+      "message": ""
     },
     {
       "name": "윤쉐프 코오롱",
@@ -112,35 +112,35 @@
       "items": 12,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-27 09:33:33"
+      "source_fetched_at": "2026-11-27 09:48:23"
     },
     {
       "name": "자연푸드 구내식당",
       "items": 0,
       "updated": false,
       "today_marker": false,
-      "source_fetched_at": "2026-11-27 09:33:34"
+      "source_fetched_at": "2026-11-27 09:48:24"
     },
     {
       "name": "더이츠푸드",
       "items": 10,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-27 09:33:36"
+      "source_fetched_at": "2026-11-27 09:48:26"
     },
     {
       "name": "벽산더이룸",
       "items": 11,
       "updated": true,
-      "today_marker": false,
-      "source_fetched_at": "2026-11-27 09:33:37"
+      "today_marker": true,
+      "source_fetched_at": "2026-11-27 09:48:27"
     },
     {
       "name": "윤쉐프 코오롱",
       "items": 8,
       "updated": true,
       "today_marker": true,
-      "source_fetched_at": "2026-11-27 09:33:39"
+      "source_fetched_at": "2026-11-27 09:48:28"
     }
   ]
 }
