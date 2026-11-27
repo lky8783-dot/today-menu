@@ -4,10 +4,10 @@
       "name": "아이밀",
       "page_url": "https://pf.kakao.com/_vygYn",
       "detail_url": "https://pf.kakao.com/_vygYn",
-      "image_url": "https://k.kakaocdn.net/dn/bATPQl/dJMcafWBDzA/9tCb6Vt0TpdktJ6mnPbAO1/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/jcmrj/dJMcahNsU5J/K2E1BI8FvJrOSG3prqZ5e0/img.jpg",
       "output": "menu-today/images/imeal.png",
       "status": "updated",
-      "fetched_at": "2026-11-26 11:46:33"
+      "fetched_at": "2026-11-27 09:01:33"
     },
     {
       "name": "다시 봄",
@@ -16,34 +16,34 @@
       "image_url": "https://k.kakaocdn.net/dn/gJBV9/dJMcabsZ8hA/JGsi7oOB26wUwqKTYeK7eK/img.jpg",
       "output": "menu-today/images/dasibom.png",
       "status": "updated",
-      "fetched_at": "2026-11-26 11:46:35"
+      "fetched_at": "2026-11-27 09:01:36"
     },
     {
       "name": "밥(온) 구내식당",
       "page_url": "https://pf.kakao.com/_mYxfen",
       "detail_url": "https://pf.kakao.com/_mYxfen",
-      "image_url": "https://k.kakaocdn.net/dn/bDfT9M/dJMcadROMue/oX0HL9nfAdyzviHDpTD1DK/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/f9Lq2/dJMcabzI0px/7aXBwCKkUCmFUjSBGAHzVk/img.jpg",
       "output": "menu-today/images/babon.png",
       "status": "updated",
-      "fetched_at": "2026-11-26 11:46:37"
+      "fetched_at": "2026-11-27 09:01:38"
     },
     {
       "name": "구내식당라온푸드",
       "page_url": "https://pf.kakao.com/_Rxkrxfn",
       "detail_url": "https://pf.kakao.com/_Rxkrxfn",
-      "image_url": "https://k.kakaocdn.net/dn/cyfaUP/dJMcadxpF4l/qjMYqdJb1pwGERxZ7Z5v00/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/JUZMr/dJMcah7YS3X/5VRwmdERJCnsBMv63tSIK1/img.jpg",
       "output": "menu-today/images/raonfood.png",
       "status": "updated",
-      "fetched_at": "2026-11-26 11:46:39"
+      "fetched_at": "2026-11-27 09:01:41"
     },
     {
       "name": "마이푸드",
       "page_url": "https://pf.kakao.com/_xaAvxlG",
       "detail_url": "https://pf.kakao.com/_xaAvxlG",
-      "image_url": "https://k.kakaocdn.net/dn/IYhU9/dJMcajxVXIN/XJKuQW1bnKM3gkTq9HYwj1/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/bMTavW/dJMb99WfffK/FOtK1CqIuUMWmLj9MrEEtk/img.jpg",
       "output": "menu-today/images/myfood.png",
       "status": "updated",
-      "fetched_at": "2026-11-26 11:46:41"
+      "fetched_at": "2026-11-27 09:01:45"
     },
     {
       "name": "퍼블릭가산 구내식당",
@@ -52,7 +52,7 @@
       "image_url": "https://k.kakaocdn.net/dn/b7KQDM/dJMcabmjFvO/SvLp9eYqBsjHKKoLYBl40k/img.jpg",
       "output": "menu-today/images/public-gasan.png",
       "status": "updated",
-      "fetched_at": "2026-11-26 11:46:43"
+      "fetched_at": "2026-11-27 09:01:48"
     },
     {
       "name": "더푸드스케치",
@@ -61,25 +61,25 @@
       "image_url": "https://k.kakaocdn.net/dn/gMW1t/dJMcabNlz27/RgX8vyflWW4RuNKLYo4y1K/img.jpg",
       "output": "menu-today/images/thefoodsketch.png",
       "status": "updated",
-      "fetched_at": "2026-11-26 11:46:46"
+      "fetched_at": "2026-11-27 09:01:51"
     },
     {
       "name": "스타밸리푸드포유",
       "page_url": "https://pf.kakao.com/_axkixdn/posts",
-      "detail_url": "https://pf.kakao.com/_axkixdn/contents/posts/115366091",
-      "image_url": "https://k.kakaocdn.net/dn/bkGX7Z/dJMcafPUqtT/k7h4MntfmMJXxkIu8nt5dK/img_xl.jpg",
+      "detail_url": "https://pf.kakao.com/_axkixdn/contents/posts/115366087",
+      "image_url": "https://k.kakaocdn.net/dn/gUuOJ/dJMcajxVW3Z/dkH4V9UVMVGHDvoTLqcPbk/img_xl.jpg",
       "output": "menu-today/images/starvalley-food4u-post.png",
       "status": "updated",
-      "fetched_at": "2026-11-26 11:46:52"
+      "fetched_at": "2026-11-27 09:01:59"
     },
     {
       "name": "디폴리스 구내식당",
       "page_url": "https://pf.kakao.com/_iyscG",
       "detail_url": "https://pf.kakao.com/_iyscG",
-      "image_url": "https://k.kakaocdn.net/dn/t7Ysq/dJMcaaAXbPS/VyuuoMGTgfLPbfhiuVIHq0/img.jpg",
+      "image_url": "https://k.kakaocdn.net/dn/20MS4/dJMcafPVnpC/N7IZQuwyfHqpnb9doLQzo1/img.jpg",
       "output": "menu-today/images/dipolis.png",
       "status": "updated",
-      "fetched_at": "2026-11-26 11:46:48"
+      "fetched_at": "2026-11-27 09:01:54"
     },
     {
       "name": "돈토",
@@ -88,7 +88,7 @@
       "image_url": "https://k.kakaocdn.net/dn/bUdBlN/btrPybZ1blc/B1Aevq6s9dGBgGBRGFHqhK/img.jpg",
       "output": "menu-today/images/donto.png",
       "status": "updated",
-      "fetched_at": "2026-11-26 11:46:49"
+      "fetched_at": "2026-11-27 09:01:56"
     }
   ]
 }
